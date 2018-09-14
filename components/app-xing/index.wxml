@@ -1,8 +1,0 @@
-<!-- 评价 -->
- <custom-component >
-  <view  wx:for="{{xing}}" wx:key="xing" >
-    <view class="my-class app-xing "  data-key='{{item.key}}' catchtap="changeColor"></view>
-  </view> 
-</custom-component>  
-<!-- 
-<view catchtap="changeColor">555</view> -->

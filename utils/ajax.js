@@ -19,10 +19,11 @@ module.exports = (_options = {}) => {
   return new Promise((resolve, reject) => {
 
     // 本地调试代码
-    const productList = require('..' + _options.path);
-    console.log(productList);
-    resolve(productList)
-    return false
+    if (!!~_options.path.indexOf('.js')){
+      const res = require('..' + _options.path);
+      resolve(res)
+      return false
+    }
     // 本地调试代码结束
 
     let {

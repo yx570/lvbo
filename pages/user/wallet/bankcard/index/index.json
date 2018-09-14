@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "我的银行卡",
-  "usingComponents":{
-    "app-empty":"../../../../../components/app-empty/index"
-  }
-}

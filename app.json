@@ -7,58 +7,26 @@
   ],
   "subPackages": [
     {
-      "root": "pages/home",
+      "root": "pages/product",
       "pages": [
-        "purchase/index",
-        "purchase/details/index",
-        "purchase/evaluate/index",
-        "purchase/logistics/index",
         "details/index",
-        "order/index",
-        "order/details/index"
+        "buy/index"
       ]
     },
     {
       "root": "pages/order",
       "pages": [
-        "details/details",
-        "service/index"
-      ]
-    },
-    {
-      "root": "pages/cart",
-      "pages": [
-        "fill/pay/index",
-        "fill/index"
+        "details/index",
+        "edit/index"
       ]
     },
     {
       "root": "pages/user",
       "pages": [
-        "wallet/index/index",
-        "wallet/details/index",
-        "wallet/recharge/index",
-        "wallet/withdraw/index",
-        "wallet/bankcard/index/index",
-        "wallet/bankcard/bind/index",
-        "wallet/bankcard/select/index",
-        "agent/index/index",
-        "agent/audit/index",
-        "agent/details/index",
-        "sell/index/index",
-        "sell/details/index",
-        "sell/cancel/index",
-        "inventory/index/index",
-        "inventory/details/index",
-        "address/index/index",
-        "address/add/index",
-        "address/select/index",
-        "account/index/index",
-        "account/infos/index",
-        "account/mobile/index",
-        "account/trade/index",
-        "account/password/index",
-        "Warehousing/index"
+        "address/index",
+        "voucher/index",
+        "currency/list/index",
+        "currency/withdraw/index"
       ]
     }
   ],

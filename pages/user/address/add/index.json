@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "添加收货地址",
-  "usingComponents": {
-    "app-pop": "../../../../components/app-pop/index"
-  }
-}

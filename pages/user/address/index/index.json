@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "管理收货地址",
-  "usingComponents": {
-    "app-empty": "../../../../components/app-empty/index"
-  }
-}

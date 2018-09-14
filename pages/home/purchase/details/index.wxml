@@ -1,3 +1,0 @@
-<view>
- 123123<app-xing my-class="iconfont icon-iconfontxingxing  {{flag>=item.key? '': 'icon-xing'}}"></app-xing> 
-</view>

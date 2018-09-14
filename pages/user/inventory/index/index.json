@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "库存管理",
-  "usingComponents": {
-    "app-tab": "../../../../components/app-tab/index",
-    "app-empty": "../../../../components/app-empty/index"
-  }
-}

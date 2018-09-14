@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "金谷坊主",
-  "usingComponents": {
-    "app-tab": "../../../../components/app-tab/index",
-    "app-empty": "../../../../components/app-empty/index"
-  }
-}

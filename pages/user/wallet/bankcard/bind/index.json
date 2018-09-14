@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "金谷坊主",
-  "usingComponents": {
-    "app-pop": "../../../../../components/app-pop/index",
-    "app-number-keyboard": "../../../../../components/app-number-keyboard/index"
-  }
-}
