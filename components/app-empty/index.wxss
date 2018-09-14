@@ -1,0 +1,75 @@
+.app-empty{
+  width: 100%;
+  padding-top: 200rpx;
+  text-align: center;
+}
+.app-empty__hd{
+  position: relative;
+  width: 500rpx;
+  height: 350rpx;
+  margin: 0 auto;
+}
+.app-empty__hd image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200rpx;
+  transform: translate3d(-50%,-50%,0);
+}
+.symbol::before,.symbol::after{
+  content: '+';
+  position: absolute;
+  font-size: 24rpx;
+  color: #d6d6d6;
+  font-weight: bold;
+  opacity: 1;
+  z-index: 0;
+}
+.symbol1::before{
+  top: 0;
+  left: 70rpx;
+  opacity: 0.5;
+}
+.symbol1::after{
+  top: 30rpx;
+  left: 110rpx;
+  font-size: 30rpx;
+}
+.symbol2::before{
+  top: 0;
+  right: 50rpx;
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+.symbol2::after{
+  bottom: 10rpx;
+  right: 0;
+  font-size: 28rpx;
+  opacity: 0.8;
+}
+.symbol3::before{
+  bottom: 70rpx;
+  left: 0;
+  font-size: 30rpx;
+}
+.symbol3::after{
+  bottom: 20rpx;
+  left: 70rpx;
+  font-size: 30rpx;
+  opacity: 0.5;
+}
+.symbol4::before{
+  top: 60rpx;
+  left: 0;
+  font-size: 30rpx;
+}
+.symbol4::after{
+  top: 110rpx;
+  left: 70rpx;
+  opacity: 0.5;
+}
+.app-empty__bd{
+  padding: 20rpx 0;
+  font-size: 34rpx;
+  color: #adadad;
+}

@@ -1,0 +1,84 @@
+/* pages/work/index.wxss */
+.panel-tab .loadmore-scroll-view{
+  top: 80rpx !important;
+}
+
+ .section{
+   height: 80rpx;
+   line-height: 80rpx;
+   margin: 0 30rpx ;
+   
+ }
+ .flex-item{
+   float: left;
+   color: #999999;
+   font-size: 32rpx;
+   padding-right: 45rpx;
+ }
+ .c-ff5{
+   color: #ff5100;
+ }
+.c-999{
+  color: #999;
+}
+.item_title{
+  background: #f2f2f2;
+  height: 20rpx;
+}
+.item_list{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+}
+.img-sc{
+  width: 28rpx;
+  height: 28rpx;
+  float: right;
+  margin-top: 26rpx;
+  margin-left: 10rpx;
+}
+.text-wc{
+ padding: 0 30rpx;
+}
+.item_listR{
+  float:left;
+  background: #e7e7e7;
+  width: 180rpx;
+  height: 180rpx;
+}
+.item_listL{
+  float:left;
+  width:450rpx;
+  margin-left: 20rpx;
+  border-bottom: 1rpx #f3f3f3 solid;
+}
+.item_list_title{
+  font-size: 32rpx;
+  line-height: 40rpx;
+  /* overflow: hidden;
+  text-overflow:ellipsis;
+white-space: nowrap; */
+}
+.item_list_jg{
+  margin-top: 50rpx;
+}
+.fs-25{
+  margin-left:30rpx;
+  font-size: 25rpx;
+}
+
+.wl{
+   color: #333333  !important;
+   border:1px solid #eaeaea !important;
+   width: 220rpx ; 
+   height: 70rpx ;
+   line-height: 70rpx;
+   font-size: 28rpx ;
+}
+.pj{
+   width: 220rpx ; 
+   height: 70rpx ;
+   line-height: 70rpx;
+   font-size: 28rpx ;
+   margin-left: 20rpx;
+}

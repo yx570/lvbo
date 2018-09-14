@@ -1,0 +1,20 @@
+
+  <view class=' pa-60 box'>
+  <text class='text'>重置密码</text>
+  <form bindsubmit="formSubmit">
+      <view class='overflow row '> 
+          <input type="text" placeholder='请输入手机号' name='cellPhone' placeholder-class='placeholder' bindinput="getPhone"/>
+      </view>
+      <view class='overflow row '> 
+          <view class="a col-ff5100" catch:tap="getCode">获取验证码</view>
+          <input type="text" placeholder='请输入验证码' name='code'  placeholder-class='placeholder'/>
+      </view>
+      <view class='overflow row '> 
+       <view class="iconfont  a clear-both {{ show ? 'icon-eye-on' : 'icon-eye-off' }}" data-num='1'  bindtap="toggleShow"></view>
+          <input type="{{ show ? 'password' : 'text' }}" placeholder='请输入密码' name='password' placeholder-class='placeholder'/>
+      </view>
+      <button class='btn-radius bg-linear-lr mt40'  type='primary' form-type='submit' >提交</button>
+  </form>
+</view>   
+
+

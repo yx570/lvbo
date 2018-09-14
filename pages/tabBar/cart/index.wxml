@@ -1,0 +1,58 @@
+<view class='panel-cart'>
+    <view class="weui-cells order-list" wx:if="{{ orders.length > 0 }}">
+        <view class="weui-cell order-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}" bind:touchstart="touchstart" bind:touchmove="touchmove" bind:tap="cellTap">
+            <view class="weui-cell__hd">
+                <label class="checkbox" data-index="{{ index }}" data-ids='{{ item.skuId }}' data-sele="{{ item.selected }}" catch:tap="checkboxTap">
+                    <checkbox value="{{ index }}" checked="{{ item.selected }}"/>
+                    <icon class="iconfont icon-check"></icon>
+                </label>
+            </view>
+            <view class="weui-cell__bd"  bindtap="urlshow" data-id="{{item.skuId}}">
+                <view  class="f-l"><image  src="{{ item.picture }}" /></view>
+                <view class="name">{{ item.name }}</view>
+                <view class="overflow cb">
+                  <view class="f-l price color-primary">
+                      <text class="sub">￥</text>
+                      <text>{{ item.price }}</text>
+                  </view>
+                  <view class="f-r at-number-input">
+                    <!-- <view class="iconfont icon-clear_fill {{ item.quantity <= 0 ? 'disabled':'' }}" data-id="{{ item.skuId }}" catch:tap="changeCount" data-index="{{ index }}" data-value="-1"></view>
+                    <text class="text">{{ item.quantity }}</text>
+                    <view class="iconfont icon-addition_fill" catch:tap="changeCount" data-id="{{ item.skuId }}" data-index="{{ index }}" data-value="1"></view> -->
+                    <app-input-number 
+                      quantity="{{ item.quantity }}"
+                      data-id="{{ item.skuId }}" 
+                      data-index="{{ index }}" 
+                      catch:tap="inputTap"
+                      bind:change="changeCount" 
+                    />
+                  </view>
+                </view>
+            </view>
+            <view class="weui-cell__del overflow">
+                <button class="f-r btn-delete" type="primary" data-id="{{ item.skuId }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
+                  <text>删除</text>
+                </button>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+      <app-empty tips="暂无商品哦~" />
+    </view>
+    <view class="at-footer" wx:if="{{ orders.length > 0 }}">
+        <view class="left">
+            <label class="checkbox" data-checked="{{ checkedAll }}" catch:tap="checkAllTap">
+                <checkbox checked="{{ checkedAll }}"/>
+                <icon class="iconfont icon-check"></icon>
+                <text>全选</text>
+            </label>
+        </view>
+        <view class="right">
+            <text>总计：</text>
+            <text class="sub color-primary">￥</text>
+            <text class="color-primary">{{ totalPrices }}</text>
+            <button type="primary" bindtap="goSettle">去结算</button>
+        </view>
+    </view>
+</view>
+

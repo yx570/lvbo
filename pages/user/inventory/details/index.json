@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "库存详情",
+  "usingComponents": {
+    "app-empty": "../../../../components/app-empty/index"
+  }
+}

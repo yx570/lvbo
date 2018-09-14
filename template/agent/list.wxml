@@ -1,0 +1,136 @@
+  <!--  代理记录  -->
+<template name="list1">
+  <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" data-key="{{ 1 }}" bind:tap="toDetails">
+    <view class="weui-cell__hd">
+      <image src="{{ item.picture }}" />
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title ellipse-box">{{ item.goodsName }}</view>
+      <view class="content color-ab">
+        <view class="ellipse-box">规格：{{ item.skuContent }}</view>
+        <view>代理数量：{{ item.agentQuantity }}</view>
+        <view>订单编号：{{ item.id}}</view>
+        <view class="overflow">
+          <view class="f-l">代理金额：<text class="color-primary">￥{{item.agentAmountCent}}</text></view>
+          <view class="f-l">代理价：<text class="color-primary">￥{{item.agentPriceCent}}</text></view>
+        </view>
+        <view>代理时间：{{ item.agentTime }}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--  提货审核  -->
+<template name="list2">
+  <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" data-key="{{ 2 }}" bind:tap="toDetails">
+    <view class="weui-cell__hd">
+      <image src="{{ item.goodsCover }}" />
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title ellipse-box">{{ item.goodsName }}</view>
+      <view class="content color-ab">
+        <view class="ellipse-box">规格：{{ item.skuContent }}</view>
+        <view>订单编号：{{ item.id}}</view>
+        <view>价格：<text class="color-primary">￥{{item.agentPriceCent}}</text></view>
+        <view>申请日期：{{ item.createTime }}</view>
+        <view>提货方式：{{ item.deliverType.key}}</view>
+        <view class="overflow con-footer">
+          <view class="f-l color-primary">提货数量：{{ item.deliverQuantity }}</view>
+          <view class="f-r">
+            <button type="primary" size="mini" data-key="{{ 2 }}" data-id="{{ item.id }}" catch:tap="auditGoods">审核</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--  回购审核  -->
+<template name="list3">
+  <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" data-key="{{ 3 }}" bind:tap="toDetails">
+    <view class="weui-cell__hd">
+      <image src="{{ item.goodsCover }}" />
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title ellipse-box">{{ item.goodsName }}</view>
+      <view class="content color-ab">
+        <view class="ellipse-box">规格：{{ item.skuContent }}</view>
+        <view>订单编号：{{ item.id}}</view>
+        <view>价格：<text class="color-primary">￥{{item.buybackAmountCent}}</text></view>
+        <view>申请日期：{{ item.createTime }}</view>
+        <view>回购数量：{{ item.buybackQuantity }}</view>
+        <view class="overflow con-footer">
+          <view class="f-l color-primary">需退商品：{{ item.returnQuantity }}</view>
+          <view class="f-r">
+            <button type="primary" size="mini" data-key="{{ 3 }}" data-id="{{ item.id }}" catch:tap="auditGoods">审核</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--  提货记录  -->
+<template name="list4">
+  <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" data-key="{{ 4 }}" bind:tap="toDetails">
+    <view class="weui-cell__hd">
+      <image src="{{ item.goodsCover }}" />
+      <view class="color-primary align-center">{{ item.auditState.key }}</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title ellipse-box">{{ item.goodsName }}</view>
+      <view class="content color-ab">
+        <view class="ellipse-box">规格：{{ item.skuContent }}</view>
+        <view>订单编号：{{ item.id}}</view>
+        <view>价格：<text class="color-primary">￥{{item.agentPriceCent}}</text></view>
+        <view>提货数量：{{ item.deliverQuantity }}</view>
+        <view>提货方式：{{ item.deliverType.key }}</view>
+        <view>提货日期：{{ item.createTime }}</view>
+        <view>审核日期：{{ item.auditTime }}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--  回购记录  -->
+<template name="list5">
+  <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" data-key="{{ 5 }}" bind:tap="toDetails">
+    <view class="weui-cell__hd">
+      <image src="{{ item.goodsCover }}" />
+      <view class="color-primary align-center">{{ item.auditState.key }}</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title ellipse-box">{{ item.goodsName }}</view>
+      <view class="content color-ab">
+        <view class="ellipse-box">规格：{{ item.skuContent }}</view>
+        <view>订单编号：{{ item.id}}</view>
+        <view>价格：<text class="color-primary">￥{{item.agentPriceCent}}</text></view>
+        <view>回购数量：{{ item.buybackQuantity }}</view>
+        <view>需退数量：{{ item.returnQuantity }}</view>
+        <view>回购日期：{{ item.createTime }}</view>
+        <view wx:if='{{item.auditTime != null}}'>审核日期：{{ item.auditTime }}</view>
+        <view wx:if='{{item.auditTime == null}}'>审核日期：{{ item.createTime }}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--  核销记录  -->
+<template name="list6">
+  <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" data-key="{{ 6 }}">
+    <view class="weui-cell__hd">
+      <image src="{{ item.goodsCover }}" />
+      <view class="color-primary align-center">已核销</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title ellipse-box">{{ item.goodsName }}</view>
+      <view class="content color-ab">
+        <view class="ellipse-box">规格：{{ item.skuContent }}</view>
+        <view>订单编号：{{ item.id}}</view>
+        <view>价格：<text class="color-primary">￥{{item.agentPriceCent}}</text></view>
+        <view>核销数量：{{ item.verifyQuantity }}</view>
+        <view>核销日期：{{ item.verifyTime }}</view>
+      </view>
+    </view>
+  </view>
+</template>

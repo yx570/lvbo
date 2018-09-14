@@ -1,0 +1,23 @@
+.panel-trade{
+  padding-top: 80rpx;
+}
+.panel-trade .weui-cells::before{
+  height: 0;
+  border: 0;
+}
+.panel-trade .weui-cells::after{
+  right: 30rpx;
+  left: 30rpx;
+}
+.panel-trade .btns{
+  margin-top: 60rpx;
+  padding: 0 30rpx;
+}
+.panel-trade input{
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 36rpx;
+}
+.panel-trade .weui-cell__ft{
+  min-width: 100rpx;
+}

@@ -1,0 +1,25 @@
+<view class='pay-cen'>
+    <view wx:if="{{type == 1}}">
+      <view class='center' >
+        <view class="iconfont icon-zhifuchenggong  pay-icon bg-239439"></view> 
+      </view>
+      <view class='center' style='font-size: 40rpx;'>订单支付成功</view> 
+      <view class='center bg-red' ><text class='col-cb'>金额:</text><text class='fs-20' >￥</text>{{totalPrices}}</view>
+      <view class='pay-button'>
+          <button class='btn-radius bg-linear-lr' type='primary' formType="submit" catch:tap="godd">查看订单</button>
+          <button class='btn-radius dd ' type="primary" plain hover-class="none" catch:tap="gosy">返回首页</button>
+      </view>
+    </view>
+    <view  wx:else="{{type == 2}}">
+      <view class='center' >
+          <view class="iconfont icon-zhifushibai  pay-icon bg-red"></view> 
+      </view>
+        <view class='center' style='font-size: 40rpx;'>订单支付失败</view> 
+      <view class='center bg-red' ><text class='col-cb'>金额:</text><text class='fs-20' >￥</text>{{totalPrices}}</view>
+      <view class='center bg-red' ><text class='col-cb'>失败原因：</text>{{err}}</view>
+        <view class='pay-button'>
+          <button class='btn-radius bg-linear-lr' type='primary' formType="submit" catch:tap="rebuild">重新支付</button>
+          <button class='btn-radius dd ' type="primary" plain hover-class="none"  catch:tap="godd">查看订单</button>
+      </view> 
+    </view>
+</view>

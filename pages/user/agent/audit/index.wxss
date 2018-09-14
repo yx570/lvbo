@@ -1,0 +1,22 @@
+.panel-agent-audit .weui-cells::before,.panel-agent-audit .weui-cells::after{
+  border: 0;
+}
+.panel-agent-audit .weui-cells{
+  margin-top: 0;
+}
+.panel-agent-audit .weui-cell__bd view{
+  padding: 10rpx 0;
+}
+.form-audit .btns{
+  padding: 10rpx 30rpx;
+}
+.form-textarea{
+  padding: 20rpx 0;
+}
+.form-textarea textarea{
+  width: 100%;
+  padding: 10rpx;
+  border: 1px solid #f2f2f2;
+  border-radius: 6rpx;
+  box-sizing: border-box;
+}

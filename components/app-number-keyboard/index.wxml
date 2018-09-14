@@ -1,0 +1,9 @@
+<!-- 模拟键盘 -->
+<custom-component>
+  <view class="app-number-keyboard">
+    <view class="item {{ item.value < 0 ? ( item.value == -1 ? 'backspace' : 'clear' ) : '' }}" wx:for="{{ keys }}" wx:key="{{ index }}" data-value="{{ item.value }}" bind:tap="itemTap">
+      <view wx:if="{{ item.value != -1 }}">{{ item.label }}</view>
+      <view wx:else class="iconfont icon-backspace"></view>
+    </view>
+  </view> 
+</custom-component>

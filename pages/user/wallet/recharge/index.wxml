@@ -1,0 +1,27 @@
+<view class='panel-wallet-recharge'>
+	<form bindsubmit="formSubmit">
+		<view class="content">
+			<view class="weui-cells">
+				<view class="weui-cell ct">
+					<view class="weui-cell__hd">
+						<text>充值金额</text>
+					</view>
+				</view>
+				<view class="weui-cell cb">
+					<view class="weui-cell__hd">
+						<text>￥</text>
+					</view>
+					<view class="weui-cell__bd">
+						<input value="{{ rechargeTotal }}" name="rechargeTotal" type="digit" />
+					</view>
+					<view class="weui-cell__ft">
+						<view class="iconfont icon-delete" catch:tap="clearInput"></view>
+					</view>
+				</view>
+			</view>
+			<view class="btn-area">
+				<button class="btn-radius bg-linear-lr" type="primary" formType="submit">充值</button>
+			</view>
+		</view>
+	</form>
+</view>

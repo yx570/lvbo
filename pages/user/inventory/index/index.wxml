@@ -1,0 +1,80 @@
+<view class='panel-inventory loadmore-box'>
+	<!-- <app-tab tabs="{{ tabs }}" bind:itemTap="tabChange" fixed></app-tab>
+  <view class="gutter bg-f3"></view>  -->
+  <scroll-view class="loadmore-scroll-view" scroll-y="true" bindscrolltolower="_loadMore">
+    <view class="weui-cells inventory-list" wx:if="{{ currentTab == 1 && list.length > 0 }}">
+      <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ item.skuId }}" data-row="{{ item }}" bind:tap="toDetails">
+        <view class="weui-cell__hd">
+          <image src="{{ item.picture }}" />
+        </view>
+        <view class="weui-cell__bd">
+          <view class="title ellipse-box">{{ item.goodsName }}</view>
+          <view class="content color-ab">
+            <view class="overflow">
+              <view class="f-l ellipse-box">
+                规格：{{ item.skuContent }}
+              </view>
+              <view class="f-l">
+                库存：{{ item.stock }}
+              </view>
+            </view>
+            <view>商品编码：{{ item.sku }}</view>
+            <view class="overflow">
+              <view class="f-l">
+                价格：{{ item.price }}元
+              </view>
+              <view class="f-l">
+                成本：{{ item.costPrice }}元
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells record-list" wx:elif="{{ currentTab == 2 && list.length > 0 }}">
+      <view class="weui-cell record-item" wx:for="{{ list }}" wx:key="{{ item.skuId }}">
+        <view class="weui-cell__bd">
+          <view class="overflow record-top {{ item.add > 0 ? 'color-primary' : '' }}">
+            <view class="f-l">
+              {{ item.add > 0 ? '商品入库':'商品出库' }}
+            </view>
+            <view class="f-r">
+              {{ item.add > 0 ? '+':'' }}{{ item.add }}
+            </view>
+          </view>
+          <view class="overflow record-center color-ab">
+            <view class="f-l">
+              {{ item.date }}
+            </view>
+            <view class="f-r">
+              原库存：{{ item.original }}，入库后共：{{ item.total }}
+            </view>
+          </view>
+          <view class="record-bottom weui-cell bg-f3">
+            <view class="weui-cell__hd">
+              <image src="{{ item.picture }}" />
+            </view>
+            <view class="weui-cell__bd">
+              <view class="title">{{ item.goodsName }}</view>
+              <view class="content color-ab">
+                <view class="overflow">
+                  <view class="f-l">
+                    规格：{{ item.skuContent }}
+                  </view>
+                  <view class="f-l">
+                    价格：{{ item.price }}元
+                  </view>
+                </view>
+                <view>商品编码：{{ item.sku }}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="loading complete col-999" hidden="{{ hasNextPage }}" wx:if="{{ list.length > 0 }}"> -已加载全部- </view>
+    <view wx:else>
+      <app-empty />
+    </view>
+  </scroll-view>
+</view>

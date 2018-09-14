@@ -1,0 +1,47 @@
+<view class='panel-sell panel-tab'>
+	<app-tab tabs="{{ tabs }}" defaultItem="{{ currentTab }}" bind:itemTap="tabChange" fixed></app-tab>
+  <scroll-view class="loadmore-scroll-view" scroll-y="true" bindscrolltolower="_loadMore">
+    <view class="weui-cells sell-list" wx:if="{{ list.length > 0 }}">
+      <!-- <view class="gutter bg-f3"></view> -->
+      <view class="sell-item {{ currentTab == 3 ? 'record-item' : '' }}" data-currentTab='{{currentTab}}' wx:for="{{ list }}" wx:key="{{ item.skuId }}" data-row="{{ item }}" bindtap="toDetails">
+        <view class="gutter bg-f3" wx:if="{{ currentTab == 3 && index !== 0 }}"></view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <image src="{{ item.picture }}" />
+          </view>
+          <view class="weui-cell__bd">
+            <view class="title ellipse-box">{{ item.goodsName }}</view>
+            <view class="content color-ab">
+              <view class="overflow">
+                <view class="f-l ellipse-box">
+                  规格：{{ item.skuContent }}
+                </view>
+                <view class="f-l">
+                  已销售：{{ item.verifyCount }}
+                </view>
+              </view>
+              <view>商品编码：{{ item.sku }}</view>
+              <view>
+                <text class="{{ currentTab == 1 ? 'color-primary' : '' }}">￥{{item.price}}</text>
+              </view>
+            </view>
+            <view class="overflow footer" wx:if="{{ currentTab == 2 }}">
+              <view class="f-l color-primary">可核销数：{{ item.stock }}</view>
+              <view class="f-r">
+                <button type="primary" size="mini" data-row="{{ item }}" data-id="{{ item.skuId }}" catch:tap="goToCancel">核销</button>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="record-item__footer overflow" wx:if="{{ currentTab == 3 }}">
+          <view class="f-l">已核销：{{ item.verifyCount }}</view>
+          <view class="f-r align-right">最新核销时间：{{ item.verifyTime }}</view>
+        </view>
+      </view>
+    </view>
+    <view class="loading complete col-999" hidden="{{ hasNextPage }}" wx:if="{{ list.length > 0 }}">-已加载全部-</view>
+    <view wx:else>
+      <app-empty />
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,11 @@
+.panel-wallet-card_select{
+  position: relative;
+  min-height: 100%;
+}
+
+.panel-wallet-card_select .weui-cells{
+  margin-top: 0;
+}
+.panel-wallet-card_select .weui-cells::before,.panel-wallet-card_select .weui-cells::after{
+  border: 0;
+}

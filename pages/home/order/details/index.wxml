@@ -1,0 +1,68 @@
+<form  bindsubmit="formSubmit">
+<view class='order-details bg-fff'>
+   <view >
+    <view class='details-list bg-fff'>
+          <view>订单编号：<label>{{list.orderId}}</label>
+              <!-- <label class='col-ff5100 f-r'>{{list.shippingType.key}}</label>  -->
+          </view>
+          <view class='details-list-data col-cb bor-t' wx:if="{{type != 1 }}">
+              <view>包裹编号：<label class='col-333 f-r'>{{list.id}}</label></view>
+              <view>会员名称：<label class='col-333 f-r'>{{list.userName}}</label></view>
+              <view>会员电话：<label class='col-blue f-r'>{{list.cellPhone}}</label></view> 
+              <!-- <view>邮箱：<label class='col-333 f-r'>{{list.email}}</label></view> -->
+              <view>下单时间：<label class='col-333 f-r'>{{list.paidTime}}</label></view>
+              <view>付款时间：<label class='col-333 f-r'>{{list.createTime}}</label></view>
+              <view>收货人姓名：<label class='col-333 f-r'>{{list.consignee}}</label></view>
+              <view>收货人电话：<label class='col-blue f-r' catch:tap="phonecallevent" data-phone="{{list.phone}}">{{list.phone}}</label></view>
+              <view>收货地址：<label class='col-333 f-r'>{{list.street?list.street+list.address:list.areaName+list.address}}</label></view>
+              <view>支付方式：<label class='col-333 f-r'>{{list.paymentMethodName}}</label></view>
+          </view>  
+           <view class='details-list-data1  bor-t ' wx:else="{{type == 1}}">
+              <view class='details-list-datah' catch:tap="selectTap">物流公司：<label><view class="iconfont f-r icon-arrow-right"></view></label>{{keyV}}</view>
+              <view class='details-list-datah' style=' line-height: 60rpx;' wx:if="{{ deliveryCorp !== 'SJPS' && deliveryCorp !== 'LJQS'}}">快递单号：<view class='f-r w-550'><input type='text' placeholder='请输入快递单号' bindinput="bindKeywordInput"></input></view></view>
+                  <view class='f-l'>收货地址：</view>
+                  <view class='f-l mb-20'  style=' width: 75%;'>{{list.street?list.street+list.address:list.areaName+list.address}}</view>        
+          </view> 
+    </view>
+    <view class='item_title clear-both'></view>
+    <view class='details-list bg-fff ' >
+        <view class="weui-cells order-list" wx:for="{{list.items}}" wx:key="item">
+          <view class="weui-cell order-item">
+                <view class="order-img">
+                     <image src="{{item.thumbnail}}" /> 
+                </view>
+                <view class="ml-30 overflow">
+                    <view class="name" data-skuId='{{item.skuId}}'>{{item.goodsName}}</view>
+                    <view class="price color-primary">
+                        <text class="sub">￥</text>
+                        <text>{{item.price}}</text>
+                        <text class='col-cb pl-20'>x{{item.quantity}}</text>
+                    </view>
+                    <view class='elli skuContent' data-skuContent="{{item.skuContent}}" bindtap='skuContentText'>{{item.skuContent}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='item_title clear-both'></view>
+    <view class='details-list bg-fff mb-100'>
+          <view class='dereils-text'>订单金额<label class='col-ff5100 f-r'>￥{{list.realAmount}}</label></view>
+          <view class='dereils-text'>运费<label class='col-ff5100 f-r'>￥{{list.freight}}</label></view>
+    </view>
+    
+     <view class='ps center c-f'  wx:if="{{type == 3}}" catch:tap="fh" formType="submit" data-skuId='{{item.skuId}}'>发货</view> 
+     <view class='ps center c-f'  wx:if="{{type == 1}}"  catch:tap="qrps" formType="submit" data-skuId='{{item.skuId}}'>确认配送</view> 
+   </view>
+</view>
+
+ 	<app-pop direction="bottom" visible="{{popVisible}}" bind:close="popClose" 
+   styles="bottom:0rpx;left:0;width:100%;height:500rpx;overflow-y:scroll">
+     <view class='modal-content'>
+          <view class="weui-cell" wx:for="{{types}}" wx:key="{{index}}" data-id="{{index}}" data-key="{{item.key}}" data-value="{{item.value}}" catch:tap="typeSelect">
+            <view class='weui-cell__bd col-333 {{currentTypeId == index?"col-ff5100":""}}'>{{item.key}}</view>
+            <view class="weui-cell__ft">
+              <view class="iconfont icon-gouxuan color-primary" wx:if="{{currentTypeId == index}}"></view>
+            </view>
+          </view>
+      </view> 
+	</app-pop>
+</form>

@@ -1,0 +1,31 @@
+
+.agent-list{
+    margin-top: 0;
+    background: #fff;
+}
+.agent-list::before,.agent-list::after{
+    height: 0;
+    border: 0;
+}
+.agent-list .weui-cell{
+    align-items:flex-start;
+}
+.agent-list .weui-cell__hd{
+    padding-right: 20rpx; 
+}
+.agent-list image{
+    width: 120rpx;
+    height: 120rpx;
+}
+.agent-list .title{
+    font-size: 32rpx;
+}
+.agent-list .content{
+    line-height: 44rpx;
+}
+.agent-list .content .f-l + .f-l{
+    padding-left: 30rpx;
+}
+.con-footer .f-l{
+  padding-top: 6rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "手动入库",
+  "usingComponents": {
+    "app-input-number":"../../../../components/app-input-number/index"
+  }
+}

@@ -1,0 +1,35 @@
+.panel-wallet-recharge{
+    padding: 0 30rpx;
+    min-height: 100%;
+    background: #f3f3f3;
+}
+.panel-wallet-recharge .weui-cells::before,.panel-wallet-recharge .weui-cell::before{
+    border: 0;
+    height: 0;
+}
+.panel-wallet-recharge .weui-cells{
+    margin-top: 0;
+}
+.panel-wallet-recharge .content{
+    position: relative;
+    top: 30rpx;
+    padding: 46rpx;
+    background: #fff;
+}
+.panel-wallet-recharge .ct{
+    padding-bottom: 0;
+    color: #cdcdcd;
+}
+.panel-wallet-recharge .cb text{
+    position: relative;
+    top: -8rpx;
+    font-size: 48rpx;
+}
+.panel-wallet-recharge .cb input{
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 80rpx;
+}
+.panel-wallet-recharge .btn-area{
+    margin-top: 40rpx;
+}

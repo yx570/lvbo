@@ -1,0 +1,10 @@
+.pa-60{padding:0 60rpx;}
+.row{height:80rpx;border-bottom:1px solid #e8e8e8;margin-top: 30rpx}
+.row input{font-size:35rpx;}
+.placeholder{color:#d2d2d2;}
+.mt40{margin-top:40rpx;}
+ .box{margin-top:220rpx;} 
+.wjmm{color: #ff5000;position: fixed;bottom: 80rpx;width: 80%;font-size:30rpx;}
+.clear{float: right;margin-top: -30rpx;}
+.a{height: 100%;width: 180rpx;float: right;margin-bottom: 40rpx;text-align: right;padding-right: 20rpx;}
+.text{font-size: 60rpx;font-weight: bold}

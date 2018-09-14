@@ -1,0 +1,104 @@
+.app-pay{
+    position: fixed;
+    z-index: 1000;
+}
+.app-pay__mask{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: 0.4s;
+    z-index: 1001;
+}
+.app-pay__main{
+    position: fixed;
+    /* width: 60%; */
+    /* top: 50%; */
+    left: 50%;
+    /* margin-top: -30%;
+    margin-left: -30%; */
+    background: #fff;
+    /* border-radius: 16rpx; */
+    z-index: 2000;
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+}
+.bg-transparent{
+    background: transparent !important;
+}
+.app-pay__mask.fadeOut,.app-pay__main.fadeOut{
+    opacity: 0;
+    visibility: hidden;
+}
+.app-pay__mask.fadeIn,.app-pay__main.fadeIn{
+    opacity: 1;
+}
+.app-pay-header{
+  margin-top: 20rpx
+}
+.app-pay-M text{
+  color: #e00000;
+  padding-left: 30rpx;
+}
+.app-pay-cell{
+  padding:16rpx 30rpx;
+  position:relative;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+}
+.app-pay-cell + .app-pay-cell::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30rpx;
+  right: 30rpx;
+  border-top:1px solid #f2f2f2;
+}
+.app-pay-cell__hd{
+  width: 50rpx;
+}
+.app-pay-cell__bd{
+  -webkit-box-flex:1;
+  -webkit-flex:1;
+  flex:1;
+  padding-left: 5rpx;
+}
+.app-pay-btns{
+  padding-top: 10rpx;
+  text-align: center;
+}
+.app-pay-btn{
+  width: 80%;
+  position: fixed;
+  bottom: 50rpx;
+  left: 10%;
+}
+.app-pay-cell icon{
+  margin-right: 8rpx;
+}
+.app-pay__password{
+  font-size: 32rpx;
+  text-align: center;
+}
+.app-pay-header{
+  position: relative;
+  padding: 20rpx;
+  color: #999;
+  font-size: 32rpx;
+  text-align: center;
+}
+.app-pay-header .close{
+  position: absolute;
+  top: 10rpx;
+  right: 30rpx;
+  font-size: 60rpx;
+  line-height: 1;
+}

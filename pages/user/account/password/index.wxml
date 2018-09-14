@@ -1,0 +1,27 @@
+<view class="panel-password">
+  <form bindsubmit="formSubmit">
+    <view class="weui-cells">  
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <input type="text" name="oldPassword" value="{{ form.oldPassword }}" placeholder="请输入原密码" data-key="oldPassword" bindinput="inputChange" wx:if="{{ showOld }}"/>
+          <input type="password" name="oldPassword" value="{{ form.oldPassword }}" placeholder="请输入原密码" data-key="oldPassword" bindinput="inputChange" wx:else/>
+        </view>
+        <view class="weui-cell__ft align-right" data-key="showOld" bind:tap="toggleShow">
+          <icon class="iconfont icon-eye-{{ showOld ? 'on' : 'off' }}" ></icon>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <input type="text" name="newPassword" value="{{ form.newPassword }}" placeholder="请输入新密码" data-key="newPassword" bindinput="inputChange" wx:if="{{ showNew }}"/>
+          <input type="password" name="newPassword" value="{{ form.newPassword }}" placeholder="请输入新密码" data-key="newPassword" bindinput="inputChange" wx:else/>
+        </view>
+        <view class="weui-cell__ft align-right" data-key="showNew" bind:tap="toggleShow">
+          <icon class="iconfont icon-eye-{{ showNew ? 'on' : 'off' }}"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="btns">
+      <button class="btn-radius bg-linear-lr" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

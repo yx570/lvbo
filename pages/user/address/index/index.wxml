@@ -1,0 +1,40 @@
+<view class="panel-address bg-f3">
+  <view class="weui-cells" wx:if="{{ list.length > 0 }}">
+    <view class="weui-cell bg-white" wx:for="{{ list }}" wx:key="{{ index }}">
+      <view class="weui-cell__bd">
+        <view  data-row="{{ item }}" bind:tap="{{ ress == 3 ? 'selectAddress' : ''}}" >
+            <view class="inline-box">
+              <text class="inline-item name">{{ item.consignee }}</text>
+              <text class="inline-item mobile color-999">{{ item.phone }}</text>
+            </view>
+            <view class="color-999">{{ item.areaName + item.address }}</view>
+        </view>
+        <view class="bottom overflow">
+          <view class="f-l default">
+            <button class="inline-item" data-id="{{ item.id }}" bind:tap="setDefultRow">
+              <view class="iconfont icon-checkbox-checked color-primary" wx:if="{{ item.isDefault }}"></view>
+              <view class="iconfont icon-checkbox-no" wx:else></view>
+              <text>默认地址</text>
+            </button>
+          </view>
+          <view class="f-r operate">
+            <button class="inline-item" data-row="{{ item }}" bind:tap="editRow">
+              <view class="iconfont icon-edit"></view>
+              <text>编辑</text>
+            </button>
+            <button class="inline-item" data-id="{{ item.id }}" bind:tap="deleteRow">
+              <view class="iconfont icon-delete1"></view>
+              <text>删除</text>
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <app-empty tips="还没有收货地址哦~" imgSrc="../../static/images/empty-address.png"/>
+  </view>
+  <view class="at-footer">
+    <button type="primary" bind:tap="navigateChange">新增收货地址</button>
+  </view>
+</view>

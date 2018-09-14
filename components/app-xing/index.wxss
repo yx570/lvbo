@@ -1,0 +1,13 @@
+
+.app-xing {
+  float: left;
+  margin-left: 20rpx;
+  width: 50rpx;
+  height: 43rpx;
+}
+.icon-iconfontxingxing{
+  color: #ffb400;
+}
+.icon-xing{
+  color: #b8b8b8;
+}

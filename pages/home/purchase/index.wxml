@@ -1,0 +1,52 @@
+<view class='work panel-tab'>
+    <view class="section" bindtap='changeOil'>
+         <app-tab  tabs="{{ tabs }}" style='top: 80rpx;' defaultItem="{{ num }}" bind:itemTap="tabChange" fixed></app-tab>
+    </view> 
+     <scroll-view class="loadmore-scroll-view" scroll-y="true" bindscrolltolower="_loadMore">
+        <view class='item clear-both'  wx:for="{{ searchSongList }}" wx:key="unique" wx:if="{{ searchSongList.length > 0 }}">
+            <view class='item_title'></view>
+            <view class='item_list'>
+              <label>{{item.createTime}}</label>
+              <label class='c-ff5 f-r'>
+                  <span class=' text-wc' wx:if="{{item.status.value == 2}}">已完成</span>
+                  <span class=' text-wc col-cb' wx:elif="{{item.status.value == 3}}">已取消</span>
+                   <span class=' text-wc' wx:elif="{{item.shippingStatus.value == 3}}">已发货</span>  
+                  <span class=' text-wc' wx:elif="{{item.shippingStatus.value == 1 && item.paymentStatus.value == 2 }}">正在出库</span>   
+                  <span class=' text-wc' wx:elif="{{item.status.value == 1}}">未完成</span>  
+                  <view class="iconfont icon-delete1 col-333" data-id='{{item.id}}' wx:if="{{item.shippingStatus.value != 3}}"  bindtap='delete'></view>
+              </label>
+              <view  bindtap="urlshow" data-status="{{num}}" data-id="{{item.id}}">
+                <view class='br-1'  wx:for="{{item.items}}" wx:key="index" >
+                    <view class=' clear-both' style='height: 20rpx;'></view>
+                    <view class='f-l'><image src='{{item.thumbnail}}' class='item_listR'></image></view>
+                    <view class='item_listL f-l'>
+                        <view class='item_list_title'>{{item.goodsName}}</view>
+                        <view class='item_list_jg'>￥{{item.price}}<span class='c-999 fs-25'>×{{item.quantity}}</span></view>
+                    </view>
+                </view>
+              </view>
+               <view class=' clear-both' style='height: 10rpx;'></view>
+              <view class='f-r'>共{{item.quantity}}件商品 合计: ￥{{item.realAmount}} </view>
+              <view class='w-100 f-r pa-20'> 
+      <!-- <button class='btn-radius pj f-r' type="primary" plain hover-class="none"  wx:if="{{item.status == 1}}" bindtap='pj'>评价</button> -->
+                <button class='btn-radius pj f-r' type="primary" plain hover-class="none"  data-id='{{item.id}}'
+                       wx:if="{{item.status.value == 1 && item.shippingStatus.value == 3  && item.paymentStatus.value == 2 || item.paymentStatus.value == 4 || item.paymentStatus.value == 6}}" 
+                        bindtap='qrsh'>确认收货</button>
+                <button class='btn-radius pj f-r' type="primary" plain hover-class="none"
+          wx:if="{{item.status.value != 3 && item.paymentStatus.value == 1}}" bindtap='zf'  data-id='{{item.id}}' data-row="{{ item.items }}" >去支付</button>
+
+                <button class='btn-radius wl f-r' type="primary" plain hover-class="none"
+           wx:if="{{item.status.value != 3 && item.paymentStatus.value == 1}}"  data-id='{{item.id}}'  bindtap='qx' >取消</button>
+               
+                <button class='btn-radius wl f-r' type="primary" plain hover-class="none"
+                        wx:if="{{item.status.value == 1 && item.shippingStatus.value == 3  && item.paymentStatus.value == 2 || item.paymentStatus.value == 4 || item.paymentStatus.value == 6}}"   bindtap='wl' data-row="{{ item }}">查看物流</button>
+              </view>
+            </view>
+        </view> 
+        <view class=' clear-both' style='height: 10rpx;'></view>
+        <view class="loading complete col-999" hidden="{{ hasNextPage }}" wx:if="{{ searchSongList.length > 0 }}">-已加载全部-</view>
+        <view wx:else>
+          <app-empty />
+        </view>
+    </scroll-view>  
+</view>

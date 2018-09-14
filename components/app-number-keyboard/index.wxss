@@ -1,0 +1,36 @@
+
+.app-number-keyboard{
+  width: 100%;
+  border-top: 1rpx solid #EDEDED;
+  border-left: 1rpx solid #EDEDED;
+  font-size: 0;
+  color: #000;
+  text-align: center;
+  overflow: hidden;
+}
+.app-number-keyboard .item{
+  display: inline-block;
+  width: 33.3333%;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border-bottom: 1rpx solid #EDEDED;
+  border-right: 1rpx solid #EDEDED;
+}
+.app-number-keyboard .item view{
+  font-size: 50rpx;
+}
+.app-number-keyboard .item.clear{
+  background: #E7E7EB;
+}
+.app-number-keyboard .item.clear view{
+  font-size: 28rpx;
+  color: #333;
+}
+.app-number-keyboard .item.backspace{
+  background: #E7E7EB;
+}
+.app-number-keyboard .item.backspace view{
+  color: #333;
+}

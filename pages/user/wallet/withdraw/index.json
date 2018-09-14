@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh":true,
+  "navigationBarTitleText": "提现",
+  "usingComponents": {
+    "app-pop": "../../../../components/app-pop/index"
+  }
+}

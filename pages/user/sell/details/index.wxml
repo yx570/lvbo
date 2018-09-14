@@ -1,0 +1,61 @@
+<view class='panel-details bg-f3'>
+	<view class="weui-cells panel-details-top">
+		<view class="weui-cell">
+			<view class="weui-cell__hd">
+				<image src="{{ productList.picture }}" />
+			</view>
+			<view class="weui-cell__bd">
+				<view class="title">{{ productList.goodsName }}</view>
+				<view class="content">
+					<text class="color-primary">￥{{productList.price}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+  <view class="weui-cells panel-details-center">
+		<view class="weui-cell">
+			<view class="weui-cell__hd color-999">商品编号：</view>
+			<view class="weui-cell__bd align-right">{{ productList.sku }}</view>
+		</view>
+    <!-- <view class="weui-cell">
+			<view class="weui-cell__hd color-999">采购时间：</view>
+			<view class="weui-cell__bd align-right">{{ productList.createTime }}</view>
+		</view> -->
+    <view class="weui-cell">
+			<view class="weui-cell__hd color-999">商品规格：</view>
+			<view class="weui-cell__bd align-right">{{ productList.skuContent }}</view>
+		</view>
+    <view class="weui-cell">
+			<view class="weui-cell__hd color-999" wx:if="{{ currenttab == 1 }}">采购总数量：</view>
+			<view class="weui-cell__hd color-999" wx:if="{{ currenttab == 2 }}">采购数量：</view>
+			<view class="weui-cell__hd color-999" wx:if="{{ currenttab == 3 }}">核销数量：</view>
+			<view class="weui-cell__bd align-right">{{ productList.stock + productList.verifyCount }}</view>
+		</view>
+    <view class="weui-cell">
+			<view class="weui-cell__hd color-999" wx:if="{{ currenttab == 2 }}">已核销数：</view>
+			<view class="weui-cell__hd color-999" wx:if="{{ currenttab != 2 }}">已销售：</view>
+			<view class="weui-cell__bd align-right">{{ productList.verifyCount }}</view>
+		</view>
+	</view>
+  <scroll-view scroll-y="true" bindscrolltolower="_loadMore">
+    <view class="weui-cells panel-details-bottom" wx:if="{{ list.length > 0 }}">
+      <!-- <view class="weui-cell" wx:if="{{ currenttab == 1 }}">
+        <view class="weui-cell__bd color-999">采购时间</view>
+        <view class="weui-cell__bd align-center color-999">采购数量</view>
+      </view>  -->
+      <view class="weui-cell" wx:if="{{ currenttab != 3 }}">
+        <view class="weui-cell__bd color-999">销售时间</view>
+        <view class="weui-cell__bd align-center color-999">销售数量</view>
+      </view>
+       <view class="weui-cell" wx:if="{{ currenttab == 3 }}">
+        <view class="weui-cell__bd color-999">核销时间</view>
+        <view class="weui-cell__bd align-center color-999">核销数量</view>
+      </view>
+      <view class="weui-cell" wx:for="{{ list }}" wx:key="{{ index }}">
+        <view class="weui-cell__bd">{{ item.createTime }}</view>
+        <view class="weui-cell__bd align-center">{{ item.quantity }}</view>
+      </view>
+    </view>
+    <view class="loading complete col-999" hidden="{{ hasNextPage }}" wx:if="{{ list.length > 0 }}">-已加载全部-</view>
+  </scroll-view>
+</view>

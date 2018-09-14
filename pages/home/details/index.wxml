@@ -1,0 +1,59 @@
+<view class='order-details bg-fff'>
+  <view style='height: 160rpx;'>
+      <view class="worklist" >
+          <view class="weui-cells work-header bg-linear-lr  tit ">
+              <view class='work_list tit c-f'>{{listV.shippingStatus.key}}</view>
+          </view> 
+        </view>
+  </view>
+   <view class='item_title clear-both'></view>
+    <view style='height: 160rpx;' class='tit-tex'>
+        <view>{{listV.consignee}}  {{listV.phone}}</view>
+        <view class='col-cb' id="article">{{listV.areaName}}{{listV.address}}</view>
+    </view>
+    <view class="line-colors"></view>
+    <view class='item_title clear-both'></view>
+    <view class='details-list bg-fff '>
+        <view class="weui-cells order-list">
+        <!-- wx:for="{{listv.items}}" -->
+          <view class="weui-cell order-item" wx:for="{{listV.items}}" wx-key="index">
+                <view class="order-img">
+                     <image src="{{item.thumbnail}}" /> 
+                </view>
+                <view class="ml-30">
+                    <view class="name">{{item.goodsName}}</view>
+                    <view class="price color-primary">
+                        <text class="sub">￥</text>
+                        <text>{{item.price}}</text>
+                        <text class='col-cb pl-20'>x{{item.quantity}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='item_title clear-both'></view>
+    <view class='details-list bg-fff'>          
+        <view class='details-list-data col-333 bor-t'>
+            <view>下单日期：<label class='col-cb f-r'>{{listV.createTime}}</label></view>
+            <view>订单编号：<label class='col-cb f-r'>{{listV.id}}</label></view>
+            <view>付款方式：<label class='col-cb f-r'>{{listV.paymentMethodName}}</label></view>
+            <!-- <view>收货时间：<label class='col-cb f-r'>{{listV.shippingTime}}</label></view> -->
+            <!-- <view>发票类型：<label class='col-cb f-r'>{{listV.invoice.contentType}}</label></view>
+            <view>发票抬头：<label class='col-cb f-r'>{{listV.invoice.title}}</label></view> -->
+        </view>  
+    </view>
+    <view class='item_title clear-both'></view>
+    <view class='details-list bg-fff mb-100'>
+          <view class='dereils-text'>商品金额<label class=' f-r'>￥{{listV.realAmount}}</label></view>
+          <view class='dereils-text'>运费<label class=' f-r'>￥{{Freight}}</label></view>
+          <view class='dereils-text  f-r' >订单金额：<label class='col-ff5100'>￥{{listV.realAmount}}</label></view>
+    </view>
+    
+    <view class='item_title clear-both'  style='height: 60rpx;'></view>
+     <view class='ps bg-fff '>
+          <button class='btn-radius wl f-r' type="primary" plain hover-class="none"  bindtap="rebuild"  wx:if="{{ type != 1}}">再次购买</button>
+          <!-- <button class='btn-radius wl f-r' type="primary" plain hover-class="none"  bindtap="shoho" >申请售后</button>  -->
+          <button class='btn-radius item_list_but f-r'  plain hover-class="none"  data-row='{{listV}}' wx:if="{{type == 1}}" bindtap="zf">去支付</button>
+          <button class='btn-radius wl f-r' type="primary" plain hover-class="none" data-id='{{listV.id}}' bindtap="qx" wx:if="{{type != 2 && type != 3 && type != 4}}" >取消订单</button>
+     </view> 
+</view>

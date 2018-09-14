@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "金谷坊主",
+  "usingComponents": {
+    "app-pop": "../../../../components/app-pop/index"
+  }
+}

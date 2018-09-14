@@ -1,0 +1,22 @@
+.panel-agent-details .weui-cells{
+    margin-top: 0;
+}
+.panel-agent-details .dt::before,.panel-agent-details .dt::after{
+  height: 0;
+  border: 0;
+}
+.panel-agent-details .db::before{
+  right: 30rpx;
+  left: 30rpx;
+}
+.panel-agent-details .db::after,.panel-agent-details .db .weui-cell::before{
+  height: 0;
+  border: 0;
+}
+.panel-agent-details .dt{
+  padding: 20rpx 0;
+  font-weight: bold;
+}
+.panel-agent-details .db{
+  padding-top: 20rpx;
+}

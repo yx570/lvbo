@@ -1,0 +1,47 @@
+<!-- 支付 -->
+
+<view class="app-pay">
+	<view class="app-pay__mask {{ visible ? 'fadeIn' : 'fadeOut' }} {{ transparentMask ? 'bg-transparent' : '' }}" catch:tap="closePop" wx:if="{{maskClose}}"></view>
+	<view class="app-pay__mask {{ visible ? 'fadeIn' : 'fadeOut' }} {{ transparentMask ? 'bg-transparent' : '' }}" wx:else></view>
+	<view class="app-pay__main {{ visible ? 'fadeIn' : 'fadeOut' }}" style="{{ styles }}">
+		<view class="app-pay-header">
+      <text>{{ titleText }}</text>
+      <view class="close" catch:tap="cancel">×</view>
+    </view>
+    <view class="app-pay-cell" > 
+      <view class="app-pay-cell__hd">
+        <icon class="iconfont icon-money"></icon>
+      </view>
+      <view class="app-pay-cell__bd app-pay-M ">需要支付<text>￥{{totalPrices}}</text></view>
+    </view>
+    <view class="app-pay-cell" data-type="{{ 1 }}" catch:tap="selectType" wx:if="{{ !selected }}"> 
+      <view class="app-pay-cell__hd">
+        <icon class="iconfont icon-wallet"></icon>
+      </view>
+      <view class="app-pay-cell__bd">钱包支付</view>
+      <view class="app-pay-cell__ft">
+        <icon class="iconfont icon-checkbox-checked color-primary" wx:if="{{ payType == 1 }}"></icon>
+      </view>
+    </view>
+    <view class="app-pay-cell" data-type="{{ 2 }}" catch:tap="selectType" wx:if="{{ !selected }}"> 
+      <view class="app-pay-cell__hd">
+        <icon class="iconfont icon-weixin"></icon>
+      </view>
+      <view class="app-pay-cell__bd">微信支付</view>
+      <view class="app-pay-cell__ft">
+        <icon class="iconfont icon-checkbox-checked color-primary" wx:if="{{ payType == 2 }}"></icon>
+      </view>
+    </view>
+    <view class="app-pay-cell" wx:if="{{ selected && payType == 1 }}"> 
+      <view class="app-pay-cell__bd">
+        <input class="app-pay__password" type="number" password value="{{ tradePassword }}" placeholder="请输入交易密码" bindinput="passwordChange"  confirm-hold='{{confirmHold}}'/>
+      </view>
+    </view>
+    <view class="app-pay-cell"> 
+      <view class="app-pay-cell__bd app-pay-btns">
+        <!-- <button class="app-pay-btn" size="mini" catch:tap="cancel">取消</button> -->
+        <button class="app-pay-btn" size="mini" type="primary" catch:tap="comfirm">确认</button>
+      </view>
+    </view>
+	</view>
+</view>

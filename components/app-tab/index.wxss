@@ -1,0 +1,52 @@
+.app-tab{
+    width: 100%;
+    background: #fff;
+    border-bottom: 1rpx #f2f2f2 solid;
+}
+.scroll-view{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    white-space: nowrap;
+    font-size: 0;
+    text-align: center;
+}
+.scroll-view.overflow::before,.scroll-view.overflow::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 70rpx;
+    height: 100%;
+    z-index: 100;
+}
+.scroll-view.overflow::before{
+    left: 0;
+    background: linear-gradient(to right,rgba(255,255,255,1),rgba(255,255,255,0));
+}
+.scroll-view.overflow::after{
+    right: 0;
+    background: linear-gradient(to left,rgba(255,255,255,1),rgba(255,255,255,0));
+}
+.scroll-view.scroll-start::before{
+    display: none;
+}
+.scroll-view.scroll-end::after{
+    display: none;
+}
+.scroll-view-item{
+    display: inline-block;
+    padding: 0 30rpx;
+    color: #999;
+}
+.scroll-view-item.active{
+    color: #ff5100;
+}
+.app-tab.fixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}

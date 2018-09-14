@@ -1,0 +1,39 @@
+
+<!--  提货审核  --> 
+<template name="audit2">
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view>订单编号：{{ infos.goodsCode }}</view>
+        <view>商品名称：{{ infos.goodsName }}</view>
+        <view>代理数量：{{ infos.agentQuantity }}</view>
+        <view>提货数量：{{ infos.deliverQuantity }}</view>
+        <view>已提货：{{ infos.hasDeliveredQuantity }}</view>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view>提货人：{{ infos.realName }}</view>
+        <view>联系方式：{{ infos.phoneNumber }}</view>
+        <view>详细地址：{{ infos.jinguName }}</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--  回购审核  -->
+<template name="audit3">
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view>订单编号：{{ infos.goodsCode }}</view>
+        <view>商品名称：{{ infos.goodsName }}</view>
+        <view>代理数量：{{ infos.agentQuantity }}</view>
+        <view>已核销：{{ infos.verifyQuantity }}</view>
+        <view>已回购：{{ infos.hasBuybackedQuantity }}</view>
+        <view>回购数量：{{ infos.buybackQuantity }}</view>
+        <view>需退数量：{{ infos.returnQuantity }}</view>
+      </view>
+    </view>
+  </view>
+</template>

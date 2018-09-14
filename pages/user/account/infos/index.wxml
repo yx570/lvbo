@@ -1,0 +1,31 @@
+<view class="panel-account-infos bg-f3">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="weui-cells">
+      <view class="weui-cell" wx:for="{{ infos }}" wx:for-index="key" wx:for-item="value" wx:key="{{ key }}" data-key="{{ key }}" bindtap="itemTap">
+        <view class="weui-cell__hd">{{ labelFormat[key] }}</view>
+        <view class="weui-cell__bd align-right" wx:if="{{ key == 'imgSrc' }}">
+          <open-data class="userimg" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="weui-cell__bd align-right" wx:else>
+          <text class="color-999">{{ value }}</text>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{ isEdit }}">
+          <view class="iconfont icon-arrow-right"></view>
+        </view>
+      </view>
+    </view>
+    <view class="at-footer">
+      <view class="overflow" wx:if="{{ !isEdit }}">
+        <button type="primary" bindtap="doEdit">点击编辑</button>
+      </view>
+      <view class="overflow" wx:else>
+        <view class="f-l">
+          <button formType="reset">取消</button>
+        </view>
+        <view class="f-l">
+          <button type="primary" formType="submit">保存</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

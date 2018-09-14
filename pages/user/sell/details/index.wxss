@@ -1,0 +1,37 @@
+.panel-details{
+    min-height: 100%;
+    padding-bottom: 40rpx;
+}
+.panel-details .weui-cells{
+  margin-top: 0;
+  padding: 10rpx 0;
+}
+.panel-details .weui-cells::before{
+  border: 0;
+}
+.panel-details-top::after{
+  left: 30rpx;
+  right: 30rpx;
+}
+.panel-details-top image{
+  width: 140rpx;
+  height: 140rpx;
+}
+.panel-details-top .weui-cell__bd{
+  height: 140rpx;
+  padding-left: 30rpx;
+}
+.panel-details-top .title{
+  font-size: 30rpx;
+}
+.panel-details-center .weui-cell::before{
+  height: 0;
+  border: 0;
+}
+.panel-details .panel-details-bottom{
+  margin-top: 20rpx;
+}
+.panel-details-bottom .weui-cell::before{
+  height: 0;
+  border: 0;
+}

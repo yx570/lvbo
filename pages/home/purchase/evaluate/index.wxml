@@ -1,0 +1,29 @@
+
+<view class='bg-f3f3f3 main'>
+    <view class='bg-fff'>
+          <view class='mian-Cen'>
+              <view class='mian-Cen-img bg-e9e9e9 f-l'></view>
+              <view class='mian-Cen-title f-l'>
+                  <view class='mian-Cen-titText'>商品满意度</view>
+                  <app-xing my-class="iconfont icon-iconfontxingxing  {{flag>=item.key? '': 'icon-xing'}}" ></app-xing>
+              </view>
+          </view>
+          <view class='bg-fff mian-textarea'>
+             <textarea style="width:100%;height:300rpx;" placeholder="分享你的购买心得" auto-focus />
+          </view>
+    </view>
+    <view class='bg-fff mian-pj'>
+          <view class='pj-tit'>
+                <text class='f-l'> 服务满意</text>
+                <app-xing my-class="iconfont icon-iconfontxingxing  {{flag>=item.key? '': 'icon-xing'}}" ></app-xing>
+          </view>
+          <view class='pj-tit bb-f3'>
+                <text class='f-l'> 送货速度</text>
+                <app-xing my-class="iconfont icon-iconfontxingxing  {{flag>=item.key? '': 'icon-xing'}}" ></app-xing>
+          </view>
+           <view class='pj-tit'>
+                <view><icon class="iconfont icon-checkbox-checked col-ff5100"></icon> <text class='ml-30'>匿名评价</text></view>
+          </view>
+    </view>
+    <view class='ps center c-f'>保存</view>
+</view>

@@ -1,0 +1,26 @@
+ <view class="panel-trade">
+  <form bindsubmit="formSubmit">
+    <view class="weui-cells">
+      <!-- <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <input name="code" value="{{ form.code }}" placeholder="请输入验证码" type="number"/>
+        </view>
+        <view class="weui-cell__ft">
+          <button class="btn-code" type="primary" disabled="{{ !!codeTimer }}" plain bind:tap="getCode">{{ codeBtnTxt }}</button>
+        </view>
+      </view> -->
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <input type="number" name="password" value="{{ form.password }}" placeholder="请输入交易密码" data-key="password" bindinput="inputChange" wx:if="{{ showPassword }}"/>
+          <input type="number" password name="password" value="{{ form.password }}" placeholder="请输入交易密码" data-key="password" bindinput="inputChange" wx:else/>
+        </view>
+        <view class="weui-cell__ft align-right" data-key="showPassword" bind:tap="toggleShow">
+          <icon class="iconfont icon-eye-{{ showPassword ? 'on' : 'off' }}"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="btns">
+      <button class="btn-radius bg-linear-lr" type="primary" formType="submit">开通钱包</button>
+    </view>
+  </form>
+</view> 

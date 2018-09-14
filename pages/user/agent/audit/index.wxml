@@ -1,0 +1,29 @@
+<import src="../../../../template/agent/audit.wxml"/>
+<view class='panel-agent-audit'>
+	<template is="{{ 'audit' + key }}" data="{{ infos }}"></template>
+  <form class="form-audit" bindsubmit="formSubmit">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view>备注</view>
+        <view class="form-textarea">
+          <textarea name="remark" auto-height style="min-height: 160rpx;" placeholder="审核备注" />
+        </view>
+        <view class="inline-box">
+          <checkbox-group class="inline-item" name="refuse" bindchange="checkboxChange">
+            <label class="checkbox">
+              <checkbox value="refuse"/>
+              <icon class="iconfont icon-check"></icon>
+              <text>拒{{ key == 2 ? '提货' : '回购' }}</text>
+            </label>
+          </checkbox-group>
+          <view class="inline-item">
+            <text class="color-999">（{{ key == 2 ? '拒提货时，提货审核不通过' : '拒回购时，回购审核不通过' }}）</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btns">
+      <button class="btn-radius bg-linear-lr" type="primary" formType="submit">审核</button>
+    </view>
+  </form>
+</view>

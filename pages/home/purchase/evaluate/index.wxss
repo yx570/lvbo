@@ -1,0 +1,41 @@
+.main{
+  width: 100%;
+  height: 100%;
+}
+.mian-Cen{
+  height: 170rpx;
+  padding:20rpx 30rpx;
+}
+.mian-Cen-img{
+  width: 130rpx;
+  height: 130rpx;
+}
+.mian-Cen-title{
+  height: 150rpx;
+  width: 550rpx;
+}
+.mian-Cen-titText{
+  width: 100%;
+  margin: 10rpx 30rpx ; 
+  font-size: 32rpx;
+}
+
+.mian-textarea{
+  padding: 20rpx 30rpx;
+}
+.mian-pj{
+  margin-top: 20rpx;
+}
+.pj-tit{
+  height: 90rpx;
+  line-height: 90rpx;
+  padding-left: 30rpx;
+}
+.ps{
+  height: 90rpx;
+  width: 100%;
+  line-height: 90rpx;
+  background: #ff5100;
+  position: fixed;
+  bottom: 0;
+}

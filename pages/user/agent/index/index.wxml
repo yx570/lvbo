@@ -1,0 +1,14 @@
+<import src="../../../../template/agent/list.wxml"/>
+
+<view class='panel-agent panel-tab bg-f3'>
+	<app-tab tabs="{{ tabs }}" defaultItem="{{ key }}" bind:itemTap="tabChange" fixed></app-tab>
+  <scroll-view class="loadmore-scroll-view" scroll-y="true" bindscrolltolower="_loadMore">
+    <view class="weui-cells agent-list" wx:if="{{ list.length > 0 }}">
+      <template is="{{ 'list' + key }}" data="{{ list }}"></template>
+    </view>
+    <view class="loading complete col-999" hidden="{{ hasNextPage }}" wx:if="{{ list.length > 0 }}"> -已加载全部- </view>
+    <view wx:else>
+      <app-empty />
+    </view>
+  </scroll-view>
+</view>

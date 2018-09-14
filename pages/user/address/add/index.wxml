@@ -1,0 +1,49 @@
+<view class="panel-address-add">
+  <form bindsubmit="formSubmit">
+    <view class="weui-cells">
+      <view class="weui-cell" wx:for="{{ form }}" wx:for-index="key" wx:for-item="value" wx:key="{{ key }}" data-key="{{ key }}" bindtap="itemTap">
+        <view class="weui-cell__hd">{{ labelFormat[key] }}</view>
+        <view class="weui-cell__bd align-right" wx:if="{{ key == 'regionId' }}">
+          <text wx:if="{{ provinces.length > 0 }}">{{ provinces[pickerValues[0]].key }} {{ cities[pickerValues[1]].key }} {{ areas[pickerValues[2]].key }}</text>
+          <text  style="{{ areaName == '' ? 'color: #808080;' : ''}}" wx:else> {{ areaName || '请选择' }}</text>
+        </view>
+        <view class="weui-cell__bd align-right" wx:elif="{{ key == 'isDefault' }}">
+          <switch color="#ff5100" name="{{ key }}" checked="{{ value }}"/>
+        </view>
+        <view class="weui-cell__bd align-right" wx:else>
+          <input name="{{ key }}" type="number" value="{{ value }}" placeholder="请输入{{ labelFormat[key] }}" wx:if="{{ key == 'mobile' || key == 'code' }}"/>
+          <input name="{{ key }}" type="text" value="{{ value }}" placeholder="请输入{{ labelFormat[key] }}" wx:else/>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{ key == 'regionId' }}">
+          <view class="iconfont icon-arrow-right"></view>
+        </view>
+      </view>
+    </view>
+    <view class="at-footer">
+      <button type="primary" formType="submit">保存</button>
+    </view>
+  </form>
+  <app-pop styles="bottom: 0;left: 0; width: 100%;" bind:close="closePop" visible="{{ popVisible }}">
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <button class="pop-btn" size="mini" plain bind:tap="closePop">取消</button>
+        </view>
+        <view class="weui-cell__ft">
+          <button class="pop-btn" type="primary" size="mini" plain bind:tap="selectRegion">确定</button>
+        </view>
+      </view>
+    </view>
+    <picker-view class="center" indicator-style="height: 50px;" style="width: 100%; height: 200px;" bindchange="pickerChange" value="{{ pickerValues }}">
+      <picker-view-column>
+        <view wx:for="{{ provinces }}" wx:key="{{ item.value }}" style="line-height: 50px;">{{ item.key }}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{ cities }}" wx:key="{{ item.value }}" style="line-height: 50px;">{{ item.key }}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{ areas }}" wx:key="{{ item.value }}" style="line-height: 50px;">{{ item.key }}</view>
+      </picker-view-column>
+    </picker-view>
+  </app-pop>
+</view>

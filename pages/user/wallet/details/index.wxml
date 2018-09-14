@@ -1,0 +1,63 @@
+
+    <view class='panel-wallet-details'>
+      <view class="select-box">
+        <view class="weui-cells">
+          <view class="weui-cell color-999">
+            <view class="weui-cell__bd" wx:for="{{selectHeaders}}" wx:key="{{index}}" data-key="{{index}}"  catch:tap="selectTap">
+              <text class="{{ popVisible && popType == index ? 'color-primary' : '' }}">{{item}}</text>
+              <view class="iconfont icon-down {{ popVisible && popType == index ? 'color-primary' : '' }}"></view>
+            </view>
+          </view>
+        </view>
+        <!-- <view class='item_title clear-both col-999'  style='height: 40rpx;'>
+              <text style='padding-left:10rpx;'>{{test}}</text>
+              <text>{{currentStarts[0]}}年{{currentStarts[1]+1}}月{{currentStarts[2]+1}}日</text>
+              <text>{{currentEnds[0]}}年{{currentEnds[1]+1}}月{{currentEnds[2]+1}}日</text>
+        </view> -->
+      </view>
+       <scroll-view class="loadmore-scroll-view" scroll-y="true" bindscrolltolower="_loadMore" >
+          <view class="weui-cells message-box" wx:if="{{ list.length > 0 }}" style='margin-top: 90rpx;'>
+            <view class="weui-cell" wx:for="{{list}}" wx:key="index">
+              <view class="weui-cell__bd">
+                <view class="ct overflow">
+                  <text class="f-l">{{item.type.key}}</text>
+                  <text class="f-r {{ item.change > 0 ? 'color-primary' : '' }}">{{item.change}}</text>
+                </view>
+                <view class="cb color-gray">
+                  <!-- <text class="{{item.status == 0 ? 'color-primary' : '' }}">{{statusFormat[item.status]}}</text> -->
+                  <text>{{item.createTime}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells message-box" wx:else>
+            <app-empty />
+          </view>
+      </scroll-view>  
+	<app-pop direction="top" visible="{{popVisible}}" bind:close="popClose" styles="top:94rpx;left:0;width:100%;">
+		<view class="weui-cells" wx:if="{{popType == 'type'}}">
+			<view class="weui-cell" wx:for="{{types}}" wx:key="{{item.value}}" data-id="{{item.value}}"  data-value="{{item.key}}" catch:tap="typeSelect"  style='height:70rpx;line-height:70rpx;'>
+				<view class="weui-cell__bd">{{item.key}}</view>
+				<view class="weui-cell__ft">
+					<view class="iconfont icon-gouxuan color-primary" wx:if="{{currentTypeId == item.value}}"></view>
+				</view>
+			</view>
+		</view>
+		<view class="weui-cells date-picker" wx:else>
+       <!-- <view class="title" wx:if="{{popType == 'startTime'}}">{{currentStarts[0]}}年{{currentStarts[1]+1}}月{{currentStarts[2]+1}}日</view>
+       <view class="title" wx:if="{{popType == 'destTime'}}">{{currentEnds[0]}}年{{currentEnds[1]+1}}月{{currentEnds[2]+1}}日</view> -->
+      <picker-view indicator-style="height: 40px;" style="width: 100%; height:100px;" value="{{ pickers }}" bindchange="pickerChange">
+        <picker-view-column>
+          <view wx:for="{{years}}" wx:key="{{ index }}" style="line-height: 40px;">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{months}}" wx:key="{{ index }}" style="line-height: 40px;">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" wx:key="{{ index }}" style="line-height: 40px;">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+		</view>
+    <!-- <button class='btn-radius bg-linear-lr mt40 but f-r'  wx:if="{{popType == 'destTime'}}" catch:tap="qd">确定</button> -->
+	</app-pop>
+</view>

@@ -1,0 +1,51 @@
+.panel-address{
+  position: relative;
+  min-height: 100%;
+}
+.panel-address .weui-cells{
+  margin-top: 0;
+  background: none;
+}
+.panel-address .weui-cell + .weui-cell{
+  margin-top: 20rpx;
+}
+.panel-address .name{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.panel-address .mobile{
+  margin: 0 20rpx;
+  font-size: 36rpx;
+}
+.panel-address .bottom{
+  padding-top: 20rpx;
+}
+.panel-address .bottom text{
+  font-size: 30rpx;
+}
+
+.panel-address .bottom button{
+  background: none;
+}
+.panel-address .bottom .iconfont{
+  position: relative;
+  top: -4rpx;
+  padding-right: 10rpx;
+  line-height: 1;
+}
+.panel-address .bottom button::after{
+  border: 0;
+}
+.panel-address .operate button{
+  margin-left: 20rpx;
+}
+.panel-address .operate .iconfont{
+  font-size: 30rpx;
+  color: #333;
+}
+.panel-address .default button{
+  padding: 0;
+}
+.panel-address .at-footer button{
+  width: 100%;
+}

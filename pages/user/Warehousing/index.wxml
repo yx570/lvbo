@@ -1,0 +1,36 @@
+<view class='panel-cart'>
+    <view class="weui-cells order-list" wx:if="{{ orders.length > 0 }}">
+     <scroll-view scroll-y="true" bindscrolltolower="_loadMore">
+        <view class="weui-cell order-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}" bind:touchstart="touchstart"  bind:tap="cellTap">
+            <view class="weui-cell__bd"  bindtap="urlshow" data-id="{{item.skuId}}">
+                <view  class="f-l"><image  src="{{ item.picture }}" /></view>
+                <view class="name">{{ item.goodsName }}</view>
+                <view class="overflow cb">
+                  <view class="f-l price color-primary">
+                      <text class="sub">￥</text>
+                      <text>{{ item.price }}</text>
+                  </view>
+                </view>
+            </view>
+            <view class="f-r at-number-input" name="aaa">
+              <text>库存数：</text>
+              <app-input-number 
+                quantity ="{{ item.stock }}"
+                data-goodsId="{{ item.skuId }}" 
+                data-index="{{ index }}" 
+                catch:tap="inputTap"
+                bind:change="changeCount" 
+              />
+            </view>
+        </view>
+        <view class="loading complete col-999" hidden="{{!searchLoadingComplete}}">-已加载全部-</view>
+      </scroll-view>  
+    </view>
+    <view wx:else>
+      <app-empty tips="暂无商品哦~" />
+    </view>
+     <view class="at-footer">
+        <input class='searchinput center' placeholder="搜索商品" name="searchKeyword" bindinput="bindKeywordInput" value="{{searchKeyword}}"/>
+    </view>
+</view>
+

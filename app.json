@@ -1,0 +1,104 @@
+{
+  "pages": [
+    "pages/tabBar/home/index",
+    "pages/tabBar/order/index",
+    "pages/tabBar/cart/index",
+    "pages/tabBar/user/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/home",
+      "pages": [
+        "purchase/index",
+        "purchase/details/index",
+        "purchase/evaluate/index",
+        "purchase/logistics/index",
+        "details/index",
+        "order/index",
+        "order/details/index"
+      ]
+    },
+    {
+      "root": "pages/order",
+      "pages": [
+        "details/details",
+        "service/index"
+      ]
+    },
+    {
+      "root": "pages/cart",
+      "pages": [
+        "fill/pay/index",
+        "fill/index"
+      ]
+    },
+    {
+      "root": "pages/user",
+      "pages": [
+        "wallet/index/index",
+        "wallet/details/index",
+        "wallet/recharge/index",
+        "wallet/withdraw/index",
+        "wallet/bankcard/index/index",
+        "wallet/bankcard/bind/index",
+        "wallet/bankcard/select/index",
+        "agent/index/index",
+        "agent/audit/index",
+        "agent/details/index",
+        "sell/index/index",
+        "sell/details/index",
+        "sell/cancel/index",
+        "inventory/index/index",
+        "inventory/details/index",
+        "address/index/index",
+        "address/add/index",
+        "address/select/index",
+        "account/index/index",
+        "account/infos/index",
+        "account/mobile/index",
+        "account/trade/index",
+        "account/password/index",
+        "Warehousing/index"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "YX570",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "#light"
+  },
+  "tabBar": {
+    "color": "#b7b7b7",
+    "selectedColor": "#ff5100",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/home/index",
+        "iconPath": "static/images/icon-home.png",
+        "selectedIconPath": "static/images/icon-home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tabBar/order/index",
+        "iconPath": "static/images/icon-order.png",
+        "selectedIconPath": "static/images/icon-order-active.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/tabBar/cart/index",
+        "iconPath": "static/images/icon-cart.png",
+        "selectedIconPath": "static/images/icon-cart-active.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/tabBar/user/index",
+        "iconPath": "static/images/icon-user.png",
+        "selectedIconPath": "static/images/icon-user-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": false
+}

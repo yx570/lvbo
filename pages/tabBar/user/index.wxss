@@ -1,0 +1,115 @@
+/* pages/tabBar/user/index.wxss */
+.panel-user{
+    min-height: 100%;
+    background: #f3f3f3;
+}
+.panel-user .weui-cells::before,.panel-user .weui-cells::after,.panel-user .weui-cell::before,.panel-user .weui-cell::after{
+    height: 0;
+    border: 0;
+}
+.panel-user-header{
+     /* position: absolute;  */
+    position: relative; 
+    margin-top: 0;
+    width: 100%;
+    height: 268rpx;
+    /* z-index: 1; */
+}
+.panel-user-header::before,
+.panel-user-header::after{
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+.panel-user .panel-user-header::before{
+    top: 0;
+    left: 50%;
+    width: 56rpx;
+    height: 56rpx;
+    opacity: 0.05;
+}
+.panel-user .panel-user-header::after{
+    top: 50rpx;
+    right: 40rpx;
+    left: auto;
+    width: 108rpx;
+    height: 108rpx;
+}
+.panel-user-header .userimg{
+    display: block;
+    width: 120rpx;
+    height: 120rpx;
+    border: 4rpx solid #fff;
+    border-radius: 120rpx;
+    overflow: hidden;
+}
+.panel-user-header .weui-cell__hd + .weui-cell__hd{
+    padding-left: 30rpx;
+}
+.panel-user-header .username{
+    font-size: 46rpx;
+    color: #fff;
+}
+.panel-user-header .addr{
+    font-size: 28rpx;
+    color: #fff;
+    opacity: 0.5;
+}
+
+.panel-user-body{
+    position: relative;
+    padding: 80rpx 30rpx 30rpx;
+    z-index: 10;
+}
+.panel-user-body .weui-cells{
+    margin-top: 30rpx;
+    border-radius: 20rpx;
+}
+.panel-user-body .weui-cell{
+    font-size: 30rpx;
+}
+.panel-user-body .box1{
+    position: absolute;
+    top: -120rpx;
+    right: 30rpx;
+    left: 30rpx;
+    padding: 20rpx 0;
+    text-align: center;
+    z-index: 100;
+}
+.panel-user-body .box1 image{
+    width: 44rpx;
+    height: 44rpx;
+}
+.panel-user-body .box1 .weui-cell__bd{
+    position: relative;
+}
+.panel-user-body .box1 .tips{
+    position: absolute;
+    display: inline-block;
+    top: -20rpx;
+    left: 50%;
+    padding:0 10rpx;
+    height: 36rpx;
+    line-height: 32rpx;
+    border-radius: 36rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color:#fff;
+    border: 2rpx solid #fff;
+}
+.panel-user-body .box2 .weui-cell__hd{
+    padding-right: 26rpx;
+    color: #b7b7b7;
+}
+.panel-user-body .box2 .weui-cell::before{
+    content:" ";
+    position:absolute;
+    top:0;
+    right:15px;
+    left:15px;
+    height:1px;
+    border-top:1rpx solid #d9d9d9;
+    color:#d9d9d9;
+}

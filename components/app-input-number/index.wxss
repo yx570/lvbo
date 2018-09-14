@@ -1,0 +1,32 @@
+
+.app-input-number {
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  font-size: 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+.app-input{
+  flex: 1;
+  padding: 0 4rpx;
+  border-left: 1rpx solid #ccc;
+  border-right: 1rpx solid #ccc;
+  font-size: 30rpx; 
+  text-align: center;
+}
+.app-input-btn{
+  width: 50rpx;
+  text-align: center; 
+  font-size: 28rpx; 
+}
+.app-input-btn.disabled{
+  color: #999;
+}
+button.app-input-btn,
+button.app-input-btn::before,
+button.app-input-btn::after{
+  padding: 0;
+  border: 0;
+  line-height: 1;
+}

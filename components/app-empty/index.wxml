@@ -1,0 +1,17 @@
+<!-- 无数据提示 -->
+<view class="app-empty">
+  <view class="app-empty__hd">
+    <image src="{{ imgSrc }}" mode="widthFix" wx:if="{{ !!imgSrc }}"></image>
+    <icon class="iconfont {{ iconClass }}" wx:else></icon>
+    <view class="symbol symbol1"></view>
+    <view class="symbol symbol2"></view>
+    <view class="symbol symbol3"></view>
+    <view class="symbol symbol4"></view>
+  </view>
+  <view class="app-empty__bd">
+    <text>{{ tips }}</text>
+  </view>
+  <view class="app-empty__ft">
+    <slot></slot>
+  </view>
+</view>
