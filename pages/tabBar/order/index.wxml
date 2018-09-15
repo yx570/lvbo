@@ -1,28 +1,33 @@
-<view class="search">
-  <view>
-    <input class='searchinput center' placeholder="搜索商品" name="searchKeyword" bindinput="bindKeywordInput" value="{{searchKeyword}}"/>
-  </view>
-  <view class="search-result">
-    <scroll-view scroll-y="true" bindscrolltolower="_loadMore">
-      <view class='Purchase_list'>
-          <view wx:for="{{searchSongList}}"  wx:key="item.id" >
-              <view class='Purchase_listdate f-l' bindtap="urlshow" data-id="{{item.id}}">
-                  <view><image src='{{item.picture}}' class='list_L'></image> </view>
-                  <view class='list_R'>
-                      <view class='list_text1'>{{item.name}}</view>
-                      <view class='list_text2'>规格：{{item.skuContent}}</view>
-                      <view class='list_text3'>
-                          <span class='text-decoration-ff'>￥{{item.price}}</span>
-                          <span class='text-decoration-ba'>￥{{item.salePrice}}</span>
-                      </view>
-                  </view>
-              </view>
-                <view class='v-re f-l '>
-                  <view class="iconfont icon-addition_fill v-ab col-ff5100" bindtap="setTabBarBadge"  data-id="{{item.id}}"></view> 
-              </view>  
+<view class="container flex-column">
+  <!-- <app-tab tabs="{{ tabs }}" equal /> -->
+  <app-tab tabs="{{ tabs }}" equal align="flex-start" />
+  <view class="flex-bd">
+    <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
+      <view class='order-list'>
+        <view class="order-item" wx:for="{{ list }}" wx:key="{{ item.id }}">
+          <view class="flex-row order-item__hd">
+            <view class="flex-bd">订单号：{{ item.number }}</view>
+            <view class="flex-ft">{{ item.date }}</view>
           </view>
+          <view class="flex-row order-item__bd">
+            <view class="flex-hd img-box">
+              <image src="{{ item.imageUrl }}"></image>
+            </view>
+            <view class="flex-bd con">
+              <view class="title">{{ item.title }}</view>
+              <view class="flex-row">
+                <view class="flex-bd">
+                  <button type="primary" size="mini" plain>{{ statusFormat[item.status] || '' }}</button>
+                </view>
+                <view class="flex-ft">
+                  <button size="mini" plain wx:if="{{ item.status == 1 }}">去评价</button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
-      <view class="loading complete col-999" hidden="{{!searchLoadingComplete}}">-已加载全部-</view>
+      <view class="loading complete col-999" hidden="{{ !hasNextPage }}">-已加载全部-</view>
     </scroll-view>  
   </view>
 </view>

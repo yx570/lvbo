@@ -11,6 +11,11 @@ Component({
       type:String,
       value:''
     },
+    equal: Boolean,
+    align: {
+      type: String,
+      value: 'center'
+    },
     tabs:{
       type:Array,
       value:[]

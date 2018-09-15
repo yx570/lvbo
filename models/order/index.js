@@ -4,7 +4,7 @@ module.exports = {
   //采购列表
   //key
   goods: params => {
-    return ajax({ path: '/goods/list', method: 'post', params, loading: false});
+    return ajax({ path: '/static/data/order.js', method: 'post', params, loading: false});
   },
   //采购详情
   //id

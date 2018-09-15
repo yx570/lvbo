@@ -9,53 +9,24 @@
 			<view class="weui-cell__hd" data-key="account" bind:tap="navigateChange">
         <view class="username" wx:if="{{ userInfos.userName }}">{{ userInfos.userName }}</view>
 				<open-data class="username" type="userNickName" wx:else></open-data>
-				<!-- <view class="addr" wx:if="{{ addressInfos.province }}">{{addressInfos.province + addressInfos.city}}</view>
-				<view class="addr" wx:else>点击完善</view> -->
 			</view>
 		</view>
 	</view>
 	<view class="panel-user-body">
-		<view class="weui-cells box1">
-			<view class="weui-cell">
-				<view class="weui-cell__bd" data-key="unpaid" bindtap="navigateChange">
-					<image src="../../../static/images/icon-dfk.png" />
-					<view class="tips bg-primary" wx:if="{{ task.unpaid }}">{{ task.unpaid }}</view>
-					<view>待付款</view>
-				</view>
-				<view class="weui-cell__bd" data-key="shipping" bindtap="navigateChange">
-					<image src="../../../static/images/icon-dsh.png" />
-          <view class="tips bg-primary" wx:if="{{ task.shipping }}">{{ task.shipping }}</view>
-					<view>待收货</view>
-				</view>
-				<!-- <view class="weui-cell__bd" data-key="thsh" bindtap="navigateChange">
-					<image src="../../../static/images/icon-thsh.png" />
-					<view>退换/售后</view>
-				</view> -->
-				<view class="weui-cell__bd" data-key="purchase" bindtap="navigateChange">
-					<image src="../../../static/images/icon-cgd.png" />
-					<view>采购单</view>
-				</view>
-				<view class="weui-cell__bd" data-key="Warehousing" bindtap="navigateChange">
-					<image src="../../../static/images/icon-thsh.png" />
-					<view>手动入库</view>
-				</view>
-			</view>
-		</view>
-		<view class="weui-cells box2">
-			<view class="weui-cell" data-key="wallet" bind:tap="navigateChange">
+		<view class="weui-cells">
+			<view class="weui-cell" data-key="address" bind:tap="navigateChange">
 				<view class="weui-cell__hd">
-					<view class="iconfont icon-wallet"></view>
+					<view class="iconfont icon-location"></view>
 				</view>
 				<view class="weui-cell__bd">
-					<view>我的钱包</view>
+					<view>我的服务地址</view>
 				</view>
 				<view class="weui-cell__ft">
-					<text class="color-primary">{{ balance }}元</text>
 					<view class="iconfont icon-arrow-right"></view>
 				</view>
 			</view>
 		</view>
-		<view class="weui-cells box2">
+		<view class="weui-cells">
 			<view class="weui-cell" wx:for="{{navs}}" data-key="{{item.key}}" bind:tap="navigateChange" wx:key="{{item.key}}">
 				<view class="weui-cell__hd">
 					<view class="iconfont {{item.icon}}"></view>
@@ -68,7 +39,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="weui-cells box2">
+		<view class="weui-cells">
 			<view class="weui-cell" data-key="account" bind:tap="navigateChange">
 				<view class="weui-cell__hd">
 					<view class="iconfont icon-setting"></view>

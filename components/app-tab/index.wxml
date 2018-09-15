@@ -1,8 +1,14 @@
 <!-- tab导航条 -->
 <view class="app-tab {{ fixed ? 'fixed' : '' }}" style="{{ styles }}">
 	<scroll-view class="scroll-view {{ overflow ? 'overflow' : '' }} {{ scrollLeft <= 10 ? 'scroll-start' : (scrollLeft >= (childWidth - parentWidth - 10) ? 'scroll-end' : '') }}" catch:scroll="scroll" scroll-x>
-		<view id="{{ 'scroll-view-item_' + item.key }}" class="scroll-view-item {{ currentKey == item.key ? 'active' : '' }}" wx:for="{{ tabs }}" wx:key="{{ item.key }}" data-key="{{ item.key }}" catch:tap="itemTap" style="{{ itemStyles }}">
-			<text>{{ item.label }}</text>
-		</view>
+    <view class="scroll-view-box {{ align }}">
+      <view 
+        id="{{ 'scroll-view-item_' + item.key }}" 
+        class="scroll-view-item {{ currentKey == item.key ? 'active' : '' }} {{ equal ? 'equal' : '' }}" 
+        wx:for="{{ tabs }}" wx:key="{{ item.key }}" data-key="{{ item.key }}" 
+        catch:tap="itemTap" style="{{ itemStyles }}">
+        <text>{{ item.label }}</text>
+      </view>
+    </view>
 	</scroll-view>
 </view>

@@ -1,64 +1,60 @@
-//pages/Purchase/index.js
-const authModel = require('../../../models/order/index.js');
-const cartModel = require('../../../models/cart/index.js');
+const orderModel = require('../../../models/order/index.js');
 const app = getApp();
 Page({ 
   ...app.loadcartlist,
   ...app.loadMoreMethods,
   data: {
-    searchKeyword: '',  //需要搜索的字符
-    searchSongList: [], //放置返回数据的数组,
-    searchLoadingComplete: false , //“没有数据”的变量，默认false，隐藏
-
+    tabs: [
+      {
+        key: 0,
+        label: '全部'
+      }, 
+      {
+        key: 1,
+        label: '待付款'
+      },
+      {
+        key: 2,
+        label: '待服务'
+      },
+      {
+        key: 3,
+        label: '已完成'
+      }
+    ],
+    list: [], 
+    hasNextPage: false,
+    statusFormat: {
+      1: "已完成",
+      2: "待付款",
+      3: "待服务",
+    }
   },
-  //输入框事件，每输入一个字符，就会触发一次
-  bindKeywordInput: function (e) {
-    this.setData({
-      searchKeyword: e.detail.value
-    })
-    this._initLoadMore();
-    this.fetchSearchList();
-  },
-  //搜索
-  fetchSearchList: function () {
+  getList: function () {
     let _t = this;
     this._getList({
-      request: authModel.goods,
-      params: {
-        key: this.data.searchKeyword || ''
-      }
+      request: orderModel.goods
     }, function (res) {
-      // console.log(list);
+      console.log(res)
       _t.setData({
-        searchSongList: res.list,
-        searchLoadingComplete: !res.hasNextPage
+        list: res.list,
+        hasNextPage: !res.hasNextPage
       });
     });  
   },
 
-  //详情
-  urlshow: function (e) {
-    wx.navigateTo({
-      url: '../../purchase/details/details?id=' + e.currentTarget.dataset.id
-    })
-  },
   //加入购物车
   setTabBarBadge: function (e) {
     var id = e.currentTarget.dataset.id;
     var quantity =1;
-    console.log(e.currentTarget.dataset.id)
     cartModel.additem({ id, quantity }).then(response => {
-      console.log(response);
       this._cartlist(0, 1);
       wx.showToast({
         title: "添加成功",
         icon: "none",
         duration: 2000
       });
-      // app.pages.get('pages/tabBar/cart/index').changeBadge(1);
     }).catch(error => {
-      console.log('error!!!');
-      console.log(error);
       wx.showToast({
         title: error.data.msg,
         icon: "none",
@@ -68,10 +64,10 @@ Page({
   },
   //load
   onLoad: function () {
-    this.fetchSearchList();
+    this.getList();
   },
   onShow: function () {
-    this._cartlist(0, 0);
+    // this._cartlist(0, 0);
   },
 })
 

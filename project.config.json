@@ -37,14 +37,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
-				{
-					"id": 0,
-					"name": "user",
-					"pathName": "pages/user/wallet/withdraw/index",
-					"query": ""
-				},
 				{
 					"id": 1,
 					"name": "login",
@@ -59,26 +53,8 @@
 				},
 				{
 					"id": -1,
-					"name": "cart",
-					"pathName": "pages/tabBar/cart/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "order",
-					"pathName": "pages/tabBar/order/index",
-					"query": ""
-				},
-				{
-					"id": 5,
-					"name": "1",
-					"pathName": "pages/user/Warehousing/index",
-					"query": ""
-				},
-				{
-					"id": 6,
-					"name": "2",
-					"pathName": "pages/user/wallet/bankcard/bind/index",
+					"name": "user",
+					"pathName": "pages/tabBar/user/index",
 					"query": ""
 				}
 			]

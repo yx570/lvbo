@@ -19,38 +19,44 @@ Page({
     balance: 0,
     navs:[
       {
-        label:'线上订单管理',
-        key:'orders',
+        label:'我的订单',
+        key:'order',
         icon:'icon-iconlist'
       },
       {
-        label:'代理商管理',
-        key:'agent',
-        icon:'icon-icon_user'
+        label:'我的预约',
+        key:'reservation',
+        icon:'icon-date'
       },
       {
-        label:'销售管理',
-        key:'sell',
-        icon:'icon-handbag'
+        label:'我的推荐码',
+        key:'code',
+        icon:'icon-tuijianma'
       },
       {
-        label:'库存管理',
-        key:'inventory',
-        icon:'icon-inventory'
+        label:'我的新生币',
+        key:'currency',
+        icon:'icon-money'
+      },
+      {
+        label: '我的代金券',
+        key: 'voucher',
+        icon: 'icon-youhuiquan'
+      },
+      {
+        label: '我的历程',
+        key: 'course',
+        icon: 'icon-licheng'
       }
     ],
     navPaths:{
-      wallet:'../../user/wallet/index/index',
-      orders: "../../work/order/index?tab=0",
-      agent:'../../user/agent/index/index',
-      sell:'../../user/sell/index/index',
-      inventory:'../../user/inventory/index/index',
-      account:'../../user/account/index/index',
-      purchase:'../../work/purchase/index?num=0',
-      unpaid:'../../work/purchase/index?num=1',
-      shipping:'../../work/purchase/index?num=2',
-      thsh: '../../purchase/service/index',
-      Warehousing: '../../user/Warehousing/index'
+      address:'../../user/address/index',
+      order: "../order/index",
+      reservation:'',
+      code:'../../user/code/index',
+      currency:'../../user/currency/list/index',
+      voucher:'../../user/voucher/index',
+      course:'../../user/course/index',
     }
   },
 
@@ -69,9 +75,19 @@ Page({
   },
   navigateChange(ev){
     let { key } = ev.currentTarget.dataset;
-    wx.navigateTo({
-      url: this.data.navPaths[key]
-    });
+    if(!key) return
+    switch (key){
+      case 'order':
+        wx.switchTab({
+          url: this.data.navPaths[key],
+        })
+        break;
+      default:
+        wx.navigateTo({
+          url: this.data.navPaths[key]
+        })
+        break;
+    }
   },
   /**
    * 生命周期函数--监听页面显示
@@ -81,22 +97,17 @@ Page({
     this.setData({
       userInfos
     });
-    const requests = [
-      memberModel.info(),
-      memberModel.tasks()
-    ];
-    Promise.all(requests).then(res => {
-      // console.log(res);
-      this.setData({
-        balance: res[0].data.validBalance,
-        task:{
-          unpaid: res[1].data.unpaid,
-          shipping: res[1].data.shipping
-        }
-      });
-    }).catch(err => {
-      console.log(err);
-    });
+    // const requests = [
+    //   memberModel.info(),
+    //   memberModel.tasks()
+    // ];
+    // Promise.all(requests).then(res => {
+    //   this.setData({
+       
+    //   });
+    // }).catch(err => {
+    //   console.log(err);
+    // });
   },
 
   /**
