@@ -1,0 +1,42 @@
+<view class="container flex-column panel-reservation">
+  <view class="flex-bd">
+    <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
+      <view class='app-rows'>
+        <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
+          <view class="flex-row app-row__hd">
+            <view class="flex-hd">
+              <text>{{ item.date }}</text>
+              <text class="pl-20">{{ item.timeRange }}</text>
+            </view>
+            <view class="flex-bd ellipse align-right">{{ item.title }}</view>
+          </view>
+          <view class="flex-row flex-center app-row__bd">
+            <view class="flex-hd img-box">
+              <image src="{{ item.imageUrl }}"></image>
+            </view>
+            <view class="flex-bd con">
+              <text>{{ item.name }}</text>
+              <text class="pl-20">{{ item.star }} 星</text>
+              <view class="inline-item ml-20 iconfont icon-edit-p" wx:if="{{ item.status == 1 }}"></view>
+            </view>
+            <view class="flex-ft">
+              <text class="color-primary" wx:if="{{ item.status == 1 }}">未开始</text>
+              <view class="iconfont icon-location" wx:elif="{{ item.status == 2 }}"></view>
+              <view class="iconfont icon-start" wx:else></view>
+            </view>
+          </view>
+          <view class="flex-row" wx:if="{{ item.status !== 1 && item.times && item.times.length > 0 }}">
+            <view class="img-box hidden"></view>
+            <view class="flex-bd pl-20">
+              <view wx:for="{{ item.times }}" wx:for-item="time" wx:for-index="idx" wx:key="{{ idx }}">
+                <text>{{ time.time }}</text>
+                <text class="pl-20">{{ time.content }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="loading complete col-999" hidden="{{ !hasNextPage }}">-已加载全部-</view>
+    </scroll-view>  
+  </view>
+</view>

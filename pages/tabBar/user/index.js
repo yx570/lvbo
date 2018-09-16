@@ -52,7 +52,7 @@ Page({
     navPaths:{
       address:'../../user/address/index',
       order: "../order/index",
-      reservation:'',
+      reservation:'../../user/reservation/list/index',
       code:'../../user/code/index',
       currency:'../../user/currency/list/index',
       voucher:'../../user/voucher/index',

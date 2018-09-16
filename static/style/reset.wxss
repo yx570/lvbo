@@ -1,0 +1,99 @@
+/* reset -- start */
+page{
+  height: 100%;
+  color:#333;
+}
+view,
+scroll-view{
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+image{ 
+  display:block; 
+  width: 100%;
+  height: 100%;
+}
+
+button{
+  font-size: 36rpx;
+}
+button[size=mini]{
+  font-size: 28rpx;
+}
+button[type=primary]{
+  background-color: #ff5100;
+}
+button[loading][type=primary]{
+  background-color: #fd7739;
+}
+button[type=warm]{
+  color:#fff;
+  background-color: #ffba00;
+}
+button[loading][type=warm]{
+  background-color: #fac639;
+}
+button[loading]::before{
+  position: relative;
+  top:-2rpx;
+}
+
+button[type=primary].button-hover{
+  color: #fff;
+  background-color: #ef4c00;
+}
+button[type=warm].button-hover{
+  color: #fff;
+  background-color: #e5a700;
+}
+button[plain][type=primary],
+button[plain][type=primary].button-hover{
+  color:#ff5404;
+  border:1px solid #ff5404;
+  background-color:transparent;
+}
+button[plain][type=warm],
+button[plain][type=warm].button-hover{
+  color:#e5a700;
+  border:1px solid #e5a700;
+  background-color:transparent;
+}
+.icon-check{
+  position: relative;
+  top: -2rpx;
+  display: inline-block;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.icon-check::after{
+  content: "\e651";
+  font-size: 46rpx;
+  color: #9e9e9e;
+}
+checkbox{
+  display: none;
+}
+checkbox[checked] + .icon-check::after{
+  content: "\e63a";
+  color: #ff5000;
+}
+.weui-cells::before,
+.weui-cells::after,.weui-cell::before{
+  border-color: #f4f4f4;
+}
+.weui-cell{
+  padding: 20rpx 30rpx;
+}
+.weui-cell::before{
+  right:30rpx;
+  left:30rpx;
+}
+.weui-cell .icon-arrow-right{
+  position: relative;
+  right: -6rpx;
+  font-size: 34rpx;
+  color: #e4e4e4;
+}
+/* reset -- end */

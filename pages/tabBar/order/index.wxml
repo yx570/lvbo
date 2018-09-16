@@ -1,15 +1,14 @@
 <view class="container flex-column">
-  <!-- <app-tab tabs="{{ tabs }}" equal /> -->
   <app-tab tabs="{{ tabs }}" equal align="flex-start" />
   <view class="flex-bd">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
-      <view class='order-list'>
-        <view class="order-item" wx:for="{{ list }}" wx:key="{{ item.id }}">
-          <view class="flex-row order-item__hd">
+      <view class='app-rows'>
+        <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
+          <view class="flex-row app-row__hd">
             <view class="flex-bd">订单号：{{ item.number }}</view>
             <view class="flex-ft">{{ item.date }}</view>
           </view>
-          <view class="flex-row order-item__bd">
+          <view class="flex-row app-row__bd">
             <view class="flex-hd img-box">
               <image src="{{ item.imageUrl }}"></image>
             </view>

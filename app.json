@@ -26,7 +26,8 @@
         "address/index",
         "voucher/index",
         "currency/list/index",
-        "currency/withdraw/index"
+        "currency/withdraw/index",
+        "reservation/list/index"
       ]
     }
   ],
