@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "app-swiper": "/components/app-swiper/app-swiper"
+  }
+}
