@@ -1,3 +1,47 @@
-<view class="container">
-  我的服务地址
+<view class="container flex-column panel-address">
+  <view class="flex-bd content">
+    <scroll-view scroll-y="true">
+      <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="app-form-item">
+          <view class="app-select">
+            <view class="con" wx:if="{{ !!province }}">{{ province }}</view>
+            <view class="con" wx:else>请选择省份</view>
+            <view class="iconfont icon-down"></view>
+          </view>
+        </view>
+        <view class="app-form-item">
+          <view class="app-select">
+            <view class="con" wx:if="{{ !!province }}">{{ province }}</view>
+            <view class="con" wx:else>请选择城市</view>
+            <view class="iconfont icon-down"></view>
+          </view>
+        </view>
+        <view class="app-form-item">
+          <view class="app-select">
+            <view class="con" wx:if="{{ !!province }}">{{ province }}</view>
+            <view class="con" wx:else>请选择地区</view>
+            <view class="iconfont icon-down"></view>
+          </view>
+        </view>
+        <view class="app-form-item">
+          <textarea class="app-input textarea" placeholder="请输入详细地址" />
+        </view>
+        <view class="app-form-item flex-row flex-stretch">
+          <button size="mini" type="primary" plain>首台</button>
+          <button size="mini" type="primary" plain>二胎</button>
+          <button size="mini" type="primary" plain>二胎以上</button>
+        </view>
+        <view class="app-form-item">
+          <input class="app-input" placeholder="请输入联系人" />
+        </view>
+        <view class="app-form-item">
+          <input class="app-input" type="number" placeholder="请输入联系人电话" />
+        </view>
+      </form>
+    </scroll-view>
+  </view>
+  <view class="app-footer">
+    <button class="only" type="primary">更新/保存</button>
+  </view>
+
 </view>
