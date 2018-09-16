@@ -5,9 +5,12 @@
 /* pulbic -- start */
 .container{
   position: relative;
+  width: 100%;
   height: 100%;
 }
 .scroll-box{
+  position: absolute;
+  width: 100%;
   height: 100%;
 }
 .pa-20{ padding: 20rpx; }

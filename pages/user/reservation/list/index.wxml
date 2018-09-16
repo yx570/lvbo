@@ -21,7 +21,7 @@
             </view>
             <view class="flex-ft">
               <text class="color-primary" wx:if="{{ item.status == 1 }}">未开始</text>
-              <view class="iconfont icon-location" wx:elif="{{ item.status == 2 }}"></view>
+              <view class="iconfont icon-location" wx:elif="{{ item.status == 2 }}" bindtap="openMap"></view>
               <view class="iconfont icon-start" wx:else></view>
             </view>
           </view>
