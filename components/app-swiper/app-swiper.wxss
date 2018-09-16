@@ -1,0 +1,2 @@
+/* components/app-swiper.wxss */
+scroll-view { height: 100%}

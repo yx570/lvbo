@@ -1,98 +1,65 @@
 /* pages/work/order/details/index.wxss */
-.order-details{
+.selectPrice span { padding:10rpx 20rpx; border:1rpx solid #dedede; border-radius:5rpx; margin:15rpx 30rpx; float:left;}
+.detalis-bottom{
+  height: 120rpx;
   width: 100%;
-  height: 100%;
+  background: #f9f9f9;
+  position: fixed;
+  bottom: 0;
+  border-top: 2rpx #d7d7d7 solid;
 }
-.details-list{
-  padding:0 30rpx;
+.bottom_list{
+  float: left;
+  width:33.3%;
+  color: #b8b8b8;
 }
-.details-list-data view{
-  height: 60rpx;
-  line-height: 60rpx;
+.bottom_but button{
+  font-size: 30rpx;
+  margin: 22rpx 22rpx 0;
 }
-.details-list-datah{
-  height: 80rpx;
-  line-height: 80rpx;
-}
-
-.dereils-text{
-  height:80rpx ; 
-  line-height: 80rpx;
-}
-.ps{
-  height: 100rpx;
-  width: 100%;
-}
-.order-img{
-  margin-left: -30rpx;
-}
-.wl{
-   color: #333333  !important;
-   border:1px solid #eaeaea !important;
-   width: 220rpx ; 
-   height: 70rpx ;
-   line-height: 70rpx;
-   font-size: 28rpx ;
-   margin-top: 20rpx;
-   margin-left: 10rpx;
-}
-
- .item_list_but{
-   color: #fff  !important;
-   border:1px solid #ff5100 !important;
-   background: #ff5100 !important;
-   width: 220rpx ; 
-   height: 70rpx ;
-   line-height: 70rpx;
-   font-size: 28rpx ;
-   margin-top: 20rpx;
-   margin-right: 10rpx;
-   margin-left: 10rpx;
- }
-.tit{
-  width: 100%;
-  line-height: 150rpx;
-  font-size: 35rpx;
-  padding-left: 20rpx;
-}
-.tit-tex view{
-  margin: 20rpx;
-}
-.line{
-    width: 100%;
-    font-size: 0;
-    overflow: hidden;
-}
-.line image{
-    width: 100%;
-    height: 10rpx;
-    line-height: 1;
-} 
-.work-header{
-    position: absolute;
-    margin-top: 0;
-    width: 100%;
-    height: 160rpx;
-    z-index: 1;
-}
-.work-header::before,
-.work-header::after{
-    position: absolute;
-    background: #fff;
-    border-radius: 50%;
-    opacity: 0.1;
-}
-.worklist .work-header::before{
-    top: 0;
-    left: 50%;
-    width: 56rpx;
-    height: 56rpx;
-    opacity: 0.05;
-}
-.worklist .work-header::after{
-    top: 30rpx;
-    right: 40rpx;
-    left: auto;
-    width: 108rpx;
-    height: 108rpx;
-}
+/* 右侧增加减少 */
+/* 计算加减 */
+.stepper{
+  display: flex;
+  border-radius: 5px;
+  text-align: center;
+  margin: 36rpx 0 0 30rpx;
+  }
+  .stepper text{
+  display: block;
+  width: 50rpx;
+  height: 53rpx;
+  border:1px solid #999999;
+  line-height: 53rpx;
+  font-size: 40rpx;
+  box-sizing: border-box;
+  color: #666666;
+  }
+  .stepper input{
+  display: block;
+  width: 100rpx;
+  height: 50rpx;
+  border:1px solid #999999;
+  line-height: 50rpx;
+  color: #333333;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  text-align: center;
+  }
+  /* .stepper wx-input.numberin{
+  width: 120rpx;
+  } */
+  .stepper text:first-child{
+  border-right: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  }
+  .stepper text:last-child{
+  border-left: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  }
+  /* 减号禁用样式 */
+  .stepper .disabled{
+  border-color: rgba(153,153,153,0.2)
+  }

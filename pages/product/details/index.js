@@ -1,60 +1,56 @@
-const orderModel = require('../../../models/order/index.js');
-const payModel = require('../../../models/pay/index.js');
+const productModel = require('../../../models/product/index.js');
+const app = getApp();
 Page({
   data: {
-    Freight: '0.00',//运费
-    listV:[],
-    checkedAll: true,
-    totalPrices: 0,
-    orderId:'',
-    type:0
+    //图片地址
+    imgList: [],
+    orderId: '',
+    obj: {},
+    num: 1,
+    minusStatus: 'disable'
   },
   onLoad: function (ev) {
-    console.log(ev)
     this.setData({
-      orderId: ev.orderId,
-      type: ev.type
+      id: ev.id
     })
-    let orderId = this.data.orderId; 
-    orderModel.view({ orderId }).then(response => {
+    let id = this.data.id;
+    productModel.view({ id }).then(response => {
+      console.log(response.data)
       this.setData({
-        listV: response.data,
+        obj: response.data,
+        imgList: response.data.imgList
       })
     }).catch(e => { });
   },
-  rebuild() {
-    let orderId = this.data.orderId;
-    console.log(orderId)
-    wx.redirectTo({
-      url: '../../../pages/cart/fill/index?payType=2&&orderId=' + orderId + '&&type=1'
+  //事件处理函数
+  /*点击减号*/
+  bindMinus: function () {
+    var num = this.data.num;
+    if (num > 1) {
+      num--;
+    }
+    var minusStatus = num > 1 ? 'normal' : 'disable';
+    this.setData({
+      num: num,
+      minusStatus: minusStatus
     })
   },
-   zf(e) {
-     var orderId = this.data.listV.items[0].orderId;
-     getApp().globalData.goSettleList1 = this.data.listV.items;
-     wx.redirectTo({
-        url: '../../../pages/cart/fill/index?orderId=' + orderId + '&&type=3' 
-      })
-  },
-
-  shoho() {
-    wx.redirectTo({
-      url: '../../../pages/purchase/service/index'
+  /*点击加号*/
+  bindPlus: function () {
+    var num = this.data.num;
+    num++;
+    this.setData({
+      num: num
     })
   },
-  //取消
-  qx: function (e) {
-    let orderId = e.target.dataset.id;
-    console.log(orderId)
-    orderModel.cancel({ orderId }).then(response => {
-      console.log(response);
-      wx.navigateBack();
-      wx.showToast({
-        title: "已取消",
-        icon: "none",
-        duration: 2000
-      });
-    }).catch(error => { });
-  },
+  /*输入框事件*/
+  bindManual: function (e) {
+    var num = e.detail.value;
+    var minusStatus = num > 1 ? 'normal' : 'disable';
+    this.setData({
+      num: num,
+      minusStatus: minusStatus
+    })
+  }
 
 })

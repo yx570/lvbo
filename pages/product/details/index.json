@@ -1,5 +1,6 @@
 {
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "金谷坊主",
-  "usingComponents": {}
+  "usingComponents": {
+    "app-swiper": "/components/app-swiper/app-swiper"
+  }
 }

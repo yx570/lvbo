@@ -1,6 +1,5 @@
 
 /* pages/work/index.wxss */
-scroll-view { height: 100%}
 .productList{  margin-top: 20rpx;}
 .product-list-info{  float: left;margin-left: 20rpx;margin-top: 20rpx;position: relative;}
 .product-list-photo{  width: 350rpx;  height: 250rpx;}
