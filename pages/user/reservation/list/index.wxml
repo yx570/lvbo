@@ -21,8 +21,12 @@
             </view>
             <view class="flex-ft">
               <text class="color-primary" wx:if="{{ item.status == 1 }}">未开始</text>
-              <view class="iconfont icon-location" wx:elif="{{ item.status == 2 }}" bindtap="openMap"></view>
-              <view class="iconfont icon-start" wx:else></view>
+              <navigator url="../map/index?id={{ item.id }}"wx:elif="{{ item.status == 2 }}">
+                <view class="iconfont icon-location"></view>
+              </navigator>
+              <navigator url="../service/index?id={{ item.id }}" wx:else>
+                <view class="iconfont icon-start"></view>
+              </navigator>
             </view>
           </view>
           <view class="flex-row" wx:if="{{ item.status !== 1 && item.times && item.times.length > 0 }}">

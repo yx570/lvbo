@@ -18,11 +18,6 @@ Page({
       });
     });  
   },
-  openMap(){
-    wx.navigateTo({
-      url: '../map/index',
-    })
-  },
   //load
   onLoad: function () {
     this.getList();

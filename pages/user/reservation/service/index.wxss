@@ -1,0 +1,39 @@
+.panel-service{
+  text-align: center;
+}
+.panel-service .bg{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.panel-service .logo{
+  padding: 100rpx 0;
+}
+.panel-service .tips{
+  margin: 40rpx 0;
+  padding: 20rpx 0;
+  border-radius: 10rpx;
+}
+.panel-service .tips .processing{
+  padding: 20rpx 0;
+}
+.panel-service .icon-box .iconfont{
+  font-size: 600rpx;
+  line-height: 1;
+}
+.panel-service .footer-area{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%,0)
+}
+.panel-service .footer-area.text{
+  width: 90%;
+  padding: 20rpx 0;
+  font-size: 50rpx;
+  border-radius: 10rpx;
+}

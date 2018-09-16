@@ -28,7 +28,8 @@
         "currency/list/index",
         "currency/withdraw/index",
         "reservation/list/index",
-        "reservation/map/index"
+        "reservation/map/index",
+        "reservation/service/index"
       ]
     }
   ],
