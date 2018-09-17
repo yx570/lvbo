@@ -1,2 +1,11 @@
 /* components/app-swiper.wxss */
 scroll-view { height: 100%}
+.swiper-text { 
+    position: absolute; 
+    right:20rpx; 
+    bottom:20rpx;
+    background:rgba(0,0,0,.2);
+    padding:0 20rpx;
+    border-radius:10rpx;
+    color:#fff;
+}

@@ -1,5 +1,44 @@
 /* pages/work/order/details/index.wxss */
-.selectPrice span { padding:10rpx 20rpx; border:1rpx solid #dedede; border-radius:5rpx; margin:15rpx 30rpx; float:left;}
+.selectPrice { flex-wrap: wrap;}
+.selectPrice button {
+  width:210rpx;
+  margin:10rpx 20rpx 0 0;
+  padding: 0;
+}
+/* .selectPrice text { 
+  padding:10rpx 20rpx; 
+  border:1rpx solid #dedede; 
+  border-radius:5rpx; 
+  margin:15rpx 20rpx 0 0;
+  white-space: nowrap;
+  width:150rpx;
+  text-align: center;
+}
+.selectPrice .curr { 
+  border-color: #e00000; 
+  color:#e00000;
+} */
+
+.priceBox { justify-content: space-between;}
+.f-36 { font-size: 36rpx;}
+.f-54 { font-size: 54rpx;}
+.soldNums { 
+  color:#a4a4a4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productTit { font-size: 35rpx; padding-right:20rpx; margin: 10rpx;}
+.productSubTit { font-size: 26rpx; color: #a4a4a4;}
+
+.selectPrice .weui-cells{
+  margin-top: 30rpx;
+  border:1px solid #eeeDDD;
+  background-color: #fafafa;
+  border-radius: 18rpx;
+}
+
 .detalis-bottom{
   height: 120rpx;
   width: 100%;
@@ -9,57 +48,15 @@
   border-top: 2rpx #d7d7d7 solid;
 }
 .bottom_list{
-  float: left;
-  width:33.3%;
   color: #b8b8b8;
 }
-.bottom_but button{
-  font-size: 30rpx;
-  margin: 22rpx 22rpx 0;
+.bottom_but {
+  flex:1.5;
 }
-/* 右侧增加减少 */
-/* 计算加减 */
-.stepper{
-  display: flex;
-  border-radius: 5px;
-  text-align: center;
-  margin: 36rpx 0 0 30rpx;
-  }
-  .stepper text{
-  display: block;
-  width: 50rpx;
-  height: 53rpx;
-  border:1px solid #999999;
-  line-height: 53rpx;
-  font-size: 40rpx;
-  box-sizing: border-box;
-  color: #666666;
-  }
-  .stepper input{
-  display: block;
-  width: 100rpx;
-  height: 50rpx;
-  border:1px solid #999999;
-  line-height: 50rpx;
-  color: #333333;
-  font-size: 28rpx;
-  box-sizing: border-box;
-  text-align: center;
-  }
-  /* .stepper wx-input.numberin{
-  width: 120rpx;
-  } */
-  .stepper text:first-child{
-  border-right: none;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  }
-  .stepper text:last-child{
-  border-left: none;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  }
-  /* 减号禁用样式 */
-  .stepper .disabled{
-  border-color: rgba(153,153,153,0.2)
+.bottom_but button{
+  font-size: 26rpx;
+  margin: 26rpx 22rpx 0;
+}
+.numberStep{
+  margin: 30rpx 50rpx 0;
   }

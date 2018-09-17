@@ -7,4 +7,5 @@
         </swiper-item>
       </block>
     </swiper>
+    <text class="swiper-text" wx:if='{{showNumber}}'>{{current+1}}/{{imgList.length}}</text>
   </view>

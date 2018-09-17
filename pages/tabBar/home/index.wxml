@@ -5,7 +5,7 @@
   <view bindtap="callme">
     <image src="../../../static/images/demo/slogan.jpg" mode="widthFix" class="slogan" />
   </view>
-  <view class="productList">
+  <view class="productList flex-row">
     <block wx:for="{{list}}" wx:key="item">
       <view class="product-list">
         <navigator url="/pages/product/details/index?id={{item.id}}">

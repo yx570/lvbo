@@ -1,61 +1,67 @@
 <!-- pages/product/details/index.wxml -->
 <scroll-view class="home" scroll-y="true" bindscrolltolower="_loadMore">
-    <app-swiper imgList="{{ imgList }}"></app-swiper>
-    <view class='ma-15'>
-        <view class="clear-both">
-            <span class='text-decoration-ff'>{{obj.title}}</span>
-            <view class='fs-25 f-r'>
-                <span>销量：{{obj.soldNums}}次</span>
-                <span class="color-red pl-20">￥{{obj.price}}</span>
+    <app-swiper 
+        imgList="{{ imgList }}"
+        showNumber="true"
+        indicatorDots="false"
+    >
+    </app-swiper>
+    <view class='ma-20'>
+        <view class="flex-row priceBox">
+            <view class="color-red">
+                <text class="f-36">￥</text>
+                <text class="f-54">{{priceInt}}</text>
+                <text class="f-36">.{{priceFloat}}</text>
+            </view>
+            <view class="soldNums">
+                本月已售：{{obj.soldNums}}次
             </view>
         </view>
+        <view class='productTit ellipse flex-bd'>{{obj.title}}</view>
+
         <!-- 副标题 -->
-        <view class='fs-25'>{{obj.subTitle}}</view>
+        <view class="productSubTit">{{obj.subTitle}}</view>
+
         <!-- 选择服务 -->
         <view class="selectPrice">
-            <view class="clear-both">
-                <block wx:for='{{obj.mutliPriceLIst}}' wx:key="{{index}}">
-                    <span>{{item.times}}次{{item.price}}元</span>
-                </block>
+            <view class="weui-cells">
+                <view class="weui-cell" data-key="account" bind:tap="navigateChange">
+                    <view class="weui-cell__hd">
+                        <view>已选</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <view>982元/2次</view>
+                    </view>
+                    <view class="weui-cell__ft">
+                        <view class="iconfont icon-arrow-right"></view>
+                    </view>
+                </view>
             </view>
         </view>
+<!--         
+        <view class="selectPrice">
+            <block wx:for='{{obj.mutliPriceLIst}}' wx:key="{{index}}">
+                <button size="mini" plain data-index="{{index}}" wx:if="{{index == selectIndex}}" type="primary">{{item.times}}次{{item.price}}元</button>
+                <button size="mini" plain data-index="{{index}}" bindtap="priceChange" wx:else>{{item.times}}次{{item.price}}元</button>
+            </block>
+        </view> -->
+        <view class="content">
+            <view class="clear-both">{{obj.content}}</view>
+        </view>
+        
         <view class="content">
             <view class="clear-both">{{obj.content}}</view>
         </view>
     </view>
-    <view class='detalis-bottom'>
-        <!-- <view class='bottom_list center'>
-          <view class="iconfont icon-shoucang " style='font-size: 45rpx;'> </view>
-          <view>收藏</view>
-      </view> -->
-        <view class="bottom_list center">
-            <view class="stepper">
-                <!-- 减号 -->
-                <text class="{{minusStatuses?'disabled':''}}" disabled="true" data-idx="{{idx}}" data-index="{{index}}" bindtap="bindMinus">-</text>
-                <!-- 数值 -->
-                <view class="number" bindchange="bindManual"></view>
-                <input maxlength='5' type='number' class="numberin" value='{{num}}' bindinput="bindChange" />
-                <!-- 加号 -->
-                <text class="normal" data-idx="{{idx}}" data-index="{{index}}" bindtap="bindPlus">+</text>
-            </view>
+    <view class='detalis-bottom flex-row'>
+        <view class="bottom_list numberStep flex-bd">
+            <input-number />
         </view>
-        <view class='bottom_list center bottom_but'>
+        <view class='bottom_list bottom_but'>
             <button class='btn-radius c-3d454d' catch:tap="selectTap">加入购物车</button>
         </view>
-        <view class='bottom_list center bottom_but'>
+        <view class='bottom_list bottom_but'>
             <button class='btn-radius' type="primary" catch:tap="shopping">立即购买</button>
         </view>
     </view>
-    <!-- <view class="productList">
-        <block wx:for="{{list}}" wx:key="item">
-            <view class="product-list">
-                <navigator url="/pages/product/details/index?id={{item.id}}">
-                    <view class="product-list-info" index="{{index}}">
-                        <image class="product-list-photo" src="{{item.imageUrl}}" />
-                        <text class="product-list-desc">{{item.content}}</text>
-                    </view>
-                </navigator>
-            </view>
-        </block>
-    </view> -->
 </scroll-view>

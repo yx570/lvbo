@@ -1,6 +1,7 @@
 {
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "app-swiper": "/components/app-swiper/app-swiper"
+    "app-swiper": "/components/app-swiper/app-swiper",
+    "input-number": "/components/app-input-number/index"
   }
 }

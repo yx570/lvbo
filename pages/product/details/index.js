@@ -7,50 +7,34 @@ Page({
     orderId: '',
     obj: {},
     num: 1,
-    minusStatus: 'disable'
+    selectIndex: 0,
+    minusStatus: 'disable',
+    priceInt: 0,
+    priceFloat: 0
   },
-  onLoad: function (ev) {
+  onLoad (ev) {
     this.setData({
       id: ev.id
     })
     let id = this.data.id;
     productModel.view({ id }).then(response => {
-      console.log(response.data)
+      this.splitPrice(response.data.price)
       this.setData({
         obj: response.data,
         imgList: response.data.imgList
       })
     }).catch(e => { });
   },
-  //事件处理函数
-  /*点击减号*/
-  bindMinus: function () {
-    var num = this.data.num;
-    if (num > 1) {
-      num--;
-    }
-    var minusStatus = num > 1 ? 'normal' : 'disable';
+  priceChange (ev) {
     this.setData({
-      num: num,
-      minusStatus: minusStatus
+      selectIndex: ev.currentTarget.dataset.index
     })
   },
-  /*点击加号*/
-  bindPlus: function () {
-    var num = this.data.num;
-    num++;
+  splitPrice(price) {
+    let [p1, p2] = price.split('.');
     this.setData({
-      num: num
-    })
-  },
-  /*输入框事件*/
-  bindManual: function (e) {
-    var num = e.detail.value;
-    var minusStatus = num > 1 ? 'normal' : 'disable';
-    this.setData({
-      num: num,
-      minusStatus: minusStatus
+      priceInt: p1 || 0,
+      priceFloat: p2 || '00'
     })
   }
-
 })

@@ -4,10 +4,18 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    imgList: {            // 属性名
+    imgList: {         // 属性名
       type: Array,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
-      value: []     // 属性初始值（可选），如果未指定则会根据类型选择一个
+      value: []        // 属性初始值（可选），如果未指定则会根据类型选择一个
     },
+    showNumber: {      // 是否显示自定义右下角数字
+      type: Boolean,
+      value: false
+    },
+    indicatorDots: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -16,8 +24,6 @@ Component({
   data: {
     //是否采用衔接滑动  
     circular: true,
-    //是否显示画板指示点  
-    indicatorDots: true,
     //选中点的颜色  
     indicatorcolor: "#000",
     //是否竖直  
@@ -33,7 +39,7 @@ Component({
     //图片宽度 
     imgwidth: 750,
     //默认  
-    current: 0,
+    current: 0
   },
 
   /**
