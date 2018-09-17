@@ -31,6 +31,12 @@
         "reservation/map/index",
         "reservation/service/index"
       ]
+    },
+    {
+      "root": "pages/subs",
+      "pages": [
+        "score/index"
+      ]
     }
   ],
   "window": {

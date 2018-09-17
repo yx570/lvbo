@@ -1,0 +1,75 @@
+<view class="container flex-column panel-score">
+  <view class="flex-bd">
+    <scroll-view class="scroll-box" scroll-y="true">
+      <view class='app-rows'>
+        <view class="app-row">
+          <view class="flex-row app-row__hd">
+            <view class="flex-hd">
+              <text>{{ productInfos.date }}</text>
+              <text class="pl-20">{{ item.timeRange }}</text>
+            </view>
+            <view class="flex-bd ellipse align-right">{{ item.title }}</view>
+          </view>
+          <view class="flex-row flex-center app-row__bd">
+            <view class="flex-hd img-box">
+              <image src="{{ item.imageUrl }}"></image>
+            </view>
+            <view class="flex-bd con">
+              <text>{{ item.name }}</text>
+              <text class="pl-20">{{ item.star }} 星</text>
+            </view>
+          </view>
+          <view class="flex-row"">
+            <view class="img-box hidden"></view>
+            <view class="flex-bd pl-20">
+              <view wx:for="{{ item.times }}" wx:for-item="time" wx:for-index="idx" wx:key="{{ idx }}">
+                <text>{{ time.time }}</text>
+                <text class="pl-20">{{ time.content }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <form>
+        <view class="app-form-item flex-row">
+          <view class="flex-hd">对技师评价</view>
+          <view class="flex-bd">
+            <view 
+              class="inline-item iconfont {{ form.personStar >= item ? 'icon-star-o color-primary' : 'icon-star' }}"
+            wx:for="{{ 5 }}">
+            </view>
+          </view>
+        </view>
+        <view class="app-form-item">
+          <textarea class="app-input textarea" placeholder="请输入评语" />
+          <view class="btn-area">
+            <button size="mini" type="{{ item.checked ? 'primary' : 'default' }}" wx:for="{{ personTexts }}">{{ item.text }}</button>
+          </view>
+        </view>
+        <view class="app-form-item flex-row">
+          <view class="flex-hd">对产品评价</view>
+          <view class="flex-bd">
+            <view 
+              class="inline-item iconfont {{ form.productStar >= item ? 'icon-star-o color-primary' : 'icon-star' }}"
+            wx:for="{{ 5 }}">
+            </view>
+          </view>
+        </view>
+        <view class="app-form-item">
+          <textarea class="app-input textarea" placeholder="请输入评语" />
+          <view class="btn-area">
+            <button size="mini" type="{{ item.checked ? 'primary' : 'default' }}" wx:for="{{ personTexts }}">{{ item.text }}</button>
+          </view>
+        </view>
+        <view class="app-form-item images">
+
+          <view class="iconfont icon-plus"></view>
+        </view>
+      </form>
+    </scroll-view>  
+  </view>
+  <view class="app-footer">
+    <button type="primary">提交</button>
+    <button>匿名提交</button>
+  </view>
+</view>
