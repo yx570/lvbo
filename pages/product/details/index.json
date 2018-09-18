@@ -1,7 +1,9 @@
 {
+  "navigationBarTitleText": "商品详情",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "app-swiper": "/components/app-swiper/app-swiper",
-    "input-number": "/components/app-input-number/index"
+    "app-swiper": "/components/app-swiper/index",
+    "input-number": "/components/app-input-number/index",
+    "previewImage": "/components/app-previewImage/index"
   }
 }

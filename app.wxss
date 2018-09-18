@@ -32,6 +32,7 @@
 .color-white{ color: #fff; }
 .color-666{ color: #666666; }
 .color-999{ color: #999999; }
+.color-b8 { color: #b8b8b8; }
 .color-ab{ color: #ababab; }
 .bg-primary{ background: #ff5100; }
 .bg-white{ background: #fff; }

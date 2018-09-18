@@ -1,4 +1,4 @@
-<!--components/app-swiper.wxml-->
+<!--components/app-swiper/index.wxml-->
   <view class='swiper'>
     <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="{{duration}}" interval='{{interval}}' bindchange="bindchange" circular="{{circular}}" style="height:{{imgheights[current]}}rpx;">
       <block wx:for='{{imgList}}' wx:key="{{index}}">

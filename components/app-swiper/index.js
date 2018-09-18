@@ -14,7 +14,7 @@ Component({
     },
     indicatorDots: {
       type: Boolean,
-      value: false
+      value: true
     }
   },
 

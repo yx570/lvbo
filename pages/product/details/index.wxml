@@ -1,11 +1,7 @@
 <!-- pages/product/details/index.wxml -->
-<scroll-view class="home" scroll-y="true" bindscrolltolower="_loadMore">
-    <app-swiper 
-        imgList="{{ imgList }}"
-        showNumber="true"
-        indicatorDots="false"
-    >
-    </app-swiper>
+<import src="../../../wxParse/wxParse.wxml" />
+<scroll-view class="productDetail" scroll-y="true" bindscrolltolower="_loadMore">
+    <app-swiper imgList="{{ imgList }}" showNumber="true" indicatorDots="{{ false }}"></app-swiper>
     <view class='ma-20'>
         <view class="flex-row priceBox">
             <view class="color-red">
@@ -13,21 +9,17 @@
                 <text class="f-54">{{priceInt}}</text>
                 <text class="f-36">.{{priceFloat}}</text>
             </view>
-            <view class="soldNums">
-                本月已售：{{obj.soldNums}}次
-            </view>
+            <view class="soldNums">本月已售：{{obj.soldNums}}次</view>
         </view>
         <view class='productTit ellipse flex-bd'>{{obj.title}}</view>
-
         <!-- 副标题 -->
         <view class="productSubTit">{{obj.subTitle}}</view>
-
         <!-- 选择服务 -->
         <view class="selectPrice">
             <view class="weui-cells">
                 <view class="weui-cell" data-key="account" bind:tap="navigateChange">
-                    <view class="weui-cell__hd">
-                        <view>已选</view>
+                    <view class="weui-cell__hd fonts">
+                        <view class="color-b8">已选</view>
                     </view>
                     <view class="weui-cell__bd">
                         <view>982元/2次</view>
@@ -38,19 +30,49 @@
                 </view>
             </view>
         </view>
-<!--         
-        <view class="selectPrice">
-            <block wx:for='{{obj.mutliPriceLIst}}' wx:key="{{index}}">
-                <button size="mini" plain data-index="{{index}}" wx:if="{{index == selectIndex}}" type="primary">{{item.times}}次{{item.price}}元</button>
-                <button size="mini" plain data-index="{{index}}" bindtap="priceChange" wx:else>{{item.times}}次{{item.price}}元</button>
-            </block>
-        </view> -->
-        <view class="content">
-            <view class="clear-both">{{obj.content}}</view>
+        <!-- 评论 -->
+        <view class="comment-row">
+            <view class="weui-panel__hd">
+                <view class="flex-row app-row__bd">
+                    <view class="flex-hd img-box">
+                        <image src="{{ comment.headPic }}"></image>
+                    </view>
+                    <view class="flex-bd con">
+                        <view class="title">{{ comment.nickName }}</view>
+                        <view class="color-b8">{{ comment.createTime }}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-panel__hd">
+                <text class="weui-media-box__desc">{{ comment.contents }}</text>
+                <previewImage imgList="{{comment.imgList}}"></previewImage>
+            </view>
+            <view class="weui-panel__ft">
+                <navigator url="/pages/product/comments/index?id={{obj.id}}">
+                    <view class="weui-cell">
+                        <view class="weui-cell__bd">
+                            <view class="showComments">查看全部评价 ({{obj.commentNums}})</view>
+                        </view>
+                        <view class="weui-cell__ft">
+                            <view class="iconfont icon-arrow-right"></view>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
         </view>
-        
-        <view class="content">
-            <view class="clear-both">{{obj.content}}</view>
+        <view class="pruductContent">
+            <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+        </view>
+    </view>
+    <view class="buyNotice">
+        <view class="contents">
+            <view class="noticeTitle">
+                <text>购买需知</text>
+                <view class="line"></view>
+            </view>
+            <view class="noticeContent">
+                <template is="wxParse" data="{{wxParseData:buyNotice.nodes}}" />
+            </view>
         </view>
     </view>
     <view class='detalis-bottom flex-row'>

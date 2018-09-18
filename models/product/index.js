@@ -11,5 +11,10 @@ module.exports = {
   view: params => {
     return ajax({ path: '/static/data/productDetails.js', method: 'get', params, loading: true});
   },
+  //产品详情第一评论
+  //key
+  oneComment: params => {
+    return ajax({ path: '/static/data/oneComment.js', method: 'get', params, loading: true});
+  },
 
 }

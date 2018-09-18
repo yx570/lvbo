@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "app-swiper": "/components/app-swiper/app-swiper"
+    "app-swiper": "/components/app-swiper/index"
   }
 }
