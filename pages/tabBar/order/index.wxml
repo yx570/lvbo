@@ -19,7 +19,9 @@
                   <button type="primary" size="mini" plain>{{ statusFormat[item.status] || '' }}</button>
                 </view>
                 <view class="flex-ft">
-                  <button size="mini" plain wx:if="{{ item.status == 1 }}">去评价</button>
+                  <navigator url="/pages/subs/score/index?id={{ item.id }}">
+                    <button size="mini" plain wx:if="{{ item.status == 1 }}">去评价</button>
+                  </navigator>
                 </view>
               </view>
             </view>
