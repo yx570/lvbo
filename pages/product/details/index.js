@@ -57,5 +57,5 @@ Page({
             priceInt: p1 || 0,
             priceFloat: p2 || '00'
         })
-    },
+    }
 })

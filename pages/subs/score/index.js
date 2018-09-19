@@ -3,23 +3,23 @@ const app = getApp();
 Page({ 
   data: {
     productInfos:{
-      date: '5',
+      date: '5月1日',
       timeRange: '9:00 ~ 10:00',
       title: 'abc',
-      imageUrl: '',
+      imageUrl: '/static/images/demo/b1.jpg',
       name: '123',
       star: 5,
       times: [
         {
-          time: '9:00',
+          time: '5月1日 9:00',
           content: '123123'
         },
         {
-          time: '9:30',
+          time: '5月1日 9:30',
           content: '123123'
         },
         {
-          time: '10:00',
+          time: '5月1日 10:00',
           content: '123123'
         }
       ]
