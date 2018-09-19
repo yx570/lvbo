@@ -4,7 +4,7 @@
     <app-swiper imgList="{{ imgList }}" showNumber="true" indicatorDots="{{ false }}"></app-swiper>
     <view class='ma-20'>
         <view class="flex-row priceBox">
-            <view class="color-red">
+            <view class="color-pink">
                 <text class="f-36">￥</text>
                 <text class="f-54">{{priceInt}}</text>
                 <text class="f-36">.{{priceFloat}}</text>
@@ -17,12 +17,12 @@
         <!-- 选择服务 -->
         <view class="selectPrice">
             <view class="weui-cells">
-                <view class="weui-cell" data-key="account" bind:tap="navigateChange">
+                <view class="weui-cell" data-key="account" catch:tap="selectTap">
                     <view class="weui-cell__hd fonts">
                         <view class="color-b8">已选</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <view>982元/2次</view>
+                        <view>{{ defaultCombo.price }}元/{{ defaultCombo.times }}次</view>
                     </view>
                     <view class="weui-cell__ft">
                         <view class="iconfont icon-arrow-right"></view>
@@ -76,14 +76,64 @@
         </view>
     </view>
     <view class='detalis-bottom flex-row'>
-        <view class="bottom_list numberStep flex-bd">
-            <input-number />
+        <view class='bottom_list bottom_link flex-row'>
+            <view class="items center" catch:tap="home">
+                <view class="iconfont">
+                    <image src="/static/images/icon-home.png"></image>
+                </view>
+                <view>首页</view>
+            </view>
+            <view class="items center" catch:tap="shoppingCart">
+                <view class="iconfont">
+                    <image src="/static/images/icon-cart.png"></image>
+                </view>
+                <view>购物车</view>
+            </view>
         </view>
         <view class='bottom_list bottom_but'>
-            <button class='btn-radius c-3d454d' catch:tap="selectTap">加入购物车</button>
-        </view>
-        <view class='bottom_list bottom_but'>
-            <button class='btn-radius' type="primary" catch:tap="shopping">立即购买</button>
+            <button class='btn-cart' catch:tap="selectTap">加入购物车</button>
+            <button class='btn-buy' catch:tap="shopping">立即购买</button>
         </view>
     </view>
 </scroll-view>
+<app-pop direction="bottom" visible="{{popVisible}}" bind:close="popClose" class="popBox" styles="bottom:0rpx;left:0;border-radius: 20rpx;width:95%;margin: 20rpx;">
+    <view class='modal-content ma-40'>
+        <view class="flex-row app-row__bd">
+            <view class="flex-hd img-box">
+                <image src="{{ imgList[0] }}"></image>
+            </view>
+            <view class="flex-bd con">
+                <view class="priceBox">
+                    <view class="color-pink">
+                        <text class="f-36">￥</text>
+                        <text class="f-54">{{priceInt}}</text>
+                        <text class="f-36">.{{priceFloat}}</text>
+                    </view>
+                    <view class="soldNums">本月已售：{{obj.soldNums}}次</view>
+                </view>
+            </view>
+        </view>
+        <view class="popItem">
+            <view class='subTit'>规格</view>
+            <view class="flex-row">
+                <view class="selectPrice">
+                    <block wx:for='{{obj.mutliPriceLIst}}' wx:key="{{index}}">
+                        <button size="mini" plain data-index="{{index}}" wx:if="{{index == selectIndex}}" type="primary">
+                            {{item.price}}/{{item.times}}次
+                        </button>
+                        <button size="mini" plain data-index="{{index}}" bindtap="priceChange" wx:else>
+                            {{item.price}}/{{item.times}}次
+                        </button>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="popItem">
+            <view class='subTit'>数量</view>
+            <view class="popNums">
+                <input-number className="popNums" quantity="1"></input-number>
+            </view>
+        </view>
+        <button class='btn-radius bg-pink color-white' catch:tap="Cart">加入购物车</button>
+    </view>
+</app-pop>

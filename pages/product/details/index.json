@@ -4,6 +4,7 @@
   "usingComponents": {
     "app-swiper": "/components/app-swiper/index",
     "input-number": "/components/app-input-number/index",
-    "previewImage": "/components/app-previewImage/index"
+    "previewImage": "/components/app-previewImage/index",
+    "app-pop": "../../../../components/app-pop/index"
   }
 }

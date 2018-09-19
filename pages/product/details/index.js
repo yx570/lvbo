@@ -1,6 +1,6 @@
 const productModel = require('../../../models/product/index.js');
 const wxParse = require('../../../wxParse/wxParse.js');
-const app = getApp();
+
 Page({
     data: {
         //图片地址
@@ -10,11 +10,13 @@ Page({
         comment: {},
         num: 1,
         selectIndex: 0,
+        defaultCombo: {},
         minusStatus: 'disable',
         priceInt: 0,
         priceFloat: 0,
         content: '',
-        buyNotice: ''
+        buyNotice: '',
+        popVisible: false,
     },
     onLoad(ev) {
         this.setData({
@@ -30,7 +32,8 @@ Page({
             this.splitPrice(response.data.price)
             this.setData({
                 obj: response.data,
-                imgList: response.data.imgList
+                imgList: response.data.imgList,
+                defaultCombo: response.data.mutliPriceLIst[0]
             })
             content: wxParse.wxParse('content', 'html', response.data.content, this, 12);
             buyNotice: wxParse.wxParse('buyNotice', 'html', response.data.buyNotice, this, 12);
@@ -46,8 +49,10 @@ Page({
     },
     // 更改价格套餐
     priceChange(ev) {
+        let index = ev.currentTarget.dataset.index
         this.setData({
-            selectIndex: ev.currentTarget.dataset.index
+            selectIndex: index,
+            defaultCombo: this.data.obj.mutliPriceLIst[index]
         })
     },
     // 以小数点分割价格
@@ -57,5 +62,28 @@ Page({
             priceInt: p1 || 0,
             priceFloat: p2 || '00'
         })
+    },
+    // 首页
+     home() {
+       wx.switchTab({
+         url: '../../tabBar/home/index',
+       })
+    }, 
+    // 购物车
+     shoppingCart() {
+       wx.switchTab({
+         url: '../../tabBar/cart/index',
+       })
+    }, 
+    //弹窗
+    selectTap(ev) {
+      this.setData({
+        popVisible: true
+      });
+    },
+    popClose(ev) {
+      this.setData({
+        popVisible: false
+      });
     }
 })
