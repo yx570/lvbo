@@ -23,6 +23,7 @@
 .pb-20{ padding-bottom: 20rpx; }
 .pl-20{ padding-left: 20rpx; }
 .ma-20{ margin: 20rpx; }
+.ma-40{ margin: 40rpx; }
 .mt-20{ margin-top: 20rpx; }
 .mr-20{ margin-right: 20rpx; }
 .mb-20{ margin-bottom: 20rpx; }
@@ -35,6 +36,8 @@
 .color-999{ color: #999999; }
 .color-b8 { color: #b8b8b8; }
 .color-ab{ color: #ababab; }
+.color-pink { color: #f9879a; }
+.bg-pink { background: #f9879a; }
 .bg-primary{ background: #ff5100; }
 .bg-white{ background: #fff; }
 .bg-warm{ background: #ffba00; }

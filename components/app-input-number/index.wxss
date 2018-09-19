@@ -30,3 +30,10 @@ button.app-input-btn::after{
   border: 0;
   line-height: 1;
 }
+
+.popNums .app-input-btn{
+  width: 78rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  font-size:40rpx;
+}

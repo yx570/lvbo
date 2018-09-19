@@ -11,6 +11,10 @@ Component({
     min: {
       type: Number,
       value: 1
+    },
+    className: {
+      type: String,
+      value: ''
     }
   },
   methods:{
