@@ -1,258 +1,33 @@
-
-swiper-container{
-  position:  absolute;
-  height: 700rpx;
+.panel-orderDetails .header{
+  border-bottom: 1px solid #e0e0e0;
 }
-.swiper-container .swiper{
-  height: 700rpx;
-}
-.swiper-container .swiper .img{
-  width: 100%;
-  height: 100%;
-}
-.swiper-container .dots{
-  position: relative;
-  left: 0;
-  right: 0;
-  bottom: 30rpx;
-  display: flex;
-  justify-content: center;
-}
-.swiper-container .dots .dot{
-  margin: 0 8rpx;
-  width: 14rpx;
-  height: 14rpx;
-  background: #fff;
-  border-radius: 8rpx;
-  transition: all .6s;
-}
-.swiper-container .dots .dot.active{
-  width: 14rpx;
-  background: #f80;
-}
-.cen{
-  padding:0 30rpx;
-}
-.fs-35{
-  font-size: 35rpx;
-  font-weight: bold
-}
-.fs-25{
-  font-size: 25rpx;
-  color: #999999;
+.panel-orderDetails .infos .app-row{
   padding: 10rpx 0;
 }
-.ba-f2{
-  margin-top: 20rpx;
-  background: #f2f2f2;
-  border-radius: 30rpx;
-  padding: 10rpx 30rpx;
+.panel-orderDetails .infos .img-box{
+  width: 220rpx;
+  height: 220rpx;
 }
-.ba-f2view view{
-  height: 60rpx;
-  line-height: 60rpx;
-  font-size: 25rpx;
+.panel-orderDetails .title{
+  padding: 0;
 }
-.t-in{
-  font-size: 25rpx;
-  padding-left:25rpx;
+.panel-orderDetails .sum{
+  padding: 36rpx 0;
 }
-.gd{
-  float: right;
+.panel-orderDetails .status{
+  line-height: 2;
 }
-
-.pl-25{
-  font-size: 25rpx;
-  color: #333333;
+.panel-orderDetails .list .img-box{
+  margin: 0 26rpx;
+  border-radius: 50%;
 }
-
-.br-t-1{
-  border-top: 1rpx #e2e2e2 solid;
+.panel-orderDetails .list image{
+  border-radius: 50%;
 }
-.ckpl{
-  font-size: 32rpx;
-  padding: 30rpx 0;
-  margin-top: 20rpx;
+.panel-orderDetails .list .date{
+  padding: 26rpx 0;
 }
-.h1{
+.panel-orderDetails .list .iconfont{
   font-size: 50rpx;
-  font-weight: bold;
-}
-.bot-tip{
-  height: 120rpx;
-  line-height: 120rpx;
-  width: 100%;
-}
-.detalis-bottom{
-  height: 120rpx;
-  width: 100%;
-  background: #f9f9f9;
-  position: fixed;
-  bottom: 0;
-  border-top: 2rpx #d7d7d7 solid;
-}
-.bottom_list{
-  float: left;
-  margin-left: 70rpx;
-  color: #b8b8b8;
-}
-.icon-shoucang .icon-gouwuche{
-  font-size: 45rpx;
-}
-.bottom_but button{
-  font-size: 30rpx;
-  margin-top: 22rpx;
-}
-.c-3d454d{
-  color: #fff;
-  background-color: #3d454d  !important;
-}
-
-
-.modal-box{
-  position:fixed;
-  width:100%;
-  height:100%;
-  top:0px;
-  background:rgba(0,0,0,0.4);
-  overflow: hidden;
-  }
-
-.modal-body{
-  position:absolute;
-  bottom: 30rpx;
-  width: 100%;
-}
-
-.modal-content{
-  background: #fff;
-  margin: 30rpx;
-  border-radius: 30rpx;
-  color: #b2b2b2;
- 
-}
-.modal-content1{
-margin:30rpx;
-color:#b2b2b2;
-}
-.a{
-  width: 40%;
-  text-align: right;
-  color: #b2b2b2;
-}
-.b{
-  width: 60%;
-   word-break:break-all;
-   word-wrap:break-word;
-   min-height: 50rpx;
-   color: #000;
-}
-
-.con-but{
-  height: 80rpx;
-  line-height: 80rpx;
-  font-size: 30rpx;
-  margin: 15rpx;
-}
-.aaa{
-  float: left;
-  width: 100%;
-}
-.flag2 view{
-  height: 80rpx;
-  line-height: 80rpx;
-} 
-
-.modal-contentL{
-    width: 120rpx !important;
-    height: 120rpx !important;
-    border-radius: 20rpx;
-}
-.modal-contentL image{
-    width: 120rpx !important;
-    height: 120rpx !important;
-}
-.modal-contentR{
-    height: 120rpx !important;
-    padding-left: 30rpx;
-    padding-top: 20rpx;
-    font-size: 20rpx !important;
-}
-.but-sel{
-  float: left;
-  font-size: 30rpx;
-  /* margin-right: 20rpx;
-  margin-bottom: 20rpx; */
-  color:#333 !important;
-  border:1px solid #d7d7d7 !important;
-}
-.but-yes{
-  color:#ff5404 !important;
-  border:1px solid #ff5404 !important;
-}
-.weui-cell{
-  height: 70rpx !important;
-}
-
-.pl-img{
-  width: 100rpx;
-  height: 100rpx;
-  border-radius:50%; overflow:hidden;
-  margin-right: 20rpx;
-}
-.w-width{
-  width: 350rpx;
-}
-
-.stepper {
-  width:200rpx;
-  height:70rpx  !important;
-  line-height: 70rpx;
-  border: 1rpx solid #ccc;
-  border-radius: 10rpx;
-  color: #333;
-}
-/*加号和减号*/
-.stepper text {
-  float: left;
-  width: 50rpx;
-  height: 70rpx;
-  line-height: 70rpx;
-  text-align: center;
-}
-/*数值*/
-.stepper input {
-  width: 90rpx;
-  float: left;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 35rpx;
-  height: 70rpx;
-  border-left: 1rpx solid #ccc;
-  border-right: 1rpx solid #ccc;
-}
-/*普通样式*/
-.stepper .normal {
-  color:black;
-}
-/*禁用样式*/
-.stepper .disable {
-  color: #333;
-} 
-/* 奇数行  */
-.vwdataodd{ 
-  background: #eaeaea;
-  border-radius: 10rpx;
-}
-/* 偶数行  */
-.vwdataeven{ 
-  background: #fff;
-  border-radius: 10rpx;
-}
-.oh{
-  widows: 95%;
-  overflow: hidden
-}
-.wxParse-p image{
-  width:  100% !important;
+  line-height: 1;
 }

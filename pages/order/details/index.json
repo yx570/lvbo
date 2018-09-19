@@ -1,7 +1,4 @@
 {
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "金谷坊主",
-  "usingComponents": {
-    "app-pop": "../../../../components/app-pop/index"
-  }
+  "navigationBarTitleText": "订单详情"
 }
