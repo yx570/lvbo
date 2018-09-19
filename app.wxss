@@ -16,6 +16,7 @@
   width: 100%;
   height: 100%;
 }
+
 .pa-20{ padding: 20rpx; }
 .pt-20{ padding-top: 20rpx; }
 .pr-20{ padding-right: 20rpx; }
@@ -32,6 +33,7 @@
 .color-white{ color: #fff; }
 .color-666{ color: #666666; }
 .color-999{ color: #999999; }
+.color-b8 { color: #b8b8b8; }
 .color-ab{ color: #ababab; }
 .bg-primary{ background: #ff5100; }
 .bg-white{ background: #fff; }
