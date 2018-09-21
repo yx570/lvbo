@@ -1,5 +1,4 @@
 /* components/app-swiper.wxss */
-scroll-view { height: 100%}
 .swiper-text { 
     position: absolute; 
     right:20rpx; 

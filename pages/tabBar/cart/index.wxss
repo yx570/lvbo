@@ -9,6 +9,8 @@
 .order-item{
     position: relative;
     width: 100%;
+    padding-top:50rpx;
+    padding-bottom:50rpx;
     transition: 0.3s;
 }
 .order-item.touch-move-active{
@@ -43,55 +45,37 @@
 
 .order-item image{
     display: inline-block;
-    width: 160rpx;
-    height: 160rpx;
+    width: 180rpx;
+    height: 180rpx;
     vertical-align: middle;
-    margin-right: 15rpx;
-}
-.order-item .weui-cell__bd{
-    /* padding-left: 20rpx; */
+    border-radius: 20rpx;
+    margin-right: 30rpx;
 }
 
 .order-item .name{
   max-width: 420rpx;
-  font-size: 32rpx;
+  height:76rpx;
+  font-size: 28rpx;
   color: #333;
   overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
 }
 .panel-cart .order-item .name{
   padding-bottom: 0; 
 }
+.order-item .size {
+    margin:10rpx 0 10rpx;
+    color:#adadad;
+}
 .panel-cart .order-item .at-number-input{
-  width: 50%;
-  padding-top: 60rpx; 
+  width: 40%;
+}
+.order-item .flex-row {
+    justify-content: space-between; 
 }
 .order-item .price{
-    padding-top: 66rpx; 
-    font-size: 32rpx;
+    font-size: 34rpx;
+    line-height: 60rpx;
 }
 .order-item .price .sub{
-    font-size: 28rpx;
-}
-.at-number-input .iconfont{
-    position: relative;
-    font-size: 40rpx;
-    color: #f0f0f2;
-}
-.at-number-input .iconfont::before{
-    position: relative;
-    z-index: 10;
-}
-.at-number-input .iconfont::after{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%; 
-    width: 30rpx;
-    height: 30rpx;
-    background: #333;
-    border-radius: 50%;
-    transform: translate3d(-50%,-50%,0);
-    z-index: 0;
+    font-size: 20rpx;
 }

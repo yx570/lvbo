@@ -10,7 +10,7 @@ module.exports = {
   //购物车列表
   cartlist: params => {
     return ajax({
-      path: '/cart/list', method: 'post', params,loading: false});
+      path: '/static/data/cartList.js', method: 'post', params,loading: false});
   },
   //立即购买加入购物车
   // "id": "",   //skuId

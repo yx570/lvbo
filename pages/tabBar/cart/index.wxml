@@ -8,25 +8,32 @@
                 </label>
             </view>
             <view class="weui-cell__bd"  bindtap="urlshow" data-id="{{item.skuId}}">
-                <view  class="f-l"><image  src="{{ item.picture }}" /></view>
-                <view class="name">{{ item.name }}</view>
-                <view class="overflow cb">
-                  <view class="f-l price color-primary">
-                      <text class="sub">￥</text>
-                      <text>{{ item.price }}</text>
-                  </view>
-                  <view class="f-r at-number-input">
-                    <!-- <view class="iconfont icon-clear_fill {{ item.quantity <= 0 ? 'disabled':'' }}" data-id="{{ item.skuId }}" catch:tap="changeCount" data-index="{{ index }}" data-value="-1"></view>
-                    <text class="text">{{ item.quantity }}</text>
-                    <view class="iconfont icon-addition_fill" catch:tap="changeCount" data-id="{{ item.skuId }}" data-index="{{ index }}" data-value="1"></view> -->
-                    <app-input-number 
-                      quantity="{{ item.quantity }}"
-                      data-id="{{ item.skuId }}" 
-                      data-index="{{ index }}" 
-                      catch:tap="inputTap"
-                      bind:change="changeCount" 
-                    />
-                  </view>
+                <view class="weui-cell pa-0">
+                    <view  class="weui-cell__hd"><image  src="{{ item.picture }}" /></view>
+
+                    <view class="weui-cell__bd">
+                        <view class="name">{{ item.name }}</view>
+                        <view class="size">规格：{{ item.price }}/次</view>
+                        <view class="flex-row">
+                            <view class="price color-pink">
+                                <text class="sub">￥</text>
+                                <text>{{ item.price }}</text>
+                            </view>
+                            <view class="at-number-input">
+                                <!-- <view class="iconfont icon-clear_fill {{ item.quantity <= 0 ? 'disabled':'' }}" data-id="{{ item.skuId }}" catch:tap="changeCount" data-index="{{ index }}" data-value="-1"></view>
+                                <text class="text">{{ item.quantity }}</text>
+                                <view class="iconfont icon-addition_fill" catch:tap="changeCount" data-id="{{ item.skuId }}" data-index="{{ index }}" data-value="1"></view> -->
+                                <app-input-number 
+                                quantity="{{ item.quantity }}"
+                                className="cartNumInput"
+                                data-id="{{ item.skuId }}" 
+                                data-index="{{ index }}" 
+                                catch:tap="inputTap"
+                                bind:change="changeCount" 
+                                />
+                            </view>
+                        </view>
+                    </view>
                 </view>
             </view>
             <view class="weui-cell__del overflow">

@@ -32,6 +32,13 @@
     animation-fill-mode: both;
 }
 
+button {
+  border:none;
+}
+button:after {
+  border:none;
+}
+
 /* animate -- start */
 @keyframes slideInDown {
     from {

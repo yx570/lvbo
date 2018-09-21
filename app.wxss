@@ -17,6 +17,14 @@
   height: 100%;
 }
 
+button {
+  border:none;
+}
+button:after {
+  border:none;
+}
+
+.pa-0 { padding:0; }
 .pa-20{ padding: 20rpx; }
 .pt-20{ padding-top: 20rpx; }
 .pr-20{ padding-right: 20rpx; }
@@ -66,7 +74,6 @@
 .btn-radius[size=mini]:after{ border-radius: 50rpx; }
 button[type=primary][plain].btn-code{
   border-radius: 0;
-  border: 0;
   font-size: 30rpx;
 }
 .bg-linear-tb{
@@ -222,9 +229,6 @@ button[type=primary][plain].btn-code{
   line-height: 100rpx;
   border-radius: 0;
   vertical-align: middle;
-}
-.app-footer button::after{
-  display: none;
 }
 .app-footer button.only{
   width: 100%;

@@ -9,16 +9,16 @@
     width: 180rpx;
     height:76rpx; 
     line-height: 76rpx;
-    margin: 10rpx 20rpx 0 0;
+    margin: 20rpx 20rpx 0 0;
     font-size:30rpx;
     background: #f0f0f0;
-    border-color: #dadada;
     padding: 0;
+    border:1rpx solid #dadada;
 }
 
 .selectPrice button[plain][type=primary] {
     background: #ffe9ed;
-    border-color: #f9879a;
+    border:1rpx solid #f9879a;
 }
 
 .selectPrice .fonts {
@@ -105,10 +105,12 @@
 .comment-row,
 .selectPrice .weui-cells {
     margin-top: 30rpx;
-    border: 1px solid #eeeDDD;
+    border: 1rpx solid #eee;
     background-color: #fafafa;
     border-radius: 18rpx;
 }
+.selectPrice .weui-cells:before,
+.selectPrice .weui-cells:after { border:none;}
 
 .pruductContent {
     margin: 30rpx 0;
@@ -132,7 +134,6 @@
 
 .buyNotice .contents {
     background-color: #fff;
-    padding-bottom: 80rpx;
 }
 
 .noticeTitle {
@@ -183,7 +184,7 @@
 }
 
 .detalis-bottom {
-    height: 88rpx;
+    height: 100rpx;
     width: 100%;
     background: #fff;
     position: fixed;
@@ -203,7 +204,7 @@
     flex: .7
 }
 .bottom_link .items {
-    padding-top:6rpx;
+    padding-top:12rpx;
     flex:1;
     text-align: center;
     color:#b1b1b1;
@@ -216,20 +217,20 @@
     font-size:22rpx;
 }
 .bottom_but {
-    padding-top:12rpx;
+    padding-top:10rpx;
     text-align:center;
     flex: 1.3;
 }
 
 .bottom_but button {
-    width:45%;
+    width:44%;
     display:inline-block;
-    font-size: 28rpx;
+    font-size: 32rpx;
     color:#fff;
-    height:70rpx;
-    line-height: 70rpx;
-    border:none;
+    height:80rpx;
+    line-height: 80rpx;
 }
+
 .btn-cart { border-top-left-radius: 40rpx; border-bottom-left-radius: 40rpx; border-top-right-radius: 0; border-bottom-right-radius: 0; background: #ffc05d;}
 .btn-buy { border-top-right-radius: 40rpx; border-bottom-right-radius: 40rpx; border-top-left-radius: 0; border-bottom-left-radius: 0; background: #f9879a;}
 

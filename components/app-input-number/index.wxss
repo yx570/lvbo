@@ -37,3 +37,16 @@ button.app-input-btn::after{
   line-height: 78rpx;
   font-size:40rpx;
 }
+
+.cartNumInput .app-input,
+.cartNumInput {
+  border:none;
+}
+.cartNumInput .app-input-btn{
+  width:42rpx;
+  height:42rpx;
+  line-height:42rpx;
+  background:#f6f6f6;
+  border-radius: 50%;
+  font-size: 40rpx;
+}
