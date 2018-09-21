@@ -37,7 +37,11 @@
 			"list": []
 		},
 		"miniprogram": {
+<<<<<<< HEAD
+			"current": 6,
+=======
 			"current": -1,
+>>>>>>> 4799654652c007090c3d198815dbcb503111b1a4
 			"list": [
 				{
 					"id": 1,
@@ -68,6 +72,20 @@
 					"name": "order",
 					"pathName": "pages/tabBar/order/index",
 					"query": ""
+<<<<<<< HEAD
+				},
+				{
+					"id": -1,
+					"name": "score",
+					"pathName": "pages/subs/score/index",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "cart",
+					"pathName": "pages/tabBar/cart/index"
+=======
+>>>>>>> 4799654652c007090c3d198815dbcb503111b1a4
 				}
 			]
 		}
