@@ -2,8 +2,8 @@
     <view class="weui-cells order-list" wx:if="{{ orders.length > 0 }}">
         <view class="weui-cell order-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}" bind:touchstart="touchstart" bind:touchmove="touchmove" bind:tap="cellTap">
             <view class="weui-cell__hd">
-                <label class="checkbox" data-index="{{ index }}" data-ids='{{ item.id }}' data-sele="{{ item.selected }}" catch:tap="checkboxTap">
-                    <checkbox value="{{ index }}" checked="{{ item.selected }}"/>
+                <label class="checkbox" data-index="{{ index }}" catch:tap="checkboxTap">
+                    <checkbox value="{{ index }}" checked="{{ item.checked }}"/>
                     <icon class="iconfont icon-check"></icon>
                 </label>
             </view>
@@ -13,7 +13,7 @@
 
                     <view class="weui-cell__bd">
                         <view class="name">{{ item.name }}</view>
-                        <view class="size">规格：{{ item.price }}/次 - {{ item.selected }}</view>
+                        <view class="size">规格：{{ item.price }}/次 - {{ item.checked }}</view>
                         <view class="flex-row">
                             <view class="price color-pink">
                                 <text class="sub">￥</text>

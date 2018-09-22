@@ -10,9 +10,7 @@ Page({
     curTouchIndex:0,
     selectQuantity:0,
     // 表示该篇文章
-    item: [],
-    id:[],
-    selected:false,
+    selecteds: []
   },
   onLoad: function () {
     app.pages.add(this);
@@ -49,7 +47,7 @@ Page({
       let { list = [], quantity = 0 } = response.data;
       list.forEach(v=>{
         v.isTouchMove = false;
-        v.checked = false ;
+        v.checked = false;
       });
       this.setData({
         orders: list,
@@ -64,15 +62,13 @@ Page({
 
   // 去结算
   goSettle(params){
-    var datas = this.data.orders.filter(item => {
-      return item.selected == true;
+    let selecteds = this.data.orders.filter(item => {
+      return item.checked;
     });
-    this.setData({
-      item: datas
-    });
+    this.setData({ selecteds });
     // console.log(datas.length)
     if (datas.length != 0) {
-      getApp().globalData.goSettleList = datas;
+      // getApp().globalData.goSettleList = datas;
       // console.log(getApp().globalData.goSettleList)
       wx.navigateTo({
         url: '../../../pages/cart/fill/index?payType=2&&type=2'
@@ -88,42 +84,24 @@ Page({
   },
   // 单选
   checkboxTap(e){
-    let { index, sele , ids } = e.currentTarget.dataset;
-   
-    if (sele == false){
-      this.setData({
-        selected: true,
-        [`orders[${index}].selected`]: true
-      });
-    }else{
-      this.setData({
-        selected: false,
-        [`orders[${index}].selected`]: false
-      });
-    }
-    // console.log(sele)
-    //更改选中状态
-    // console.log(ids, this.data.selected )
-    let selected =this.data.selected;
-    cartModel.cart_select({ ids, selected }).then(response => { console.log(response) }).catch(e => { });
+    let { index } = e.currentTarget.dataset;
+
+    console.log(index)
+    console.log(this.data.orders[index].checked)
+    this.setData({
+      [`orders[${index}].checked`]: !this.data.orders[index].checked
+    });
+
     this.computeTotalPrice();
     this.checkShow();
   },
   checkShow(){
-    var datas = this.data.orders.filter(item => {
-      return item.selected == false;
+    let checkedAll = true;
+    this.data.orders.forEach(v => {
+      !v.checked && (checkedAll = false)
     });
-    // console.log(this.data.orders)
-    // console.log(datas.length)
-    if (datas.length == 0){
-      this.setData({
-        checkedAll: true
-      });
-    }else{
-      this.setData({
-        checkedAll: false
-      });
-    }
+
+    this.setData({ checkedAll });
   },
   // 全选
   checkAllTap(){
@@ -131,19 +109,16 @@ Page({
     this.setData({
       checkedAll: !this.data.checkedAll
     });
-    this.data.id = [];
     this.data.orders.forEach(v => {
-      v.selected = this.data.checkedAll;
-      this.data.id.push(v.id)
+      v.checked = this.data.checkedAll;
     });
     this.setData({
       orders: this.data.orders
     });
     //更改选中状态
-    let ids = this.data.id;
-    let selected = this.data.checkedAll;
+    
     // console.log(ids, selected)
-    cartModel.cart_select({ ids, selected }).then(response => { console.log(response) }).catch(e => { });
+    // cartModel.cart_select({ ids, selected }).then(response => { console.log(response) }).catch(e => { });
     this.computeTotalPrice();
   },
   inputTap(){},
@@ -167,7 +142,7 @@ Page({
     // console.log(this.data.orders);
     let total = 0;
     this.data.orders.forEach((v,i)=>{
-      v.selected && (total += v.price * v.quantity);
+      v.checked && (total += v.price * v.quantity);
     });
     this.setData({
       totalPrices:total.toFixed(2)
