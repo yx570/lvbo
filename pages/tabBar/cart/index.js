@@ -11,11 +11,14 @@ Page({
     selectQuantity:0,
     // 表示该篇文章
     item: [],
-    skuId:[],
-    selected:"",
+    id:[],
+    selected:false,
   },
   onLoad: function () {
     app.pages.add(this);
+
+    // xwx.showTabBarRedDot(2);
+
     this.data.orders.forEach((v,i)=>{
       v.isTouchMove = false;
     });
@@ -46,7 +49,7 @@ Page({
       let { list = [], quantity = 0 } = response.data;
       list.forEach(v=>{
         v.isTouchMove = false;
-        // v.checked = false;
+        v.checked = false ;
       });
       this.setData({
         orders: list,
@@ -128,16 +131,16 @@ Page({
     this.setData({
       checkedAll: !this.data.checkedAll
     });
-    this.data.skuId = [];
+    this.data.id = [];
     this.data.orders.forEach(v => {
       v.selected = this.data.checkedAll;
-      this.data.skuId.push(v.skuId)
+      this.data.id.push(v.id)
     });
     this.setData({
       orders: this.data.orders
     });
     //更改选中状态
-    let ids = this.data.skuId;
+    let ids = this.data.id;
     let selected = this.data.checkedAll;
     // console.log(ids, selected)
     cartModel.cart_select({ ids, selected }).then(response => { console.log(response) }).catch(e => { });
@@ -186,7 +189,7 @@ Page({
     cartModel.remove({ id }).then(response=>{
       this.setData({
         orders: this.data.orders.filter(v=>{
-          return v.skuId !== id
+          return v.id !== id
         })
       });
       if (this.data.orders.length == 0){
@@ -261,10 +264,12 @@ Page({
     return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
   },
   //详情
-  urlshow: function (e) {
+  urlshow (e) {
     // console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../../purchase/details/details?id=' + e.currentTarget.dataset.id
     })
   },
+  changeTimes() {
+  }
 })

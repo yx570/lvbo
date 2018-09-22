@@ -40,7 +40,7 @@ App({
       cartModel.cartlist().then(response => {
         var arr = [];
         response.data.list.forEach(v => {
-          arr.push(v.skuId);
+          arr.push(v.id);
         });
         getApp().globalData.catList = arr;
 

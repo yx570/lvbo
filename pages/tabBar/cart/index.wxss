@@ -10,7 +10,7 @@
     position: relative;
     width: 100%;
     padding-top:50rpx;
-    padding-bottom:50rpx;
+    padding-bottom:20rpx;
     transition: 0.3s;
 }
 .order-item.touch-move-active{
@@ -18,10 +18,10 @@
 }
 .order-item .weui-cell__del{
     position: absolute;
-    top: 2rpx;
+    top: 0;
     right: -200rpx;
     width: 200rpx;
-    height: 198rpx;
+    height: 100%;
 }
 .order-item .weui-cell__del button{
     position: relative;
@@ -78,4 +78,42 @@
 }
 .order-item .price .sub{
     font-size: 20rpx;
+}
+.order-item .selectTimes:before,
+.order-item .selectTimes:after {
+    border:none;
+}
+.order-item .selectTimes {
+    margin-top:20rpx;
+    color: #adadad;
+    font-size:24rpx;
+    justify-content: space-between;
+}
+.selectTimes .ellipse {
+    width:500rpx;
+}
+
+.cart-footer { 
+    position: fixed; 
+    z-index: 3;
+    left: 0; 
+    right:0; 
+    bottom:0; 
+    background: #fff; 
+    border-top:1rpx solid #f3f3f3; 
+    border-bottom:1rpx solid #f3f3f3;
+    padding: 15rpx 30rpx;
+    height:100rpx;
+    line-height:70rpx;
+    font-size:30rpx;
+    color:#666;
+}
+.cart-footer button {
+    margin-left:40rpx;
+    border-radius: 35rpx;
+    font-size:32rpx;
+    height:70rpx;
+    line-height:70rpx;
+    padding-left:58rpx;
+    padding-right:58rpx;
 }

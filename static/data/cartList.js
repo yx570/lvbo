@@ -8,6 +8,7 @@ module.exports = {
         "picture": "http://xl.tianjiaoedu.org/upload/201607/05/201607051554541730.jpg",
         "name": "产后恢复减瘦肚子束身衣橡胶塑身腰封女运动产后恢复减瘦肚子束身衣橡胶塑身腰封女运动产后恢复减瘦肚子束身衣橡胶塑身腰封女运动",
         "price": "982",
+        "quantity": "1",
         "times": "3",
         "dateTime": [
           "2018-09-20 12:20:00",
@@ -22,6 +23,7 @@ module.exports = {
         "name": "产后恢复减瘦肚子束身衣橡胶塑身腰封女运动",
         "price": "982",
         "times": "3",
+        "quantity": "2",
         "dateTime": [
           "2018-09-20 12:20:00",
           "2018-09-21 12:20:00",
@@ -34,6 +36,7 @@ module.exports = {
         "picture": "http://img2.ph.126.net/NjHvTMhbCihDSocfwxE11g==/2855563638830365544.jpg",
         "name": "产后恢复减瘦肚子束身衣橡胶塑身腰封女运动",
         "price": "982",
+        "quantity": "3",
         "times": "3",
         "dateTime": [
           "2018-09-20 12:20:00",
@@ -47,6 +50,7 @@ module.exports = {
         "picture": "http://i1.sinaimg.cn/travel/2014/1021/U8842P704DT20141021103442_1.jpg",
         "name": "产后恢复减瘦肚子束身衣橡胶塑身腰封女运动",
         "price": "982",
+        "quantity": "4",
         "times": "3",
         "dateTime": [
           "2018-09-20 12:20:00",
