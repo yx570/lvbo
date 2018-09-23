@@ -1,6 +1,6 @@
 <!-- components/app-previewImage/index.wxml -->
 <view class="prevImgList">
-    <block wx:for="{{imgList}}" wx:key="item">
+    <block wx:for="{{imgList}}" wx:key="{{ index }}">
         <view class="items">
             <image 
             mode="aspectFill"

@@ -1,0 +1,67 @@
+.app-content-title{
+  position: relative;
+  text-align: center;
+}
+.app-content-title .title{
+  position: relative;
+  font-size: 38rpx;
+  font-weight: 600;
+  letter-spacing: 10rpx;
+  z-index: 10;
+}
+.app-content-title .subtitle{
+  position: relative;
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 10rpx;
+  z-index: 10;
+}
+.app-content-title .dots{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 320rpx;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+.app-content-title .dot{
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  z-index: -1;
+}
+.app-content-title .dot1{
+  top: 4rpx;
+  left: 0;
+  width: 10rpx;
+  height: 10rpx;
+}
+.app-content-title .dot2{
+  top: 28rpx;
+  left: 30rpx;
+  width: 10rpx;
+  height: 10rpx;
+}
+.app-content-title .dot3{
+  top: 0rpx;
+  left: 66rpx;
+}
+.app-content-title .dot4{
+  top: 24rpx;
+  right: 80rpx;
+}
+.app-content-title .dot5{
+  top: -4rpx;
+  right: 52rpx;
+  width: 18rpx;
+  height: 18rpx;
+}
+.app-content-title .dot6{
+  top: 22rpx;
+  right: 16rpx;
+  width: 12rpx;
+  height: 12rpx;
+}

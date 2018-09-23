@@ -25,6 +25,19 @@ App({
       }
     })
   },
+  setNavTitle(title){
+    wx.setNavigationBarTitle({ title })
+  },
+  setNavColor(obj = {
+    frontColor: '#ffffff',
+    backgroundColor: '#00b0ab',
+    animation: {
+      duration: 10,
+      timingFunc: 'easeIn'
+    }
+  }) {
+    wx.setNavigationBarColor(obj)
+  },
   // 获取地理位置
 //getUserLocation(){
 //  wx.getLocation({

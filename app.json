@@ -35,6 +35,7 @@
     {
       "root": "pages/subs",
       "pages": [
+        "about/index",
         "score/index"
       ]
     }

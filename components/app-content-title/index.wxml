@@ -1,0 +1,8 @@
+<!-- 页面内容标题 -->
+<view class="app-content-title">
+  <view class="title" style="color: {{ titleColor }};">{{ title }}</view>
+  <view class="subtitle" style="color: {{ subTitleColor }};">{{ subTitle }}</view>
+  <view class="dots">
+    <view class="dot {{ 'dot' + (item + 1) }}" wx:for="{{ 6 }}" wx:key="{{ index }}" style="background: {{ dotColor }};"></view>
+  </view>
+</view>

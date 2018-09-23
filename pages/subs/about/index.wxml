@@ -1,0 +1,87 @@
+<view class="container panel-about">
+  <view class="about-header bg-primary">
+    <view class="dot-area">
+      <view class="dot dot1"></view>
+      <view class="dot dot2"></view>
+    </view>
+    <view class="img-box">
+      <image src="../../../static/images/logo-page.png" />
+    </view>
+    <view class="blur-area"></view>
+  </view>
+  <view class="about-intro">
+    <app-content-title title="品牌介绍" subTitle="ABOUT NEWBORN" dotColor="#e2f6f5" />
+    <view class="con">
+      我们旨在赋能企业改变营销、销售和经营的方式，并提升企业效率。我们为商家、品牌及其他企业提供技基础设施以及营销平台，让其可借技术的力量与用户动，以更具效率的形式开展运营。
+    </view>
+  </view>
+  <view class="about-team mt-20">
+    <app-content-title title="技师团队" subTitle="Technician team" dotColor="#fff2db" />
+
+  </view>
+  <view class="about-case mt-20">
+    <app-content-title title="案例分享" subTitle="Case Studies" dotColor="#fff3f5" />
+  </view>
+  <view class="about-promise mt-20">
+    <app-content-title title="承诺保障" subTitle="Commitment guarantee" dotColor="#faf3ff" />
+    <view class="con">
+      <view class="flex-row">
+        <view class="iconfont icon-gouxuan-o"></view>
+        <view class="flex-bd pl-20">
+          凡收费模板，官方均赠送首次安装服务；
+        </view>
+      </view>
+      <view class="flex-row">
+        <view class="iconfont icon-gouxuan-o"></view>
+        <view class="flex-bd pl-20">
+          提供后台操作教程，不包含QQ和电话在线培训指导；
+        </view>
+      </view>
+      <view class="flex-row">
+        <view class="iconfont icon-gouxuan-o"></view>
+        <view class="flex-bd pl-20">
+          非商业授权用户购买收费模板，无法去除前台页头和底部版权；
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="about-suggest mt-20">
+    <form bindsubmit="formSubmit">
+      <app-content-title title="投诉建议" subTitle="Suggestions" dotColor="#faf3ff" />
+      <view class="con">
+        <textarea class="textarea bg-f8" name="textarea" placeholder="请输入您的建议" placeholder-style="font-size: 32rpx; color: #cccccc;" />
+        <view class="flex-row images">
+          <view class="img-box bg-f8 mr-20 mb-20" wx:for="{{ images }}" data-src="{{ item }}" wx:key="{{ index }}" bindtap="preViewImage">
+            <image src="{{ item }}" />
+          </view>
+          <view class="img-box bg-f8 mb-20" bindtap="chooseImage">
+            <view class="iconfont icon-camera"></view>
+          </view>
+        </view>
+        <view class="btn-area">
+          <button type="primary" formType="submit">提交建议</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>
+<app-pop visible="{{ popVisible }}" bind:close="popClose" class="popBox" styles="bottom:0rpx;left:0;border-radius: 20rpx;width:95%;margin: 20rpx;background: transparent;">
+  <view class='modal-content align-center'>
+    <view class="pop-rows bg-white">
+      <view class="app-row" bindtap="openCamera">拍照</view>
+      <view class="app-row">从相册中选择</view>
+    </view>
+    <view class="pop-rows bg-white mt-20">
+      <view class="app-row" bindtap="popClose">取消</view>
+    </view>
+  </view>
+</app-pop>
+<app-camera
+  visible="{{ cameraVisible }}"
+  iconfont="iconfont"
+  icon-arrow-down="icon-arrow-down"
+  icon-camera-reverse="icon-camera-reverse"
+  bind:success="cameraSuccess"
+  bind:cancel="closeCamera"
+  wx:if="{{ cameraVisible }}"
+/>

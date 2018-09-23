@@ -10,6 +10,7 @@
 }
 .content{
   padding: 0 30rpx;
+  text-align: justify;
 }
 .scroll-box{
   position: absolute;
@@ -36,7 +37,7 @@ button:after {
 .mr-20{ margin-right: 20rpx; }
 .mb-20{ margin-bottom: 20rpx; }
 .ml-20{ margin-left: 20rpx; }
-.color-primary{ color: #ff5100; }
+.color-primary{ color: #00b0ab; }
 .color-red{ color: #e00000; }
 .color-gray{ color: #c0c0c0; }
 .color-white{ color: #fff; }
@@ -46,14 +47,16 @@ button:after {
 .color-ab{ color: #ababab; }
 .color-pink { color: #f9879a; }
 .bg-pink { background: #f9879a; }
-.bg-primary{ background: #ff5100; }
+.bg-primary{ background: #00b0ab; }
 .bg-white{ background: #fff; }
 .bg-warm{ background: #ffba00; }
 .bg-f3{ background: #f3f3f3; }
+.bg-f8{ background: #f8f8f8; }
 
 .flex-row{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .flex-column{
   display: flex;

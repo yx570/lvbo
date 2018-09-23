@@ -1,0 +1,127 @@
+.panel-about{
+  width: 100%;
+}
+.panel-about .con{
+  padding: 30rpx;
+  line-height: 48rpx;
+  text-align: justify;
+  color: #666666;
+}
+.about-header{
+  position: relative;
+  padding: 30rpx 0 90rpx;
+}
+.about-header .dot-area{
+  position: absolute;
+  width: 310rpx;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.about-header .dot::before,
+.about-header .dot::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+.about-header .dot1::before{
+  width: 26rpx;
+  height: 26rpx;
+  left: 6rpx;
+}
+.about-header .dot1::after{
+  top: 50rpx;
+  left: 56rpx;
+}
+.about-header .dot2::before{
+  right: -80rpx;
+}
+.about-header .dot2::after{
+  top: 74rpx;
+  right: 10rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+.about-header .img-box{
+  position: relative;
+  width: 310rpx;
+  height: 290rpx;
+  margin: 0 auto;
+  z-index: 10;
+}
+.about-header .img-box::before{
+  content: '';
+  position: absolute;
+  top: -20rpx;
+  right: 20rpx;
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: -1;
+}
+.about-header .blur-area{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.about-header .blur-area::before,
+.about-header .blur-area::after{
+  content: '';
+  position: absolute;
+  width: 340rpx;
+  height: 340rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  filter: blur(16rpx);
+}
+.about-header .blur-area::before{
+  bottom: -110rpx;
+  left: -110rpx;
+}
+.about-header .blur-area::after{
+  right: -170rpx;
+  bottom: -170rpx;
+}
+
+.about-intro{
+  padding-top: 70rpx;
+}
+
+.about-suggest .textarea{
+  width: 100%;
+  height: 220rpx;
+  padding: 22rpx;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+.about-suggest .images{
+  padding: 28rpx 0 8rpx;
+}
+.about-suggest .images .img-box{
+  width: 156rpx;
+  height: 156rpx;
+  border-radius: 16rpx;
+  text-align: center;
+}
+.about-suggest .images .img-box image{
+  border-radius: 16rpx;
+}
+.about-suggest .images .iconfont{
+  font-size: 60rpx;
+  line-height: 156rpx;
+  color: #dcdcdc;
+}
+
+.modal-content .pop-rows{
+  border-radius: 16rpx;
+}

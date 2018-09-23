@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 1,
@@ -72,7 +72,13 @@
 				{
 					"id": -1,
 					"name": "cart",
-					"pathName": "pages/tabBar/cart/index"
+					"pathName": "pages/tabBar/cart/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "about",
+					"pathName": "pages/subs/about/index"
 				}
 			]
 		}
