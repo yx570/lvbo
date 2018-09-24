@@ -1,0 +1,13 @@
+
+@import "/wxParse/wxParse.wxss";
+
+.panel-details .title{
+  font-size: 46rpx;
+  font-weight: 600;
+}
+.panel-details .subtitle{
+  font-size: 32rpx;
+}
+.details-bd{
+  padding: 70rpx 0 10rpx;
+}

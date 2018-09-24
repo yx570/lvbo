@@ -1,0 +1,13 @@
+<!-- pages/case/details/index.wxml -->
+<import src="../../../wxParse/wxParse.wxml" />
+<view class="container panel-details">
+  <view class="content">
+    <view class="details-hd">
+      <view class="align-center title">{{ infos.title }}</view>
+      <view class="align-center subtitle color-666">发布于 {{ infos.date }}</view>
+    </view>
+    <view class="details-bd">
+      <template is="wxParse" data="{{ wxParseData:content.nodes }}" />
+    </view>
+  </view>
+</view>

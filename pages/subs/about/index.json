@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "app-content-title": "/components/app-content-title/index",
-    "app-camera": "/components/app-camera/index",
     "app-pop": "/components/app-pop/index"
   }
 }

@@ -17,10 +17,59 @@
   </view>
   <view class="about-team mt-20">
     <app-content-title title="技师团队" subTitle="Technician team" dotColor="#fff2db" />
-
+    <view class="team-box">
+      <swiper previous-margin="{{'210rpx'}}" next-margin="{{'210rpx'}}" current="{{ swiperIndex }}" bindchange="swiperChange">
+        <block wx:for="{{ team }}" wx:key="{{ index }}">
+          <swiper-item>
+            <image src="{{ item.src }}" class="slide-image {{ swiperIndex == index ? 'active' : '' }}"/>
+            <view class="swiper-ft {{ swiperIndex == index ? 'active' : '' }}">
+              <view class="align-center name">{{ item.name }}</view>
+              <view class="align-center stars">
+                <view class="iconfont {{ item.star > idx ? 'icon-star-o' : 'icon-star' }}" wx:for="{{ 5 }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="con">
+      <button class="team-more" type="primary" plain>
+        <text>600+专业技师竭诚为您服务</text>
+        <text class="iconfont icon-arrow-right pl-20 color-primary"></text>
+      </button>
+    </view>
   </view>
   <view class="about-case mt-20">
     <app-content-title title="案例分享" subTitle="Case Studies" dotColor="#fff3f5" />
+    <view class="case-list">
+      <view class="case-item" wx:for="{{ cases }}" wx:key="{{ index }}">
+        <navigator class="flex-row" url="/pages/case/details/index?id={{ item.id }}">
+          <view class="flex-bd" wx:if="{{ index % 2 == 0 }}">
+            <image src="{{ item.src }}" />
+          </view>
+          <view class="flex-bd {{ caseBgClass[index] || caseBgClass[0] }}">
+            <view class="case-con">
+              <view class="case-name color-white ellipse">{{ item.name }}</view>
+              <view class="case-country color-white">
+                <text>{{ item.country }}</text>
+              </view>
+              <view class="case-content color-white">
+                <text>{{ item.content }}</text>
+              </view>
+            </view>
+          </view>
+          <view class="flex-bd" wx:if="{{ index % 2 !== 0 }}">
+            <image src="{{ item.src }}" />
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="align-center case-more">
+      <navigator url="/pages/case/list/index">
+        <text class="color-pink">查看全部案例</text>
+        <text class="iconfont icon-arrow-right pl-20 color-pink"></text>
+      </navigator>
+    </view>
   </view>
   <view class="about-promise mt-20">
     <app-content-title title="承诺保障" subTitle="Commitment guarantee" dotColor="#faf3ff" />
@@ -54,7 +103,7 @@
           <view class="img-box bg-f8 mr-20 mb-20" wx:for="{{ images }}" data-src="{{ item }}" wx:key="{{ index }}" bindtap="preViewImage">
             <image src="{{ item }}" />
           </view>
-          <view class="img-box bg-f8 mb-20" bindtap="chooseImage">
+          <view class="img-box bg-f8 mb-20" bindtap="openPop" wx:if="{{ images.length < maxImageCount }}">
             <view class="iconfont icon-camera"></view>
           </view>
         </view>
@@ -68,20 +117,11 @@
 <app-pop visible="{{ popVisible }}" bind:close="popClose" class="popBox" styles="bottom:0rpx;left:0;border-radius: 20rpx;width:95%;margin: 20rpx;background: transparent;">
   <view class='modal-content align-center'>
     <view class="pop-rows bg-white">
-      <view class="app-row" bindtap="openCamera">拍照</view>
-      <view class="app-row">从相册中选择</view>
+      <view class="app-row" data-source="camera" bindtap="chooseImage">拍照</view>
+      <view class="app-row" data-source="album" bindtap="chooseImage">从相册中选择</view>
     </view>
     <view class="pop-rows bg-white mt-20">
       <view class="app-row" bindtap="popClose">取消</view>
     </view>
   </view>
 </app-pop>
-<app-camera
-  visible="{{ cameraVisible }}"
-  iconfont="iconfont"
-  icon-arrow-down="icon-arrow-down"
-  icon-camera-reverse="icon-camera-reverse"
-  bind:success="cameraSuccess"
-  bind:cancel="closeCamera"
-  wx:if="{{ cameraVisible }}"
-/>

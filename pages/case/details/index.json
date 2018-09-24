@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "案例详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "previewImage": "/components/app-previewImage/index"
+  }
+}

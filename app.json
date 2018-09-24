@@ -33,6 +33,12 @@
       ]
     },
     {
+      "root": "pages/case",
+      "pages": [
+        "details/index"
+      ]
+    },
+    {
       "root": "pages/subs",
       "pages": [
         "about/index",
