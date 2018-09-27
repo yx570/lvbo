@@ -13,7 +13,7 @@
 
                     <view class="weui-cell__bd">
                         <view class="name">{{ item.name }}</view>
-                        <view class="size">规格：{{ item.price }}/次 - {{ item.checked }}</view>
+                        <view class="size">规格：{{ item.price }}/次</view>
                         <view class="flex-row">
                             <view class="price color-pink">
                                 <text class="sub">￥</text>
@@ -35,13 +35,13 @@
                         </view>
                     </view>
                 </view>
-                <view class="weui-cell pa-0 selectTimes flex-row" catch:tap="changeTimes">
-                    <view class="ellipse">预约时间: 5月1日 9:00-10:00，5月1日 9:00-10:00，5月1日 9:00-10:00，5月1日...</view>
+                <view class="weui-cell pa-0 selectTimes flex-row" catch:tap="selectTap" data-index="{{ index }}" data-id="{{item.id}}">
+                    <view class="ellipse">预约时间: {{bookingDates}}</view>
                     <view class="flex-bd align-right">修改</view>
                 </view>
             </view>
             <view class="weui-cell__del overflow">
-                <button class="btn-delete" data-id="{{ item.id }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
+                <button class="btn-delete bg-primary color-white" data-id="{{ item.id }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
                   <text>删除</text>
                 </button>
             </view>
@@ -66,4 +66,8 @@
         </view>
     </view>
 </view>
-
+<app-picker
+    popVisible="{{popVisible}}"
+    popId="{{popId}}"
+    bind:getPickerTime="getPickerTime" 
+></app-picker>

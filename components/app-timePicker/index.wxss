@@ -1,0 +1,34 @@
+/* components/app-timePicker/index.wxss */
+  
+.popBox {bottom:0rpx;left:0;border-radius: 20rpx;width:95%;margin: 20rpx;}
+.popBox .soldNums {
+    justify-content: left;
+} 
+.popBox .img-box { width:140rpx; height: 140rpx; border-radius: 20rpx; overflow: hidden; margin-right:30rpx;}
+.popBox .popNums { width:300rpx; margin-bottom: 60rpx;}
+.popBox .popItem { margin-top:40rpx;}
+.popBox .popItem .subTit { font-size:28rpx; margin-bottom: 10rpx;}
+.modal-content{
+    background: #fff;
+    margin: 30rpx;
+    border-radius: 30rpx;
+    color: #b2b2b2;
+    position: relative;
+}
+.pk-title {
+    font-size: 36rpx;
+    color:#000;
+    text-align: center;
+}
+.btn-submit {
+    background: none;
+    position: absolute;
+    right:0;
+    top:0;
+    color: #f9879a;
+    font-size: 32rpx;
+    line-height: 2
+}
+.projectList { text-align: center; color: #c4c4c4; height:60rpx; line-height: 60rpx; margin:20rpx;white-space: nowrap;}
+.projectList view { display: inline-block; width:200rpx; margin-right:10rpx;}
+.projectList .curr { color:#00b0ab; }

@@ -1,0 +1,27 @@
+<!-- components/app-timePicker/index.wxml -->
+<app-pop direction="bottom" visible="{{popVisible}}" bind:close="popClose" class="popBox" styles="bottom:0rpx;left:0;border-radius: 20rpx;width:95%;margin: 20rpx;">
+  <view class='modal-content ma-40'>
+    <view class="pk-title">
+      请选择预约时间
+      <button class="btn-submit" bindtap="popSure">
+        <text>确认</text>
+      </button>
+    </view>
+    <scroll-view class="projectList" scroll-x="true">
+      <block wx:for="{{lists}}" wx:key="{{index}}">
+        <view data-index="{{index}}" class="{{item.className}}" bindtap="changeProject">{{item.name}}</view>
+      </block>
+    </scroll-view>
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</app-pop>
