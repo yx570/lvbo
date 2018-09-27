@@ -118,7 +118,7 @@
 }
 .team-box image.active{
   transform: scale(1);
-  transition: all 0.2s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
 }
 .team-box .swiper-ft{
   position: absolute;

@@ -3,8 +3,8 @@ Page({
   data: {
     popVisible: false,
     images: [
-      '/static/images/demo/b1.jpg',
-      '/static/images/demo/b2.jpg'
+      'http://cms-bucket.nosdn.127.net/catchpic/3/38/38e204a37a7460b3b56eb198e7e1492a.jpg?imageView&thumbnail=550x0',
+      'http://p6.qhimg.com/t01b95ebc4d963ef400.jpg'
     ],
     maxImageCount: 6,
     team: [
@@ -12,6 +12,16 @@ Page({
         src: '/static/images/demo/liushishi.jpg',
         name: '刘诗诗',
         star: 5
+      },
+      {
+        src: '/static/images/demo/tangyan.jpg',
+        name: '唐嫣',
+        star: 3
+      },
+      {
+        src: '/static/images/demo/shuqi.jpg',
+        name: '舒淇',
+        star: 4
       },
       {
         src: '/static/images/demo/tangyan.jpg',

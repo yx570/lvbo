@@ -1,6 +1,6 @@
 <!-- pages/home/index.wxml -->
 <scroll-view class="home" scroll-y="true" bindscrolltolower="_loadMore">
-  <app-swiper imgList="{{ imgList }}"></app-swiper>
+  <app-swiper imgList="{{ imgList }}" catch:tap="toCompanyDemo"></app-swiper>
 
   <view bindtap="callme">
     <image src="../../../static/images/demo/slogan.jpg" mode="widthFix" class="slogan" />

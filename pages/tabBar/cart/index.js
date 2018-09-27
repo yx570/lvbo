@@ -63,20 +63,20 @@ Page({
     this.getList();
   },
   changeBadge(count) {
-    if (count <= 0) {
-      wx.removeTabBarBadge({
-        index: 2
-      })
-    } else {
-      // 总数
-      wx.setTabBarBadge({
-        index: 2,
-        text: String(this.data.selectQuantity + count)
-      });
-      this.setData({
-        selectQuantity: this.data.selectQuantity + count
-      });
-    }
+    // if (count <= 0) {
+    //   wx.removeTabBarBadge({
+    //     index: 2
+    //   })
+    // } else {
+    //   // 总数
+    //   wx.setTabBarBadge({
+    //     index: 2,
+    //     text: String(this.data.selectQuantity + count)
+    //   });
+    //   this.setData({
+    //     selectQuantity: this.data.selectQuantity + count
+    //   });
+    // }
 
   },
   // 获取列表

@@ -16,7 +16,7 @@ Page({
 
     searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏
   },
-  onLoad: function () {
+  onLoad () {
     app.pages.add(this);
     this.getList(); 
   },
@@ -31,9 +31,14 @@ Page({
       });
     });
   },
-  callme: function () {
+  callme () {
     wx.makePhoneCall({
       phoneNumber: this.data.mobile
+    })
+  },
+  toCompanyDemo () {
+    wx.navigateTo({
+      url: '../../subs/about/index'
     })
   }
 })

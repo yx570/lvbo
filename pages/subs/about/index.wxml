@@ -18,7 +18,7 @@
   <view class="about-team mt-20">
     <app-content-title title="技师团队" subTitle="Technician team" dotColor="#fff2db" />
     <view class="team-box">
-      <swiper previous-margin="{{'210rpx'}}" next-margin="{{'210rpx'}}" current="{{ swiperIndex }}" bindchange="swiperChange">
+      <swiper previous-margin="{{'210rpx'}}" next-margin="{{'210rpx'}}" current="{{ swiperIndex }}" circular="true" bindchange="swiperChange">
         <block wx:for="{{ team }}" wx:key="{{ index }}">
           <swiper-item>
             <image src="{{ item.src }}" class="slide-image {{ swiperIndex == index ? 'active' : '' }}"/>
@@ -101,7 +101,7 @@
         <textarea class="textarea bg-f8" name="textarea" placeholder="请输入您的建议" placeholder-style="font-size: 32rpx; color: #cccccc;" />
         <view class="flex-row images">
           <view class="img-box bg-f8 mr-20 mb-20" wx:for="{{ images }}" data-src="{{ item }}" wx:key="{{ index }}" bindtap="preViewImage">
-            <image src="{{ item }}" />
+            <image mode="aspectFill" src="{{ item }}" />
           </view>
           <view class="img-box bg-f8 mb-20" bindtap="openPop" wx:if="{{ images.length < maxImageCount }}">
             <view class="iconfont icon-camera"></view>
