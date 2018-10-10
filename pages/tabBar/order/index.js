@@ -15,7 +15,7 @@ Page({
       },
       {
         key: 2,
-        label: '待服务'
+        label: '已付款'
       },
       {
         key: 3,
@@ -27,15 +27,14 @@ Page({
     statusFormat: {
       1: "已完成",
       2: "待付款",
-      3: "待服务",
+      3: "已付款",
     }
   },
-  getList: function () {
+  getList () {
     let _t = this;
     this._getList({
       request: orderModel.goods
     }, function (res) {
-      console.log(res)
       _t.setData({
         list: res.list,
         hasNextPage: !res.hasNextPage
@@ -44,7 +43,7 @@ Page({
   },
 
   //加入购物车
-  setTabBarBadge: function (e) {
+  setTabBarBadge (e) {
     var id = e.currentTarget.dataset.id;
     var quantity =1;
     cartModel.additem({ id, quantity }).then(response => {
@@ -63,10 +62,10 @@ Page({
     });
   },
   //load
-  onLoad: function () {
+  onLoad () {
     this.getList();
   },
-  onShow: function () {
+  onShow () {
     // this._cartlist(0, 0);
   },
 })

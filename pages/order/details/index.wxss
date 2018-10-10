@@ -1,5 +1,15 @@
+.panel-orderDetails { background-color: #f3f3f3;}
 .panel-orderDetails .header{
-  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  height:250rpx;
+}
+.panel-orderDetails .infos {
+  position: absolute;
+  left:30rpx;
+  right:30rpx;
+  top:145rpx;
+  background-color:#fff;
+  border-radius:30rpx;
 }
 .panel-orderDetails .infos .app-row{
   padding: 10rpx 0;
@@ -17,6 +27,9 @@
 .panel-orderDetails .status{
   line-height: 2;
 }
+.panel-orderDetails .app-rows { padding:0;}
+.panel-orderDetails .orderList { margin-top:180rpx;}
+.panel-orderDetails .list .app-row { margin:0 30rpx 30rpx; background-color:#fff; border-radius:30rpx;}
 .panel-orderDetails .list .img-box{
   margin: 0 26rpx;
   border-radius: 50%;
@@ -31,3 +44,11 @@
   font-size: 50rpx;
   line-height: 1;
 }
+.panel-orderDetails .orderStatus { 
+  position: absolute;
+  left:30rpx;
+  top:60rpx;
+  font-size:36rpx;
+  color:#fff;
+}
+.panel-orderDetails .orderStatus .iconfont { color:#fff; margin-right:20rpx;}

@@ -45,6 +45,7 @@ button:after {
 .color-999{ color: #999999; }
 .color-b8 { color: #b8b8b8; }
 .color-ab{ color: #ababab; }
+.color-ad{ color:#adadad; }
 .color-pink { color: #f9879a; }
 .bg-pink { background: #f9879a; }
 .bg-primary{ background: #00b0ab; }

@@ -6,8 +6,11 @@ module.exports = {
       {
         "id": "1",
         "imageUrl": "http://xl.tianjiaoedu.org/upload/201607/05/201607051554541730.jpg",
-        "title": "南昌校区图书馆",
+        "title": "南昌校区图书馆南昌校区图书馆南昌校区图书馆",
         "number": "201809160208",
+        "price": "1999",
+        "times": "2",
+        "size": "888",
         "date": "2018-09-16 02:10",
         "status": 2
       },
@@ -16,6 +19,9 @@ module.exports = {
         "imageUrl": "http://xinwen.jgaoxiao.com/Uploads/news/Attach/526dfcc7bcc14.jpg",
         "title": "新生军训",
         "number": "201809160208",
+        "price": "888",
+        "times": "1",
+        "size": "888",
         "date": "2018-09-16 02:10",
         "status": 3
       },
@@ -24,6 +30,9 @@ module.exports = {
         "imageUrl": "http://img2.ph.126.net/NjHvTMhbCihDSocfwxE11g==/2855563638830365544.jpg",
         "title": "樱花广场",
         "number": "201809160208",
+        "price": "999",
+        "times": "3",
+        "size": "888",
         "date": "2018-09-16 02:10",
         "status": 1
       },
@@ -32,6 +41,9 @@ module.exports = {
         "imageUrl": "http://i1.sinaimg.cn/travel/2014/1021/U8842P704DT20141021103442_1.jpg",
         "title": "校园风光",
         "number": "201809160208",
+        "price": "1999",
+        "times": "2",
+        "size": "888",
         "date": "2018-09-16 02:10",
         "status": 1
       },
@@ -40,6 +52,9 @@ module.exports = {
         "imageUrl": "http://upload.ct.youth.cn/2013/0707/1373173834482.jpg",
         "title": "三下乡活动",
         "number": "201809160208",
+        "price": "1999",
+        "times": "2",
+        "size": "888",
         "date": "2018-09-16 02:10",
         "status": 1
       },
@@ -48,6 +63,9 @@ module.exports = {
         "imageUrl": "http://pic.baike.soso.com/p/20130618/20130618153602-1487877646.jpg",
         "title": "国防生风采",
         "number": "201809160208",
+        "price": "1999",
+        "times": "2",
+        "size": "888",
         "date": "2018-09-16 02:10",
         "status": 1
       }

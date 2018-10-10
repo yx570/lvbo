@@ -1,0 +1,27 @@
+page {
+    background-color: #f3f3f3;
+}
+navigator,
+navigator:active,
+navigator:visited { background-color:#fff;}
+.app-rows { padding:0; border:none;}
+.app-row { background-color:#fff; padding: 30rpx;}
+.app-row::before{
+    display:none;
+}
+.app-row__hd { line-height: 44rpx; margin-bottom: 22rpx;}
+.app-row__hd .flex-bd { font-size: 26rpx; color:#999;}
+.app-row__hd .flex-ft { font-size: 24rpx;}
+.app-row .title{
+    max-height:80rpx; 
+    padding-bottom: 0;
+    width:345rpx;
+    overflow:hidden;
+    font-size: 28rpx;
+    color: #333;
+  }
+.img-box { border-radius: 20rpx; overflow:hidden;}
+.app-row .con { padding-left:30rpx;}
+button { border-radius: 50rpx; border:1rpx solid #dbdbdb; background-color:#fff;}
+button + button { margin-left:30rpx;}
+.btn-primary { color:#00b0ab; border-color:#00b0ab;}

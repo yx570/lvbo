@@ -3,34 +3,40 @@
   <view class="flex-bd">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
       <view class="app-rows">
-        <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
-          <navigator url="/pages/order/details/index?id={{ item.id }}">
+        <view class="app-row mt-20" wx:for="{{ list }}" wx:key="{{ item.id }}">
+          <navigator hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
             <view class="flex-row app-row__hd">
               <view class="flex-bd">订单号：{{ item.number }}</view>
-              <view class="flex-ft">{{ item.date }}</view>
+              <view class="flex-ft"><text class="color-primary" wx:if="{{ item.status != 1 }}">{{ statusFormat[item.status] || '' }}</text></view>
+              <view class="flex-ft"><text class="color-999" wx:if="{{ item.status == 1 }}">{{ statusFormat[item.status] || '' }}</text></view>
             </view>
             <view class="flex-row app-row__bd">
               <view class="flex-hd img-box">
                 <image src="{{ item.imageUrl }}"></image>
               </view>
               <view class="flex-bd con">
-                <view class="title">{{ item.title }}</view>
+                
                 <view class="flex-row">
                   <view class="flex-bd">
-                    <button type="primary" size="mini" plain>{{ statusFormat[item.status] || '' }}</button>
+                    <view class="title">{{ item.title }}</view>
+                    <view class="color-ad">规格：{{ item.size }}/次</view>
                   </view>
-                  <view class="flex-ft">
-                    <navigator url="/pages/subs/score/index?id={{ item.id }}">
-                      <button size="mini" plain wx:if="{{ item.status == 1 }}">去评价</button>
-                    </navigator>
+                  <view class="flex-ft align-right">
+                    <view class="color-666">{{ item.price }}</view>
+                    <view class="color-999">×{{ item.times }}</view>
                   </view>
                 </view>
               </view>
             </view>
+            <view class="align-right">
+              <button size="mini" class="btn-primary" wx:if="{{ item.status == 1 }}">去评价</button>
+              <button size="mini" wx:if="{{ item.status == 2 }}">取消订单</button>
+              <button size="mini" class="btn-primary" wx:if="{{ item.status == 2 }}">去支付</button>
+              <button size="mini" wx:if="{{ item.status == 3 }}">待服务</button>
+            </view>
           </navigator>
         </view>
       </view>
-      <view class="loading complete col-999" hidden="{{ !hasNextPage }}">-已加载全部-</view>
     </scroll-view>  
   </view>
 </view>

@@ -1,29 +1,37 @@
-<!-- <import src="../../../wxParse/wxParse.wxml"/>  -->
+<!-- <import src="../../../wxParse/wxParse.wxml"/> -->
 <view class="container flex-column panel-orderDetails">
   <view class="flex-column flex-bd">
-    <view class="app-rows header">订单号：{{ orderInfos.number }}</view>
-    <view class="flex-bd">
-      <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
-        <view class='app-rows infos'>
-          <view class="app-row">
-            <view class="flex-row flex-center app-row__bd">
-              <view class="flex-hd img-box">
-                <image src="{{ orderInfos.imageUrl }}"></image>
-              </view>
-              <view class="flex-bd con">
-                <view class="title">{{ orderInfos.title }}</view>
-                <view class="sum">{{ orderInfos.total }}次疗程</view>
-                <view class="flex-row flex-center">
-                  <view class="flex-hd">
-                    <button class="status" size="mini" plain wx:if="{{ orderInfos.status == 1 }}">已付款</button>
-                    <button class="status" size="mini" type="primary" plain wx:else>未付款</button>
-                  </view>
-                  <view class="flex-bd align-right color-primary">￥{{ orderInfos.price }}</view>
+    <view class="header">
+      <image src="/static/images/orderDetailBg.jpg"></image>
+      <view class="orderStatus">
+        <view class="iconfont icon-gouxuan1"></view>
+        <text>订单服务中</text>
+      </view>
+      <view class='app-rows infos'>
+        <view class="app-row">
+          <view class="flex-row flex-center app-row__bd">
+            <view class="flex-hd img-box">
+              <image src="{{ orderInfos.imageUrl }}"></image>
+            </view>
+            <view class="flex-bd con">
+              <view class="title">{{ orderInfos.title }}</view>
+              <view class="sum">{{ orderInfos.total }}次疗程</view>
+              <view class="flex-row flex-center">
+                <view class="flex-hd">
+                  <button class="status" size="mini" plain wx:if="{{ orderInfos.status == 1 }}">
+                    已付款
+                  </button>
+                  <button class="status" size="mini" type="primary" plain wx:else>未付款</button>
                 </view>
+                <view class="flex-bd align-right color-primary">￥{{ orderInfos.price }}</view>
               </view>
             </view>
           </view>
         </view>
+      </view>
+    </view>
+    <view class="flex-bd orderList">
+      <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
         <view class='app-rows list'>
           <view class="app-row" wx:for="{{ list }}" wx:key="index">
             <view class="flex-row app-row__bd">
@@ -46,8 +54,12 @@
                 </view>
                 <view class="flex-row flex-center">
                   <view class="flex-hd inline-box">
-                    <button class="status" size="mini" plain wx:if="{{ item.status == 1 }}">已服务</button>
-                    <button class="status" size="mini" plain type="primary" wx:elif="{{ item.status == 2 }}">技师已出发</button>
+                    <button class="status" size="mini" plain wx:if="{{ item.status == 1 }}">
+                      已服务
+                    </button>
+                    <button class="status" size="mini" plain type="primary" wx:elif="{{ item.status == 2 }}">
+                      技师已出发
+                    </button>
                     <button class="status" size="mini" type="primary" plain wx:else>未服务</button>
                   </view>
                   <view class="flex-bd align-right" wx:if="{{ item.status == 2 }}">
@@ -58,8 +70,7 @@
             </view>
           </view>
         </view>
-        <view class="loading complete col-999" hidden="{{ !hasNextPage }}">-已加载全部-</view>
-      </scroll-view>  
+      </scroll-view>
     </view>
   </view>
 </view>

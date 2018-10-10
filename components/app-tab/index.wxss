@@ -59,11 +59,19 @@
   color: #999;
   text-align: center;
 }
+.scroll-view-item text{
+  display: block; 
+  margin: 0 20rpx;
+  height:84rpx;
+}
 .scroll-view-item.equal{
   flex: 1;
 }
 .scroll-view-item.active{
-  color: #ff5100;
+  color: #00b0ab;
+}
+.scroll-view-item.active text{
+  border-bottom:4rpx solid #00b0ab;
 }
 .app-tab.fixed{
   position: fixed;
