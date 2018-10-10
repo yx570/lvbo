@@ -12,52 +12,52 @@ Page({
       photo: '',        //头像
       id: 0
     },
-    task:{
-      unpaid: 0,           //未支付订单数  
-      shipping: 0          //未收货订单数 
-    },
-    balance: 0,
-    navs:[
+    orderInfos: [
       {
-        label:'我的订单',
-        key:'order',
-        icon:'icon-iconlist'
-      },
-      {
-        label:'我的预约',
-        key:'reservation',
-        icon:'icon-date'
-      },
-      {
-        label:'我的推荐码',
-        key:'code',
-        icon:'icon-tuijianma'
-      },
-      {
-        label:'我的新生币',
-        key:'currency',
-        icon:'icon-money'
-      },
-      {
-        label: '我的代金券',
-        key: 'voucher',
-        icon: 'icon-youhuiquan'
-      },
-      {
-        label: '我的历程',
-        key: 'course',
-        icon: 'icon-licheng'
+        key: 1,
+        label: '待付款',
+        value: 0,
+        icon: 'dfk'
+      }, {
+        key: 2,
+        label: '待服务',
+        value: 2,
+        icon: 'dfw'
+      }, {
+        key: 3,
+        label: '待评价',
+        value: 0,
+        icon: 'dpj'
+      }, {
+        key: 0,
+        label: '全部订单',
+        value: 0,
+        icon: 'qbdd'
       }
     ],
-    navPaths:{
-      address:'../../user/address/index',
-      order: "../order/index",
-      reservation:'../../user/reservation/list/index',
-      code:'../../user/code/index',
-      currency:'../../user/currency/list/index',
-      voucher:'../../user/voucher/index',
-      course:'../../user/course/index',
-    }
+    tools: [
+      {
+        link: '',
+        label: '我的历程',
+        icon: 'licheng'
+      }, {
+        link: '',
+        label: '我的新生币',
+        icon: 'currency'
+      }, {
+        link: '',
+        label: '代金券',
+        icon: 'voucher'
+      }, {
+        link: '',
+        label: '服务地址',
+        icon: 'address'
+      }, {
+        link: '',
+        label: '我的推荐码',
+        icon: 'code'
+      }
+    ],
   },
 
   /**
@@ -73,22 +73,6 @@ Page({
    */
   onReady: function () {
     
-  },
-  navigateChange(ev){
-    let { key } = ev.currentTarget.dataset;
-    if(!key) return
-    switch (key){
-      case 'order':
-        wx.switchTab({
-          url: this.data.navPaths[key],
-        })
-        break;
-      default:
-        wx.navigateTo({
-          url: this.data.navPaths[key]
-        })
-        break;
-    }
   },
   /**
    * 生命周期函数--监听页面显示

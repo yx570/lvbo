@@ -17,24 +17,30 @@
     <view class="cr cr-r"></view>
 	</view>
 	<view class="panel-user-body">
-		<view class="weui-cells">
+		<view class="order-cells mt-20">
       <view class="title">我的订单</view>
-			<view class="weui-cell">
-				<view class="weui-cell__bd">
-          <view class="icon">
-            <image class="icon-img" src="/static/images/icon-img-dfk.png"/>
-            <view class="dot"></view>
-          </view>
-					<view>待付款</view>
+			<view class="flex-row align-center">
+				<view class="flex-bd" wx:for="{{ orderInfos }}" wx:key="{{ index }}">
+          <navigator url="/pages/tabBar/order/index?key={{ item.key }}" open-type="switchTab">
+            <view class="img-box">
+              <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+              <view class="dot bg-red" wx:if="{{ item.value > 0 }}">{{ item.value }}</view>
+            </view>
+            <view class="color-999">{{ item.label }}</view>
+          </navigator>
 				</view>
-        <view class="weui-cell__bd">
-					<view>待服务</view>
-				</view>
-        <view class="weui-cell__bd">
-					<view>待评价</view>
-				</view>
-        <view class="weui-cell__bd">
-					<view>全部订单</view>
+			</view>
+		</view>
+    <view class="tool-cells mt-20">
+      <view class="title">必备工具</view>
+			<view class="flex-row align-center">
+				<view class="flex-hd" wx:for="{{ tools }}" wx:key="{{ index }}">
+          <navigator url="{{ item.link }}">
+            <view class="img-box">
+              <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+            </view>
+            <view class="color-999">{{ item.label }}</view>
+          </navigator>
 				</view>
 			</view>
 		</view>
