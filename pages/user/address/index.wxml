@@ -2,46 +2,57 @@
   <view class="flex-bd content">
     <scroll-view scroll-y="true">
       <form bindsubmit="formSubmit" bindreset="formReset">
-        <view class="app-form-item">
-          <view class="app-select">
-            <view class="con" wx:if="{{ !!province }}">{{ province }}</view>
-            <view class="con" wx:else>请选择省份</view>
-            <view class="iconfont icon-down"></view>
+        <view class="app-cell">
+          <view class="app-cell__hd color-999">所在地区：</view>
+          <view class="app-cell__bd">
+            <text class="pr-10">{{ infos.province }}</text>
+            <text class="pr-10">{{ infos.city }}</text>
+            <text class="pr-10">{{ infos.area }}</text>
+          </view>
+          <view class="app-cell__ft">
+            <view class="iconfont icon-arrow-right"></view>
           </view>
         </view>
-        <view class="app-form-item">
-          <view class="app-select">
-            <view class="con" wx:if="{{ !!province }}">{{ province }}</view>
-            <view class="con" wx:else>请选择城市</view>
-            <view class="iconfont icon-down"></view>
+        <view class="app-cell flex-start">
+          <view class="app-cell__hd color-999">详细地址：</view>
+          <view class="app-cell__bd">
+            <textarea class="textarea" placeholder="街道、楼牌号等" />
           </view>
         </view>
-        <view class="app-form-item">
-          <view class="app-select">
-            <view class="con" wx:if="{{ !!province }}">{{ province }}</view>
-            <view class="con" wx:else>请选择地区</view>
-            <view class="iconfont icon-down"></view>
+        <view class="app-cell">
+          <view class="app-cell__hd color-999">标签：</view>
+          <view class="app-cell__bd">
+            <button 
+              class="btn-radius mr-20" 
+              size="mini" 
+              type="{{ infos.tag == item.value ? 'primary' : 'default' }}" 
+              plain="{{ infos.tag !== item.value }}" 
+              wx:for="{{ tags }}" 
+              wx:key="{{ index }}"
+              data-row="{{ item }}"
+              bindtap="tagChange">
+              {{ item.label }}
+            </button>
           </view>
         </view>
-        <view class="app-form-item">
-          <textarea class="app-input textarea" placeholder="请输入详细地址" />
+        <view class="app-cell">
+          <view class="app-cell__hd color-999">联系人：</view>
+          <view class="app-cell__bd">
+            <input value="{{ infos.name }}" placeholder="请输入联系人" />
+          </view>
         </view>
-        <view class="app-form-item flex-row flex-stretch">
-          <button size="mini" type="primary" plain>首台</button>
-          <button size="mini" type="primary" plain>二胎</button>
-          <button size="mini" type="primary" plain>二胎以上</button>
+        <view class="app-cell">
+          <view class="app-cell__hd color-999">联系电话：</view>
+          <view class="app-cell__bd">
+            <input value="{{ infos.phone }}" type="number" placeholder="请输入联系电话" />
+          </view>
         </view>
-        <view class="app-form-item">
-          <input class="app-input" placeholder="请输入联系人" />
-        </view>
-        <view class="app-form-item">
-          <input class="app-input" type="number" placeholder="请输入联系人电话" />
+        <view class="app-cell btn-area">
+          <view class="app-cell__bd">
+            <button class="btn-radius" type="primary">更新/保存</button>
+          </view>
         </view>
       </form>
     </scroll-view>
   </view>
-  <view class="app-footer">
-    <button class="only" type="primary">更新/保存</button>
-  </view>
-
 </view>

@@ -26,6 +26,11 @@ button:after {
 }
 
 .pa-0 { padding:0; }
+.pa-10{ padding: 10rpx; }
+.pt-10{ padding-top: 10rpx; }
+.pr-10{ padding-right: 10rpx; }
+.pb-10{ padding-bottom: 10rpx; }
+.pl-10{ padding-left: 10rpx; }
 .pa-20{ padding: 20rpx; }
 .pt-20{ padding-top: 20rpx; }
 .pr-20{ padding-right: 20rpx; }
@@ -204,6 +209,37 @@ button[type=primary][plain].btn-code{
   border: 2rpx solid #e0e0e0;
   border-radius: 6rpx;
   box-sizing: border-box;
+}
+.app-cells{
+  position: relative;
+}
+.app-cells::before,
+.app-cells::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.app-cells::before{
+  top: 0;
+  border-top: 1px solid #f3f3f3;
+}
+.app-cells::after{
+  bottom: 0;
+  border-bottom: 1px solid #f3f3f3;
+}
+.app-cell{
+  position: relative;
+  display: flex;
+  padding: 30rpx 0;
+  align-items: center;
+}
+.app-cell + .app-cell{
+  border-top: 1px solid #f3f3f3;
+}
+.app-cell__bd{
+  flex: 1;
 }
 /* pulbic -- end */
 

@@ -49,7 +49,7 @@ Page({
         label: '代金券',
         icon: 'voucher'
       }, {
-        link: '',
+        link: '/pages/user/address/index',
         label: '服务地址',
         icon: 'address'
       }, {
