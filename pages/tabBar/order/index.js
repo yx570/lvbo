@@ -62,7 +62,8 @@ Page({
     });
   },
   //load
-  onLoad () {
+  onLoad (e) {
+    console.log(e)
     this.getList();
   },
   onShow () {
