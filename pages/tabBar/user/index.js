@@ -58,6 +58,7 @@ Page({
         icon: 'code'
       }
     ],
+    curOrderTab: 0
   },
 
   /**
@@ -107,5 +108,15 @@ Page({
    */
   onUnload: function () {
   
+  },
+  navigateChange(e){
+    let { key } = e.currentTarget.dataset;
+    this.setData({
+      curOrderTab: key
+    })
+    app.pages.add(this);
+    wx.switchTab({
+      url: '/pages/tabBar/order/index',
+    })
   }
 })

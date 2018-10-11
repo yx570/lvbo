@@ -22,13 +22,15 @@ Page({
         label: '已完成'
       }
     ],
+    curTab: 0,
     list: [], 
     hasNextPage: false,
     statusFormat: {
       1: "已完成",
       2: "待付款",
       3: "已付款",
-    }
+    },
+    userPage: null
   },
   getList () {
     let _t = this;
@@ -63,12 +65,26 @@ Page({
   },
   //load
   onLoad (e) {
-    console.log(e)
     this.getList();
   },
   onShow () {
     // this._cartlist(0, 0);
+    const userPage = app.pages.get('pages/tabBar/user/index');
+    !!userPage && this.setData({ userPage })
+    if (!!userPage){
+      this.setData({
+        userPage,
+        curTab: userPage.data.curOrderTab
+      })
+    }
+    console.log(this.data.curTab)
   },
+  onHide(){
+    this.setData({
+      curTab: 0
+    })
+    !!this.data.userPage && app.pages.delete(this.data.userPage);
+  }
 })
 
 

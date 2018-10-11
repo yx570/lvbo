@@ -20,14 +20,12 @@
 		<view class="order-cells mt-20">
       <view class="title">我的订单</view>
 			<view class="flex-row align-center">
-				<view class="flex-bd" wx:for="{{ orderInfos }}" wx:key="{{ index }}">
-          <navigator url="/pages/tabBar/order/index?key={{ item.key }}" open-type="switchTab">
-            <view class="img-box">
-              <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
-              <view class="dot bg-red" wx:if="{{ item.value > 0 }}">{{ item.value }}</view>
-            </view>
-            <view class="color-999">{{ item.label }}</view>
-          </navigator>
+				<view class="flex-bd" wx:for="{{ orderInfos }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="navigateChange">
+          <view class="img-box">
+            <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+            <view class="dot bg-red" wx:if="{{ item.value > 0 }}">{{ item.value }}</view>
+          </view>
+          <view class="color-999">{{ item.label }}</view>
 				</view>
 			</view>
 		</view>
