@@ -72,9 +72,18 @@ page { background-color: #f3f3f3;}
 .panel-orderDetails .list .items { border-top:1rpx solid #f3f3f3;} 
 .panel-orderDetails .list .finish .items { border-top:1rpx solid #dadada;} 
 .listHeadPic .img-box { width:65rpx; height:65rpx;}
-.panel-orderDetails .list .icon-arrow-right { font-size: 30rpx;}
 .footName { position: relative; top:4rpx; margin-right:20rpx;}
-.technicianBox { padding:40rpx 0; box-sizing: content-box; line-height:1.2;}
-.technicianBox .img-box { width:100rpx; height:100rpx; margin:0!important;}
-.technicianBox .flex-bd view,
-.technicianBox .flex-ft view { line-height:1;}
+.technicianBox { padding:0 0 40rpx 0; box-sizing: content-box; line-height:1.2; border-top:none!important;}
+.technicianBox .img-box { width:100rpx; height:100rpx; margin:0 30rpx 0 0!important;}
+.technicianBox .name { padding-top:10rpx; font-size: 30rpx; line-height: 1.2}
+.panel-orderDetails .stars { margin-top:10rpx; line-height: 1.2}
+.panel-orderDetails .stars .iconfont { font-size: 32rpx; color:#ffcc00; margin-right:5rpx;}
+.technicianBox .dates { padding-top:10rpx; line-height: 1.5; font-size: 28rpx;}
+.technicianBox .times { font-size: 30rpx; line-height: 1.5;}
+
+.panel-orderDetails .list .icon-weizhi { font-size: 40rpx; color:#333;}
+.panel-orderDetails .list .icon-arrow-right { font-size: 30rpx; color:#c9c9c9;}
+.panel-orderDetails .countTime { color:#f9879a;}
+.panel-orderDetails .countTime text { background-color: #f9879a; padding:5rpx 6rpx; margin:2rpx; border-radius: 10rpx; color:#fff;}
+
+.beginBtn { width:104rpx; height:104rpx; line-height:102rpx; font-size:30rpx; background:#fff; border:1rpx solid #00b0ab; border-radius: 50%; box-sizing: border-box; color:#00b0ab; padding:0;}

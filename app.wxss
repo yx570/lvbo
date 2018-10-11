@@ -30,6 +30,7 @@ button:after {
 .pt-20{ padding-top: 20rpx; }
 .pr-20{ padding-right: 20rpx; }
 .pb-20{ padding-bottom: 20rpx; }
+.pl-10{ padding-left: 10rpx; }
 .pl-20{ padding-left: 20rpx; }
 .ma-20{ margin: 20rpx; }
 .ma-40{ margin: 40rpx; }
@@ -54,6 +55,8 @@ button:after {
 .bg-f3{ background: #f3f3f3; }
 .bg-f8{ background: #f8f8f8; }
 .bg-red{ background: #ff0000;color: #fff; }
+
+.f-30 { font-size: 30rpx;}
 
 .flex-row{
   display: flex;
