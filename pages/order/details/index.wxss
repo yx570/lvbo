@@ -1,4 +1,4 @@
-.panel-orderDetails { background-color: #f3f3f3;}
+page { background-color: #f3f3f3;}
 .panel-orderDetails .header{
   position: relative;
   height:250rpx;
@@ -11,25 +11,33 @@
   background-color:#fff;
   border-radius:30rpx;
 }
-.panel-orderDetails .infos .app-row{
-  padding: 10rpx 0;
-}
 .panel-orderDetails .infos .img-box{
-  width: 220rpx;
-  height: 220rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 30rpx;
+  overflow:hidden;  
 }
+.panel-orderDetails .priceBox { font-size: 34rpx;}
+.panel-orderDetails .priceBox text { font-size: 20rpx;}
 .panel-orderDetails .title{
   padding: 0;
+  font-size: 26rpx;
 }
 .panel-orderDetails .sum{
-  padding: 36rpx 0;
+  padding: 10rpx 0;
+  max-height: 80rpx;
+  overflow:hidden;  
+}
+.panel-orderDetails .sum text {
+  margin-left:50rpx;
 }
 .panel-orderDetails .status{
   line-height: 2;
 }
+.panel-orderDetails .infos .app-row { padding: 30rpx;}
 .panel-orderDetails .app-rows { padding:0;}
-.panel-orderDetails .orderList { margin-top:180rpx;}
-.panel-orderDetails .list .app-row { margin:0 30rpx 30rpx; background-color:#fff; border-radius:30rpx;}
+.panel-orderDetails .list { margin-top:174rpx;}
+.panel-orderDetails .list .app-row { margin:0 30rpx 30rpx; padding: 18rpx 30rpx 2rpx; background-color:#fff; border-radius:30rpx;}
 .panel-orderDetails .list .img-box{
   margin: 0 26rpx;
   border-radius: 50%;
@@ -52,3 +60,21 @@
   color:#fff;
 }
 .panel-orderDetails .orderStatus .iconfont { color:#fff; margin-right:20rpx;}
+
+.panel-orderDetails .list .app-row.finish { background-color: #e7e7e7; border:1rpx solid #dadada; color:#b3b3b3;}
+.panel-orderDetails .list .finish .title { color:#b3b3b3;}
+.panel-orderDetails .list .title .flex-bd { font-size: 32rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;}
+
+.panel-orderDetails .list .flex-row { height:100rpx; line-height: 100rpx; margin:0;}
+.panel-orderDetails .list .items { border-top:1rpx solid #f3f3f3;} 
+.panel-orderDetails .list .finish .items { border-top:1rpx solid #dadada;} 
+.listHeadPic .img-box { width:65rpx; height:65rpx;}
+.panel-orderDetails .list .icon-arrow-right { font-size: 30rpx;}
+.footName { position: relative; top:4rpx; margin-right:20rpx;}
+.technicianBox { padding:40rpx 0; box-sizing: content-box; line-height:1.2;}
+.technicianBox .img-box { width:100rpx; height:100rpx; margin:0!important;}
+.technicianBox .flex-bd view,
+.technicianBox .flex-ft view { line-height:1;}

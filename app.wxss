@@ -144,14 +144,6 @@ button[type=primary][plain].btn-code{
   position: relative;
   padding: 30rpx 0;
 }
-.app-row + .app-row::before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-top: 1px solid #e0e0e0;
-}
 .app-row__hd{
   margin-bottom: 10rpx;
 }
