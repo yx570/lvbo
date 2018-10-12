@@ -1,3 +1,29 @@
-<view class="container">
-  新生币列表
+<view class="flex-column panel-currency">
+	<view class="weui-cells panel-currency-header bg-primary">
+		<view class="weui-cell">
+			<view class="weui-cell__bd align-center">
+        <view class="hd">当前可用新生币</view>
+        <view class="bd">
+          <text>{{ infos.available }}</text>
+        </view>
+        <view class="ft">
+          <text>已得新生币总额 </text>
+          <text>{{ infos.total }}</text>
+        </view>
+			</view>
+		</view>
+    <view class="cr cr-l"></view>
+    <view class="cr cr-r"></view>
+	</view>
+	<view class="flex-bd panel-currency-body">
+		<view class="tabs flex-row">
+      <view class="flex-bd align-center {{ currentTab == item.key ? 'active' : '' }}" wx:for="{{ tabs }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="tabChange">
+        <text>{{ item.label }}</text>
+        <view class="iconfont icon-down color-white" wx:if="{{ currentTab == item.key }}"></view>
+      </view>
+    </view>
+	</view>
+  <view class="app-footer fixed">
+		<button class="btn-radius only" type="primary">申请提现</button>
+	</view>
 </view>

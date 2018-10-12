@@ -255,6 +255,10 @@ button[type=primary][plain].btn-code{
   color: #666;
   background: #f5f5f5;
 }
+.app-footer.fixed{
+  top: auto;
+  bottom: 0;
+}
 .app-footer .left{
   flex: 1;
   line-height: 100rpx;

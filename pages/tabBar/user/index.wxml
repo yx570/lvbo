@@ -2,7 +2,7 @@
 <view class="panel-user">
 	<view class="weui-cells panel-user-header bg-primary">
 		<view class="weui-cell">
-			<view class="weui-cell__bd align-center" data-key="account" bind:tap="navigateChange">
+			<view class="weui-cell__bd align-center">
         <view class="img-box">
           <image class="userimg" src="{{ userInfos.photo }}" wx:if="{{ userInfos.photo }}"></image>
           <open-data class="userimg" type="userAvatarUrl" wx:else></open-data>

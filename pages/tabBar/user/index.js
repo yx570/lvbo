@@ -41,7 +41,7 @@ Page({
         label: '我的历程',
         icon: 'licheng'
       }, {
-        link: '',
+        link: '/pages/user/currency/list/index',
         label: '我的新生币',
         icon: 'currency'
       }, {
