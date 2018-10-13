@@ -41,7 +41,7 @@ Page({
         label: '我的历程',
         icon: 'licheng'
       }, {
-        link: '',
+        link: '/pages/user/currency/list/index',
         label: '我的新生币',
         icon: 'currency'
       }, {
@@ -49,7 +49,7 @@ Page({
         label: '代金券',
         icon: 'voucher'
       }, {
-        link: '',
+        link: '/pages/user/address/index',
         label: '服务地址',
         icon: 'address'
       }, {

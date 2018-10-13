@@ -1,3 +1,20 @@
+.panel-address{
+  overflow-x: hidden;
+}
+.panel-address view{
+  font-size: 30rpx;
+}
+.panel-address .app-cell.flex-start{
+  align-items: flex-start;
+}
 .panel-address .textarea{
-  height: 120rpx;
+  width: 100%;
+  height: 140rpx;
+}
+.panel-address .app-cell__hd{
+  width: 170rpx;
+  line-height: 1;
+}
+.panel-address .btn-area{
+  padding-top: 50rpx;
 }

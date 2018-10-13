@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": 1,
@@ -95,8 +95,14 @@
 				},
 				{
 					"id": -1,
-					"name": "mu",
-					"pathName": "pages/tabBar/user/index"
+					"name": "address",
+					"pathName": "pages/user/address/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "currencyList",
+					"pathName": "pages/user/currency/list/index"
 				}
 			]
 		}

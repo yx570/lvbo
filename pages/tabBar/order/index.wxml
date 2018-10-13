@@ -1,5 +1,5 @@
 <view class="container flex-column">
-  <app-tab tabs="{{ tabs }}" defaultItem="{{ curTab }}" equal align="flex-start" />
+  <app-tab tabs="{{ tabs }}" default-item="{{ curTab }}" equal align="flex-start" />
   <view class="flex-bd">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
       <view class="app-rows">

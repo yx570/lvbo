@@ -55,6 +55,12 @@ button[plain][type=primary].button-hover{
   border:1px solid #00b0ab;
   background-color:transparent;
 }
+button[plain][type=default],
+button[plain][type=default].button-hover{
+  color:#333;
+  border:1px solid #f3f3f3;
+  background-color:transparent;
+}
 button[plain][type=warm],
 button[plain][type=warm].button-hover{
   color:#e5a700;
