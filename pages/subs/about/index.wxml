@@ -33,7 +33,7 @@
       </swiper>
     </view>
     <view class="con">
-      <button class="team-more" type="primary" plain>
+      <button class="team-more" type="primary" plain bind:tap="gotoTechnician">
         <text>600+专业技师竭诚为您服务</text>
         <text class="iconfont icon-arrow-right pl-20 color-primary"></text>
       </button>

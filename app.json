@@ -29,7 +29,8 @@
         "currency/withdraw/index",
         "reservation/list/index",
         "reservation/map/index",
-        "reservation/service/index"
+        "reservation/service/index",
+        "technician/details/index"
       ]
     },
     {

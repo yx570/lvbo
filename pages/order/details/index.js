@@ -136,16 +136,17 @@ Page({
     }, 1000);
   },
   beginServices(ev) {
-    let id = ev.currentTarget.dataset.id;
-    const list = this.data.list;
-    list.forEach(function (value, index, arrSelf) {
-      if (value.id == id) {
-        list[index].status = 3;
-        list[index].startTime = util.formatTime(new Date());
-      }
-    })
+    let { id, index} = ev.currentTarget.dataset;
+    // const list = this.data.list;
+    // list.forEach(function (value, index, arrSelf) {
+    //   if (value.id == id) {
+    //     list[index].status = 3;
+    //     list[index].startTime = util.formatTime(new Date());
+    //   }
+    // })
     this.setData({
-      list: list
+      [`list[${ index }].status`]: 3,
+      [`list[${ index }].startTime`]: util.formatTime(new Date())
     })
     this.getServicesTime();
   }

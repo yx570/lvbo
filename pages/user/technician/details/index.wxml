@@ -1,0 +1,46 @@
+<!--pages/user/technician/index.wxml-->
+<view class="panel-user">
+	<view class="weui-cells panel-user-header bg-primary">
+		<view class="weui-cell">
+			<view class="weui-cell__bd align-center" data-key="account" bind:tap="navigateChange">
+        <view class="img-box">
+          <image class="userimg" src="{{ userInfos.photo }}" wx:if="{{ userInfos.photo }}"></image>
+          <open-data class="userimg" type="userAvatarUrl" wx:else></open-data>
+        </view>
+        <view class="username">
+          <text wx:if="{{ userInfos.userName }}">{{ userInfos.userName }}</text>
+				  <open-data class="username" type="userNickName" wx:else></open-data>
+        </view>
+			</view>
+		</view>
+    <view class="cr cr-l"></view>
+    <view class="cr cr-r"></view>
+	</view>
+	<view class="panel-user-body">
+		<view class="order-cells mt-20">
+      <view class="title">我的订单</view>
+			<view class="flex-row align-center">
+				<view class="flex-bd" wx:for="{{ orderInfos }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="navigateChange">
+          <view class="img-box">
+            <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+            <view class="dot bg-red" wx:if="{{ item.value > 0 }}">{{ item.value }}</view>
+          </view>
+          <view class="color-999">{{ item.label }}</view>
+				</view>
+			</view>
+		</view>
+    <view class="tool-cells mt-20">
+      <view class="title">必备工具</view>
+			<view class="flex-row align-center">
+				<view class="flex-hd" wx:for="{{ tools }}" wx:key="{{ index }}">
+          <navigator url="{{ item.link }}">
+            <view class="img-box">
+              <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+            </view>
+            <view class="color-999">{{ item.label }}</view>
+          </navigator>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "app-swiper": "/components/app-swiper/index"
-  }
+  },
+  "disableScroll": true
 }

@@ -111,5 +111,10 @@ Page({
       }
     })
     _t.popClose();
+  },
+  gotoTechnician(){
+    wx.navigateTo({
+      url: '/pages/user/technician/details/index'
+    })
   }
 })

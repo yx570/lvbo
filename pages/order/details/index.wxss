@@ -3,6 +3,79 @@ page { background-color: #f3f3f3;}
   position: relative;
   height:250rpx;
 }
+
+.panel-orderDetails .header::before,
+.panel-orderDetails .header::after,
+.panel-orderDetails .header .cr::before,
+.panel-orderDetails .header .cr::after{
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.05;
+    z-index: 0;
+}
+.panel-orderDetails .header .cr-l{
+  position: absolute;
+  width: 110rpx;
+  height: 110rpx;
+  bottom: 200rpx;
+  left: 200rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  filter: blur(2rpx);
+}
+.panel-orderDetails .header .cr-l::before{
+  top: 100rpx;
+  left: -300rpx;
+  width: 300rpx;
+  height: 300rpx;
+  opacity: 0.1;
+  filter: blur(8rpx);
+}
+.panel-orderDetails .header .cr-l::after{
+  top: 166rpx;
+  left: 236rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.panel-orderDetails .header .cr-r{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: auto;
+}
+.panel-orderDetails .header .cr-r::before{
+  bottom: -10rpx;
+  right: -10rpx;
+  width: 126rpx;
+  height: 126rpx;
+  opacity: 0.1;
+}
+.panel-orderDetails .header .cr-r::after{
+  bottom: -60rpx;
+  right: -40rpx;
+  width: 160rpx;
+  height: 160rpx;
+  opacity: 0.07;
+  filter: blur(2rpx);
+}
+.panel-orderDetails .header::before{
+    top: 20rpx;
+    right: 100rpx;
+    left: auto;
+    width: 100rpx;
+    height: 100rpx;
+    filter: blur(2rpx);
+}
+.panel-orderDetails .header::after{
+    bottom: 0;
+    right: 180rpx;
+    left: auto;
+    width: 94rpx;
+    height: 94rpx;
+    filter: blur(2rpx);
+}
 .panel-orderDetails .infos {
   position: absolute;
   left:30rpx;
@@ -83,7 +156,6 @@ page { background-color: #f3f3f3;}
 
 .panel-orderDetails .list .icon-weizhi { font-size: 40rpx; color:#333;}
 .panel-orderDetails .list .icon-arrow-right { font-size: 30rpx; color:#c9c9c9;}
-.panel-orderDetails .countTime { color:#f9879a;}
-.panel-orderDetails .countTime text { background-color: #f9879a; padding:5rpx 6rpx; margin:2rpx; border-radius: 10rpx; color:#fff;}
+.panel-orderDetails .countTime text { padding:5rpx 6rpx; margin:2rpx; border-radius: 10rpx; color:#fff;}
 
-.beginBtn { width:104rpx; height:104rpx; line-height:102rpx; font-size:30rpx; background:#fff; border:1rpx solid #00b0ab; border-radius: 50%; box-sizing: border-box; color:#00b0ab; padding:0;}
+.beginBtn { width:104rpx; height:104rpx; line-height:102rpx; font-size:30rpx; background:#fff; border:1rpx solid #00b0ab; border-radius: 50%; box-sizing: border-box; padding:0;}

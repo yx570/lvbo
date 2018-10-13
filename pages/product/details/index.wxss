@@ -225,6 +225,7 @@
 .bottom_but button {
     width:44%;
     display:inline-block;
+    vertical-align: top;
     font-size: 32rpx;
     color:#fff;
     height:80rpx;
