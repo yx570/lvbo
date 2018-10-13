@@ -45,7 +45,7 @@ Page({
         label: '我的新生币',
         icon: 'currency'
       }, {
-        link: '',
+        link: '/pages/user/voucher/index',
         label: '代金券',
         icon: 'voucher'
       }, {

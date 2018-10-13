@@ -12,60 +12,69 @@ Page({
       photo: '',        //头像
       id: 0
     },
-    orderInfos: [
+    serviceTimes: 100,
+    star: 4,
+    remark: '刘诗诗，原名刘诗施，1987年3月10日出生于北京市，中国内地影视女演员、影视出品人。2002年，考入北京舞蹈学院芭蕾舞专业本科班学习。',
+    list: [
       {
-        key: 1,
-        label: '待付款',
-        value: 0,
-        icon: 'dfk'
-      }, {
-        key: 2,
-        label: '待服务',
-        value: 2,
-        icon: 'dfw'
-      }, {
-        key: 3,
-        label: '待评价',
-        value: 0,
-        icon: 'dpj'
-      }, {
-        key: 0,
-        label: '全部订单',
-        value: 0,
-        icon: 'qbdd'
-      }
-    ],
-    tools: [
+        id: 1,
+        imageUrl: '/static/images/demo/b1.jpg',
+        title: '产品名称大标题',
+        name: '王小丫1',
+        date: '2018-05-01',
+        star: 3,
+        timeRange: '9:00-10:00',
+        status: 1
+      },
       {
-        link: '',
-        label: '我的历程',
-        icon: 'licheng'
-      }, {
-        link: '',
-        label: '我的新生币',
-        icon: 'currency'
-      }, {
-        link: '',
-        label: '代金券',
-        icon: 'voucher'
-      }, {
-        link: '',
-        label: '服务地址',
-        icon: 'address'
-      }, {
-        link: '',
-        label: '我的推荐码',
-        icon: 'code'
+        id: 2,
+        imageUrl: '/static/images/demo/b1.jpg',
+        title: '产品名称大标题产品名称大标题产品名称大标题产品名称大标题产品名称大标题产品名称大标题',
+        name: '王小丫2',
+        date: '2018-05-01',
+        star: 3,
+        timeRange: '9:00-10:00',
+        status: 2
+      },
+      {
+        id: 3,
+        imageUrl: '/static/images/demo/b1.jpg',
+        title: '产品名称大标题产品名称大标题产品名称大标题产品名称大标题产品名称大标题产品名称大标题',
+        name: '王小丫3',
+        date: '2018-05-01',
+        star: 3,
+        timeRange: '9:00-10:00',
+        status: 5
+      },
+      // {
+      //   id: 4,
+      //   imageUrl: '/static/images/demo/b1.jpg',
+      //   title: '产品名称大标题',
+      //   name: '王小丫4',
+      //   star: 5,
+      //   date: '2018-05-01',
+      //   startTime: "2018/10/11 21:50:00",
+      //   timeRange: '9:00-10:00',
+      //   status: 3
+      // },
+      {
+        id: 5,
+        imageUrl: '/static/images/demo/b1.jpg',
+        title: '产品名称大标题',
+        name: '王小丫5',
+        star: 3,
+        date: '2018-05-01',
+        timeRange: '9:00-10:00',
+        status: 4
       }
-    ],
-    curOrderTab: 0
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.setNavTitle(' ')
+    app.setNavTitle('技师详情')
     app.setNavColor()
   },
 
@@ -108,15 +117,5 @@ Page({
    */
   onUnload: function () {
   
-  },
-  navigateChange(e){
-    let { key } = e.currentTarget.dataset;
-    this.setData({
-      curOrderTab: key
-    })
-    app.pages.add(this);
-    wx.switchTab({
-      url: '/pages/tabBar/order/index',
-    })
   }
 })

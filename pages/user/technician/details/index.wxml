@@ -1,46 +1,61 @@
-<!--pages/user/technician/index.wxml-->
+<!-- pages/user/technician/index.wxml -->
 <view class="panel-user">
-	<view class="weui-cells panel-user-header bg-primary">
-		<view class="weui-cell">
-			<view class="weui-cell__bd align-center" data-key="account" bind:tap="navigateChange">
-        <view class="img-box">
-          <image class="userimg" src="{{ userInfos.photo }}" wx:if="{{ userInfos.photo }}"></image>
-          <open-data class="userimg" type="userAvatarUrl" wx:else></open-data>
-        </view>
-        <view class="username">
-          <text wx:if="{{ userInfos.userName }}">{{ userInfos.userName }}</text>
-				  <open-data class="username" type="userNickName" wx:else></open-data>
-        </view>
-			</view>
-		</view>
+  <view class="weui-cells panel-user-header bg-primary">
+    <view class="img-box">
+      <image class="userimg" src="{{ userInfos.photo }}" wx:if="{{ userInfos.photo }}"></image>
+      <open-data class="userimg" type="userAvatarUrl" wx:else></open-data>
+    </view>
     <view class="cr cr-l"></view>
     <view class="cr cr-r"></view>
-	</view>
-	<view class="panel-user-body">
-		<view class="order-cells mt-20">
-      <view class="title">我的订单</view>
-			<view class="flex-row align-center">
-				<view class="flex-bd" wx:for="{{ orderInfos }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="navigateChange">
-          <view class="img-box">
-            <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
-            <view class="dot bg-red" wx:if="{{ item.value > 0 }}">{{ item.value }}</view>
-          </view>
-          <view class="color-999">{{ item.label }}</view>
-				</view>
-			</view>
-		</view>
-    <view class="tool-cells mt-20">
-      <view class="title">必备工具</view>
-			<view class="flex-row align-center">
-				<view class="flex-hd" wx:for="{{ tools }}" wx:key="{{ index }}">
-          <navigator url="{{ item.link }}">
-            <view class="img-box">
-              <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+  </view>
+  <view class="panel-user-body">
+    <view class="weui-cell username">
+      <view class="weui-cell__bd align-center">
+        <text wx:if="{{ userInfos.userName }}">{{ userInfos.userName }}</text>
+        <open-data class="username" type="userNickName" wx:else></open-data>
+      </view>
+    </view>
+    <view class="userInfo">
+      <view class="inline-item color-primary">
+        累计服务
+        <text>{{ serviceTimes }}</text>
+        次
+      </view>
+      <view class="inline-item">
+        <view class="stars">
+          <view class="iconfont icon-star-o" wx:for="{{ star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+        </view>
+      </view>
+      <view class="inline-item color-999">4.6分</view>
+    </view>
+    <view class="weui-cell color-999">{{ remark }}</view>
+    <view class="comments">
+      <app-content-title title="技师评价" subTitle="COMMENT" dotColor="#e2f6f5" />
+      <view class="app-row">
+        <block wx:for="{{ list }}" wx:key="index">
+          <view class="items">
+            <view class="flex-row app-row__hd">
+              <view class="flex-ft">
+                <view class="img-box">
+                  <image src="{{ item.imageUrl }}"></image>
+                </view>
+              </view>
+              <view class="flex-bd btop">
+                <view class="flex-row app-row__hd">
+                  <view class="flex-bd">
+                    <view class="name">{{ item.name }}</view>
+                    <view class="stars">
+                      <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+                    </view>
+                  </view>
+                  <view class="flex-ft color-999">{{ item.date }}</view>
+                </view>
+                <view class="color-666">服务很到位，很细心，按摩后精神多了，也没那么抑郁了</view>
+              </view>
             </view>
-            <view class="color-999">{{ item.label }}</view>
-          </navigator>
-				</view>
-			</view>
-		</view>
-	</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
 </view>

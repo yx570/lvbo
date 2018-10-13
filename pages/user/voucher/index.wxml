@@ -1,3 +1,10 @@
 <view class="container panel-voucher">
-  代金券
+  <block wx:for="{{ list }}" wx:key="index">
+    <view class="items">
+      <view class="rmb">RMB</view>
+      <view class="amount">50</view>
+      <view class="voucher">代金券</view>
+      <view class="valid">有效期至2018年9月30日</view>
+    </view>
+  </block>
 </view>
