@@ -14,22 +14,22 @@ Page({
     },
     orderInfos: [
       {
-        key: 1,
+        key: '1',
         label: '待付款',
         value: 0,
         icon: 'dfk'
       }, {
-        key: 2,
+        key: '2',
         label: '待服务',
         value: 2,
         icon: 'dfw'
       }, {
-        key: 3,
+        key: '3',
         label: '待评价',
         value: 0,
         icon: 'dpj'
       }, {
-        key: 0,
+        key: '0',
         label: '全部订单',
         value: 0,
         icon: 'qbdd'
@@ -57,8 +57,7 @@ Page({
         label: '我的推荐码',
         icon: 'code'
       }
-    ],
-    curOrderTab: 0
+    ]
   },
 
   /**
@@ -111,12 +110,9 @@ Page({
   },
   navigateChange(e){
     let { key } = e.currentTarget.dataset;
-    this.setData({
-      curOrderTab: key
-    })
-    app.pages.add(this);
     wx.switchTab({
-      url: '/pages/tabBar/order/index',
-    })
+      url: '/pages/tabBar/order/index'
+    });
+    app.globalData.currentOrderTab = key;
   }
 })

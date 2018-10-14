@@ -1,0 +1,25 @@
+.panel-currency-withdraw text{
+  font-size: 30rpx;
+}
+.panel-currency-withdraw .app-cell{
+  padding: 30rpx;
+  
+}
+.panel-currency-withdraw .iconfont{
+  line-height: 1;
+}
+.panel-currency-withdraw .btn-area,
+.panel-currency-withdraw .input-area{
+  padding: 30rpx;
+}
+.panel-currency-withdraw .unit{
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.panel-currency-withdraw input{
+  padding-left: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 100rpx;
+  font-weight: 600;
+}

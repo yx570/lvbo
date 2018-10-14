@@ -238,7 +238,12 @@ button[type=primary][plain].btn-code{
   padding: 30rpx 0;
   align-items: center;
 }
-.app-cell + .app-cell{
+.app-cell + .app-cell::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   border-top: 1px solid #f3f3f3;
 }
 .app-cell__bd{

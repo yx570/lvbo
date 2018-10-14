@@ -6,23 +6,23 @@ Page({
   data: {
     tabs: [
       {
-        key: 0,
+        key: '0',
         label: '全部'
       }, 
       {
-        key: 1,
+        key: '1',
         label: '待付款'
       },
       {
-        key: 2,
+        key: '2',
         label: '已付款'
       },
       {
-        key: 3,
+        key: '3',
         label: '已完成'
       }
     ],
-    curTab: 0,
+    curTab: '0',
     list: [], 
     hasNextPage: false,
     statusFormat: {
@@ -63,27 +63,25 @@ Page({
       });
     });
   },
+  tabChange(e) {
+    let { key } = e.detail;
+    app.globalData.currentOrderTab = key;
+    this.setData({
+      curTab: key
+    })
+  },
   //load
   onLoad (e) {
     this.getList();
   },
   onShow () {
-    // this._cartlist(0, 0);
-    const userPage = app.pages.get('pages/tabBar/user/index');
-    !!userPage && this.setData({ userPage })
-    if (!!userPage){
-      this.setData({
-        userPage,
-        curTab: userPage.data.curOrderTab
-      })
-    }
+    this.setData({
+      curTab: app.globalData.currentOrderTab
+    })
     console.log(this.data.curTab)
   },
   onHide(){
-    this.setData({
-      curTab: 0
-    })
-    !!this.data.userPage && app.pages.delete(this.data.userPage);
+    
   }
 })
 

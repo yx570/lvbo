@@ -20,9 +20,9 @@ Component({
       type:Array,
       value:[]
     },
-    defaultItem:{
-      type:String,
-      value:''
+    currentKey: {
+      type: String,
+      value: ''
     },
     fixed:{
       type:Boolean,
@@ -30,22 +30,17 @@ Component({
     }
   },
   data: {
-    currentKey:'',
     overflow:false,
     parentWidth:0,
     childWidth:0,
     scrollLeft:0
   },
   ready(){
-    if(this.properties.defaultItem){
-      this.setData({
-        currentKey:this.properties.defaultItem
-      });
-    }else{
-      this.properties.tabs.length > 0 && this.setData({
-        currentKey:this.properties.tabs[0].key
-      });
-    }
+    !this.properties.currentKey && 
+    this.properties.tabs.length > 0 && 
+    this.setData({
+      currentKey:this.properties.tabs[0].key
+    });
     let parentWidth = 0;
     let childWidth = 0;
     let query = wx.createSelectorQuery().in(this);
@@ -73,7 +68,7 @@ Component({
       this.setData({
         currentKey:key
       });
-      this.triggerEvent('itemTap',{key});
+      this.triggerEvent('itemTap',{ key });
     },
     scroll(ev){
       this.setData({

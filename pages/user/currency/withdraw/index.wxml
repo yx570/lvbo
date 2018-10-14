@@ -1,3 +1,60 @@
-<view class="container">
-  新生币提现
+<view class="container panel-currency-withdraw bg-f3">
+  <form bindsubmit="formSubmit">
+    <view class="app-cells bg-white">
+      <view class="app-cell">
+        <view class="app-cell__hd">
+          <text class="color-999">收款方式</text>
+        </view>
+        <view class="app-cell__bd align-right">
+          <picker bindchange="pickerChange" value="{{ receiptType }}" range-key="label" range="{{ receiptTypes }}">
+            <text>{{ receiptTypes[receiptType].label }}</text>
+          </picker>
+        </view>
+        <view class="app-cell__ft">
+          <view class="iconfont icon-arrow-right"></view>
+        </view>
+      </view>
+      <view class="app-cell">
+        <view class="app-cell__hd">
+          <text class="color-999">账号</text>
+        </view>
+        <view class="app-cell__bd align-right">
+          <text>{{ infos.account }}</text>
+        </view>
+      </view>
+      <view class="app-cell">
+        <view class="app-cell__hd">
+          <text class="color-999">姓名</text>
+        </view>
+        <view class="app-cell__bd align-right">
+          <text>{{ infos.name }}</text>
+        </view>
+      </view>
+      <view class="app-cell">
+        <view class="app-cell__hd">
+          <text class="color-999">手机号码</text>
+        </view>
+        <view class="app-cell__bd align-right">
+          <text>{{ infos.phone }}</text>
+        </view>
+      </view>
+    </view>
+    <view class="app-cells bg-white mt-20 input-area">
+      <view class="flex-column">
+        <view class="flex-row">
+          <text class="color-999">提现新生币</text>
+          <text class="flex-bd align-right color-999">可提现新生币{{ infos.total }}</text>
+        </view>
+        <view class="flex-row flex-end pt-20">
+          <view class="unit">￥</view>
+          <view class="input flex-bd">
+            <input type="number" value="{{ form.amount }}" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="app-cells mt-20 btn-area">
+      <button class="btn-radius" type="primary" formType="submit">确认</button>
+    </view>
+  </form>
 </view>

@@ -150,3 +150,47 @@
   border-radius: 100rpx;
 }
 
+.currency-list{
+  margin-top: 0;
+  padding-bottom: 140rpx;
+}
+.currency-list .img-box{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+}
+.currency-list .img-box image{
+  border-radius: 50%;
+}
+.currency-item{
+  position: relative;
+  margin-top: 10rpx;
+  padding: 20rpx 30rpx;
+}
+.currency-item + .currency-item::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 150rpx;
+  right: 0;
+  border-top: 1px solid #f3f3f3;
+}
+.currency-item .con{
+  padding-left: 30rpx;
+}
+.currency-item .title{
+  font-size: 32rpx;
+  line-height: 1;
+}
+.currency-item .name{
+  padding: 18rpx 0;
+  font-size: 26rpx;
+  line-height: 1;
+}
+.currency-item .date{
+  font-size: 26rpx;
+}
+.currency-item .count{
+  font-size: 36rpx;
+  line-height: 1;
+}
