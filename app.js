@@ -4,6 +4,7 @@ const pages = require('plugins/pages.js')
 const cartModel = require('models/cart/index.js');
 App({
   globalData: {
+    currentOrderTab: '0',
     orderId: [],
     catList: [],//是否在购物车
     goSettleList: [],//购物车

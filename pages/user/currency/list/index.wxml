@@ -22,8 +22,29 @@
         <view class="iconfont icon-down color-white" wx:if="{{ currentTab == item.key }}"></view>
       </view>
     </view>
+    <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
+      <view class="currency-list">
+        <view class="currency-item" wx:for="{{ list }}" wx:key="{{ item.id }}">
+          <navigator class="flex-row" hover-class="none">
+            <view class="flex-hd">
+              <view class="img-box">
+                <image src="{{ item.imageUrl }}"></image>
+              </view>
+            </view>
+            <view class="flex-bd con">
+              <view class="title ellipse">{{ item.title }}</view>
+              <view class="name">[{{ item.name }}]</view>
+              <view class="date color-999">{{ item.date }}</view>
+            </view>
+            <view class="flex-ft">
+              <text class="count {{ item.count > 0 ? '' : 'color-pink' }}">{{ item.count > 0 ? '+' : '' }}{{ item.count }}</text>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </scroll-view>  
 	</view>
   <view class="app-footer fixed">
-		<button class="btn-radius only" type="primary">申请提现</button>
+		<button class="btn-radius only" type="primary" bindtap="navChange">申请提现</button>
 	</view>
 </view>

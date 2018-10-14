@@ -12,8 +12,10 @@
   height: 140rpx;
 }
 .panel-address .app-cell__hd{
-  width: 170rpx;
-  line-height: 1;
+  width: 160rpx;
+}
+.panel-address .tag-btns button + button{
+  margin-left: 20rpx;
 }
 .panel-address .btn-area{
   padding-top: 50rpx;

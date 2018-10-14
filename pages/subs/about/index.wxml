@@ -1,8 +1,8 @@
 <view class="container panel-about">
   <view class="about-header bg-primary">
-    <view class="dot-area">
-      <view class="dot dot1"></view>
-      <view class="dot dot2"></view>
+    <view class="cr-area">
+      <view class="cr cr1"></view>
+      <view class="cr cr2"></view>
     </view>
     <view class="img-box">
       <image src="../../../static/images/logo-page.png" />

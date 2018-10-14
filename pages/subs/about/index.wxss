@@ -13,7 +13,7 @@
   padding: 30rpx 0 90rpx;
   overflow: hidden;
 }
-.about-header .dot-area{
+.about-header .cr-area{
   position: absolute;
   width: 310rpx;
   height: 100%;
@@ -21,8 +21,8 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.about-header .dot::before,
-.about-header .dot::after{
+.about-header .cr::before,
+.about-header .cr::after{
   content: '';
   position: absolute;
   top: 0;
@@ -32,19 +32,19 @@
   background: rgba(255, 255, 255, 0.1);
   z-index: -1;
 }
-.about-header .dot1::before{
+.about-header .cr1::before{
   width: 26rpx;
   height: 26rpx;
   left: 6rpx;
 }
-.about-header .dot1::after{
+.about-header .cr1::after{
   top: 50rpx;
   left: 56rpx;
 }
-.about-header .dot2::before{
+.about-header .cr2::before{
   right: -80rpx;
 }
-.about-header .dot2::after{
+.about-header .cr2::after{
   top: 74rpx;
   right: 10rpx;
   width: 80rpx;
