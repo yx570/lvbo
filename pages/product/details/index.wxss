@@ -19,6 +19,7 @@
 .selectPrice button[plain][type=primary] {
     background: #ffe9ed;
     border:1rpx solid #f9879a;
+    color:#f9879a;
 }
 
 .selectPrice .fonts {
