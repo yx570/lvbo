@@ -83,7 +83,7 @@
                 <view class="times">{{ item.timeRange }}</view>
               </view>
             </view>
-            <navigator class="listHeadPic" hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+            <navigator class="listHeadPic" hover-class="none" url="/pages/user/maps/index?id={{ item.id }}">
               <view class="flex-row app-row__hd items">
                 <view class="flex-bd">
                   <text class="iconfont icon-weizhi"></text>

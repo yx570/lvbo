@@ -30,7 +30,8 @@
         "reservation/list/index",
         "reservation/map/index",
         "reservation/service/index",
-        "technician/details/index"
+        "technician/details/index",
+        "maps/index"
       ]
     },
     {

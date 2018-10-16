@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 15,
 			"list": [
 				{
 					"id": 1,
@@ -126,7 +126,13 @@
 				{
 					"id": -1,
 					"name": "case",
-					"pathName": "pages/case/details/index"
+					"pathName": "pages/case/details/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "maps",
+					"pathName": "pages/user/maps/index"
 				}
 			]
 		}
