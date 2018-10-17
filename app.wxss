@@ -52,7 +52,9 @@ button:after {
 .color-b8 { color: #b8b8b8; }
 .color-ab{ color: #ababab; }
 .color-ad{ color:#adadad; }
+.color-f3{ color:#f3f3f3; }
 .color-pink { color: #f9879a; }
+.color-warm { color: #ffba00; }
 .bg-pink { background: #f9879a; }
 .bg-primary{ background: #00b0ab; }
 .bg-white{ background: #fff; }

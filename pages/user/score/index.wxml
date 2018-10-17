@@ -1,0 +1,96 @@
+<view class="container flex-column panel-score">
+  <view class="flex-bd">
+    <scroll-view class="scroll-box" scroll-y="true">
+      <form bindsubmit="formSubmit">
+        <view class="content">
+          <view class="flex-row panel-score__ft">
+            <view class="flex-hd">
+              <view class="img-box">
+                <image mode="aspectFill" src="{{ infos.imageUrl }}" />
+              </view>
+            </view>
+            <view class="flex-bd con">
+              <view class="title">{{ infos.title }}</view>
+              <view class="color-999">{{ infos.date }} {{ infos.timeRange }}</view>
+              <view class="color-999">技师：{{ infos.name }}</view>
+            </view>
+          </view>
+          <view class="panel-score__bd">
+            <view class="flex-row flex-center">
+              <view class="flex-hd label">技师服务</view>
+              <view class="flex-bd flex-row stars">
+                <view class="iconfont icon-star-o {{ technicianStar > item ? 'color-warm' : 'color-f3' }}" data-attr="technicianStar" data-index="{{ index }}" wx:for="{{ 5 }}" wx:key="{{ item }}" bindtap="starChange"></view>
+              </view>
+            </view>
+            <view class="tag-btns">
+              <button 
+                class="btn-radius" 
+                size="mini" 
+                type="{{ item.checked ? 'primary' : 'default' }}" 
+                plain="{{ !item.checked }}" 
+                wx:for="{{ technicianTags }}" 
+                wx:key="{{ index }}"
+                data-row="{{ item }}"
+                data-index="{{ index }}"
+                data-tags="technicianTags"
+                bindtap="tagChange">
+                {{ item.label }}
+              </button>
+            </view>
+            <view class="flex-row flex-center">
+              <view class="flex-hd label">产品评价</view>
+              <view class="flex-bd flex-row stars">
+                <view class="iconfont icon-star-o {{ proStar > item ? 'color-warm' : 'color-f3' }}" data-attr="proStar" data-index="{{ index }}" wx:for="{{ 5 }}" wx:key="{{ item }}" bindtap="starChange"></view>
+              </view>
+            </view>
+            <view class="tag-btns">
+              <button 
+                class="btn-radius" 
+                size="mini" 
+                type="{{ item.checked ? 'primary' : 'default' }}" 
+                plain="{{ !item.checked }}" 
+                wx:for="{{ proTags }}" 
+                wx:key="{{ index }}"
+                data-row="{{ item }}"
+                data-index="{{ index }}"
+                data-tags="proTags"
+                bindtap="tagChange">
+                {{ item.label }}
+              </button>
+            </view>
+          </view>
+          <textarea class="textarea bg-f8" name="textarea" placeholder="技师服务如何？产品如何？写下您的评价。" placeholder-style="font-size: 30rpx; color: #b7bbbf;" />
+          <view class="flex-row images">
+            <view class="img-box bg-f8 mr-20 mb-20" wx:for="{{ images }}" data-src="{{ item }}" wx:key="{{ index }}" bindtap="preViewImage">
+              <image mode="aspectFill" src="{{ item }}" />
+            </view>
+            <view class="img-box bg-f8 mb-20" bindtap="openPop" wx:if="{{ images.length < maxImageCount }}">
+              <view class="iconfont icon-camera"></view>
+            </view>
+          </view>
+          <view class="checkbox-area">
+            <label class="checkbox">
+              <checkbox value="{{ index }}" checked="{{ anonymous }}"/>
+              <icon class="iconfont icon-check"></icon>
+              <text class="color-666">匿名评价</text>
+            </label>
+          </view>
+        </view>
+      </form>
+    </scroll-view>  
+  </view>
+  <view class="app-footer fixed">
+    <button class="btn-radius only" type="primary" formType="submit">提交</button>
+  </view>
+</view>
+<app-pop visible="{{ popVisible }}" bind:close="popClose" class="popBox" styles="bottom:0rpx;left:0;border-radius: 20rpx;width:95%;margin: 20rpx;background: transparent;">
+  <view class='modal-content align-center'>
+    <view class="pop-rows bg-white">
+      <view class="app-row" data-source="camera" bindtap="chooseImage">拍照</view>
+      <view class="app-row" data-source="album" bindtap="chooseImage">从相册中选择</view>
+    </view>
+    <view class="pop-rows bg-white mt-20">
+      <view class="app-row" bindtap="popClose">取消</view>
+    </view>
+  </view>
+</app-pop>

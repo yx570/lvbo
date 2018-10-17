@@ -85,7 +85,8 @@ checkbox{
 }
 checkbox[checked] + .icon-check::after{
   content: "\e63a";
-  color: #ff5000;
+  /* color: #ff5000; */
+  color: #00b0ab;
 }
 .weui-cells::before,
 .weui-cells::after,.weui-cell::before{
