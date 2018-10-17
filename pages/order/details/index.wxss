@@ -109,6 +109,7 @@ page { background-color: #f3f3f3;}
 }
 .panel-orderDetails .infos .app-row { padding: 30rpx;}
 .panel-orderDetails .app-rows { padding:0;}
+
 .panel-orderDetails .list { margin-top:174rpx;}
 .panel-orderDetails .list .app-row { margin:0 30rpx 30rpx; padding: 18rpx 30rpx 2rpx; background-color:#fff; border-radius:30rpx;}
 .panel-orderDetails .list .img-box{
@@ -125,14 +126,14 @@ page { background-color: #f3f3f3;}
   font-size: 50rpx;
   line-height: 1;
 }
-.panel-orderDetails .orderStatus { 
+.panel-orderDetails .list .orderStatus { 
   position: absolute;
   left:30rpx;
   top:60rpx;
   font-size:36rpx;
   color:#fff;
 }
-.panel-orderDetails .orderStatus .iconfont { color:#fff; margin-right:20rpx;}
+.panel-orderDetails .list .orderStatus .iconfont { color:#fff; margin-right:20rpx;}
 
 .panel-orderDetails .list .app-row.finish { background-color: #e7e7e7; border:1rpx solid #dadada; color:#b3b3b3;}
 .panel-orderDetails .list .finish .title { color:#b3b3b3;}

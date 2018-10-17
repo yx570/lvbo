@@ -15,7 +15,7 @@ Page({
       },
       {
         key: '2',
-        label: '已付款'
+        label: '待服务'
       },
       {
         key: '3',
@@ -82,6 +82,12 @@ Page({
   },
   onHide(){
     
+  },
+  gotoComment(ev) {
+    let id = ev.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/user/score/index?id=' + id
+    });
   }
 })
 
