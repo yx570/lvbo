@@ -63,17 +63,58 @@ Page({
                 let my = { latitude: res.latitude, longitude: res.longitude };
                 _this.includePointsFn(my);
 
-                let test = [{
-                    ...lineArr[0],
-                    // iconPath: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3461353247,2202984778&fm=26&gp=0.jpg",
-                    iconPath: "/static/images/demo/markers.jpg",
-                    width: 30,
-                    height: 30
-                }];
 
-                that2.setData({
-                    markers: test
-                });
+                wx.getUserInfo({
+                    success: function (res) {
+                        console.log(res);
+                        var avatarUrl = 'userInfo.avatarUrl';
+                        var nickName = 'userInfo.nickName';
+                        console.log(avatarUrl);
+                        // that.setData({
+                        //     [avatarUrl]: res.userInfo.avatarUrl,
+                        //     [nickName]: res.userInfo.nickName,
+                        // })
+                    }
+                })
+
+                wx.downloadFile({
+                    // url: "https://anteng-picture-oss.oss-cn-shenzhen.aliyuncs.com/osslvbang/20181017/9cddc7a1e59e423090eb4410bf38c05c.jpg",
+                    url: "https://anteng-picture-oss.oss-cn-shenzhen.aliyuncs.com/osslvbang/20181017/9cddc7a1e59e423090eb4410bf38c05c.jpg?x-oss-process=image/resize,m_fill,h_100,w_100,image/circle,r_100/format,png",
+                    success: (pathInfo) => {
+                        // pathInfo.path 这是下载成的缓存链接，模拟器marker有时不支持http开头，真机不影响，得去掉http:/
+                        let cachePath = pathInfo.tempFilePath.replace("http:/", '').replace("https:/", '')//真机中无需replace，都支持，
+
+                        let test = [{
+                            ...lineArr[0],
+                            iconPath: '/static/images/markers.png',
+                            width: 28,
+                            height: 38,
+                        }];
+
+                        that2.setData({
+                            markers: test,
+                            testPath: cachePath
+                        });
+                    }
+                })
+
+                // let test = [{
+                //     ...lineArr[0],
+                //     // iconPath: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3461353247,2202984778&fm=26&gp=0.jpg",
+                //     // iconPath: "/static/images/demo/markers.jpg",
+                //     width: 30,
+                //     height: 30,
+                //     callout: {
+                //         content: "test",
+                //         borderRadius: 50,
+                //         borderWidth:10,
+                //         display: "ALWAYS"
+                //     }
+                // }];
+
+                // that2.setData({
+                //     markers: test
+                // });
             }
         });
     },

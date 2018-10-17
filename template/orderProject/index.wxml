@@ -1,0 +1,170 @@
+<template name="orderProjectItem">
+  <view class="app-row finish" wx:if="{{ item.status == 1 }}">
+    <view class="flex-row app-row__hd title">
+      <view class="flex-bd">{{ item.title }}</view>
+      <view class="flex-ft">{{ statusFormat[item.status] || '' }}</view>
+    </view>
+    <view class="flex-row app-row__hd items">
+      <view class="flex-bd">时间</view>
+      <view class="flex-ft">{{ item.date }} {{ item.timeRange }}</view>
+    </view>
+    <navigator class="listHeadPic" hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+      <view class="flex-row app-row__hd items">
+        <view class="flex-bd">技师</view>
+        <view class="flex-ft">
+          <view class="img-box">
+            <image src="{{ item.imageUrl }}"></image>
+          </view>
+          {{ item.name }}
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 技师已出发 -->
+  <view class="app-row" wx:elif="{{ item.status == 2 }}">
+    <view class="flex-row app-row__hd title">
+      <view class="flex-bd">{{ item.title }}</view>
+      <view class="flex-ft color-primary">{{ statusFormat[item.status] || '' }}</view>
+    </view>
+    <view class="flex-row app-row__hd items technicianBox">
+      <view class="flex-bd">
+        <view class="flex-row app-row__hd">
+          <view class="flex-ft">
+            <view class="img-box">
+              <image src="{{ item.imageUrl }}"></image>
+            </view>
+          </view>
+          <view class="flex-bd">
+            <view class="name">[{{ item.name }}]</view>
+            <view class="stars">
+              <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="flex-ft align-right">
+        <view class="dates color-999">{{ item.date }}</view>
+        <view class="times">{{ item.timeRange }}</view>
+      </view>
+    </view>
+    <navigator class="listHeadPic" hover-class="none" url="/pages/user/maps/index?id={{ item.id }}">
+      <view class="flex-row app-row__hd items">
+        <view class="flex-bd">
+          <text class="iconfont icon-weizhi"></text>
+          <text class="f-30 pl-10">技师位置</text>
+        </view>
+        <view class="flex-ft">
+          <text class="iconfont icon-arrow-right"></text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 服务中 -->
+  <view class="app-row" wx:elif="{{ item.status == 3 }}">
+    <view class="flex-row app-row__hd title">
+      <view class="flex-bd">{{ item.title }}</view>
+      <view class="flex-ft color-primary">{{ statusFormat[item.status] || '' }}</view>
+    </view>
+    <view class="flex-row app-row__hd items technicianBox">
+      <view class="flex-bd">
+        <view class="flex-row app-row__hd">
+          <view class="flex-ft">
+            <view class="img-box">
+              <image src="{{ item.imageUrl }}"></image>
+            </view>
+          </view>
+          <view class="flex-bd">
+            <view class="name">[{{ item.name }}]</view>
+            <view class="stars">
+              <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="flex-ft align-right countTime color-pink">
+        <text class="bg-pink">{{ h }}</text>
+        :
+        <text class="bg-pink">{{ m }}</text>
+        :
+        <text class="bg-pink">{{ s }}</text>
+      </view>
+    </view>
+    <navigator class="listHeadPic" hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+      <view class="flex-row app-row__hd items">
+        <view class="flex-bd">
+          <text class="iconfont icon-weizhi"></text>
+          <text class="f-30 pl-10">技师位置</text>
+        </view>
+        <view class="flex-ft">
+          <text class="iconfont icon-arrow-right"></text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 待服务 -->
+  <view class="app-row" wx:elif="{{ item.status == 4 }}">
+    <view class="flex-row app-row__hd title">
+      <view class="flex-bd">{{ item.title }}</view>
+      <view class="flex-ft color-primary">{{ statusFormat[item.status] || '' }}</view>
+    </view>
+    <view class="flex-row app-row__hd items">
+      <view class="flex-bd">时间</view>
+      <view class="flex-ft">
+        <text class="footName color-999">{{ item.date }} {{ item.timeRange }}</text>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+    <navigator class="listHeadPic" hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+      <view class="flex-row app-row__hd items">
+        <view class="flex-bd">技师</view>
+        <view class="flex-ft">
+          <view class="img-box">
+            <image src="{{ item.imageUrl }}"></image>
+          </view>
+          <text class="footName color-999">{{ item.name }}</text>
+          <text class="iconfont icon-arrow-right"></text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!-- 技师已到达 -->
+  <view class="app-row" wx:elif="{{ item.status == 5 }}">
+    <view class="flex-row app-row__hd title">
+      <view class="flex-bd">{{ item.title }}</view>
+      <view class="flex-ft color-primary">{{ statusFormat[item.status] || '' }}</view>
+    </view>
+    <view class="flex-row app-row__hd items technicianBox">
+      <view class="flex-bd">
+        <view class="flex-row app-row__hd">
+          <view class="flex-ft">
+            <view class="img-box">
+              <image src="{{ item.imageUrl }}"></image>
+            </view>
+          </view>
+          <view class="flex-bd">
+            <view class="name">[{{ item.name }}]</view>
+            <view class="stars">
+              <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="flex-ft align-right">
+        <button class="beginBtn color-primary" bind:tap="beginServices" data-index="{{ index }}" data-id="{{ item.id }}">
+          开始
+        </button>
+      </view>
+    </view>
+    <navigator class="listHeadPic" hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+      <view class="flex-row app-row__hd items">
+        <view class="flex-bd">
+          <text class="iconfont icon-weizhi"></text>
+          <text class="f-30 pl-10">技师位置</text>
+        </view>
+        <view class="flex-ft">
+          <text class="iconfont icon-arrow-right"></text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</template>
