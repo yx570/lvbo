@@ -2,10 +2,11 @@
   <app-tab tabs="{{ tabs }}" currentKey="{{ curTab }}" bind:itemTap="tabChange" equal align="flex-start"/>
   <view class="flex-bd">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
-      <!-- <view class="app-rows" wx:if="{{ curTab == 2 }}">
+      <view class="app-rows list" wx:if="{{ curTab == 2 }}">
+        <app-orderProject class="order-project" list="{{ list }}"></app-orderProject>
       </view>
-      <view class="app-rows" wx:else> -->
-      <view class="app-rows">
+      <view class="app-rows" wx:else>
+      <!-- <view class="app-rows"> -->
         <view class="app-row mt-20" wx:for="{{ list }}" wx:key="{{ item.id }}">
           <navigator hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
             <view class="flex-row app-row__hd">

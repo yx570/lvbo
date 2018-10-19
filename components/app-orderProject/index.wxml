@@ -1,4 +1,6 @@
-<template name="orderProjectItem">
+<!-- components/app-orderProject/index.wxml -->
+<block wx:for="{{ list }}" wx:key="index">
+  <!-- 已服务 -->
   <view class="app-row finish" wx:if="{{ item.status == 1 }}">
     <view class="flex-row app-row__hd title">
       <view class="flex-bd">{{ item.title }}</view>
@@ -89,7 +91,7 @@
         <text class="bg-pink">{{ s }}</text>
       </view>
     </view>
-    <navigator class="listHeadPic" hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+    <navigator class="listHeadPic" hover-class="none" url="/pages/user/maps/index?id={{ item.id }}">
       <view class="flex-row app-row__hd items">
         <view class="flex-bd">
           <text class="iconfont icon-weizhi"></text>
@@ -155,7 +157,7 @@
         </button>
       </view>
     </view>
-    <navigator class="listHeadPic" hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+    <navigator class="listHeadPic" hover-class="none" url="/pages/user/maps/index?id={{ item.id }}">
       <view class="flex-row app-row__hd items">
         <view class="flex-bd">
           <text class="iconfont icon-weizhi"></text>
@@ -167,4 +169,4 @@
       </view>
     </navigator>
   </view>
-</template>
+</block>

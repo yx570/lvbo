@@ -34,7 +34,7 @@
     <view class='item_title clear-both'></view>
     <view class='details-list bg-fff'>          
         <view class='details-list-data col-333 bor-t'>
-            <view>下单日期：<label class='col-cb f-r'>{{listV.createTime}}</label></view>
+            <view>下单日期：<label class='col-cb f-r'>{{listV.updateTime}}</label></view>
             <view>订单编号：<label class='col-cb f-r'>{{listV.id}}</label></view>
             <view>付款方式：<label class='col-cb f-r'>{{listV.paymentMethodName}}</label></view>
             <!-- <view>收货时间：<label class='col-cb f-r'>{{listV.shippingTime}}</label></view> -->

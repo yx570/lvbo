@@ -2,7 +2,7 @@ module.exports = {
   "code": 2, "msg": "ok", "data": {
     "headPic": "/static/images/demo/headpic.jpg",
     "nickName": "孕妇用户",
-    "createTime": "2018-08-19",
+    "updateTime": "2018-08-19",
     "contents": "产后体重的恢复也不是越快越好。有研究认产后用，至少六个月的时间恢复到孕前水平。",
     "imgList": [
       'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537292217635&di=db9ca194ec3e9b595044b1583f794e77&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161031%2Fa85943e3866640afad919fc5843448c4_th.jpg',

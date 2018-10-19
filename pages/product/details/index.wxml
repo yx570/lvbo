@@ -39,7 +39,7 @@
                     </view>
                     <view class="flex-bd con">
                         <view class="title">{{ comment.nickName }}</view>
-                        <view class="color-b8">{{ comment.createTime }}</view>
+                        <view class="color-b8">{{ comment.updateTime }}</view>
                     </view>
                 </view>
             </view>

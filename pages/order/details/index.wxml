@@ -34,10 +34,7 @@
   <view class="flex-column flex-bd">
     <view class="flex-bd orderList">
       <view class='app-rows list'>
-        <!-- 已服务 -->
-        <block wx:for="{{ list }}" wx:key="index">
-          <template is="orderProjectItem" data="{{ item }}"></template>
-        </block>
+        <app-orderProject class="order-project" list="{{ list }}"></app-orderProject>
       </view>
     </view>
   </view>
