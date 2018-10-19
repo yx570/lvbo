@@ -32,10 +32,8 @@
     <view class="cr cr-r"></view>
   </view>
   <view class="flex-column flex-bd">
-    <view class="flex-bd orderList">
-      <view class='app-rows list'>
-        <app-orderProject class="order-project" list="{{ list }}"></app-orderProject>
-      </view>
+    <view class="flex-bd order-project">
+      <template is="orderProject" wx:for="{{ list }}" data="{{ ...item, statusFormat: statusFormat, index: index }}"></template>
     </view>
   </view>
 </view>

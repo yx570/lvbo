@@ -2,6 +2,6 @@
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "订单详情",
   "usingComponents": {
-    "app-orderProject": "/components/app-orderProject/index"
+    
   }
 }

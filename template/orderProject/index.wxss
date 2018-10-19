@@ -1,0 +1,43 @@
+
+.order-project { margin-top:174rpx;}
+.order-project .app-row { margin:0 30rpx 30rpx; padding: 18rpx 30rpx 2rpx; background-color:#fff; border-radius:30rpx;}
+.order-project .img-box{
+  margin: 0 26rpx;
+  border-radius: 50%;
+}
+.order-project image{
+  border-radius: 50%;
+}
+.order-project .date{
+  padding: 26rpx 0;
+}
+.order-project .iconfont{
+  font-size: 50rpx;
+  line-height: 1;
+}
+
+.order-project .app-row.finish { background-color: #e7e7e7; border:1rpx solid #dadada; color:#b3b3b3;}
+.order-project .finish .title { color:#b3b3b3;}
+.order-project .title .flex-bd { font-size: 32rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;}
+
+.order-project .flex-row { height:100rpx; line-height: 100rpx; margin:0;}
+.order-project .items { border-top:1rpx solid #f3f3f3;} 
+.order-project .finish .items { border-top:1rpx solid #dadada;} 
+.order-project .listHeadPic .img-box { width:65rpx; height:65rpx;}
+.order-project .footName { position: relative; top:4rpx; margin-right:20rpx;}
+.order-project .technicianBox { padding:0 0 40rpx 0; box-sizing: content-box; line-height:1.2; border-top:none!important;}
+.order-project .technicianBox .img-box { width:100rpx; height:100rpx; margin:0 30rpx 0 0!important;}
+.order-project .technicianBox .name { padding-top:10rpx; font-size: 30rpx; line-height: 1.2}
+.order-project .stars { margin-top:10rpx; line-height: 1.2}
+.order-project .stars .iconfont { font-size: 32rpx; color:#ffcc00; margin-right:5rpx;}
+.order-project .technicianBox .dates { padding-top:10rpx; line-height: 1.5; font-size: 28rpx;}
+.order-project .technicianBox .times { font-size: 30rpx; line-height: 1.5;}
+
+.order-project .icon-weizhi { font-size: 40rpx; color:#333;}
+.order-project .icon-arrow-right { font-size: 30rpx; color:#c9c9c9;}
+.order-project .countTime text { padding:5rpx 6rpx; margin:2rpx; border-radius: 10rpx; color:#fff;}
+
+.order-project .beginBtn { width:104rpx; height:104rpx; line-height:102rpx; font-size:30rpx; background:#fff; border:1rpx solid #00b0ab; border-radius: 50%; box-sizing: border-box; padding:0;}
