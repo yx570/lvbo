@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 12,
 			"list": [
 				{
 					"id": 1,
@@ -77,12 +77,6 @@
 				},
 				{
 					"id": -1,
-					"name": "about",
-					"pathName": "pages/subs/about/index",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "order",
 					"pathName": "pages/tabBar/order/index",
 					"query": ""
@@ -101,12 +95,6 @@
 				},
 				{
 					"id": -1,
-					"name": "currencyList",
-					"pathName": "pages/user/currency/list/index",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "technicianDetails",
 					"pathName": "pages/user/technician/details/index",
 					"query": ""
@@ -119,20 +107,15 @@
 				},
 				{
 					"id": -1,
-					"name": "currencyWithdraw",
-					"pathName": "pages/user/currency/withdraw/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "case",
-					"pathName": "pages/case/details/index",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "maps",
-					"pathName": "pages/user/maps/index"
+					"pathName": "pages/user/maps/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "score",
+					"pathName": "pages/user/score/index",
+					"query": "id=1"
 				}
 			]
 		}

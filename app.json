@@ -31,7 +31,8 @@
         "reservation/map/index",
         "reservation/service/index",
         "technician/details/index",
-        "maps/index"
+        "maps/index",
+        "score/index"
       ]
     },
     {
@@ -43,8 +44,7 @@
     {
       "root": "pages/subs",
       "pages": [
-        "about/index",
-        "score/index"
+        "about/index"
       ]
     }
   ],
