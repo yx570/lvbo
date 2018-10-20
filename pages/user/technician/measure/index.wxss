@@ -1,0 +1,15 @@
+.panel-measure{
+  overflow-x: hidden;
+}
+.measure-content{
+  padding-bottom: 140rpx;
+}
+.panel-measure .app-footer{
+  height: 140rpx;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.panel-measure .app-footer button{
+  border-radius: 100rpx;
+}

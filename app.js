@@ -22,7 +22,7 @@ App({
   getUserSetting(){
     wx.getSetting({
       success: (res) => {
-        console.log(res)
+        // console.log(res)
       }
     })
   },
