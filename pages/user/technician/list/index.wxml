@@ -1,20 +1,24 @@
 <view class="container flex-column bg-f3 panel-technician">
-  <app-tab tabs="{{ tabs }}" currentKey="{{ curTab }}" bind:itemTap="tabChange" equal align="flex-start"/>
+  <view class="tabs flex-row bg-primary">
+    <view class="flex-bd align-center {{ currentTab == item.key ? 'active' : '' }}" wx:for="{{ tabs }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="tabChange">
+      <text>{{ item.label }}</text>
+    </view>
+  </view>
   <view class="flex-bd">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
-      <view class="content list">
+      <view class="content technician-list">
         <view class="flex-column technician-item bg-white" wx:for="{{ list }}" wx:key="{{ index }}">
           <view class="title">{{ item.title }}</view>
           <view class="flex-row flex-center">
             <view class="flex-hd img-box">
               <image src="{{ item.imageUrl }}" />
             </view>
-            <view class="flex-bd">
+            <view class="flex-bd con-box">
               <view class="name">{{ item.name }}</view>
               <view class="date color-b8">服务时间：{{ item.datetime }}</view>
             </view>
             <view class="flex-ft">
-              <view class="iconfont icon-telphone"></view>
+              <view class="iconfont icon-dianhua color-primary" data-mobile="{{ item.mobile }}" bindtap="makeCall"></view>
             </view>
           </view>
           <view class="process-box bg-f3" wx:if="{{ item.process && item.process.length > 0 }}">
@@ -25,10 +29,10 @@
           </view>
           <view class="flex-row btn-area">
             <view class="flex-bd">
-              <button size="mini" class="btn-radius" plain wx:if="{{ item.status == 2 }}">申请取消</button>
+              <button size="mini" class="btn-radius" type="default" plain wx:if="{{ item.status == 2 }}">申请取消</button>
             </view>
             <view class="flex-ft align-right">
-              <button size="mini" class="btn-radius" plain wx:if="{{ item.status !== 3 }}">查看客户位置</button>
+              <button size="mini" class="btn-radius" type="default" plain wx:if="{{ item.status !== 3 }}">查看客户位置</button>
               <button size="mini" class="btn-radius" type="primary" plain wx:if="{{ item.status == 1 }}">确认到达</button>
               <button size="mini" class="btn-radius" type="primary" plain wx:elif="{{ item.status == 2 }}">出发</button>
               <button size="mini" class="btn-radius" type="primary" plain wx:else>开始测量</button>

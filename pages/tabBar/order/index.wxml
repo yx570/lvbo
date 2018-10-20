@@ -35,10 +35,10 @@
             </view>
           </navigator>
             <view class="align-right">
-              <button size="mini" class="btn-primary" wx:if="{{ item.status == 1 }}" data-id="{{ item.id }}" bindtap="gotoComment">去评价</button>
-              <button size="mini" wx:if="{{ item.status == 2 }}">取消订单</button>
-              <button size="mini" class="btn-primary" wx:if="{{ item.status == 2 }}">去支付</button>
-              <button size="mini" wx:if="{{ item.status == 3 }}">待服务</button>
+              <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.status == 1 }}" data-id="{{ item.id }}" bindtap="gotoComment">去评价</button>
+              <button class="btn-radius bg-gray" type="default" plain size="mini" wx:if="{{ item.status == 2 }}">取消订单</button>
+              <button class="btn-radius" type="primary" plain  size="mini" wx:if="{{ item.status == 2 }}">去支付</button>
+              <button class="btn-radius" type="default" plain size="mini" wx:if="{{ item.status == 3 }}">待服务</button>
             </view>
         </view>
       </view>

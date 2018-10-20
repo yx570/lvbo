@@ -31,6 +31,9 @@
     animation-duration: 0.4s;
     animation-fill-mode: both;
 }
+.app-pop__main.isInit{
+  visibility: hidden;
+}
 
 button {
   border:none;

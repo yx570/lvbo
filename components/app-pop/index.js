@@ -42,7 +42,15 @@ Component({
         0:'slideOutLeft',
         1:'slideInLeft'
       }
-    }
+    },
+    isInit: true
+  },
+  ready() {
+    setTimeout(()=>{
+      this.setData({
+        isInit: false
+      });
+    }, 400)
   },
   methods:{
     closePop(){

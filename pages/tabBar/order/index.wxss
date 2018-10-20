@@ -17,7 +17,5 @@ page {
   }
 .orderList .img-box { border-radius: 20rpx; overflow:hidden;}
 .orderList .app-row .con { padding-left:30rpx;}
-button { border-radius: 50rpx; border:1rpx solid #dbdbdb; background-color:#fff;}
 button + button { margin-left:30rpx;}
-.btn-primary { color:#00b0ab; border-color:#00b0ab;}
 .order-project { margin-top:20rpx;}

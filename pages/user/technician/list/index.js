@@ -3,6 +3,9 @@ const app = getApp();
 Page({ 
   ...app.loadMoreMethods,
   data: {
+    infos: {
+      name: '王晓丽'
+    },
     tabs: [
       {
         key: '0',
@@ -13,7 +16,7 @@ Page({
         label: '已完成工单'
       }
     ],
-    curTab: '0',
+    currentTab: '0',
     list: [
       {
         id: 1,
@@ -55,12 +58,7 @@ Page({
         process: []
       }
     ], 
-    hasNextPage: false,
-    statusFormat: {
-      1: "已完成",
-      2: "待付款",
-      3: "已付款",
-    }
+    hasNextPage: false
   },
   getList () {
     let _t = this;
@@ -74,14 +72,24 @@ Page({
     });  
   },
   tabChange(e) {
-    let { key } = e.detail;
-    this.setData({
-      curTab: key
+    let { key } = e.currentTarget.dataset;
+    if (key !== this.data.currentTab) {
+      this.setData({
+        currentTab: key
+      })
+    }
+  },
+  makeCall(e) {
+    let { mobile } = e.currentTarget.dataset;
+    wx.makePhoneCall({
+      phoneNumber: mobile
     })
   },
   //load
   onLoad (e) {
     // this.getList();
+    app.setNavTitle(`我(${ this.data.infos.name })的工单`);
+    app.setNavColor();
   },
   onShow () {
     
