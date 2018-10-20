@@ -120,3 +120,5 @@ page { background-color: #f3f3f3;}
 
 .panel-orderDetails .infos .app-row { padding: 30rpx;}
 .panel-orderDetails .app-rows { padding:0;}
+
+.order-project { margin-top:174rpx;}

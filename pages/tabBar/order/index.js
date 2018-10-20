@@ -1,4 +1,5 @@
 const orderModel = require('../../../models/order/index.js');
+const util = require('../../../utils/utils.js');
 const app = getApp();
 Page({ 
   ...app.loadcartlist,
@@ -69,17 +70,21 @@ Page({
     this.setData({
       curTab: key
     })
+    if (this.data.curTab == 2) {
+      this.getServicesTime();
+    }
   },
   //load
   onLoad (e) {
     this.getList();
-    this.getServicesTime();
   },
   onShow () {
     this.setData({
       curTab: app.globalData.currentOrderTab
     })
-    console.log(this.data.curTab)
+    if (this.data.curTab == 2) {
+      this.getServicesTime();
+    }
   },
   onHide(){
     
@@ -98,7 +103,7 @@ Page({
               let now = util.formatTime(new Date());
 
               value.startTime = value.startTime || now;
-              
+              console.log(value.startTime);
               startTime = value.startTime.replace(/-/g, '/');
               let oldTime = new Date(startTime).getTime() / 1000;
               let newTime = new Date(now).getTime() / 1000;

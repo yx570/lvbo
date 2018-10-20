@@ -2,9 +2,6 @@
 page {
     background-color: #f3f3f3;
 }
-navigator,
-navigator:active,
-navigator:visited { background-color:#fff;}
 .app-rows.orderList { padding:0; border:none;}
 .orderList .app-row { background-color:#fff; padding: 30rpx;}
 .orderList .app-row__hd { line-height: 44rpx; margin-bottom: 22rpx;}
@@ -23,3 +20,4 @@ navigator:visited { background-color:#fff;}
 button { border-radius: 50rpx; border:1rpx solid #dbdbdb; background-color:#fff;}
 button + button { margin-left:30rpx;}
 .btn-primary { color:#00b0ab; border-color:#00b0ab;}
+.order-project { margin-top:20rpx;}
