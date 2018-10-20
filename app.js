@@ -39,6 +39,61 @@ App({
   }) {
     wx.setNavigationBarColor(obj)
   },
+  alert(content) {
+    return new Promise((resolve, reject) => {
+      wx.showModal({
+        title: obj.title || '温馨提示',
+        content: obj.content || '',
+        showCancel: false,
+        confirmColor: obj.confirmColor || '#00b0ab',
+        success: res => {
+          resolve(res)
+        },
+        fail: error => {
+          reject(error)
+        }
+      })
+    })
+  },
+  confirm(obj = {}) {
+    return new Promise((resolve, reject) => {
+      wx.showModal({
+        title: obj.title || '温馨提示',
+        content: obj.content || '',
+        showCancel: obj.showCancel || true,
+        cancelText: obj.cancelText || '取消',
+        confirmText: obj.confirmText || '确认',
+        confirmColor: obj.confirmColor || '#00b0ab',
+        success: res => {
+          if (res.confirm) {
+            resolve(res)
+          } else {
+            reject(res)
+          }
+        },
+        fail: error => {
+          reject(error)
+        }
+      })
+    })
+  },
+  toastSuccess(title) {
+    wx.showToast({
+      title,
+      icon: 'success',
+      duration: 2000
+    })
+  },
+  toastError(title) {
+    wx.showToast({
+      title,
+      icon: 'none',
+      duration: 2000
+    })
+  },
+  makePhoneCall(phoneNumber) {
+    wx.makePhoneCall({ phoneNumber });
+  },
   // 获取地理位置
 //getUserLocation(){
 //  wx.getLocation({

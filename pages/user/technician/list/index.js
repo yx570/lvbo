@@ -83,7 +83,7 @@ Page({
     let { mobile } = e.currentTarget.dataset;
     wx.makePhoneCall({
       phoneNumber: mobile
-    })
+    });
   },
   //load
   onLoad (e) {
