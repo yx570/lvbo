@@ -30,6 +30,7 @@
         "reservation/list/index",
         "reservation/map/index",
         "reservation/service/index",
+        "technician/list/index",
         "technician/details/index",
         "maps/index",
         "score/index"
