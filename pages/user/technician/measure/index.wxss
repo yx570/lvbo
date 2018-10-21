@@ -1,0 +1,32 @@
+.panel-measure{
+  overflow-x: hidden;
+}
+.measure-content{
+  padding-bottom: 140rpx;
+}
+.measure-content .title{
+  font-size: 42rpx;
+}
+.chart-area{
+  padding: 40rpx 30rpx;
+}
+.measure-content .btn-area{
+  padding: 40rpx 0;
+}
+.measure-content .btn-area button + button{
+  margin-left: 20rpx;
+}
+.panel-measure .app-footer{
+  height: 140rpx;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.panel-measure .app-footer button{
+  border-radius: 100rpx;
+}
+
+.canvas{
+  width: 100%;
+  height: 150px;
+}

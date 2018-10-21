@@ -2,7 +2,7 @@
 <view class="app-pop">
 	<view class="app-pop__mask {{ visible ? 'fadeIn' : 'fadeOut' }} {{ transparentMask ? 'bg-transparent' : '' }}" catch:tap="closePop" wx:if="{{maskClose}}"></view>
 	<view class="app-pop__mask {{ visible ? 'fadeIn' : 'fadeOut' }} {{ transparentMask ? 'bg-transparent' : '' }}" wx:else></view>
-	<view class="app-pop__main {{ classNames[direction][visible ? 1 : 0] || '' }}" style="{{styles}}">
+	<view class="app-pop__main {{ classNames[direction][visible ? 1 : 0] || '' }} {{ isInit ? 'isInit' : '' }}" style="{{styles}}">
 		<slot></slot>
 	</view>
 </view>

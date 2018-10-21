@@ -1,0 +1,33 @@
+<view class="container flex-column bg-f3 panel-measure">
+  <view class="flex-bd">
+    <scroll-view class="scroll-box" scroll-y="true">
+      <form bindsubmit="formSubmit">
+        <view class="measure-content">
+          <view class="app-rows chart-area bg-white">
+            <view class="title align-center">测量历史</view>
+            <view class="btn-area align-center">
+              <button 
+                class="btn-radius" 
+                size="mini" 
+                type="{{ item.checked ? 'primary' : 'default' }}" 
+                plain="{{ !item.checked }}" 
+                wx:for="{{ chartBtns }}" 
+                wx:key="{{ index }}"
+                data-row="{{ item }}"
+                data-index="{{ index }}"
+                bindtap="chartChange">
+                {{ item.label }}
+              </button>
+            </view>
+            <view class="chart-box">
+              <canvas class="canvas" canvas-id="chart-canvas"/>
+            </view>
+          </view>
+        </view>
+      </form>
+    </scroll-view>  
+  </view>
+  <view class="app-footer fixed">
+		<button class="btn-radius only" type="primary" formType="submit">提交</button>
+	</view>
+</view>

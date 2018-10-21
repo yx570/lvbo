@@ -125,8 +125,13 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "commentsList",
 					"pathName": "pages/user/score/list/index",
+=======
+					"name": "measure",
+					"pathName": "pages/user/technician/measure/index",
+>>>>>>> 193690583d900291ffd51f30352aaf23d1811f87
 					"query": "id=1"
 				}
 			]
