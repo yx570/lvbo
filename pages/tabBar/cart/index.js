@@ -9,7 +9,7 @@ Page({
     startY: 0,
     curTouchIndex: 0,
     selectQuantity: 0,
-    dates:[], // 技师可选时间
+    dates: [], // 技师可选时间
     defaultDates: [],  // 技师默认时间
     // 表示该篇文章
     selecteds: [],
@@ -31,23 +31,23 @@ Page({
   },
   loadDates() {
     let list = [
-      ['周一','周二','周三','周四','周五','周六','周日'],
-      ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+      ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+      ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     ];
     let date = [];
-    for (let i = 0; i < 31; i ++) {
+    for (let i = 0; i < 31; i++) {
       date.push(i);
     }
     list.push(date);
     let hours = [];
-    for (let i = 0; i < 24; i ++) {
+    for (let i = 0; i < 24; i++) {
       if (i > 8 && i < 18 && i != 10 && i != 11) {
         hours.push(i);
       }
     }
     list.push(hours);
     let minites = [];
-    for (let i = 0; i < 60; i ++) {
+    for (let i = 0; i < 60; i++) {
       minites.push(i);
     }
     list.push(minites);
@@ -280,16 +280,16 @@ Page({
   //详情
   urlshow(e) {
     // console.log(e.currentTarget.dataset.id)
+    // url: '../../purchase/details/details?id=' + e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../../purchase/details/details?id=' + e.currentTarget.dataset.id
+      url: '../../product/details/index?id=' + e.currentTarget.dataset.id
     })
   },
-  //弹窗
+  //选择时间
   selectTap(e) {
-    this.setData({
-      popVisible: true,
-      popId: e.currentTarget.dataset.id
-    });
+    wx.navigateTo({
+      url: '../../order/editDates/index?id=' + e.currentTarget.dataset.id
+    })
   },
   getPickerTime(e) {
     console.log(e.detail);

@@ -7,12 +7,12 @@
                     <icon class="iconfont icon-check"></icon>
                 </label>
             </view>
-            <view class="weui-cell__bd"  bindtap="urlshow" data-id="{{item.id}}">
+            <view class="weui-cell__bd">
                 <view class="weui-cell pa-0">
-                    <view  class="weui-cell__hd"><image  src="{{ item.picture }}" /></view>
+                    <view  class="weui-cell__hd" bindtap="urlshow" data-id="{{item.id}}"><image  src="{{ item.picture }}" /></view>
 
                     <view class="weui-cell__bd">
-                        <view class="name">{{ item.name }}</view>
+                        <view class="name" bindtap="urlshow" data-id="{{item.id}}">{{ item.name }}</view>
                         <view class="size">规格：{{ item.price }}/次</view>
                         <view class="flex-row">
                             <view class="price color-pink">
@@ -41,7 +41,7 @@
                 </view>
             </view>
             <view class="weui-cell__del overflow">
-                <button class="btn-delete bg-primary color-white" data-id="{{ item.id }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
+                <button class="btn-delete bg-pink color-white" data-id="{{ item.id }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
                   <text>删除</text>
                 </button>
             </view>

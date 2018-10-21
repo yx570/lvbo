@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": 1,
@@ -82,9 +82,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "orderDetail",
-					"pathName": "pages/order/details/index",
+					"id": 7,
+					"name": "changeDates",
+					"pathName": "pages/order/editDates/index",
 					"query": ""
 				},
 				{
@@ -120,7 +120,14 @@
 				{
 					"id": -1,
 					"name": "technicianList",
-					"pathName": "pages/user/technician/list/index"
+					"pathName": "pages/user/technician/list/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "commentsList",
+					"pathName": "pages/user/score/list/index",
+					"query": "id=1"
 				}
 			]
 		}

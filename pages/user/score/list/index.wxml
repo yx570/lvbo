@@ -1,0 +1,31 @@
+<view class="container flex-column panel-score">
+  <scroll-view class="scroll-box" scroll-y="true">
+    <view class="app-rows order-project">
+      <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
+        <view class="flex-row app-row__hd title">
+          <view class="flex-bd">{{ item.title }}</view>
+        </view>
+        <view class="flex-row app-row__hd technicianBox">
+          <view class="flex-bd">
+            <view class="flex-row">
+              <view class="flex-ft">
+                <view class="img-box">
+                  <image src="{{ item.imageUrl }}"></image>
+                </view>
+              </view>
+              <view class="flex-bd">
+                <view class="name">[{{ item.name }}]</view>
+                <view class="stars">
+                  <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="flex-ft">
+            <button size="mini" class="btn-primary" catch:tap="toComment" data-id="{{ item.id }}">去评价</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

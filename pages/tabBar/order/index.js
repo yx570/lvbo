@@ -92,7 +92,7 @@ Page({
   gotoComment(ev) {
     let id = ev.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/user/score/index?id=' + id
+      url: '/pages/user/score/list/index?id=' + id
     });
   },
   getServicesTime() {

@@ -61,6 +61,7 @@ button:after {
 .bg-warm{ background: #ffba00; }
 .bg-f3{ background: #f3f3f3; }
 .bg-f8{ background: #f8f8f8; }
+.bg-grey { background: #e2e2e2; }
 .bg-red{ background: #ff0000;color: #fff; }
 
 .f-30 { font-size: 30rpx;}

@@ -1,0 +1,36 @@
+<view class="dateTimePicker">
+  <!-- 轮播 -->
+  <view class="pk-title">
+    <scroll-view scroll-x="true" class="scroll-view_H">
+      <view class='list'>
+        <view bindtap="select" wx:for="{{ calendar }}" wx:key="{{ index }}" wx:for-item="item" wx:for-index="index" data-index="{{ index }}" data-date="{{ item.fullDate }}" class='listItem {{index==currentIndex? "current":""}}'>
+          <text class='name'>{{ item.week }}</text>
+          <text class='date'>{{ item.date }}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 轮播end -->
+
+  <!-- 选择时间 -->
+  <view class="pk-content">
+    <scroll-view scroll-y="true" class="scroll-view_X">
+      <view class="app-rows timeList">
+        <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
+          <view class="flex-row app-row__hd">
+            <view class="flex-bd">
+              <text class="mainTime">{{ item.time }}</text>
+              <text class="toTime color-999">{{ item.time }}结束</text>
+            </view>
+            <view class="flex-ft">
+              <button size="mini" class="bg-grey color-999" wx:if="{{ item.status == 2 }}">预约</button>
+              <button size="mini" class="btn-primary" data-time="{{ item.time }}" bindtap="selectTime" wx:else>预约</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 选择时间end -->
+
+</view>

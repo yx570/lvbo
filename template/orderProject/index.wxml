@@ -35,7 +35,7 @@
             </view>
           </view>
           <view class="flex-bd">
-            <view class="name">[{{ name }}]</view>
+            <view class="name">[{{ name }}] {{ star }}</view>
             <view class="stars">
               <view class="iconfont icon-star-o" wx:for="{{ star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
             </view>

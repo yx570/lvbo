@@ -1,0 +1,57 @@
+.dateTimePicker .scroll-view_H {
+  height: 180rpx;
+  width:100%;
+  top: 0;
+  border-bottom: 1px solid #f3f3f3;
+  white-space: nowrap;
+}
+
+.dateTimePicker .scroll-view_H .list {
+  flex-wrap: nowrap;
+}
+
+.dateTimePicker .scroll-view_H .listItem {
+  text-align: center;
+  width: 107rpx;
+  height: 180rpx;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.dateTimePicker .scroll-view_H .listItem text {
+  text-align: center;
+  display: block;
+}
+
+.dateTimePicker .scroll-view_H .listItem .name {
+  color: #b4b4b4;
+  font-size: 24rpx;
+}
+
+.dateTimePicker .scroll-view_H .listItem .date {
+  width:70rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  border-radius: 50%;
+  margin:20rpx auto;
+  font-size: 36rpx;
+}
+
+.dateTimePicker .scroll-view_H .current .name {
+  color: #00b0ab;
+}
+
+.dateTimePicker .scroll-view_H .current .date {
+  background-color:#00b0ab;
+  color: #fff;
+}
+.dateTimePicker .app-row { padding:30rpx 10rpx 10rpx 30rpx;}
+.dateTimePicker button { border-radius: 50rpx; border:1rpx solid #dbdbdb;}
+.dateTimePicker .btn-primary { color:#00b0ab; border-color:#00b0ab; background: #fff;}
+.dateTimePicker .mainTime { font-size: 40rpx;}
+.dateTimePicker .timeList .flex-bd text { line-height: 66rpx; display: inline-block; vertical-align:top;
+}
+
+.dateTimePicker .scroll-view_X { position: fixed; left:0; top:180rpx; bottom:0;}
+.dateTimePicker .toTime { padding-left: 35rpx;}

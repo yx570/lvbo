@@ -6,17 +6,17 @@ module.exports = {
       {
         "id": "1",
         "imageUrl": "http://xl.tianjiaoedu.org/upload/201607/05/201607051554541730.jpg",
-        "content": "南昌校区图书馆"
+        "content": "南昌校区图书馆1"
       },
       {
         "id": "3",
         "imageUrl": "http://xinwen.jgaoxiao.com/Uploads/news/Attach/526dfcc7bcc14.jpg",
-        "content": "新生军训"
+        "content": "新生军训2"
       },
       {
         "id": "4",
         "imageUrl": "http://img2.ph.126.net/NjHvTMhbCihDSocfwxE11g==/2855563638830365544.jpg",
-        "content": "樱花广场"
+        "content": "樱花广场3"
       },
       {
         "id": "6",

@@ -1,0 +1,9 @@
+@import "../../../../template/orderProject/index.wxss";
+
+.app-rows { padding-left:0; padding-right:0;}
+.order-project .app-row { margin:0; padding: 18rpx 30rpx 2rpx; background-color:#fff; border-bottom: 1rpx solid #f3f3f3;}
+
+button { border-radius: 50rpx; border:1rpx solid #dbdbdb; background-color:#fff;}
+button + button { margin-left:30rpx;}
+.btn-primary { color:#00b0ab; border-color:#00b0ab;}
+.order-project { margin-top:20rpx;}

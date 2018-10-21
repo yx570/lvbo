@@ -1,6 +1,12 @@
 
 const ajax = require('../../utils/ajax.js');
 module.exports = {
+  // 更改时间，查询时间是否有技师
+  // date 2018-01-01
+  queryTimeList: params => {
+    return ajax({ path: '/static/data/orderTime.js', method: 'get', params, loading: true});
+  },
+
   //采购列表
   //key
   goods: params => {
