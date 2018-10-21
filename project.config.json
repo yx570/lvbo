@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": 1,
@@ -120,7 +120,14 @@
 				{
 					"id": -1,
 					"name": "technicianList",
-					"pathName": "pages/user/technician/list/index"
+					"pathName": "pages/user/technician/list/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "measure",
+					"pathName": "pages/user/technician/measure/index",
+					"query": "id=1"
 				}
 			]
 		}
