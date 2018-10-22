@@ -2,7 +2,6 @@
   "navigationBarTitleText": "购物车",
   "usingComponents": {
     "app-input-number":"../../../../components/app-input-number/index",
-    "app-empty":"../../../../components/app-empty/index",
-    "app-picker":"../../../../components/app-timePicker/index"
+    "app-empty":"../../../../components/app-empty/index"
   }
 }

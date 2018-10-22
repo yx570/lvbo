@@ -34,6 +34,9 @@
 .order-project .stars .iconfont { font-size: 32rpx; color:#ffcc00; margin-right:5rpx;}
 .order-project .technicianBox .dates { padding-top:10rpx; line-height: 1.5; font-size: 28rpx;}
 .order-project .technicianBox .times { font-size: 30rpx; line-height: 1.5;}
+.order-project .servicing { height:160rpx;}
+.order-project .servicing .endBtn { margin-top:20rpx;}
+.order-project .servicing .endBtn button { float:right; color: #f9879a; border:1rpx solid #f9879a;}
 
 .order-project .icon-weizhi { font-size: 40rpx; color:#333;}
 .order-project .icon-arrow-right { font-size: 30rpx; color:#c9c9c9;}

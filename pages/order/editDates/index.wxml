@@ -14,7 +14,7 @@
 
   <!-- 选择时间 -->
   <view class="pk-content">
-    <scroll-view scroll-y="true" class="scroll-view_X">
+    <scroll-view scroll-y="true" class="scroll-view_X{{ mutli == 1 ? ' bottom-100' : '' }}">
       <view class="app-rows timeList">
         <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
           <view class="flex-row app-row__hd">
@@ -32,5 +32,11 @@
     </scroll-view>
   </view>
   <!-- 选择时间end -->
-
+  <view class="app-footer fixed" wx:if="{{ mutli == 1 }}">
+    <scroll-view scroll-x="true" class="scroll-view_Project">
+        <view bindtap="selectProject" wx:for="{{ project }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" class='{{ item.id == currentId ? "on" : ""}}'>
+          <text>{{ item.name }}</text>
+        </view>
+    </scroll-view>
+  </view>
 </view>

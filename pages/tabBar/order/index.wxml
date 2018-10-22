@@ -4,7 +4,7 @@
   <view class="flex-bd">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
       <view class="order-project" wx:if="{{ curTab == 2 }}">
-        <template is="orderProject" wx:for="{{ list }}" data="{{ ...item, statusFormat: statusFormat, index: index }}"></template>
+        <template is="orderProject" wx:for="{{ list }}" wx:key="{{ index }}" data="{{ ...item, statusFormat: statusFormat, index: index }}"></template>
       </view>
       <view class="app-rows orderList" wx:else>
       <!-- <view class="app-rows"> -->

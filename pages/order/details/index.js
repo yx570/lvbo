@@ -153,6 +153,12 @@ Page({
           [`list[${index}].s`]: s.toString().padStart(2, '0')
       })
       this.getServicesTime();
+  },
+  stopServices(ev) {
+    let { index } = ev.currentTarget.dataset;
+    this.setData({
+        [`list[${index}].status`]: 1,
+    })
   }
 })
 

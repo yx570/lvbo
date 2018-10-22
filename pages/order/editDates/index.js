@@ -4,12 +4,23 @@ Page({
   ...app.loadMoreMethods,
   data: {
     calendar: [],
-    currentIndex: 0
+    currentIndex: 0,
+    mutli: 0,
+    project: [
+      { id: 1, name: "项目一" },
+      { id: 2, name: "项目二" },
+      { id: 3, name: "项目三" },
+      { id: 4, name: "项目四" },
+      { id: 5, name: "项目五" },
+      { id: 6, name: "项目六" }
+    ],
+    currentId: 1
   },
 
   onLoad: function (ev) {
     this.setData({
-      id: ev.id
+      id: ev.id,
+      mutli: ev.mutli
     })
     this.initCanladar(30);
   },
@@ -104,8 +115,19 @@ Page({
     let pages = getCurrentPages();
     let pageUrl = pages[pages.length - 2].route;
     console.log('this:' + pageUrl)
-    wx.navigateTo({
-      url: '/' + pageUrl
+    if (this.data.mutli == 1) {
+      wx.switchTab({
+        url: '/' + pageUrl
+      })
+    } else {
+      wx.navigateTo({
+        url: '/' + pageUrl
+      })
+    }
+  },
+  selectProject(ev) {
+    this.setData({
+      currentId: ev.currentTarget.dataset.id,
     })
   }
 

@@ -1,0 +1,37 @@
+<view class="container flex-column panel-score">
+  <scroll-view class="scroll-box" scroll-y="true">
+    <view class="app-rows order-project">
+      <radio-group class="radio-group">
+        <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
+          <view class="flex-row app-row__hd technicianBox">
+            <view class="flex-bd">
+              <view class="flex-row">
+                <view class="flex-ft">
+                  <view class="img-box">
+                    <image src="{{ item.imageUrl }}"></image>
+                  </view>
+                </view>
+                <view class="flex-bd">
+                  <view class="name">{{ item.name }}</view>
+                  <view class="svTimes">累积服务{{ item.svTimes }}次</view>
+                  <view class="stars">
+                    <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="flex-ft">
+              <label class="radio" data-index="{{ index }}" catch:tap="radioTap">
+                <radio value="{{ index }}" checked="{{ item.checked }}" />
+                <icon class="iconfont icon-check"></icon>
+              </label>
+            </view>
+          </view>
+        </view>
+      </radio-group>
+    </view>
+  </scroll-view>
+  <view class="app-footer fixed">
+    <button class="btn-radius only" type="primary" catch:tap="sureSelected">提交</button>
+  </view>
+</view>

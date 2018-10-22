@@ -55,3 +55,12 @@
 
 .dateTimePicker .scroll-view_X { position: fixed; left:0; top:180rpx; bottom:0;}
 .dateTimePicker .toTime { padding-left: 35rpx;}
+.bottom-100 { margin-bottom:100rpx;}
+.dateTimePicker .scroll-view_Project {
+  height: 100rpx;
+  width:100%;
+  white-space: nowrap;
+}
+.dateTimePicker .scroll-view_Project view { display: inline-block; line-height: 100rpx; padding:0 50rpx; position: relative;}
+.dateTimePicker .scroll-view_Project view.on:after { content:""; position: absolute; left:30rpx; bottom:0; right:30rpx; border-bottom:10rpx solid #00b0ab;}
+.dateTimePicker .scroll-view_Project view.on text { color:#00b0ab;}

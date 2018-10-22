@@ -288,7 +288,7 @@ Page({
   //选择时间
   selectTap(e) {
     wx.navigateTo({
-      url: '../../order/editDates/index?id=' + e.currentTarget.dataset.id
+      url: '../../order/editDates/index?id=' + e.currentTarget.dataset.id + '&mutli=1'
     })
   },
   getPickerTime(e) {

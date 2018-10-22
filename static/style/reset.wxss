@@ -80,9 +80,11 @@ button[plain][type=warm].button-hover{
   font-size: 46rpx;
   color: #9e9e9e;
 }
+radio,
 checkbox{
   display: none;
 }
+radio[checked] + .icon-check::after,
 checkbox[checked] + .icon-check::after{
   content: "\e63a";
   /* color: #ff5000; */

@@ -35,6 +35,8 @@ Page({
     })
   },
   formSubmit(e) {
-
+    wx.navigateTo({
+      url: '../list/index',
+    })
   }
 })

@@ -33,7 +33,7 @@
   </view>
   <view class="flex-column flex-bd">
     <view class="flex-bd order-project">
-      <template is="orderProject" wx:for="{{ list }}" data="{{ ...item, statusFormat: statusFormat, index: index }}"></template>
+      <template is="orderProject" wx:for="{{ list }}" wx:key="{{ index }}" data="{{ ...item, statusFormat: statusFormat, index: index }}"></template>
     </view>
   </view>
 </view>

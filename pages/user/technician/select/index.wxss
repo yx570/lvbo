@@ -1,0 +1,28 @@
+@import "../../../../template/orderProject/index.wxss";
+
+.app-rows { padding-left:0; padding-right:0;}
+.order-project .app-row { margin:0; padding: 18rpx 30rpx 2rpx; background-color:#fff; border-bottom: 1rpx solid #f3f3f3;}
+
+button { border-radius: 50rpx; border:1rpx solid #dbdbdb; background-color:#fff;}
+button + button { margin-left:30rpx;}
+.btn-primary { color:#00b0ab; border-color:#00b0ab;}
+.order-project { margin-top:20rpx;}
+.order-project .flex-row { height:140rpx;}
+.order-project .app-row { padding: 30rpx; border-bottom:none; position: relative;}
+.order-project .app-row:after { content: ""; position: absolute; left:170rpx; right:0; bottom:0; border-bottom:1rpx solid #f3f3f3;}
+.order-project .technicianBox { padding:0;}
+.order-project .technicianBox .img-box { width:140rpx; height:140rpx;}
+.order-project .technicianBox .name { font-size:36rpx;}
+.order-project .technicianBox .svTimes { font-size:30rpx; color:#999; line-height:1.2; padding-top:10rpx;}
+.order-project .technicianBox .radio { position: relative; top:50rpx;}
+
+.app-footer{
+    height: 140rpx;
+    padding: 20rpx;
+    background: #fff;
+  }
+  
+ .app-footer button{
+    border-radius: 100rpx;
+  }
+  
