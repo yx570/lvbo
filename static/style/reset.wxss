@@ -25,6 +25,7 @@ button[size=mini]{
 }
 button[type=primary]{
   background-color: #00b0ab;
+  border:1px solid #fff;
 }
 button[loading][type=primary]{
   background-color: #00b0ab;

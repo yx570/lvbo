@@ -41,8 +41,9 @@
   padding: 20rpx 0;
 }
 .panel-score__bd .tag-btns button{
-  margin-right: 16rpx;
+  margin:0 16rpx 16rpx 0;
   padding: 0 20rpx;
+  box-sizing: border-box;
 }
 .panel-score .app-footer{
   height: 140rpx;
