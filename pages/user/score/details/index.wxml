@@ -76,12 +76,13 @@
             </label>
           </view>
         </view>
+        <view class="app-footer fixed">
+          <button class="btn-radius only" type="primary" formType="submit">提交</button>
+        </view>
       </form>
     </scroll-view>  
   </view>
-  <view class="app-footer fixed">
-    <button class="btn-radius only" type="primary" formType="submit">提交</button>
-  </view>
+  
 </view>
 <app-pop visible="{{ popVisible }}" bind:close="popClose" class="popBox" styles="bottom:0rpx;left:0;border-radius: 20rpx;width:95%;margin: 20rpx;background: transparent;">
   <view class='modal-content align-center'>
