@@ -66,8 +66,3 @@
         </view>
     </view>
 </view>
-<app-picker
-    popVisible="{{popVisible}}"
-    popId="{{popId}}"
-    bind:getPickerTime="getPickerTime" 
-></app-picker>

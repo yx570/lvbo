@@ -27,37 +27,6 @@ Page({
       v.isTouchMove = false;
     });
 
-    this.loadDates();
-  },
-  loadDates() {
-    let list = [
-      ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-      ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-    ];
-    let date = [];
-    for (let i = 0; i < 31; i++) {
-      date.push(i);
-    }
-    list.push(date);
-    let hours = [];
-    for (let i = 0; i < 24; i++) {
-      if (i > 8 && i < 18 && i != 10 && i != 11) {
-        hours.push(i);
-      }
-    }
-    list.push(hours);
-    let minites = [];
-    for (let i = 0; i < 60; i++) {
-      minites.push(i);
-    }
-    list.push(minites);
-
-    let selected = [3, 5, 4, 5, 22];
-
-    this.setData({
-      dates: list,
-      defaultDates: selected
-    });
   },
   onShow() {
     this.getList();
@@ -104,12 +73,12 @@ Page({
       return item.checked;
     });
     this.setData({ selecteds });
-    // console.log(datas.length)
-    if (datas.length != 0) {
+    //  console.log(selecteds)
+    if (selecteds.length != 0) {
       // getApp().globalData.goSettleList = datas;
       // console.log(getApp().globalData.goSettleList)
       wx.navigateTo({
-        url: '../../../pages/cart/fill/index?payType=2&&type=2'
+        url: '../../../pages/order/buyNow/index'
       })
     } else {
       wx.showToast({
@@ -289,12 +258,6 @@ Page({
   selectTap(e) {
     wx.navigateTo({
       url: '../../order/editDates/index?id=' + e.currentTarget.dataset.id + '&mutli=1'
-    })
-  },
-  getPickerTime(e) {
-    console.log(e.detail);
-    this.setData({
-      bookingDates: e.detail
     })
   }
 })

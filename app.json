@@ -17,6 +17,7 @@
       "root": "pages/order",
       "pages": [
         "details/index",
+        "buyNow/index",
         "editDates/index"
       ]
     },
@@ -35,6 +36,7 @@
         "technician/select/index",
         "technician/measure/index",
         "maps/index",
+        "clientPosition/index",
         "score/list/index",
         "score/details/index"
       ]

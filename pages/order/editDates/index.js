@@ -115,7 +115,7 @@ Page({
     let pages = getCurrentPages();
     let pageUrl = pages[pages.length - 2].route;
     console.log('this:' + pageUrl)
-    if (this.data.mutli == 1) {
+    if (pageUrl.indexOf('tabBar') > -1) {
       wx.switchTab({
         url: '/' + pageUrl
       })

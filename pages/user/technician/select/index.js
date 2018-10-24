@@ -71,9 +71,15 @@ Page({
     let pages = getCurrentPages();
     let pageUrl = pages[pages.length - 2].route;
     console.log('this:' + pageUrl)
-    wx.navigateTo({
-      url: '/' + pageUrl
-    })
+    if (pageUrl.indexOf('tabBar') > -1) {
+      wx.switchTab({
+        url: '/' + pageUrl
+      })
+    } else {
+      wx.navigateTo({
+        url: '/' + pageUrl
+      })
+    }
   }
 
   

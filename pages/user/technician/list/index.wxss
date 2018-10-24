@@ -52,8 +52,13 @@
   padding: 0 30rpx;
   font-size: 26rpx;
 }
+.technician-item .btn-area button + navigator,
+.technician-item .btn-area navigator + button,
 .technician-item .btn-area button  + button{
   margin-left: 16rpx;
+}
+.technician-item .btn-area navigator{
+  display: inline-block;
 }
 
 .panel-technician .tabs{

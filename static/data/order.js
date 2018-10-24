@@ -44,7 +44,7 @@ module.exports = {
         "star": 5,
         "size": "888",
         "date": "2018-09-16 02:10",
-        "status": 1
+        "status": 4
       },
       {
         "id": "6",

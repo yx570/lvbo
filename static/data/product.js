@@ -6,17 +6,20 @@ module.exports = {
       {
         "id": "1",
         "imageUrl": "http://xl.tianjiaoedu.org/upload/201607/05/201607051554541730.jpg",
-        "content": "南昌校区图书馆1"
+        "content": "技师工单",
+        "url": "/pages/user/technician/list/index"
       },
       {
         "id": "3",
         "imageUrl": "http://xinwen.jgaoxiao.com/Uploads/news/Attach/526dfcc7bcc14.jpg",
-        "content": "新生军训2"
+        "content": "技师详细",
+        "url": "/pages/user/technician/details/index"
       },
       {
         "id": "4",
         "imageUrl": "http://img2.ph.126.net/NjHvTMhbCihDSocfwxE11g==/2855563638830365544.jpg",
-        "content": "樱花广场3"
+        "content": "技师测量",
+        "url": "/pages/user/technician/measure/index"
       },
       {
         "id": "6",

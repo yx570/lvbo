@@ -74,7 +74,10 @@ Page({
     })
   },
   formSubmit(e) {
-
+    console.log(e);
+    wx.navigateTo({
+      url: '../list/index'
+    })
   },
   preViewImage(e) {
     let current = e.currentTarget.dataset.src;

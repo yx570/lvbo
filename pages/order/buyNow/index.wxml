@@ -1,0 +1,68 @@
+<view class='panel-cart'>
+  <view class="weui-cell flex-row buyInfo">
+    <view class="app-cell__bd">
+      <view class="buyName">{{ name }} {{ tel }}</view>
+      <view class="buyAddress ellipse">{{ address }}</view>
+    </view>
+    <view class="app-cell__ft">
+      <view class="iconfont icon-arrow-right"></view>
+    </view>
+  </view>
+  <view class="weui-cells order-list" wx:if="{{ orders.length > 0 }}">
+    <view class="weui-cell order-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}">
+      <view class="weui-cell__bd">
+        <view class="weui-cell pa-0">
+          <view class="weui-cell__hd" bindtap="urlshow" data-id="{{item.id}}">
+            <image src="{{ item.picture }}" />
+          </view>
+          <navigator hover-class="none" url="/pages/product/details/index?id={{item.id}}">
+            <view class="weui-cell__bd">
+              <view class="name ellipse" bindtap="urlshow" data-id="{{item.id}}">
+                {{ item.name }}
+              </view>
+              <view class="size">规格：{{ item.price }}/次</view>
+              <view class="flex-row">
+                <view class="price color-pink">
+                  <text class="sub">￥</text>
+                  <text>{{ item.price * item.quantity }}</text>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+        <view class="weui-cell pa-0 flex-row acItems color-999">
+          <view class="flex-bd">购买数量:</view>
+          <view class="flex-ft">
+            <view class="at-number-input">
+              <app-input-number quantity="{{ item.quantity || 1 }}" className="cartNumInput" data-id="{{ item.id }}" data-index="{{ index }}" catch:tap="inputTap" bind:change="changeCount" />
+            </view>
+          </view>
+        </view>
+        <view class="weui-cell pa-0 flex-row acItems color-999" catch:tap="selectTap" data-index="{{ index }}" data-id="{{item.id}}">
+          <view class="app-cell__hd color-999">预约时间</view>
+          <view class="app-cell__bd">
+            <view class="ellipse showTimes">{{item.bookingDates}}</view>
+          </view>
+          <view class="app-cell__ft">
+            <view class="iconfont icon-arrow-right"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <app-empty tips="暂无商品哦~" />
+  </view>
+  <view class="cart-footer">
+    <view class="notice">温馨提示: 开始前24小时内不能再做预约修改</view>
+    <view class="flex-row">
+      <view class="flex-bd">
+        <text class="sub color-pink">￥</text>
+        <text class="color-pink font-price">{{ totalPrices }}</text>
+      </view>
+      <view class="flex-ft">
+        <button class="bg-pink color-white goSettle" bindtap="goSettle">去结算</button>
+      </view>
+    </view>
+  </view>
+</view>

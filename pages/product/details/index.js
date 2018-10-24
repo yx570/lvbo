@@ -75,6 +75,12 @@ Page({
          url: '../../tabBar/cart/index',
        })
     }, 
+    // 立即购买
+    shopping() {
+        wx.navigateTo({
+          url: '../../order/buyNow/index',
+        })
+    }, 
     //弹窗
     selectTap(ev) {
       this.setData({
