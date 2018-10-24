@@ -8,7 +8,8 @@
   <view class="productList flex-row">
     <block wx:for="{{list}}" wx:key="item">
       <view class="product-list">
-        <navigator url="/pages/product/details/index?id={{item.id}}">
+        <!-- <navigator hover-class="none" url="/pages/product/details/index?id={{item.id}}"> -->
+        <navigator hover-class="none" url="{{ item.url }}">
           <view class="product-list-info" index="{{index}}">
             <image class="product-list-photo" src="{{item.imageUrl}}" />
             <text class="product-list-desc">{{item.content}}</text>

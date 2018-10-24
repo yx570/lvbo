@@ -23,7 +23,7 @@
               <text class="toTime color-999">{{ item.time }}结束</text>
             </view>
             <view class="flex-ft">
-              <button size="mini" class="bg-grey color-999" wx:if="{{ item.status == 2 }}">预约</button>
+              <button size="mini" class="bg-grey color-999" wx:if="{{ item.status == 2 }}">约满</button>
               <button size="mini" class="btn-primary" data-time="{{ item.time }}" bindtap="selectTime" wx:else>预约</button>
             </view>
           </view>

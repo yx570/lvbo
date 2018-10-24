@@ -27,9 +27,11 @@ Page({
     list: [], 
     hasNextPage: false,
     statusFormat: {
-      1: "已完成",
-      2: "待付款",
-      3: "已付款",
+      1: "已服务",
+      2: "技师已出发",
+      5: "技师已到达",
+      3: "服务中",
+      4: "待服务"
     },
     userPage: null
   },
