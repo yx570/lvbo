@@ -8,7 +8,16 @@
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
       <view class="content technician-list">
         <view class="flex-column technician-item bg-white" wx:for="{{ list }}" wx:key="{{ index }}">
-          <view class="title">{{ item.title }}</view>
+          <view class="flex-row flex-center top">
+            <view class="flex-bd title">{{ item.title }}</view>
+            <view class="countTime" wx:if="{{ item.status == 4 }}">
+              <text class="bg-pink">{{ item.h }}</text>
+              :
+              <text class="bg-pink">{{ item.m }}</text>
+              :
+              <text class="bg-pink">{{ item.s }}</text>
+            </view>
+          </view>
           <view class="flex-row flex-center">
             <view class="flex-hd img-box">
               <image src="{{ item.imageUrl }}" />
@@ -32,16 +41,34 @@
               <button size="mini" class="btn-radius" type="default" plain wx:if="{{ item.status == 2 }}">申请取消</button>
             </view>
             <view class="flex-ft align-right">
-              <navigator url="../../clientPosition/index?id={{ item.id }}" wx:if="{{ item.status !== 3 }}">
-              <button size="mini" class="btn-radius" type="default" plain>查看客户位置</button>
+              <navigator url="../../clientPosition/index?id={{ item.id }}" wx:if="{{ !(item.status == 3 || item.status == 4 || item.status == 5) }}">
+                <button size="mini" class="btn-radius" type="default" plain>查看客户位置</button>
               </navigator>
               <button size="mini" class="btn-radius" type="primary" plain wx:if="{{ item.status == 1 }}">确认到达</button>
               <button size="mini" class="btn-radius" type="primary" plain wx:elif="{{ item.status == 2 }}">出发</button>
-              <navigator url="../measure/index?id={{ item.id }}" wx:else>
-                <button size="mini" class="btn-radius" type="primary" plain>
-                  开始测量
-                </button>
-              </navigator>
+              <button 
+                size="mini" 
+                class="btn-radius"
+                type="primary" 
+                plain 
+                data-id="{{ item.id }}" 
+                data-index="{{ index }}" 
+                catchtap="beginMeasure"
+                wx:elif="{{ item.status == 3 }}">
+                开始测量
+              </button>
+              <button 
+                size="mini" 
+                class="btn-radius"
+                type="pink" 
+                plain 
+                data-id="{{ item.id }}" 
+                data-index="{{ index }}" 
+                data-row="{{ item }}" 
+                catchtap="stopMeasure"
+                wx:elif="{{ item.status == 4 }}">
+                结束测量
+              </button>
             </view>
           </view>
         </view>
