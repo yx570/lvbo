@@ -44,6 +44,13 @@ Page({
     wx.navigateTo({
       url: '../../order/editDates/index?id=' + e.currentTarget.dataset.id + '&mutli=1'
     })
+  },
+  goSettle() {
+    wx.showToast({
+      title: "调用微信支付",
+      icon: 'none',
+      duration: 2000
+    });
   }
 })
 

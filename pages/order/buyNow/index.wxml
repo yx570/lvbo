@@ -1,13 +1,15 @@
 <view class='panel-cart'>
-  <view class="weui-cell flex-row buyInfo">
-    <view class="app-cell__bd">
-      <view class="buyName">{{ name }} {{ tel }}</view>
-      <view class="buyAddress ellipse">{{ address }}</view>
+  <navigator hover-class="none" url="/pages/user/address/index?id={{item.id}}">
+    <view class="weui-cell flex-row buyInfo">
+      <view class="app-cell__bd">
+        <view class="buyName">{{ name }} {{ tel }}</view>
+        <view class="buyAddress ellipse">{{ address }}</view>
+      </view>
+      <view class="app-cell__ft">
+        <view class="iconfont icon-arrow-right"></view>
+      </view>
     </view>
-    <view class="app-cell__ft">
-      <view class="iconfont icon-arrow-right"></view>
-    </view>
-  </view>
+  </navigator>
   <view class="weui-cells order-list" wx:if="{{ orders.length > 0 }}">
     <view class="weui-cell order-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}">
       <view class="weui-cell__bd">

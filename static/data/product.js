@@ -22,19 +22,16 @@ module.exports = {
         "url": "/pages/user/technician/measure/index"
       },
       {
-        "id": "6",
-        "imageUrl": "http://i1.sinaimg.cn/travel/2014/1021/U8842P704DT20141021103442_1.jpg",
-        "content": "校园风光"
-      },
-      {
-        "id": "8",
-        "imageUrl": "http://upload.ct.youth.cn/2013/0707/1373173834482.jpg",
-        "content": "三下乡活动"
+        "id": "12",
+        "imageUrl": "http://pic.baike.soso.com/p/20130618/20130618153602-1487877646.jpg",
+        "content": "公司介绍",
+        "url": "/pages/subs/about/index"
       },
       {
         "id": "12",
         "imageUrl": "http://pic.baike.soso.com/p/20130618/20130618153602-1487877646.jpg",
-        "content": "国防生风采"
+        "content": "产品详细页",
+        "url": "/pages/product/details/index"
       }
     ]
   }
