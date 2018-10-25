@@ -9,12 +9,18 @@
   padding: 30rpx;
   border-radius: 20rpx;
 }
-.technician-item .title{
+.technician-item .top{
   margin-bottom: 30rpx;
 }
 .technician-item .title,
 .technician-item .name{
   font-size: 36rpx;
+}
+.technician-item .countTime text { 
+  padding:5rpx 6rpx;
+  margin:2rpx; 
+  border-radius: 10rpx; 
+  color:#fff;
 }
 .technician-item .date{
   font-size: 26rpx;

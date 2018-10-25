@@ -37,6 +37,13 @@ button[type=warm]{
 button[loading][type=warm]{
   background-color: #fac639;
 }
+button[type=pink]{
+  color:#fff;
+  background-color: #ffc0cb;
+}
+button[loading][type=pink]{
+  background-color: #ffc0cb;
+}
 button[loading]::before{
   position: relative;
   top:-2rpx;
@@ -66,6 +73,12 @@ button[plain][type=warm],
 button[plain][type=warm].button-hover{
   color:#e5a700;
   border:1px solid #e5a700;
+  background-color:transparent;
+}
+button[plain][type=pink],
+button[plain][type=pink].button-hover{
+  color:#ffc0cb;
+  border:1px solid #ffc0cb;
   background-color:transparent;
 }
 .icon-check{

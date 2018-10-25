@@ -14,11 +14,6 @@
 	"libVersion": "0.0.01",
 	"appid": "wx90a6ee393b8dc5b4",
 	"projectname": "YxTest",
-	"svr": "/",
-	"client": "/",
-	"qcloudRoot": "/",
-	"miniprogramRoot": "/",
-	"pluginRoot": "/",
 	"scripts": {},
 	"condition": {
 		"search": {
@@ -134,12 +129,6 @@
 					"name": "measure",
 					"pathName": "pages/user/technician/measure/index",
 					"query": "id=1"
-				},
-				{
-					"id": -1,
-					"name": "measure",
-					"pathName": "pages/user/technician/measure/index",
-					"query": ""
 				},
 				{
 					"id": -1,
