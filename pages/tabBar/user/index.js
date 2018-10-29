@@ -53,7 +53,7 @@ Page({
         label: '服务地址',
         icon: 'address'
       }, {
-        link: '',
+        link: '/pages/user/recommendCode/index',
         label: '我的推荐码',
         icon: 'code'
       }
