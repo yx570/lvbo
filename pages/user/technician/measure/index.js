@@ -7,6 +7,44 @@ Page({
     infos: {
       name: '王晓丽'
     },
+    dataList: [
+      {
+        key: 1,
+        label: '腰围',
+        value: '',
+        imgUrl: ''
+      }, {
+        key: 2,
+        label: '腹围',
+        value: '',
+        imgUrl: ''
+      }, {
+        key: 3,
+        label: '臀围',
+        value: '',
+        imgUrl: ''
+      }, {
+        key: 4,
+        label: '左大腿',
+        value: '',
+        imgUrl: ''
+      }, {
+        key: 5,
+        label: '右大腿',
+        value: '',
+        imgUrl: ''
+      }, {
+        key: 6,
+        label: '腹直肌上',
+        value: '',
+        imgUrl: ''
+      }, {
+        key: 7,
+        label: '腹直肌下',
+        value: '',
+        imgUrl: ''
+      }
+    ],
     chartBtns: [
       {
         label: '腰围',
@@ -80,10 +118,13 @@ Page({
         label: '5月29',
         value: 100
       }
-    ]
+    ],
+    popVisible: false,
+    curIndex: 0
   },
   onLoad(e) {
     app.setNavTitle(`我(${ this.data.infos.name })的工单`);
+    app.setNavColor();
   },
   onReady() {
     let _t = this, windowWidth = 320;
@@ -127,6 +168,15 @@ Page({
   onHide() {
     
   },
+  resetData() {
+    this.setData({
+      dataList: this.data.dataList.map(v => {
+        v.value = '';
+        v.imgUrl = '';
+        return v
+      })
+    })
+  },
   updateChartData(categories = [], data = []) {
     let series = [{
       color: '#00b0ab',
@@ -153,6 +203,35 @@ Page({
   },
   formSubmit(e) {
     console.log(e)
+  },
+  openPop(e) {
+    let { index } = e.currentTarget.dataset;
+    this.setData({
+      popVisible: true,
+      curIndex: index
+    })
+  },
+  popClose() {
+    this.setData({
+      popVisible: false
+    })
+  },
+  chooseImage(e) {
+    let _t = this;
+    let { source } = e.currentTarget.dataset;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: [source],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths;
+        _t.setData({
+          [`dataList[${_t.data.curIndex }].imgUrl`]: res.tempFilePaths[0]
+        })
+      }
+    })
+    _t.popClose();
   }
 })
 
