@@ -26,6 +26,7 @@
       "pages": [
         "address/index",
         "voucher/index",
+        "recommendCode/index",
         "currency/list/index",
         "currency/withdraw/index",
         "reservation/list/index",
