@@ -1,4 +1,4 @@
- 
+
 const test = require('utils/test.js')
 const pages = require('plugins/pages.js')
 const cartModel = require('models/cart/index.js');
@@ -9,7 +9,7 @@ App({
     catList: [],//是否在购物车
     goSettleList: [],//购物车
     goSettleList1: [],//去支付
-    selectRow:{}, //收货地址
+    selectRow: {}, //收货地址
     selectRowType: 0,
     bankCard: 0,
   },
@@ -17,16 +17,62 @@ App({
     this.test = test;
     this.pages = pages;
     this.getUserSetting();
-    //this.getUserLocation();
+    // this.getUserLocation();
+    console.log(wx.getStorageSync("token"));
+    if (!wx.getStorageSync("token")) {
+      this.userLogin();
+    }
   },
-  getUserSetting(){
-    wx.getSetting({
-      success: (res) => {
-        // console.log(res)
+  userLogin() {
+    wx.login({
+      success(res) {
+        if (res.code) {
+
+          //发起网络请求
+          wx.request({
+            url: 'https://www.newborni.com/Api/Common/login',
+            method: "post",
+            data: {
+              code: res.code
+            },
+            success(res) {
+              wx.setStorageSync("token", res.data.dataList.token)
+              console.log(wx.getStorageSync("token"));
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
       }
     })
   },
-  setNavTitle(title){
+  getUserSetting() {
+    wx.getSetting({
+      success: (res) => {
+        console.log(res);
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res.userInfo)
+            }
+          })
+          // wx.getUserInfo({
+          //   success: function (res) {
+          //     var userInfo = res.userInfo
+          //     var nickName = userInfo.nickName
+          //     var avatarUrl = userInfo.avatarUrl
+          //     var gender = userInfo.gender //性别 0：未知、1：男、2：女
+          //     var province = userInfo.province
+          //     var city = userInfo.city
+          //     var country = userInfo.country
+          //   }
+          // })
+        }
+      }
+    })
+  },
+  setNavTitle(title) {
     wx.setNavigationBarTitle({ title })
   },
   setNavColor(obj = {
@@ -95,16 +141,16 @@ App({
     wx.makePhoneCall({ phoneNumber });
   },
   // 获取地理位置
-//getUserLocation(){
-//  wx.getLocation({
-//    type: 'wgs84',
-//    success: function(res) {
-//      // console.log(res);
-//    }
-//  })
-//},
+  getUserLocation() {
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        console.log(res);
+      }
+    })
+  },
   //获取购物车商品件数
-  loadcartlist:{
+  loadcartlist: {
     _cartlist(selectQuantity, count) {
       cartModel.cartlist().then(response => {
         var arr = [];
@@ -115,12 +161,12 @@ App({
 
         var selectQuantity = 0;
         var e = response.data.list.length;
-        this._changeBadge(selectQuantity,e)
+        this._changeBadge(selectQuantity, e)
       }).catch(error => { });
     },
     _changeBadge(selectQuantity, count) {
       var e = selectQuantity + count
-      if (count != 0){
+      if (count != 0) {
         // 总数
         wx.setTabBarBadge({
           index: 2,
@@ -130,22 +176,22 @@ App({
     },
   },
   //分页
-  loadMoreMethods:{
-    _data:{
-        page: 1,
-        rows: 10,
-        list: [],
-        hasNextPage: false,
-        request: null,
-        callback: null,
-        params:null
+  loadMoreMethods: {
+    _data: {
+      page: 1,
+      rows: 10,
+      list: [],
+      hasNextPage: false,
+      request: null,
+      callback: null,
+      params: null
     },
-    _initLoadMore(params = {}){
-      let { 
-        page = 1, 
-        rows = 10, 
-        list = [], 
-        hasNextPage = false 
+    _initLoadMore(params = {}) {
+      let {
+        page = 1,
+        rows = 10,
+        list = [],
+        hasNextPage = false
       } = params;
       this._data.page = page;
       this._data.rows = rows;
@@ -155,7 +201,7 @@ App({
     _getList({
       request,
       params
-    },callback = function(){}){
+    }, callback = function () { }) {
       let { page, rows } = this._data;
       let _params = {
         page,
@@ -166,14 +212,18 @@ App({
       this._data.params = params;
       this._data.callback = callback;
       request(_params).then(response => {
-        let { page, totalPages, list = [] } = response.data || {};
+        //let { page, totalPages, list = [] } = response.dataList || {};
+        let totalRows = response.dataList.total;
+        let page = params.page;
+        let totalPages = Math.ceil(totalRows / params.rows);
+        let list = response.dataList.productList || [];
         this._data.hasNextPage = totalPages > page ? true : false;
         this._data.list = [...this._data.list, ...list];
         typeof callback == 'function' && callback({
           list: this._data.list,
           hasNextPage: this._data.hasNextPage
         });
-      }).catch(e => {});
+      }).catch(e => { });
     },
     _loadMore() {
       if (this._data.hasNextPage) {

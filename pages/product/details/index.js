@@ -1,5 +1,7 @@
 const productModel = require('../../../models/product/index.js');
+const cartModel = require('../../../models/cart/index.js');
 const wxParse = require('../../../wxParse/wxParse.js');
+const { img } = require('../../../config/url.js');
 
 Page({
     data: {
@@ -8,7 +10,7 @@ Page({
         orderId: '',
         obj: {},
         comment: {},
-        num: 1,
+        times: 1,
         selectIndex: 0,
         defaultCombo: {},
         minusStatus: 'disable',
@@ -28,16 +30,23 @@ Page({
     },
     // 获取产品详情
     getProductDetail(id) {
-        productModel.view({ id }).then(response => {
-            this.splitPrice(response.data.price)
+        productModel.view({ product_id: id }).then(response => {
+            let data = response.dataList.productInfo;
+            this.splitPrice(data.skuList[0].sku_price)
+
+            let imgList = data.product_template_image;
+            imgList.forEach((v, i) => {
+                v = img + v || '';
+                imgList[i] = v;
+            });
             this.setData({
-                obj: response.data,
-                imgList: response.data.imgList,
-                defaultCombo: response.data.mutliPriceLIst[0]
+                obj: data,
+                imgList: imgList,
+                defaultCombo: data.skuList[0]
             })
-            content: wxParse.wxParse('content', 'html', response.data.content, this, 12);
-            buyNotice: wxParse.wxParse('buyNotice', 'html', response.data.buyNotice, this, 12);
-        }).catch(e => {});
+            content: wxParse.wxParse('content', 'html', data.product_page_html, this, 12);
+            buyNotice: wxParse.wxParse('buyNotice', 'html', data.product_note_to_buy, this, 12);
+        }).catch(e => { });
     },
     // 获取一条评论
     getOneComment(id) {
@@ -45,14 +54,14 @@ Page({
             this.setData({
                 comment: response.data
             })
-        }).catch(e => {});
+        }).catch(e => { });
     },
     // 更改价格套餐
     priceChange(ev) {
         let index = ev.currentTarget.dataset.index
         this.setData({
             selectIndex: index,
-            defaultCombo: this.data.obj.mutliPriceLIst[index]
+            defaultCombo: this.data.obj.skuList[index]
         })
     },
     // 以小数点分割价格
@@ -64,32 +73,53 @@ Page({
         })
     },
     // 首页
-     home() {
-       wx.switchTab({
-         url: '../../tabBar/home/index',
-       })
-    }, 
+    home() {
+        wx.switchTab({
+            url: '../../tabBar/home/index',
+        })
+    },
     // 购物车
-     shoppingCart() {
-       wx.switchTab({
-         url: '../../tabBar/cart/index',
-       })
-    }, 
+    shoppingCart() {
+        wx.switchTab({
+            url: '../../tabBar/cart/index',
+        })
+    },
     // 立即购买
     shopping() {
         wx.navigateTo({
-          url: '../../order/buyNow/index',
+            url: '../../order/buyNow/index',
         })
-    }, 
+    },
     //弹窗
     selectTap(ev) {
-      this.setData({
-        popVisible: true
-      });
+        this.setData({
+            popVisible: true
+        });
     },
     popClose(ev) {
-      this.setData({
-        popVisible: false
-      });
-    }
+        this.setData({
+            popVisible: false
+        });
+    },
+    Cart() {
+        let p = {};
+        let defaultCombo = this.data.defaultCombo;
+        p.product_id = defaultCombo.product_id;
+        p.sku_name = defaultCombo.sku_name;
+        p.sku_num = this.data.times;
+
+        cartModel.additem(p).then(response => {
+            console.log(response);
+        }).catch(e => {
+
+        });
+        console.log(p);
+    },
+    inputTap() { },
+    // 改变商品数量
+    changeCount(e) {
+        this.setData({
+            times: e.detail.value
+        });
+    },
 })

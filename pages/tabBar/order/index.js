@@ -37,9 +37,17 @@ Page({
   },
   getList () {
     let _t = this;
+    
+    let params = {
+      page: 1,
+      page_size: 10,
+      order_status: "wait_to_pay"
+    };
     this._getList({
-      request: orderModel.goods
+      request: orderModel.orderlist,
+      params
     }, function (res) {
+      console.log(res);
       _t.setData({
         list: res.list,
         hasNextPage: !res.hasNextPage
