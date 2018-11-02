@@ -18,7 +18,6 @@ App({
     this.pages = pages;
     this.getUserSetting();
     // this.getUserLocation();
-    console.log(wx.getStorageSync("token"));
     if (!wx.getStorageSync("token")) {
       this.userLogin();
     }
@@ -37,7 +36,6 @@ App({
             },
             success(res) {
               wx.setStorageSync("token", res.data.dataList.token)
-              console.log(wx.getStorageSync("token"));
             }
           })
         } else {

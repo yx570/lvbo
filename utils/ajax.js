@@ -42,7 +42,6 @@ module.exports = (_options = {}) => {
       "content-type": contentType
     }, header);
     auth && (params.token = wx.getStorageSync("token"));
-    console.log('ajax:' + params.token);
     let options = {
       url: url + path,
       header: _header,

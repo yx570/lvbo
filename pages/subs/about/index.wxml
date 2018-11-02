@@ -10,13 +10,15 @@
     <view class="blur-area"></view>
   </view>
   <view class="about-intro">
-    <app-content-title title="品牌介绍" subTitle="ABOUT NEWBORN" dotColor="#e2f6f5" />
+    <!-- <app-content-title title="品牌介绍" subTitle="ABOUT NEWBORN" dotColor="#e2f6f5" /> -->
+    <view class="about-tit">品牌介绍</view>
     <view class="con">
       我们旨在赋能企业改变营销、销售和经营的方式，并提升企业效率。我们为商家、品牌及其他企业提供技基础设施以及营销平台，让其可借技术的力量与用户动，以更具效率的形式开展运营。
     </view>
   </view>
-  <view class="about-team mt-20">
-    <app-content-title title="技师团队" subTitle="Technician team" dotColor="#fff2db" />
+  <view class="about-team mt-45">
+    <!-- <app-content-title title="技师团队" subTitle="Technician team" dotColor="#fff2db" /> -->
+    <view class="about-tit">技师团队</view>
     <view class="team-box">
       <swiper previous-margin="{{'210rpx'}}" next-margin="{{'210rpx'}}" current="{{ swiperIndex }}" circular="true" bindchange="swiperChange">
         <block wx:for="{{ team }}" wx:key="{{ index }}">
@@ -32,15 +34,16 @@
         </block>
       </swiper>
     </view>
-    <view class="con">
+    <view class="con pt-10">
       <button class="team-more" type="primary" plain bind:tap="gotoTechnician">
         <text>600+专业技师竭诚为您服务</text>
         <text class="iconfont icon-arrow-right pl-20 color-primary"></text>
       </button>
     </view>
   </view>
-  <view class="about-case mt-20">
-    <app-content-title title="案例分享" subTitle="Case Studies" dotColor="#fff3f5" />
+  <view class="about-case mt-45">
+    <!-- <app-content-title title="案例分享" subTitle="Case Studies" dotColor="#fff3f5" /> -->
+    <view class="about-tit">案例分享</view>
     <view class="case-list">
       <view class="case-item" wx:for="{{ cases }}" wx:key="{{ index }}">
         <navigator class="flex-row" url="/pages/case/details/index?id={{ item.id }}">
@@ -71,9 +74,10 @@
       </navigator>
     </view>
   </view>
-  <view class="about-promise mt-20">
-    <app-content-title title="承诺保障" subTitle="Commitment guarantee" dotColor="#faf3ff" />
-    <view class="con">
+  <view class="about-promise mt-45">
+    <!-- <app-content-title title="承诺保障" subTitle="Commitment guarantee" dotColor="#faf3ff" /> -->
+    <view class="about-tit">承诺保障</view>
+    <view class="con mt-20">
       <view class="flex-row">
         <view class="iconfont icon-gouxuan-o"></view>
         <view class="flex-bd pl-20">
@@ -94,10 +98,11 @@
       </view>
     </view>
   </view>
-  <view class="about-suggest mt-20">
+  <view class="about-suggest mt-45">
     <form bindsubmit="formSubmit">
-      <app-content-title title="投诉建议" subTitle="Suggestions" dotColor="#faf3ff" />
-      <view class="con">
+      <!-- <app-content-title title="投诉建议" subTitle="Suggestions" dotColor="#faf3ff" /> -->
+    <view class="about-tit">投诉建议</view>
+      <view class="con mt-20">
         <textarea class="textarea bg-f8" name="textarea" placeholder="请输入您的建议" placeholder-style="font-size: 32rpx; color: #cccccc;" />
         <view class="flex-row images">
           <view class="img-box bg-f8 mr-20 mb-20" wx:for="{{ images }}" data-src="{{ item }}" wx:key="{{ index }}" bindtap="preViewImage">
