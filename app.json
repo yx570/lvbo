@@ -3,7 +3,8 @@
     "pages/tabBar/home/index",
     "pages/tabBar/order/index",
     "pages/tabBar/cart/index",
-    "pages/tabBar/user/index"
+    "pages/tabBar/user/index",
+    "pages/login"
   ],
   "subPackages": [
     {
@@ -26,6 +27,7 @@
       "pages": [
         "address/index",
         "voucher/index",
+        "recommendCode/index",
         "currency/list/index",
         "currency/withdraw/index",
         "reservation/list/index",

@@ -95,11 +95,16 @@
   bottom: -170rpx;
 }
 
+.about-tit {
+  font-size: 38rpx;
+  text-align: center;
+}
+
 .about-intro{
   padding-top: 70rpx;
 }
 .team-box{
-  margin-top: 60rpx;
+  margin-top: 70rpx;
 }
 .team-box swiper{
   width: 750rpx;
@@ -128,7 +133,6 @@
 }
 .team-box .name{
   margin-top: 8rpx;
-  margin-bottom: 8rpx;
   font-size: 32rpx;
 }
 .team-box .iconfont{
@@ -140,7 +144,7 @@
   color: #ffe7be;
 }
 .team-box .swiper-ft.active{
-  top: 630rpx;
+  top: 620rpx;
 }
 .team-more{
   height: 78rpx;
@@ -163,7 +167,7 @@
   top: -4rpx;
 }
 .case-list{
-  margin: 40rpx 0 56rpx;
+  margin: 80rpx 0 56rpx;
 }
 .case-item .flex-bd{
   height: 350rpx;
@@ -219,3 +223,4 @@
 .modal-content .pop-rows{
   border-radius: 16rpx;
 }
+.stars .iconfont { font-size: 34rpx;}

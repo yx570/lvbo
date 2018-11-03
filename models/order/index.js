@@ -1,6 +1,15 @@
 
 const ajax = require('../../utils/ajax.js');
 module.exports = {
+  //订单列表
+  //page
+  //page_size
+  //order_code
+  //order_status    wait_to_pay：待付款；wait_to_service：待服务；in_service：服务中；finish：已完结，为空就是全部
+  orderlist: params => {
+    return ajax({ path: '/Api/Order/getCustomerList', method: 'post', params });
+  }, 
+
   // 更改时间，查询时间是否有技师
   // date 2018-01-01
   queryTimeList: params => {
@@ -17,11 +26,6 @@ module.exports = {
   detail: params => {
     return ajax({ path: '/goods/detail', method: 'post', params });
   },
-  //采购订单列表
-  //type //1 全部 3 待自提  4 等待发货 5已发货 6 已关闭  7 已完成
-  orderlist: params => {
-    return ajax({ path: '/order/list', method: 'post', params });
-  }, 
   //线上订单列表
   // isShipped": true,   //true 已发货  false 未发货  不传为全部
   customerorderlist: params => {

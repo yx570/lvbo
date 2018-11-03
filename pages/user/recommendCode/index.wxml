@@ -1,0 +1,45 @@
+<view class="container panel-recommendCode">
+  <view class="recommendAmount">
+    <view class="items">
+      <view class="fonts">我已推荐</view>
+      <view class="amount">
+        8
+        <text class="sub">人</text>
+      </view>
+    </view>
+    <view class="items">
+      <view class="fonts">赚取新生币</view>
+      <view class="amount">
+        120
+        <text class="sub">枚</text>
+      </view>
+    </view>
+    <view class="btnBox">
+      <button class="btn-radius" type="pink" open-type='share'>立即推荐</button>
+    </view>
+  </view>
+  <view class="remark">
+    <view class="fonts">成功推荐孕妈消费体验，即得相等数额新生币</view>
+    <view class="rules">
+      [
+      <text>100</text>
+      枚新生币=
+      <text>1</text>
+      RMB ]
+    </view>
+  </view>
+  <view class="voucher">
+    <view class="tit"><text>有福同享</text></view>
+    <view class="sub">将newborns分享给好友，好友即得</view>
+    <view class="items">
+      <text class="rmb">￥</text>
+      <text class="amount">30</text>
+      <text class="voucher">代金券</text>
+    </view>
+  </view>
+  
+  <view class="app-footer fixed">
+    <view class="footBtn"><button class="useCash" catch:tap="useCash">使用现金券</button></view>
+    <view class="footBtn"><button class="recNow" open-type='share'>立即推荐</button></view>
+  </view>
+</view>

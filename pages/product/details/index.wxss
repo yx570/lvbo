@@ -6,7 +6,7 @@
 }
 
 .selectPrice button {
-    width: 180rpx;
+    width: 290rpx;
     height:76rpx; 
     line-height: 76rpx;
     margin: 20rpx 20rpx 0 0;

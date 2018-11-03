@@ -41,31 +41,16 @@ module.exports = (_options = {}) => {
     let _header = Object.assign({}, {
       "content-type": contentType
     }, header);
-    auth && (_header["x-access-token"] = wx.getStorageSync("accessToken"));
+    auth && (params.token = wx.getStorageSync("token"));
     let options = {
       url: url + path,
       header: _header,
       success: response => {
         let data = response.data || {};
         loading && wx.hideLoading();
-        switch (data.code) {
-          case 2:
-            response.header["access-token"] && (wx.setStorageSync("accessToken", response.header["access-token"]));
+        switch (data.status) {
+          case "success":
             resolve(data);
-            break;
-          // case 1:
-          case 3:
-          case 4:
-            showToast && wx.showToast({
-              title: data.msg || '加载失败',
-              icon: 'none',
-              duration: 2000
-            });
-            wx.clearStorageSync();
-            wx.redirectTo({
-              url: absolutePath('pages/login/index')
-            });
-            reject(response);
             break;
           default:
             showToast && wx.showToast({

@@ -9,11 +9,11 @@
                 <text class="f-54">{{priceInt}}</text>
                 <text class="f-36">.{{priceFloat}}</text>
             </view>
-            <view class="soldNums">本月已售：{{obj.soldNums}}次</view>
+            <view class="soldNums">本月已售：{{obj.product_current_month_virtual_sales}}次</view>
         </view>
-        <view class='productTit ellipse flex-bd'>{{obj.title}}</view>
+        <view class='productTit ellipse flex-bd'>{{obj.product_name}}</view>
         <!-- 副标题 -->
-        <view class="productSubTit">{{obj.subTitle}}</view>
+        <view class="productSubTit">{{obj.product_descript}}</view>
         <!-- 选择服务 -->
         <view class="selectPrice">
             <view class="weui-cells">
@@ -22,7 +22,7 @@
                         <view class="color-b8">已选</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <view>{{ defaultCombo.price }}元/{{ defaultCombo.times }}次</view>
+                        <view>{{ defaultCombo.sku_price }}元/{{ defaultCombo.sku_name }}</view>
                     </view>
                     <view class="weui-cell__ft">
                         <view class="iconfont icon-arrow-right"></view>
@@ -117,12 +117,12 @@
             <view class='subTit'>规格</view>
             <view class="flex-row">
                 <view class="selectPrice">
-                    <block wx:for='{{obj.mutliPriceLIst}}' wx:key="{{index}}">
+                    <block wx:for='{{obj.skuList}}' wx:key="{{index}}">
                         <button size="mini" plain data-index="{{index}}" wx:if="{{index == selectIndex}}" type="primary">
-                            {{item.price}}/{{item.times}}次
+                            {{item.sku_price}}/{{item.sku_name}}
                         </button>
                         <button size="mini" plain data-index="{{index}}" bindtap="priceChange" wx:else>
-                            {{item.price}}/{{item.times}}次
+                            {{item.sku_price}}/{{item.sku_name}}
                         </button>
                     </block>
                 </view>
@@ -131,7 +131,7 @@
         <view class="popItem">
             <view class='subTit'>数量</view>
             <view class="popNums">
-                <input-number className="popNums" quantity="1"></input-number>
+                <input-number className="popNums" quantity="{{ times }}" catch:tap="inputTap" bind:change="changeCount"></input-number>
             </view>
         </view>
         <button class='btn-radius bg-pink color-white' catch:tap="Cart">加入购物车</button>

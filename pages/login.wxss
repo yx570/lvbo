@@ -1,1 +1,13 @@
 /* pages/login.wxss */
+.panel-login { text-align: center; padding-top:50rpx;}
+.panel-login .userimg{
+    display: inline-block;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 200rpx;
+    overflow: hidden;
+}
+.panel-login .username {
+    font-size: 40rpx;
+    margin:40rpx 0;
+}

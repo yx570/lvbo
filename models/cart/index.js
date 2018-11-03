@@ -2,10 +2,11 @@
 const ajax = require('../../utils/ajax.js');
 module.exports = {
   //加入购物车
-  // id   //skuId
-  // quantity  //数量
+  // p.product_id
+  // p.sku_name
+  // p.sku_num
   additem: params => {
-    return ajax({ path: '/static/data/cartList.js', method: 'post', params });
+    return ajax({ path: '/Api/Order/preScheduling', method: 'post', params });
   },
   //购物车列表
   cartlist: params => {
