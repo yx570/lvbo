@@ -73,15 +73,6 @@
 .chart-area .btn-area button + button{
   margin-left: 20rpx;
 }
-.panel-measure .app-footer{
-  height: 140rpx;
-  padding: 20rpx;
-  background: #fff;
-}
-
-.panel-measure .app-footer button{
-  border-radius: 100rpx;
-}
 
 .canvas{
   width: 100%;

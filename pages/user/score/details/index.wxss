@@ -2,7 +2,7 @@
   position: relative;
   overflow-x: hidden;
 }
-.scroll-box { padding-bottom:50rpx;}
+/* .scroll-box { padding-bottom:50rpx;} */
 .panel-score::before{
   content: '';
   position: absolute;
@@ -12,10 +12,10 @@
   border-top: 2rpx solid #f3f3f3;
 }
 .panel-score .content{
-  padding-bottom: 140rpx;
+  padding-bottom: 160rpx;
 }
 .panel-score__ft{
-  padding: 40rpx 0;
+  padding: 30rpx 0;
 }
 .panel-score__ft .img-box{
   width: 136rpx;
@@ -45,6 +45,7 @@
   margin:0 16rpx 16rpx 0;
   padding: 0 20rpx;
   box-sizing: border-box;
+  font-size: 24rpx;
 }
 .panel-score .app-footer{
   height: 140rpx;
