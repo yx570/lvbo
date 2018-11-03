@@ -45,7 +45,7 @@
               </button>
             </view>
             <view class="chart-box">
-              <canvas class="canvas" canvas-id="chart-canvas"/>
+              <canvas class="canvas" disable-scroll="true" bindtouchmove="cvsMove" canvas-id="chart-canvas"/>
             </view>
           </view>
         </view>

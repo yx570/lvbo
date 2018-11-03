@@ -67,10 +67,10 @@
   margin-top: 20rpx;
   padding: 40rpx 30rpx;
 }
-.measure-content .btn-area{
+.chart-area .btn-area{
   padding: 40rpx 0;
 }
-.measure-content .btn-area button + button{
+.chart-area .btn-area button + button{
   margin-left: 20rpx;
 }
 .panel-measure .app-footer{
