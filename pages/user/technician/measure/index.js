@@ -201,6 +201,7 @@ Page({
       this.updateChartData(chartData.map(v => v.label), chartData.map(v => v.value));
     }
   },
+  cvsMove(e) {},
   formSubmit(e) {
     console.log(e)
   },
