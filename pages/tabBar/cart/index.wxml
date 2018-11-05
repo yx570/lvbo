@@ -9,15 +9,15 @@
             </view>
             <view class="weui-cell__bd">
                 <view class="weui-cell pa-0">
-                    <view  class="weui-cell__hd" bindtap="urlshow" data-id="{{item.id}}"><image  src="{{ item.picture }}" /></view>
+                    <view  class="weui-cell__hd" bindtap="urlshow" data-id="{{item.id}}"><image  src="{{ item.imgUrl }}" /></view>
 
                     <view class="weui-cell__bd">
-                        <view class="name" bindtap="urlshow" data-id="{{item.id}}">{{ item.name }}</view>
-                        <view class="size">规格：{{ item.price }}/次</view>
+                        <view class="name" bindtap="urlshow" data-id="{{item.id}}">{{ item.productName }}</view>
+                        <view class="size">规格：{{ item.defaultCombo.sku_price }}/{{ item.defaultCombo.sku_name }}</view>
                         <view class="flex-row">
                             <view class="price color-pink">
                                 <text class="sub">￥</text>
-                                <text>{{ item.price * item.quantity }}</text>
+                                <text>{{ item.price }}</text>
                             </view>
                             <view class="at-number-input">
                                 <!-- <view class="iconfont icon-clear_fill {{ item.quantity <= 0 ? 'disabled':'' }}" data-id="{{ item.id }}" catch:tap="changeCount" data-index="{{ index }}" data-value="-1"></view>
@@ -28,6 +28,7 @@
                                 className="cartNumInput"
                                 data-id="{{ item.id }}" 
                                 data-index="{{ index }}" 
+                                data-skuname="{{ item.defaultCombo.sku_name }}"
                                 catch:tap="inputTap"
                                 bind:change="changeCount" 
                                 />
@@ -35,13 +36,13 @@
                         </view>
                     </view>
                 </view>
-                <view class="weui-cell pa-0 selectTimes flex-row" catch:tap="selectTap" data-index="{{ index }}" data-id="{{item.id}}">
+                <!-- <view class="weui-cell pa-0 selectTimes flex-row" catch:tap="selectTap" data-index="{{ index }}" data-id="{{item.id}}">
                     <view class="ellipse">预约时间: {{bookingDates}}</view>
                     <view class="flex-bd align-right">修改</view>
-                </view>
+                </view> -->
             </view>
             <view class="weui-cell__del overflow">
-                <button class="btn-delete bg-pink color-white" data-id="{{ item.id }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
+                <button class="btn-delete bg-pink color-white" data-id="{{ item.id }}_{{ item.defaultCombo.sku_name }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
                   <text>删除</text>
                 </button>
             </view>

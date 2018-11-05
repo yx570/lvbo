@@ -88,6 +88,7 @@
                     <image src="/static/images/icon-cart-2.png"></image>
                 </view>
                 <view>购物车</view>
+                <span class="weui-badge" wx:if="{{ cartNums > 0 }}">{{ cartNums }}</span>
             </view>
         </view>
         <view class='bottom_list bottom_but'>

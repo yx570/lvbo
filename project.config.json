@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 20,
+			"current": 21,
 			"list": [
 				{
 					"id": 2,
@@ -159,6 +159,11 @@
 					"name": "about",
 					"pathName": "pages/subs/about/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "chooseAddress",
+					"pathName": "pages/user/chooseAddress/index"
 				}
 			]
 		}

@@ -9,8 +9,6 @@ Page({
     startY: 0,
     curTouchIndex: 0,
     selectQuantity: 0,
-    dates: [], // 技师可选时间
-    defaultDates: [],  // 技师默认时间
     // 表示该篇文章
     selecteds: [],
     popVisible: false,
@@ -21,8 +19,6 @@ Page({
   onLoad: function () {
     app.pages.add(this);
 
-    // xwx.showTabBarRedDot(2);
-
     this.data.orders.forEach((v, i) => {
       v.isTouchMove = false;
     });
@@ -31,7 +27,7 @@ Page({
   onShow() {
     this.getList();
   },
-  changeBadge(count) {
+  // changeBadge(count) {
     // if (count <= 0) {
     //   wx.removeTabBarBadge({
     //     index: 2
@@ -47,24 +43,46 @@ Page({
     //   });
     // }
 
-  },
+  // },
   // 获取列表
-  getList: function () {
-    cartModel.cartlist().then(response => {
-      let { list = [], quantity = 0 } = response.data;
-      list.forEach(v => {
-        v.isTouchMove = false;
-        v.checked = false;
-      });
-      this.setData({
-        orders: list,
-        selectQuantity: 0
-      });
-      var e = list.length;
-      this.changeBadge(e);
-      this.checkShow();
-      this.computeTotalPrice();
-    }).catch(error => { });
+  // getList: function () {
+  //   cartModel.cartlist().then(response => {
+  //     let { list = [], quantity = 0 } = response.data;
+  //     list.forEach(v => {
+  //       v.isTouchMove = false;
+  //       v.checked = false;
+  //     });
+  //     this.setData({
+  //       orders: list,
+  //       selectQuantity: 0
+  //     });
+  //     var e = list.length;
+  //     this.changeBadge(e);
+  //     this.checkShow();
+  //     this.computeTotalPrice();
+  //   }).catch(error => { });
+  // },
+  getList() {
+    let _that = this;
+    wx.getStorage({
+      key: 'nb_cart',
+      success(res) {
+        let list = res.data;
+        let arr = [];
+        for (let key in list) {
+          list[key].isTouchMove = false;
+          list[key].checked = false;
+          list[key].price = (list[key].defaultCombo.sku_price * list[key].quantity).toFixed(2)
+          arr.push(list[key]);
+        }
+        _that.setData({
+          orders: arr,
+          selectQuantity: 0
+        });
+        _that.checkShow();
+        _that.computeTotalPrice();
+      }
+    })
   },
 
   // 去结算
@@ -93,8 +111,6 @@ Page({
   checkboxTap(e) {
     let { index } = e.currentTarget.dataset;
 
-    console.log(index)
-    console.log(this.data.orders[index].checked)
     this.setData({
       [`orders[${index}].checked`]: !this.data.orders[index].checked
     });
@@ -134,7 +150,7 @@ Page({
     console.log(e);
     let self = this;
     let { value } = e.detail;
-    let { id, index } = e.currentTarget.dataset;
+    let { id, index, skuname } = e.currentTarget.dataset;
     // console.log(value);
     this.setData({
       [`orders[${index}].quantity`]: value,
@@ -143,14 +159,29 @@ Page({
     this.computeTotalPrice();
 
     //更改数量
-    cartModel.change_quantity({ id, quantity: value }).then(response => { }).catch(e => { });
+    // cartModel.change_quantity({ id, quantity: value }).then(response => { }).catch(e => { });
+
+    // 本地存储
+    wx.getStorage({
+      key: 'nb_cart',
+      success(res) {
+        let list = res.data;
+        if (list[id + '_' + skuname]) {
+          list[id + '_' + skuname].quantity = value;
+          wx.setStorage({
+            key: "nb_cart",
+            data: list
+          })
+        }
+      }
+    })
   },
   // 计算总价
   computeTotalPrice() {
     // console.log(this.data.orders);
     let total = 0;
     this.data.orders.forEach((v, i) => {
-      v.checked && (total += v.price * v.quantity);
+      v.checked && (total += v.defaultCombo.sku_price * v.quantity);
     });
     this.setData({
       totalPrices: total.toFixed(2)
@@ -168,29 +199,65 @@ Page({
     this.initList(e);
   },
   cellBtnTap(e) {
-    let { id, num } = e.currentTarget.dataset;
-    cartModel.remove({ id }).then(response => {
+    let _that = this;
+    let { id } = e.currentTarget.dataset;
+
+    this.setData({
+      orders: this.data.orders.filter(v => {
+        return v.id !== id
+      })
+    });
+    if (this.data.orders.length == 0) {
       this.setData({
-        orders: this.data.orders.filter(v => {
-          return v.id !== id
-        })
+        checkedAll: false
       });
-      if (this.data.orders.length == 0) {
-        this.setData({
-          checkedAll: false
-        });
+    }
+    // console.log(this.data.orders.length)
+    if (this.data.orders.length > 0) {
+      this.setData({
+        selectQuantity: 0
+      });
+    }
+    this.computeTotalPrice();
+
+    // 本地存储
+    wx.getStorage({
+      key: 'nb_cart',
+      success(res) {
+        let list = res.data;
+        delete(list[id])
+
+        wx.setStorage({
+            key: "nb_cart",
+            data: list
+        })
+        app.toastSuccess('删除成功');
+        _that.getList();
       }
-      // console.log(this.data.orders.length)
-      if (this.data.orders.length <= 0) {
-        this.changeBadge(0);
-      } else {
-        this.setData({
-          selectQuantity: 0
-        });
-        this.changeBadge(this.data.orders.length);
-      }
-      this.computeTotalPrice();
-    }).catch(e => { });
+    });
+
+    // cartModel.remove({ id }).then(response => {
+    //   this.setData({
+    //     orders: this.data.orders.filter(v => {
+    //       return v.id !== id
+    //     })
+    //   });
+    //   if (this.data.orders.length == 0) {
+    //     this.setData({
+    //       checkedAll: false
+    //     });
+    //   }
+    //   // console.log(this.data.orders.length)
+    //   if (this.data.orders.length <= 0) {
+    //     this.changeBadge(0);
+    //   } else {
+    //     this.setData({
+    //       selectQuantity: 0
+    //     });
+    //     this.changeBadge(this.data.orders.length);
+    //   }
+    //   this.computeTotalPrice();
+    // }).catch(e => { });
   },
   // 手指触摸动作开始 记录起点X坐标
   touchstart(e) {
@@ -252,12 +319,6 @@ Page({
     // url: '../../purchase/details/details?id=' + e.currentTarget.dataset.id
     wx.navigateTo({
       url: '../../product/details/index?id=' + e.currentTarget.dataset.id
-    })
-  },
-  //选择时间
-  selectTap(e) {
-    wx.navigateTo({
-      url: '../../order/editDates/index?id=' + e.currentTarget.dataset.id + '&mutli=1'
     })
   }
 })

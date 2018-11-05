@@ -1,0 +1,21 @@
+<view class="panel-chooseAddress">
+  <view class="search">
+    <input focus='auto' bindinput="searchInputAction" placeholder="小区/街道/大厦/学校名称" value="" />
+  </view>
+  <!-- 搜索时内容 -->
+  <view class="searchList">
+    <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
+      <view wx:if="{{searchResultDatas.length > 0}}" class="search-content-body">
+        <block wx:for="{{searchResultDatas}}" wx:key="{{ index }}">
+          <view class="search-result-item">
+            <view>
+              <text class="localTag" wx:if="{{ item.isLocal == 1 }}">[当前位置]</text>
+              {{ item.title }}
+            </view>
+            <text class="color-b8 addr">{{ item.address }}</text>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>

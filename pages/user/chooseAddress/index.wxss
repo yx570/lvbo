@@ -1,0 +1,7 @@
+.panel-chooseAddress { height: 100%;}
+.panel-chooseAddress .search { position: relative; padding:0 20rpx;}
+.panel-chooseAddress .search input { background:#f3f3f3; border-radius: 40rpx; padding: 0 20rpx; height:80rpx; line-height: 80rpx;}
+.panel-chooseAddress .localTag { color:#f90;}
+.panel-chooseAddress .searchList { position: absolute; left:0; right:0; top:100rpx; bottom:0;}
+.panel-chooseAddress .searchList .search-result-item { padding: 20rpx 40rpx; border-bottom:1rpx solid #f3f3f3;}
+.panel-chooseAddress .searchList .search-result-item .addr { font-size:24rpx;}
