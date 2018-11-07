@@ -9,6 +9,8 @@ Page({
       area: '宝安区',
       name: '王菲',
       address: '',
+      lat: '',
+      lng: '',
       phone: '',
       tag: 1
     },
@@ -26,8 +28,14 @@ Page({
     ],
     region: ['广东省', '深圳市', '宝安区']
   },
-  onLoad: function () {
-    
+  onLoad: function (ev) {
+    let info = this.data.infos;
+    info.address = ev.address;
+    info.lat = ev.lat;
+    info.lng = ev.lng;
+    this.setData({
+      infos: info,
+    })
   },
   tagChange(e){
     let { row } = e.currentTarget.dataset;
@@ -40,6 +48,11 @@ Page({
     let { value, code, postcode } = e.detail;
     this.setData({
       region: value
+    })
+  },
+  chooseAddress() {
+    wx.navigateTo({
+      url: '../chooseAddress/index'
     })
   },
   formSubmit(e) {

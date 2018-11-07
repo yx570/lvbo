@@ -1,7 +1,12 @@
 .panel-chooseAddress { height: 100%;}
-.panel-chooseAddress .search { position: relative; padding:0 20rpx;}
-.panel-chooseAddress .search input { background:#f3f3f3; border-radius: 40rpx; padding: 0 20rpx; height:80rpx; line-height: 80rpx;}
+.panel-chooseAddress .search { position: relative; margin:0 20rpx; background:#f3f3f3; border-radius: 40rpx; padding:0 80rpx;}
+.panel-chooseAddress .search input { height:80rpx; line-height: 80rpx;}
+.panel-chooseAddress .search .icon-search { position: absolute; left:20rpx; top:0; color:#999; background: none; height:80rpx; width:40rpx; line-height:80rpx;}
+.panel-chooseAddress .search .icon-close-o { position: absolute; right:0; top:0; color:#999; background: none; height:80rpx; width:80rpx; line-height:80rpx; text-align: center;}
+.panel-chooseAddress .search input::focus + .icon-close-o { display: block;}
+.panel-chooseAddress .cancelSearch { padding:0 40rpx 0 20rpx; line-height: 80rpx;}
 .panel-chooseAddress .localTag { color:#f90;}
 .panel-chooseAddress .searchList { position: absolute; left:0; right:0; top:100rpx; bottom:0;}
 .panel-chooseAddress .searchList .search-result-item { padding: 20rpx 40rpx; border-bottom:1rpx solid #f3f3f3;}
-.panel-chooseAddress .searchList .search-result-item .addr { font-size:24rpx;}
+.panel-chooseAddress .searchList .search-result-item .addrName { font-size:30rpx;}
+.panel-chooseAddress .searchList .search-result-item .addr { font-size:24rpx; padding-left:10rpx;}

@@ -3,7 +3,10 @@ let qqmapsdk;
 Page({
   data: {
     searchResultDatas: [],
-    pages: 1
+    pages: 1,
+    searchResult: '',
+    hasNextPage: 1,
+    showClear: 0
   },
   onLoad() {
     // 实例化API核心类
@@ -20,9 +23,7 @@ Page({
       success(res) {
         let lat = res.latitude
         let lng = res.longitude
-        lat = 22.61797332763672
-        lng = 114.037841796875
-        // console.log(lat, lng);
+
         qqmapsdk.reverseGeocoder({
           location: {
             latitude: lat,
@@ -31,11 +32,11 @@ Page({
           success: function (res) {
             let position = res.result.formatted_addresses.recommend
             let address = res.result.address;
-            
+
             _that.setData({
               lat: lat,
               lng: lng,
-              searchResultDatas: [{id: 1, title: position, address: address, isLocal: 1}]
+              searchResultDatas: [{ id: 1, title: position, address: address, isLocal: 1 }]
             });
             _that.nearBy();
           }
@@ -45,10 +46,8 @@ Page({
   },
   nearBy() {
     let _that = this;
-
-    // 调用接口
-    qqmapsdk.search({
-      keyword: '小区',
+    let opts = {
+      keyword: _that.data.searchResult || "小区",
       page_size: 20,
       page_index: _that.data.pages,
       location: {
@@ -56,14 +55,72 @@ Page({
         longitude: _that.data.lng
       },
       success: function (res) {
-        _that.setData({
-          searchResultDatas: [..._that.data.searchResultDatas, ...res.data],
-          pages: _that.data.pages + 1
-        });
+        if (res.data.length > 0) {
+          _that.setData({
+            searchResultDatas: [..._that.data.searchResultDatas, ...res.data],
+            pages: _that.data.pages + 1
+          });
+        } else {
+          _that.setData({
+            hasNextPage: 0
+          });
+        }
       }
-    })
+    }
+
+    // 调用接口
+    if (_that.data.hasNextPage) {
+      qqmapsdk.search(opts)
+    } else {
+      app.toastError('没有更多了');
+    }
   },
   _loadMore() {
     this.nearBy();
+  },
+  changeInputValue(ev) {
+    var that = this;
+    let value = ev.detail.value;
+    if (value) {
+      this.setData({
+        pages: 1,
+        hasNextPage: 1,
+        searchResult: value,
+        searchResultDatas: []
+      });
+    } else {
+      this.setData({
+        showClear: 0
+      });
+    }
+    this.nearBy();
+  },
+  showClear() {
+    this.setData({
+      showClear: 1
+    });
+  },
+  clearSearch() {
+    this.setData({
+      showClear: 0,
+      searchResult: ''
+    });
+    this.getLocation();
+  },
+  selectAddress(ev) {
+    let { id } = ev.currentTarget.dataset;
+    let address = '';
+    let lat = '';
+    let lng = '';
+    this.data.searchResultDatas.forEach(v => {
+      if (v.id == id) {
+        address = v.title;
+        lat = v.location.lat;
+        lng = v.location.lng;
+      }
+    });
+    wx.navigateTo({
+      url: '../address/index?address=' + address + '&lat=' + lat + '&lng=' + lng
+    })
   }
 })

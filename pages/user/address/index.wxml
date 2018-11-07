@@ -13,10 +13,10 @@
                 {{ region[0]}}，{{region[1]}}，{{region[2] }}
               </view>
             </picker> -->
-            <input value="{{ infos.name }}" placeholder="请输入联系人" />
+            <input value="{{ infos.address }}" disabled placeholder="请输入服务地址" bind:tap="chooseAddress" />
           </view>
           <view class="app-cell__ft">
-            <navigator url="../chooseAddress/index">
+            <navigator hover-class="none" url="../chooseAddress/index">
               <view class="iconfont icon-arrow-right"></view>
             </navigator>
           </view>
@@ -24,7 +24,7 @@
         <view class="app-cell flex-start">
           <view class="app-cell__hd pt-10 color-999">详细地址：</view>
           <view class="app-cell__bd">
-            <textarea class="textarea" placeholder="街道、楼牌号等" />
+            <textarea class="textarea" placeholder="街道、楼牌号等" >{{ infos.detailAddress }}</textarea>
           </view>
         </view>
         <view class="app-cell">

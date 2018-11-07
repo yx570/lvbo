@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": 6,
 			"list": [
 				{
 					"id": 2,
@@ -71,10 +71,10 @@
 					"query": "id=1&mutli=1"
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "address",
 					"pathName": "pages/user/address/index",
-					"query": ""
+					"query": "from=cart"
 				},
 				{
 					"id": 9,
@@ -163,7 +163,8 @@
 				{
 					"id": -1,
 					"name": "chooseAddress",
-					"pathName": "pages/user/chooseAddress/index"
+					"pathName": "pages/user/chooseAddress/index",
+					"query": ""
 				}
 			]
 		}

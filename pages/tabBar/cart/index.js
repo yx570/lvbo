@@ -28,20 +28,20 @@ Page({
     this.getList();
   },
   // changeBadge(count) {
-    // if (count <= 0) {
-    //   wx.removeTabBarBadge({
-    //     index: 2
-    //   })
-    // } else {
-    //   // 总数
-    //   wx.setTabBarBadge({
-    //     index: 2,
-    //     text: String(this.data.selectQuantity + count)
-    //   });
-    //   this.setData({
-    //     selectQuantity: this.data.selectQuantity + count
-    //   });
-    // }
+  // if (count <= 0) {
+  //   wx.removeTabBarBadge({
+  //     index: 2
+  //   })
+  // } else {
+  //   // 总数
+  //   wx.setTabBarBadge({
+  //     index: 2,
+  //     text: String(this.data.selectQuantity + count)
+  //   });
+  //   this.setData({
+  //     selectQuantity: this.data.selectQuantity + count
+  //   });
+  // }
 
   // },
   // 获取列表
@@ -87,17 +87,23 @@ Page({
 
   // 去结算
   goSettle(params) {
-    let selecteds = this.data.orders.filter(item => {
+    let datas = this.data.orders.filter(item => {
       return item.checked;
     });
-    this.setData({ selecteds });
+    this.setData({ datas });
+
     //  console.log(selecteds)
-    if (selecteds.length != 0) {
-      // getApp().globalData.goSettleList = datas;
-      // console.log(getApp().globalData.goSettleList)
-      wx.navigateTo({
-        url: '../../../pages/order/buyNow/index'
-      })
+    if (datas.length != 0) {
+      if (app.globalData.customerInfo) {
+        app.globalData.goSettleList = datas;
+        wx.navigateTo({
+          url: '../../../pages/order/buyNow/index'
+        })
+      } else {
+        wx.navigateTo({
+          url: '../../../pages/login'
+        })
+      }
     } else {
       wx.showToast({
         title: "请至少选择一件商品提交",
@@ -225,11 +231,11 @@ Page({
       key: 'nb_cart',
       success(res) {
         let list = res.data;
-        delete(list[id])
+        delete (list[id])
 
         wx.setStorage({
-            key: "nb_cart",
-            data: list
+          key: "nb_cart",
+          data: list
         })
         app.toastSuccess('删除成功');
         _that.getList();
@@ -320,5 +326,30 @@ Page({
     wx.navigateTo({
       url: '../../product/details/index?id=' + e.currentTarget.dataset.id
     })
+  },
+  bindGetUserInfo(e) {
+    if (!app.globalData.customerInfo) {
+      wx.showModal({
+        title: '温馨提示',
+        content: '请先填写服务地址',
+        showCancel: false,
+        confirmColor: '#00b0ab',
+        success () {
+          wx.navigateTo({
+            url: '../../user/address/index?from=cart'
+          })
+        }
+      })
+      // 先注册用户，然后跳转到填写地址页面
+      app.registerUser();
+      
+      // wx.switchTab({
+      //   url: '../../user/address/index'
+      // })
+    } else {
+      wx.switchTab({
+        url: '../../../pages/order/buyNow/index'
+      })
+    }
   }
 })

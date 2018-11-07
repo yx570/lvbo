@@ -4,7 +4,7 @@ module.exports = {
   //产品列表
   //key
   query: params => {
-    return ajax({ path: '/Api/Product/getProducts', method: 'post', params, loading: true});
+    return ajax({ path: '/Api/Product/getProducts', method: 'post', auth: false, params, loading: true});
   },
   //产品详情
   //key

@@ -10,12 +10,21 @@ module.exports = {
   login: params => {
     return ajax({ path: '/Api/Common/login', method: 'post', params, auth:false });
   },
+  resister: params => {
+    return ajax({ path: '/Api/Customer/addCustomer', method: 'post', params, auth:false });
+  },
   /**
    * 登出
   */
   logout: params => {
     return ajax({ path: '/logout', method: 'post' });
   },
+  
+  getUserInfo: params => {
+    return ajax({ path: '/Api/Customer/getCustomerInfo', method: 'post', params });
+  },
+  
+
   /**
    * 修改密码
    * @param[String]  password 

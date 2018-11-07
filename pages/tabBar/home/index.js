@@ -1,6 +1,6 @@
+const app = getApp();
 const productModel = require('../../../models/product/index.js');
 const { img } = require('../../../config/url.js');
-const app = getApp();
 Page({
   ...app.loadMoreMethods,
   data: {
@@ -18,6 +18,10 @@ Page({
     searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏
   },
   onLoad() {
+    console.log('1');
+  },
+  onShow() {
+    console.log('2');
     app.pages.add(this);
     this.getList();
   },
