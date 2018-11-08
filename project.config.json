@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 22,
 			"list": [
 				{
 					"id": 2,
@@ -164,6 +164,12 @@
 					"id": -1,
 					"name": "chooseAddress",
 					"pathName": "pages/user/chooseAddress/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "buyNow",
+					"pathName": "pages/order/buyNow/index",
 					"query": ""
 				}
 			]

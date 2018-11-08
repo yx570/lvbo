@@ -11,18 +11,18 @@
     </view>
   </navigator>
   <view class="weui-cells order-list" wx:if="{{ orders.length > 0 }}">
-    <view class="weui-cell order-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}">
+    <view class="weui-cell order-item" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}">
       <view class="weui-cell__bd">
         <view class="weui-cell pa-0">
           <view class="weui-cell__hd" bindtap="urlshow" data-id="{{item.id}}">
-            <image src="{{ item.picture }}" />
+            <image src="{{ item.imgUrl }}" />
           </view>
           <navigator hover-class="none" url="/pages/product/details/index?id={{item.id}}">
             <view class="weui-cell__bd">
               <view class="name ellipse" bindtap="urlshow" data-id="{{item.id}}">
-                {{ item.name }}
+                {{ item.productName }}
               </view>
-              <view class="size">规格：{{ item.price }}/次</view>
+              <view class="size">规格：{{ item.defaultCombo.sku_price }}/{{ item.defaultCombo.sku_name }}</view>
               <view class="flex-row">
                 <view class="price color-pink">
                   <text class="sub">￥</text>

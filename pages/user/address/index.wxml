@@ -1,19 +1,11 @@
 <view class="container flex-column panel-address">
   <view class="flex-bd content">
     <scroll-view scroll-y="true">
-      <form bindsubmit="formSubmit" bindreset="formReset">
+      <form bindsubmit="formSubmit">
         <view class="app-cell">
           <view class="app-cell__hd color-999">所在位置：</view>
           <view class="app-cell__bd">
-            <!-- <text class="pr-10">{{ infos.province }}</text>
-            <text class="pr-10">{{ infos.city }}</text>
-            <text class="pr-10">{{ infos.area }}</text> -->
-            <!-- <picker mode="region" bindchange="bindRegionChange" value="{{ region }}">
-              <view class="picker">
-                {{ region[0]}}，{{region[1]}}，{{region[2] }}
-              </view>
-            </picker> -->
-            <input value="{{ infos.address }}" disabled placeholder="请输入服务地址" bind:tap="chooseAddress" />
+            <input value="{{ infos.user_locate_detail_addr }}" name="user_locate_detail_addr" disabled placeholder="请输入服务地址" bind:tap="chooseAddress" />
           </view>
           <view class="app-cell__ft">
             <navigator hover-class="none" url="../chooseAddress/index">
@@ -24,13 +16,13 @@
         <view class="app-cell flex-start">
           <view class="app-cell__hd pt-10 color-999">详细地址：</view>
           <view class="app-cell__bd">
-            <textarea class="textarea" placeholder="街道、楼牌号等" >{{ infos.detailAddress }}</textarea>
+            <textarea class="textarea" name="user_real_detail_addr" placeholder="街道、楼牌号等" value="{{ infos.user_real_detail_addr }}" />
           </view>
         </view>
         <view class="app-cell">
           <view class="app-cell__hd color-999">标签：</view>
           <view class="app-cell__bd tag-btns">
-            <button class="btn-radius" size="mini" type="{{ infos.tag == item.value ? 'primary' : 'default' }}" plain="{{ infos.tag !== item.value }}" wx:for="{{ tags }}" wx:key="{{ index }}" data-row="{{ item }}" bindtap="tagChange">
+            <button class="btn-radius" size="mini" type="{{ infos.child_sort == item.value ? 'primary' : 'default' }}" plain="{{ infos.child_sort !== item.value }}" wx:for="{{ tags }}" wx:key="{{ index }}" data-row="{{ item }}" bindtap="tagChange">
               {{ item.label }}
             </button>
           </view>
@@ -38,18 +30,18 @@
         <view class="app-cell">
           <view class="app-cell__hd color-999">联系人：</view>
           <view class="app-cell__bd">
-            <input value="{{ infos.name }}" placeholder="请输入联系人" />
+            <input value="{{ infos.user_real_name }}" name="user_real_name" placeholder="请输入联系人" />
           </view>
         </view>
         <view class="app-cell">
           <view class="app-cell__hd color-999">联系电话：</view>
           <view class="app-cell__bd">
-            <input value="{{ infos.phone }}" type="number" placeholder="请输入联系电话" />
+            <input value="{{ infos.user_contact_phone }}" name="user_contact_phone" type="number" placeholder="请输入联系电话" />
           </view>
         </view>
         <view class="app-cell btn-area">
           <view class="app-cell__bd">
-            <button class="btn-radius" type="primary" formType="submit">更新/保存</button>
+            <button class="btn-radius" type="primary" formType="submit">保存</button>
           </view>
         </view>
       </form>

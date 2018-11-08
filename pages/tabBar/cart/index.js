@@ -84,35 +84,6 @@ Page({
       }
     })
   },
-
-  // 去结算
-  goSettle(params) {
-    let datas = this.data.orders.filter(item => {
-      return item.checked;
-    });
-    this.setData({ datas });
-
-    //  console.log(selecteds)
-    if (datas.length != 0) {
-      if (app.globalData.customerInfo) {
-        app.globalData.goSettleList = datas;
-        wx.navigateTo({
-          url: '../../../pages/order/buyNow/index'
-        })
-      } else {
-        wx.navigateTo({
-          url: '../../../pages/login'
-        })
-      }
-    } else {
-      wx.showToast({
-        title: "请至少选择一件商品提交",
-        icon: 'none',
-        duration: 2000
-      });
-    }
-
-  },
   // 单选
   checkboxTap(e) {
     let { index } = e.currentTarget.dataset;
@@ -327,29 +298,65 @@ Page({
       url: '../../product/details/index?id=' + e.currentTarget.dataset.id
     })
   },
-  bindGetUserInfo(e) {
-    if (!app.globalData.customerInfo) {
-      wx.showModal({
-        title: '温馨提示',
-        content: '请先填写服务地址',
-        showCancel: false,
-        confirmColor: '#00b0ab',
-        success () {
-          wx.navigateTo({
-            url: '../../user/address/index?from=cart'
-          })
-        }
-      })
-      // 先注册用户，然后跳转到填写地址页面
-      app.registerUser();
-      
-      // wx.switchTab({
-      //   url: '../../user/address/index'
-      // })
+
+  // 去结算
+  goSettle(params) {
+    let datas = this.data.orders.filter(item => {
+      return item.checked;
+    });
+    this.setData({ datas });
+
+    //  console.log(selecteds)
+    if (datas.length != 0) {
+      if (app.globalData.customerInfo) {
+        app.globalData.goSettleList = datas;
+        wx.navigateTo({
+          url: '../../../pages/order/buyNow/index'
+        })
+      } else {
+        wx.navigateTo({
+          url: '../../../pages/login'
+        })
+      }
     } else {
-      wx.switchTab({
-        url: '../../../pages/order/buyNow/index'
-      })
+      wx.showToast({
+        title: "请至少选择一件商品提交",
+        icon: 'none',
+        duration: 2000
+      });
+    }
+  },
+  bindGetUserInfo(e) {
+    let userInfo = app.globalData.userInfo;
+    let datas = this.data.orders.filter(item => {
+      return item.checked;
+    });
+    app.globalData.goSettleList = datas;
+    this.setData({ datas });
+    if (datas.length != 0) {
+      wx.navigateTo({
+        url: '../../user/address/index?from=cart'
+      }); return false;
+      if (!userInfo.user_locate_latitude || !userInfo.user_locate_longitude) {
+        wx.showModal({
+          title: '温馨提示',
+          content: '请先填写服务地址',
+          showCancel: false,
+          confirmColor: '#00b0ab',
+          success() {
+            wx.navigateTo({
+              url: '../../user/address/index?from=cart'
+            })
+          }
+        })
+      } else {
+        // 提交订单
+        wx.navigateTo({
+          url: '../../../pages/order/buyNow/index'
+        })
+      }
+    } else {
+      app.toastError("请至少选择一件商品提交");
     }
   }
 })

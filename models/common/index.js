@@ -2,6 +2,12 @@
 const ajax = require('../../utils/ajax.js');
 
 module.exports = {
+  getSwipe: (params, loading = false) => {
+    return ajax({ path: '/Api/HomePage/getCarouselPics', method: 'post', loading: false });
+  },
+  companyInfo: (params, loading = false) => {
+    return ajax({ path: '/Api/HomePage/getCompanyIntruduce', method: 'post', loading: false });
+  },
   /**
    * 获取省级
   */

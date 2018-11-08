@@ -1,7 +1,10 @@
+const commonModel = require('../../../models/common/index.js');
+const wxParse = require('../../../wxParse/wxParse.js');
 const app = getApp()
 Page({
   data: {
     popVisible: false,
+    content: '',
     images: [
       'http://cms-bucket.nosdn.127.net/catchpic/3/38/38e204a37a7460b3b56eb198e7e1492a.jpg?imageView&thumbnail=550x0',
       'http://p6.qhimg.com/t01b95ebc4d963ef400.jpg'
@@ -65,6 +68,12 @@ Page({
         swiperIndex: 1
       })
     }
+    this.getCompanyInfo();
+  },
+  getCompanyInfo() {
+    commonModel.companyInfo({}).then(res => {
+      content: wxParse.wxParse('content', 'html', res.dataList.companyIntruduceInfo, this, 12);
+    });
   },
   swiperChange(e){
     this.setData({

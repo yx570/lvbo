@@ -1,5 +1,6 @@
 const app = getApp();
 const productModel = require('../../../models/product/index.js');
+const commonModel = require('../../../models/common/index.js');
 const { img } = require('../../../config/url.js');
 Page({
   ...app.loadMoreMethods,
@@ -18,12 +19,14 @@ Page({
     searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏
   },
   onLoad() {
-    console.log('1');
-  },
-  onShow() {
-    console.log('2');
     app.pages.add(this);
+    this.getImgList();
     this.getList();
+  },
+  getImgList() {
+    commonModel.getSwipe({}).then(res => {
+      console.log(res)
+    });
   },
   getList(request = productModel.query) {
     let _t = this;

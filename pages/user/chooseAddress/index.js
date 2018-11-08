@@ -1,4 +1,5 @@
 const QQMapWX = require('../../../plugins/qqmap-wx-jssdk.min.js');
+const app = getApp();
 let qqmapsdk;
 Page({
   data: {
@@ -109,18 +110,18 @@ Page({
   },
   selectAddress(ev) {
     let { id } = ev.currentTarget.dataset;
-    let address = '';
-    let lat = '';
-    let lng = '';
     this.data.searchResultDatas.forEach(v => {
       if (v.id == id) {
-        address = v.title;
-        lat = v.location.lat;
-        lng = v.location.lng;
+        app.globalData.userInfo.user_real_province = v.ad_info.province;
+        app.globalData.userInfo.user_real_city = v.ad_info.city;
+        app.globalData.userInfo.user_real_district = v.ad_info.district;
+        app.globalData.userInfo.user_locate_detail_addr = v.title;
+        app.globalData.userInfo.user_locate_latitude = v.location.lat;
+        app.globalData.userInfo.user_locate_longitude = v.location.lng;
       }
     });
     wx.navigateTo({
-      url: '../address/index?address=' + address + '&lat=' + lat + '&lng=' + lng
+      url: '../address/index'
     })
   }
 })

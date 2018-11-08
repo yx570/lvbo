@@ -11,7 +11,7 @@ App({
     goSettleList: [],//购物车
     goSettleList1: [],//去支付
     selectRow: {}, //收货地址
-    customerInfo: null, // 用户信息
+    userInfo: null, // 用户信息
     selectRowType: 0,
     bankCard: 0,
     scene: ''
@@ -23,47 +23,48 @@ App({
     // this.getUserSetting();
     // this.getUserLocation();
 
-    // if (!wx.getStorageSync("token")) {
-      this.userLogin();
-    // } else {
-    //   this.getUserInfo();
-    // }
-  },
-  getUserInfo() {
-    let _that = this;
-    authModel.getUserInfo().then(response => {
-      _that.setData({
-        customerInfo: response.dataList.customerInfo
-      })
-    }).catch(error => { });
+    this.userLogin();
   },
   registerUser() {
     let _that = this;
     // authModel.resister({}).then(response => {
     //   _that.setData({
-    //     customerInfo: response.dataList.customerInfo
+    //     userInfo: response.dataList.userInfo
     //   })
     // }).catch(error => { });
   },
   userLogin() {
     let _that = this;
+
     wx.login({
       success(res) {
         if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://www.newborni.com/Api/Common/login',
-            method: "post",
-            data: {
-              code: res.code
-            },
-            success(res) {
-              wx.setStorageSync("token", res.data.dataList.token)
-              _that.getUserInfo();
-            }
-          })
+          authModel.login({ code: res.code }).then(res => {
+            let { userInfo } = res.dataList;
+            userInfo.child_sort = userInfo.child_sort || 1;
+            wx.setStorageSync("token", userInfo.user_token);
+            _that.globalData.userInfo = userInfo;
+            _that.getUserWxInfo()
+          }).catch(error => { });
         } else {
           console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  },
+  getUserWxInfo(cb) {
+    let _that = this;
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            lang: "zh_CN",
+            success: function (res) {
+              _that.globalData.userWxInfo = res.userInfo;
+              cb && cb();
+            }
+          })
         }
       }
     })
@@ -81,7 +82,7 @@ App({
   }) {
     wx.setNavigationBarColor(obj)
   },
-  alert(content) {
+  alert(obj = {}) {
     return new Promise((resolve, reject) => {
       wx.showModal({
         title: obj.title || '温馨提示',

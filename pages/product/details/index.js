@@ -61,8 +61,8 @@ Page({
                 imgList: imgList,
                 defaultCombo: data.skuList[0]
             })
-            content: wxParse.wxParse('content', 'html', data.product_page_html, this, 12);
-            buyNotice: wxParse.wxParse('buyNotice', 'html', data.product_note_to_buy, this, 12);
+            wxParse.wxParse('content', 'html', data.product_page_html, this, 12);
+            wxParse.wxParse('buyNotice', 'html', data.product_note_to_buy, this, 12);
         }).catch(e => { });
     },
     // 获取一条评论
