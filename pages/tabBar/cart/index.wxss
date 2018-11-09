@@ -55,7 +55,7 @@
 
 .order-item .name{
   max-width: 420rpx;
-  height:76rpx;
+  max-height:76rpx;
   font-size: 28rpx;
   color: #333;
   overflow: hidden;

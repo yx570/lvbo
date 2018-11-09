@@ -1,0 +1,26 @@
+<view class="panel-chooseAddress">
+  <view class="searchBox flex-row">
+  <view class="search flex-bd">
+    <input name="keyword" confirm-type="search" bindfocus="showClear" bindblur="changeInputValue" placeholder="小区/街道/大厦/学校名称" value="{{ searchResult }}" />
+    <text class="iconfont icon-close-o {{ showClear ? '' : 'hidden' }}" catch:tap="clearSearch"></text>
+    <text class="iconfont icon-search"></text>
+  </view>
+  <view class="cancelSearch flex-ft" bind:tap="{{ cancelSearch }}"><navigator hover-class="none" url="../address/index"><text>取消</text></navigator></view>
+  </view>
+  <!-- 搜索时内容 -->
+  <view class="searchList">
+    <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
+      <view wx:if="{{searchResultDatas.length > 0}}" class="search-content-body">
+        <block wx:for="{{searchResultDatas}}" wx:key="{{ index }}">
+          <view class="search-result-item" bind:tap="selectAddress" data-id="{{ item.id }}">
+            <view class="addrName">
+              <text class="localTag" wx:if="{{ item.isLocal == 1 }}">[当前位置]</text>
+              {{ item.title }}
+            </view>
+            <view class="color-b8 addr">{{ item.address }}</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>

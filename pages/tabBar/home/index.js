@@ -1,6 +1,7 @@
-const productModel = require('../../../models/product/index.js');
-const { img } = require('../../../config/url.js');
 const app = getApp();
+const productModel = require('../../../models/product/index.js');
+const commonModel = require('../../../models/common/index.js');
+const { img } = require('../../../config/url.js');
 Page({
   ...app.loadMoreMethods,
   data: {
@@ -19,7 +20,13 @@ Page({
   },
   onLoad() {
     app.pages.add(this);
+    this.getImgList();
     this.getList();
+  },
+  getImgList() {
+    commonModel.getSwipe({}).then(res => {
+      console.log(res)
+    });
   },
   getList(request = productModel.query) {
     let _t = this;

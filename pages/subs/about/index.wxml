@@ -1,3 +1,4 @@
+<import src="../../../wxParse/wxParse.wxml" />
 <view class="container panel-about">
   <view class="about-header bg-primary">
     <view class="cr-area">
@@ -13,7 +14,7 @@
     <!-- <app-content-title title="品牌介绍" subTitle="ABOUT NEWBORN" dotColor="#e2f6f5" /> -->
     <view class="about-tit">品牌介绍</view>
     <view class="con">
-      我们旨在赋能企业改变营销、销售和经营的方式，并提升企业效率。我们为商家、品牌及其他企业提供技基础设施以及营销平台，让其可借技术的力量与用户动，以更具效率的形式开展运营。
+      <template is="wxParse" data="{{wxParseData:content.nodes}}" />
     </view>
   </view>
   <view class="about-team mt-45">

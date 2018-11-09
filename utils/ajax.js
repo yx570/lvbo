@@ -31,7 +31,7 @@ module.exports = (_options = {}) => {
       path = '',
       method = 'GET',
       header,
-      params,
+      params = {},
       loading = true,
       showToast = true,
       auth = true,
@@ -63,15 +63,16 @@ module.exports = (_options = {}) => {
             break;
         }
       },
-      fail: error => {
-        loading && wx.hideLoading();
-        showToast && wx.showToast({
-          title: error,
-          icon: 'none',
-          duration: 2000
-        });
-        reject(error);
-      },
+      // fail: error => {
+      //   loading && wx.hideLoading();
+      //   console.log(error);
+      //   showToast && wx.showToast({
+      //     title: error,
+      //     icon: 'none',
+      //     duration: 2000
+      //   });
+      //   reject(error);
+      // },
       complete: () => {
         // loading && wx.hideLoading();
         wx.hideNavigationBarLoading();

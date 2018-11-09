@@ -26,6 +26,7 @@
       "root": "pages/user",
       "pages": [
         "address/index",
+        "chooseAddress/index",
         "voucher/index",
         "recommendCode/index",
         "currency/list/index",

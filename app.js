@@ -2,6 +2,7 @@
 const test = require('utils/test.js')
 const pages = require('plugins/pages.js')
 const cartModel = require('models/cart/index.js');
+const authModel = require('models/auth/index.js');
 App({
   globalData: {
     currentOrderTab: '0',
@@ -10,62 +11,60 @@ App({
     goSettleList: [],//购物车
     goSettleList1: [],//去支付
     selectRow: {}, //收货地址
+    userInfo: null, // 用户信息
     selectRowType: 0,
     bankCard: 0,
+    scene: ''
   },
-  onLaunch: function () {
+  onLaunch: function (e) {
     this.test = test;
     this.pages = pages;
-    this.getUserSetting();
+    this.globalData.scene = e.scene;
+    // this.getUserSetting();
     // this.getUserLocation();
-    if (!wx.getStorageSync("token")) {
-      this.userLogin();
-    }
+
+    this.userLogin();
+  },
+  registerUser() {
+    let _that = this;
+    // authModel.resister({}).then(response => {
+    //   _that.setData({
+    //     userInfo: response.dataList.userInfo
+    //   })
+    // }).catch(error => { });
   },
   userLogin() {
+    let _that = this;
+
     wx.login({
       success(res) {
         if (res.code) {
-
-          //发起网络请求
-          wx.request({
-            url: 'https://www.newborni.com/Api/Common/login',
-            method: "post",
-            data: {
-              code: res.code
-            },
-            success(res) {
-              wx.setStorageSync("token", res.data.dataList.token)
-            }
-          })
+          authModel.login({ code: res.code }).then(res => {
+            let { userInfo } = res.dataList;
+            userInfo.child_sort = userInfo.child_sort || 1;
+            wx.setStorageSync("token", userInfo.user_token);
+            _that.globalData.userInfo = userInfo;
+            _that.getUserWxInfo()
+          }).catch(error => { });
         } else {
           console.log('登录失败！' + res.errMsg)
         }
       }
     })
   },
-  getUserSetting() {
+  getUserWxInfo(cb) {
+    let _that = this;
     wx.getSetting({
       success: (res) => {
-        console.log(res);
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
+            lang: "zh_CN",
             success: function (res) {
-              console.log(res.userInfo)
+              _that.globalData.userWxInfo = res.userInfo;
+              cb && cb();
             }
           })
-          // wx.getUserInfo({
-          //   success: function (res) {
-          //     var userInfo = res.userInfo
-          //     var nickName = userInfo.nickName
-          //     var avatarUrl = userInfo.avatarUrl
-          //     var gender = userInfo.gender //性别 0：未知、1：男、2：女
-          //     var province = userInfo.province
-          //     var city = userInfo.city
-          //     var country = userInfo.country
-          //   }
-          // })
         }
       }
     })
@@ -83,7 +82,7 @@ App({
   }) {
     wx.setNavigationBarColor(obj)
   },
-  alert(content) {
+  alert(obj = {}) {
     return new Promise((resolve, reject) => {
       wx.showModal({
         title: obj.title || '温馨提示',

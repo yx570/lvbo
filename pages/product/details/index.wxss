@@ -244,3 +244,4 @@
 .popBox .popNums { width:300rpx; margin-bottom: 60rpx;}
 .popBox .popItem { margin-top:40rpx;}
 .popBox .popItem .subTit { font-size:28rpx; margin-bottom: 10rpx;}
+.weui-badge {position: absolute;top: 0;right: 1em;}
