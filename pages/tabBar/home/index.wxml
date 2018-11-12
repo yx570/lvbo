@@ -19,3 +19,15 @@
     </block>
   </view>
 </scroll-view>
+
+<app-pop direction="bottom" visible="{{popVisible}}" bind:close="popClose" class="popBox" styles="bottom:0rpx;left:0;width:100%;margin:0;">
+    <view class='modal-content login-box'>
+        <view class="login-tit">
+          <view class="login-logo"><image src="/static/images/logo-login.png" /></view>
+          <text class="login-fonts">欢迎来到新生纽柏</text>
+        </view>
+        <view class="login-need">为提供优质服务，新生纽柏需要获取以下信息</view>
+        <view class="login-roles">你的公开信息（昵称、头像等）</view>
+        <button class="bg-grenn color-white" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">确认微信授权</button>
+    </view>
+</app-pop>

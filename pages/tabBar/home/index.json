@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "app-swiper": "/components/app-swiper/index"
+    "app-swiper": "/components/app-swiper/index",
+    "app-pop": "../../../../components/app-pop/index"
   },
   "disableScroll": true
 }

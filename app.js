@@ -22,8 +22,6 @@ App({
     this.globalData.scene = e.scene;
     // this.getUserSetting();
     // this.getUserLocation();
-
-    this.userLogin();
   },
   registerUser() {
     let _that = this;
@@ -33,7 +31,7 @@ App({
     //   })
     // }).catch(error => { });
   },
-  userLogin() {
+  userLogin(cb) {
     let _that = this;
 
     wx.login({
@@ -43,8 +41,10 @@ App({
             let { userInfo } = res.dataList;
             userInfo.child_sort = userInfo.child_sort || 1;
             wx.setStorageSync("token", userInfo.user_token);
+            console.log(userInfo.user_token);
+            wx.setStorageSync("userInfo", userInfo);
             _that.globalData.userInfo = userInfo;
-            _that.getUserWxInfo()
+            _that.getUserWxInfo(cb)
           }).catch(error => { });
         } else {
           console.log('登录失败！' + res.errMsg)
@@ -61,13 +61,31 @@ App({
           wx.getUserInfo({
             lang: "zh_CN",
             success: function (res) {
-              _that.globalData.userWxInfo = res.userInfo;
-              cb && cb();
+              _that.globalData.userInfo.user_wx_nick_name = res.userInfo.nickName;
+              _that.globalData.userInfo.user_wx_avatar_url = res.userInfo.avatarUrl;                // 用户微信头像地址
+              _that.globalData.userInfo.user_locate_province = res.userInfo.province;            // 微信 省
+              _that.globalData.userInfo.user_locate_city = res.userInfo.city;                    // 微信 市
+              _that.globalData.userInfo.user_locate_district = '';
             }
           })
+        } else {
+          cb && cb();
         }
       }
     })
+  },
+  saveUserInfo() {
+    let p = {};
+
+    let userInfo = this.globalData.userInfo;
+    for (var index in userInfo) {
+      if (userInfo[index]) {
+        p[index] = userInfo[index];
+      }
+    }
+    authModel.save(p).then(res => {
+      console.log(res);
+    });
   },
   setNavTitle(title) {
     wx.setNavigationBarTitle({ title })

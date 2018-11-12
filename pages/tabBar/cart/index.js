@@ -326,37 +326,47 @@ Page({
       });
     }
   },
-  bindGetUserInfo(e) {
-    let userInfo = app.globalData.userInfo;
-    let datas = this.data.orders.filter(item => {
-      return item.checked;
-    });
-    app.globalData.goSettleList = datas;
-    this.setData({ datas });
-    if (datas.length != 0) {
-      wx.navigateTo({
-        url: '../../user/address/index?from=cart'
-      }); return false;
-      if (!userInfo.user_locate_latitude || !userInfo.user_locate_longitude) {
-        wx.showModal({
-          title: '温馨提示',
-          content: '请先填写服务地址',
-          showCancel: false,
-          confirmColor: '#00b0ab',
-          success() {
-            wx.navigateTo({
-              url: '../../user/address/index?from=cart'
-            })
-          }
-        })
+  bindCartUserInfo(ev) {
+    if (ev.detail.userInfo) {
+      app.globalData.userInfo.user_wx_nick_name = ev.detail.userInfo.nickName;
+      app.globalData.userInfo.user_wx_avatar_url = ev.detail.userInfo.avatarUrl;                // 用户微信头像地址
+      app.globalData.userInfo.user_locate_province = ev.detail.userInfo.province;            // 微信 省
+      app.globalData.userInfo.user_locate_city = ev.detail.userInfo.city;                    // 微信 市
+      app.globalData.userInfo.user_locate_district = '';
+      let userInfo = app.globalData.userInfo;
+
+      let datas = this.data.orders.filter(item => {
+        return item.checked;
+      });
+
+      app.globalData.goSettleList = datas;
+      this.setData({ datas });
+      if (datas.length != 0) {
+        // wx.navigateTo({
+        //   url: '../../user/address/index?from=cart'
+        // });
+
+        if (!userInfo.user_locate_latitude || !userInfo.user_locate_longitude) {
+          wx.showModal({
+            title: '温馨提示',
+            content: '请先填写服务地址',
+            showCancel: false,
+            confirmColor: '#00b0ab',
+            success() {
+              wx.navigateTo({
+                url: '../../user/address/index?from=cart'
+              })
+            }
+          })
+        } else {
+          // 提交订单
+          wx.navigateTo({
+            url: '../../../pages/order/buyNow/index'
+          })
+        }
       } else {
-        // 提交订单
-        wx.navigateTo({
-          url: '../../../pages/order/buyNow/index'
-        })
+        app.toastError("请至少选择一件商品提交");
       }
-    } else {
-      app.toastError("请至少选择一件商品提交");
     }
   }
 })

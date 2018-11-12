@@ -63,7 +63,7 @@
             <text>合计：</text>
             <text class="sub color-pink">￥</text>
             <text class="color-pink">{{ totalPrices }}</text>
-            <button class="bg-pink color-white goSettle" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">去结算</button>
+            <button class="bg-pink color-white goSettle" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindCartUserInfo">去结算</button>
         </view>
     </view>
 </view>

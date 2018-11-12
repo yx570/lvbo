@@ -47,8 +47,9 @@ Page({
     })
   },
   chooseAddress() {
+    var _that = this;
     wx.navigateTo({
-      url: '../chooseAddress/index'
+      url: '../chooseAddress/index?from=' + _that.data.from
     })
   },
   formSubmit(e) {
@@ -68,10 +69,10 @@ Page({
     p.user_real_city = infos.user_real_city;
     p.user_real_district = infos.user_real_district;
 
-    p.user_wx_nick_name = wxInfo.nickName;                          // 微信昵称
-    p.user_wx_avatar_url = wxInfo.avatarUrl;                        // 用户微信头像地址
-    p.user_locate_province = wxInfo.province;                       // 微信 省
-    p.user_locate_city = wxInfo.city;                               // 微信 市
+    p.user_wx_nick_name = infos.user_wx_nick_name;                  // 微信昵称
+    p.user_wx_avatar_url = infos.user_wx_avatar_url;                // 用户微信头像地址
+    p.user_locate_province = infos.user_locate_province;            // 微信 省
+    p.user_locate_city = infos.user_locate_city;                    // 微信 市
     p.user_locate_district = '';                                    // 微信 区
     p.user_locate_longitude = infos.user_locate_longitude;          // 经度
     p.user_locate_latitude = infos.user_locate_latitude;            // 纬度
@@ -107,7 +108,6 @@ Page({
           let skuName = [];
           let skuNums = [];
           app.globalData.goSettleList.forEach(v => {
-            console.log(v);
             id.push(v.id);
             skuName.push(v.defaultCombo.sku_name);
             skuNums.push(v.quantity);

@@ -9,11 +9,15 @@ Page({
     hasNextPage: 1,
     showClear: 0
   },
-  onLoad() {
+  onLoad(ev) {
     // 实例化API核心类
     qqmapsdk = new QQMapWX({
       key: 'KK2BZ-FWGWU-FODVF-242SA-AXYM6-NVB46'
     });
+
+    this.setData({
+      from: ev.from
+    })
 
     this.getLocation();
   },
@@ -109,6 +113,7 @@ Page({
     this.getLocation();
   },
   selectAddress(ev) {
+    var _that = this;
     let { id } = ev.currentTarget.dataset;
     this.data.searchResultDatas.forEach(v => {
       if (v.id == id) {
@@ -121,7 +126,7 @@ Page({
       }
     });
     wx.navigateTo({
-      url: '../address/index'
+      url: '../address/index?from=' + _that.data.from
     })
   }
 })

@@ -61,6 +61,7 @@ button:after {
 .color-pink { color: #f9879a; }
 .color-warm { color: #ffba00; }
 .bg-pink { background: #f9879a; }
+.bg-grenn { background: #1AAD19;}
 .bg-primary{ background: #00b0ab; }
 .bg-white{ background: #fff; }
 .bg-warm{ background: #ffba00; }
