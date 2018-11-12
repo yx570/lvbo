@@ -29,3 +29,50 @@
 .footBtn button { width: 100%; color:#fff;}
 .footBtn .useCash { background: #f9879a;}
 .footBtn .recNow { background: #00b0ab;}
+
+.pop-header{
+  height: 70rpx;
+  padding: 0 20rpx;
+  line-height: 70rpx;
+}
+.pop-header view{
+  font-size: 32rpx;
+}
+.pop-header .iconfont{
+  position: relative;
+  top: -6rpx;
+  line-height: 1;
+  font-size: 36rpx;
+}
+.pop-footer .btn{
+  margin-bottom: 20rpx;
+}
+.pop-body{
+  position: relative;
+  padding: 20rpx 0;
+}
+.pop-body .img-box{
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+}
+.bg-img{
+  position: relative;
+  z-index: 1;
+}
+.canvas-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.pop-body .text-box{
+  position: absolute;
+  bottom: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  z-index: 100;
+}

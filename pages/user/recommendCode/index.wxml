@@ -40,6 +40,38 @@
   
   <view class="app-footer fixed">
     <view class="footBtn"><button class="useCash" catch:tap="useCash">使用现金券</button></view>
-    <view class="footBtn"><button class="recNow" open-type='share'>立即推荐</button></view>
+    <!-- <view class="footBtn"><button class="recNow" open-type='share'>立即推荐</button></view> -->
+    <view class="footBtn"><button class="recNow" bindtap="openPop">立即推荐</button></view>
   </view>
 </view>
+<canvas style="position: absolute;top: -9999px; width:{{ canvasWidth }}px;height:{{ canvasHeight }}px;" canvas-id="shareCanvas"></canvas>
+<app-pop 
+  direction="bottom" 
+  visible="{{ popVisible }}" 
+  bind:close="closePop" 
+  styles="bottom:0rpx;left:0;width:100%;">
+  <view class="pop-content flex-column">
+    <view class="flex-hd flex-row pop-header bg-f3">
+      <view class="flex-bd">分享到朋友圈</view>
+      <view class="flex-ft" catchtap="closePop">
+        <text class="iconfont icon-close">×</text>
+      </view>
+    </view>
+    <view class="flex-bd pop-body">
+      <view id="pop-img-box" class="img-box">
+        <image class="canvas-img" src="{{ shareImg }}" mode="widthFix"></image>
+        <image class="bg-img" src="{{ shareBg }}" mode="widthFix" bindload="imgLoad"></image>
+      </view>
+      <!-- <view class="text-box">
+        <text>推荐码分享</text>
+      </view> -->
+    </view>
+    <view class="flex-ft pop-footer">
+      <view class="btn">
+        <button type="primary" bindtap="saveImage" wx:if="{{ isAuth }}">保存图片</button>
+        <button type="primary" open-type="openSetting" bindopensetting="openSettingCallback" wx:else>设置授权</button>
+      </view>
+      <view class="align-center color-999">保存图片到手机后，您可以到朋友圈分享该商品图片</view>
+    </view>
+  </view>
+</app-pop>
