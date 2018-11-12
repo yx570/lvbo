@@ -231,7 +231,7 @@ App({
         let totalRows = response.dataList.total;
         let page = params.page;
         let totalPages = Math.ceil(totalRows / params.rows);
-        let list = response.dataList.productList || [];
+        let list = response.dataList.productList || response.dataList.orderList || [];
         this._data.hasNextPage = totalPages > page ? true : false;
         this._data.list = [...this._data.list, ...list];
         typeof callback == 'function' && callback({

@@ -1,6 +1,5 @@
 const app = getApp();
 const authModel = require('../../../models/auth/index.js');
-const orderModel = require('../../../models/order/index.js');
 Page({
   data: {
     from: '',
@@ -35,7 +34,6 @@ Page({
         });
       })
     }
-
     _that.setData({
       from: ev.from
     })
@@ -65,7 +63,7 @@ Page({
 
     p.child_sort = infos.child_sort;                                // 用户标签
 
-    p.user_real_province = infos.user_real_city;
+    p.user_real_province = infos.user_real_province;
     p.user_real_city = infos.user_real_city;
     p.user_real_district = infos.user_real_district;
 
@@ -98,39 +96,19 @@ Page({
     wx.showLoading({
       title: '',
     });
-    authModel.save(p).then(res => {
-      let url = '';
-      switch(this.data.from) {
-        case 'cart':
-          let p = {};
-          let total = 0;
-          let id = [];
-          let skuName = [];
-          let skuNums = [];
-          app.globalData.goSettleList.forEach(v => {
-            id.push(v.id);
-            skuName.push(v.defaultCombo.sku_name);
-            skuNums.push(v.quantity);
-            total += parseFloat(v.price);
-          });
-          p.product_id = id.join(',');
-          p.sku_name = skuName.join(',');
-          p.sku_num = skuNums.join(',');
-          p.order_amount = total;
-          orderModel.add(p).then(res => {
-            console.log(res);
-            // wx.navigateTo({
-            //   url: '../../order/buyNow/index'
-            // })
-          });
-          break;
-        case 'user':
-          wx.switchTab({
-            url: '../../tabBar/user/index'
-          })
-          break;
-        default: 
-      }
-    });
+
+    switch(this.data.from) {
+      case 'cart':
+      case 'order':
+      wx.navigateTo({
+        url: '../../order/buyNow/index'
+      })
+      break;
+    case 'user':
+      wx.switchTab({
+        url: '../../tabBar/user/index'
+      })
+      break;
+    }
   }
 })

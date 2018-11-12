@@ -63,7 +63,7 @@ module.exports = (_options = {}) => {
             break;
         }
       },
-      // fail: error => {
+      fail: error => {
       //   loading && wx.hideLoading();
       //   console.log(error);
       //   showToast && wx.showToast({
@@ -72,7 +72,7 @@ module.exports = (_options = {}) => {
       //     duration: 2000
       //   });
       //   reject(error);
-      // },
+      },
       complete: () => {
         // loading && wx.hideLoading();
         wx.hideNavigationBarLoading();

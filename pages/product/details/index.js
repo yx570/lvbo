@@ -49,7 +49,8 @@ Page({
     getProductDetail(id) {
         productModel.view({ product_id: id }).then(response => {
             let data = response.dataList.productInfo;
-            this.splitPrice(data.skuList[0].sku_price)
+            let defaultCombo = data.skuList[0];
+            this.splitPrice(defaultCombo.sku_price)
 
             let imgList = data.product_template_image;
             imgList.forEach((v, i) => {
@@ -59,7 +60,7 @@ Page({
             this.setData({
                 obj: data,
                 imgList: imgList,
-                defaultCombo: data.skuList[0]
+                defaultCombo: defaultCombo
             })
             wxParse.wxParse('content', 'html', data.product_page_html, this, 12);
             wxParse.wxParse('buyNotice', 'html', data.product_note_to_buy, this, 12);
@@ -76,9 +77,11 @@ Page({
     // 更改价格套餐
     priceChange(ev) {
         let index = ev.currentTarget.dataset.index
+        let defaultCombo = this.data.obj.skuList[index];
+        this.splitPrice(defaultCombo.sku_price)
         this.setData({
             selectIndex: index,
-            defaultCombo: this.data.obj.skuList[index]
+            defaultCombo: defaultCombo
         })
     },
     // 以小数点分割价格

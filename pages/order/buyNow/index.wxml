@@ -1,8 +1,8 @@
 <view class='panel-cart'>
-  <navigator hover-class="none" url="/pages/user/address/index?id={{item.id}}">
+  <navigator hover-class="none" url="/pages/user/address/index?from=order">
     <view class="weui-cell flex-row buyInfo">
       <view class="app-cell__bd">
-        <view class="buyName">{{ name }} {{ tel }}</view>
+        <view class="buyName">{{ userInfo.user_wx_nick_name }} {{ userInfo.user_contact_phone }}</view>
         <view class="buyAddress ellipse">{{ address }}</view>
       </view>
       <view class="app-cell__ft">
@@ -26,7 +26,7 @@
               <view class="flex-row">
                 <view class="price color-pink">
                   <text class="sub">￥</text>
-                  <text>{{ item.price * item.quantity }}</text>
+                  <text>{{ item.defaultCombo.sku_price * item.quantity }}</text>
                 </view>
               </view>
             </view>

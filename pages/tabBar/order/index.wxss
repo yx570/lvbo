@@ -19,3 +19,7 @@ page {
 .orderList .app-row .con { padding-left:30rpx;}
 button + button { margin-left:30rpx;}
 .order-project { margin-top:20rpx;}
+
+.order-price { font-size: 30rpx;}
+.order-price text {font-size:20rpx;}
+.orderItems + .orderItems { margin-top:30rpx;}

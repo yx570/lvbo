@@ -1,47 +1,62 @@
 <import src="../../../template/orderProject/index.wxml"></import>
 <view class="container flex-column">
-  <app-tab tabs="{{ tabs }}" currentKey="{{ curTab }}" bind:itemTap="tabChange" equal align="flex-start"/>
+  <app-tab tabs="{{ tabs }}" currentKey="{{ curTab }}" bind:itemTap="tabChange" equal align="flex-start" />
   <view class="flex-bd">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
-      <view class="order-project" wx:if="{{ curTab == 2 }}">
+      <view class="order-project" wx:if="{{ curTab == 'wait_to_service' }}">
         <template is="orderProject" wx:for="{{ list }}" wx:key="{{ index }}" data="{{ ...item, statusFormat: statusFormat, index: index }}"></template>
       </view>
       <view class="app-rows orderList" wx:else>
-      <!-- <view class="app-rows"> -->
+        <!-- <view class="app-rows"> -->
         <view class="app-row mt-20" wx:for="{{ list }}" wx:key="{{ item.id }}">
           <navigator hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
             <view class="flex-row app-row__hd">
-              <view class="flex-bd">订单号：{{ item.number }}</view>
-              <view class="flex-ft"><text class="color-primary" wx:if="{{ item.status != 1 }}">{{ statusFormat[item.status] || '' }}</text></view>
-              <view class="flex-ft"><text class="color-999" wx:if="{{ item.status == 1 }}">{{ statusFormat[item.status] || '' }}</text></view>
-            </view>
-            <view class="flex-row app-row__bd">
-              <view class="flex-hd img-box">
-                <image src="{{ item.imageUrl }}"></image>
+              <view class="flex-bd">订单号：{{ item.order_code }}</view>
+              <view class="flex-ft">
+                <view class="color-primary">
+                  {{ statusFormat[item.order_status] || '' }}
+                </view>
+                <view class="color-999" wx:if="{{ item.order_status == 1 }}">
+                  {{ statusFormat[item.order_status] || '' }}
+                </view>
               </view>
-              <view class="flex-bd con">
-                
-                <view class="flex-row">
-                  <view class="flex-bd">
-                    <view class="title">{{ item.title }}</view>
-                    <view class="color-ad">规格：{{ item.size }}/次</view>
-                  </view>
-                  <view class="flex-ft align-right">
-                    <view class="color-666">{{ item.price }}</view>
-                    <view class="color-999">×{{ item.times }}</view>
+            </view>
+            <view class="orderItems" wx:for="{{ item.orderProductList }}" wx:for-item="cell" wx:for-index="cellindex" wx:key="{{ cell.id }}">
+              <view class="flex-row app-row__bd">
+                <view class="flex-hd img-box">
+                  <image src="{{ cell.imgUrl }}"></image>
+                </view>
+                <view class="flex-bd con">
+                  <view class="flex-row">
+                    <view class="flex-bd">
+                      <view class="title">{{ cell.product_name }}</view>
+                      <view class="color-ad">规格：{{ cell.combo.sku_price }}/{{ cell.combo.sku_name }}</view>
+                    </view>
+                    <view class="flex-ft align-right">
+                      <view class="color-666 order-price"><text>￥</text>{{ cell.combo.price }}</view>
+                      <view class="color-999">×{{ cell.combo.sku_service_time }}</view>
+                    </view>
                   </view>
                 </view>
               </view>
             </view>
           </navigator>
-            <view class="align-right">
-              <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.status == 1 }}" data-id="{{ item.id }}" bindtap="gotoComment">去评价</button>
-              <button class="btn-radius bg-gray" type="default" plain size="mini" wx:if="{{ item.status == 2 }}">取消订单</button>
-              <button class="btn-radius" type="primary" plain  size="mini" wx:if="{{ item.status == 2 }}">去支付</button>
-              <button class="btn-radius" type="default" plain size="mini" wx:if="{{ item.status == 3 }}">待服务</button>
-            </view>
+          <view class="align-right">
+            <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.order_status == 'finish' }}" data-id="{{ item.id }}" bindtap="gotoComment">
+              去评价
+            </button>
+            <button class="btn-radius bg-gray" type="default" plain size="mini" wx:if="{{ item.order_status == 'wait_to_pay' }}">
+              取消订单
+            </button>
+            <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.order_status == 'wait_to_pay' }}">
+              去支付
+            </button>
+            <button class="btn-radius" type="default" plain size="mini" wx:if="{{ item.order_status == 'wait_to_service' }}">
+              待服务
+            </button>
+          </view>
         </view>
       </view>
-    </scroll-view>  
+    </scroll-view>
   </view>
 </view>

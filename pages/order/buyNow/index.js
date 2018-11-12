@@ -1,29 +1,93 @@
-const cartModel = require('../../../models/cart/index.js');
+const orderModel = require('../../../models/order/index.js');
 const app = getApp();
 Page({
   // ...app.loadcartlist,
   data: {
     orders: [],
-    name: "刘德华",
-    tel: "3800138000",
-    address: "广东省深圳市福田区益田路6009号广东省深圳市福田区益田路6009号",
-    totalPrices: 2879
+    totalPrices: 2879,
+    userInfo: null,
+    address: ''
   },
 
   // 详情加载
   onLoad: function (ev) {
     app.setNavColor()
+
+    let userInfo = app.globalData.userInfo;
+    let address = userInfo.user_real_province + userInfo.user_real_city + userInfo.user_real_district + userInfo.user_locate_detail_addr + userInfo.user_real_detail_addr;
+    this.setData({
+      userInfo: userInfo,
+      address: address
+    });
+
+    this.addOrder();
   },
   onShow() {
     this.getList();
   },
+  addOrder() {
+    let _that = this;
+    let p = {};
+    let total = 0;
+    let id = [];
+    let skuName = [];
+    let skuNums = [];
+    app.globalData.goSettleList.forEach(v => {
+      id.push(v.id);
+      skuName.push(v.defaultCombo.sku_name);
+      skuNums.push(v.quantity);
+      total += parseFloat(v.price);
+    });
+    p.product_id = id.join(',');
+    p.sku_name = skuName.join(',');
+    p.sku_num = skuNums.join(',');
+    p.order_amount = total;
+    orderModel.add(p).then(res => {
+      let orders = _that.data.orders;
+
+      _that.removeItemFormCart();
+
+      res.dataList.orderInfo.orderProductList.forEach((v, i) => {
+        orders.forEach((v2, i2) => {
+          if (v2.id == v.product_id) {
+            let arr = [];
+            v.productServiceSchedule.forEach((v3, i3) => {
+              arr.push(v3.start_service_time);
+            });
+            v2.bookingDates = arr.join(',');
+          }
+        });
+      });
+      _that.setData({
+        orderInfo: res.dataList.orderInfo,
+        orders: orders
+      })
+    });
+  },
+  removeItemFormCart() {
+    let _that = this;
+    wx.getStorage({
+      key: 'nb_cart',
+      success(res) {
+        let settleList = app.globalData.goSettleList;
+        let cartList = res.data;
+        settleList.forEach((v, i) => {
+          let tit = v.id + '_' + v.defaultCombo.sku_name;
+          delete(cartList[tit]);
+        });
+        wx.setStorage({
+          key: "nb_cart",
+          data: cartList
+        })
+      }
+    });
+  },
   // 获取列表
-  getList: function () {
+  getList() {
     let list = app.globalData.goSettleList;
     this.setData({
       orders: list
     });
-    var e = list.length;
     this.computeTotalPrice();
   },
   inputTap() { },

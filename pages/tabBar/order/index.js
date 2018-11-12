@@ -1,5 +1,6 @@
 const orderModel = require('../../../models/order/index.js');
 const util = require('../../../utils/utils.js');
+const { img } = require('../../../config/url.js');
 const app = getApp();
 Page({ 
   ...app.loadcartlist,
@@ -11,15 +12,15 @@ Page({
         label: '全部'
       }, 
       {
-        key: '1',
+        key: 'wait_to_pay',
         label: '待付款'
       },
       {
-        key: '2',
+        key: 'wait_to_service',
         label: '待服务'
       },
       {
-        key: '3',
+        key: 'finish',
         label: '已完成'
       }
     ],
@@ -27,27 +28,53 @@ Page({
     list: [], 
     hasNextPage: false,
     statusFormat: {
-      1: "已服务",
       2: "技师已出发",
-      5: "技师已到达",
-      3: "服务中",
-      4: "待服务"
+      "technician_arrive": "技师已到达",
+      "in_service": "服务中",
+      "finish": "已完成",
+      "wait_to_pay": "待付款",
+      "wait_to_service": "待服务"
     },
     userPage: null
   },
+  //load
+  onLoad (e) {
+    this.getList();
+  },
+  onShow () {
+    this.setData({
+      curTab: app.globalData.currentOrderTab
+    })
+    if (this.data.curTab == 2) {
+      this.getServicesTime();
+    }
+  },
+  onHide(){
+    
+  },
   getList () {
     let _t = this;
-    
+    let status = _t.data.curTab == 0 ? '' : _t.data.curTab;
     let params = {
       page: 1,
       page_size: 10,
-      order_status: "wait_to_pay"
+      order_status: status
     };
     this._getList({
       request: orderModel.orderlist,
       params
     }, function (res) {
+      console.log('response:')
       console.log(res);
+      res.list.forEach((v,i) => {
+        v.orderProductList.forEach((v2,i2) => {
+          v2.imgUrl = img + v2.product_template_image[0];
+          let combo = v2.orderProductSkuList[0];
+          combo.price = (combo.sku_price * combo.sku_service_time).toFixed(2);
+          v2.combo = combo;
+        });
+      });
+      console.log(res.list);
       _t.setData({
         list: res.list,
         hasNextPage: !res.hasNextPage
@@ -82,22 +109,9 @@ Page({
     })
     if (this.data.curTab == 2) {
       this.getServicesTime();
+    } else {
+      this.getList();
     }
-  },
-  //load
-  onLoad (e) {
-    this.getList();
-  },
-  onShow () {
-    this.setData({
-      curTab: app.globalData.currentOrderTab
-    })
-    if (this.data.curTab == 2) {
-      this.getServicesTime();
-    }
-  },
-  onHide(){
-    
   },
   gotoComment(ev) {
     let id = ev.currentTarget.dataset.id;

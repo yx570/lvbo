@@ -124,7 +124,6 @@ Page({
   inputTap() { },
   // 改变商品数量
   changeCount(e) {
-    console.log(e);
     let self = this;
     let { value } = e.detail;
     let { id, index, skuname } = e.currentTarget.dataset;
@@ -300,32 +299,32 @@ Page({
   },
 
   // 去结算
-  goSettle(params) {
-    let datas = this.data.orders.filter(item => {
-      return item.checked;
-    });
-    this.setData({ datas });
+  // goSettle(params) {
+  //   let datas = this.data.orders.filter(item => {
+  //     return item.checked;
+  //   });
+  //   this.setData({ datas });
 
-    //  console.log(selecteds)
-    if (datas.length != 0) {
-      if (app.globalData.customerInfo) {
-        app.globalData.goSettleList = datas;
-        wx.navigateTo({
-          url: '../../../pages/order/buyNow/index'
-        })
-      } else {
-        wx.navigateTo({
-          url: '../../../pages/login'
-        })
-      }
-    } else {
-      wx.showToast({
-        title: "请至少选择一件商品提交",
-        icon: 'none',
-        duration: 2000
-      });
-    }
-  },
+  //   //  console.log(selecteds)
+  //   if (datas.length != 0) {
+  //     if (app.globalData.customerInfo) {
+  //       app.globalData.goSettleList = datas;
+  //       wx.navigateTo({
+  //         url: '../../../pages/order/buyNow/index'
+  //       })
+  //     } else {
+  //       wx.navigateTo({
+  //         url: '../../../pages/login'
+  //       })
+  //     }
+  //   } else {
+  //     wx.showToast({
+  //       title: "请至少选择一件商品提交",
+  //       icon: 'none',
+  //       duration: 2000
+  //     });
+  //   }
+  // },
   bindCartUserInfo(ev) {
     if (ev.detail.userInfo) {
       app.globalData.userInfo.user_wx_nick_name = ev.detail.userInfo.nickName;

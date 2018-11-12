@@ -3,7 +3,7 @@ const ajax = require('../../utils/ajax.js');
 
 module.exports = {
   getSwipe: (params, loading = false) => {
-    return ajax({ path: '/Api/HomePage/getCarouselPics', method: 'post', loading: false });
+    return ajax({ path: '/Api/HomePage/getCarouselPics', method: 'post', loading: false, auth:false });
   },
   companyInfo: (params, loading = false) => {
     return ajax({ path: '/Api/HomePage/getCompanyIntruduce', method: 'post', loading: false });
