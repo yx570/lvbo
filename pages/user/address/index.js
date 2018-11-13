@@ -4,7 +4,7 @@ Page({
   data: {
     from: '',
     infos: {},
-    ids : null,
+    ids: null,
     tags: [
       {
         label: '首胎',
@@ -20,6 +20,7 @@ Page({
   },
   onLoad: function (ev) {
     let _that = this;
+    let id = ev.id || '';
 
     let userInfo = app.globalData.userInfo;
     if (userInfo) {
@@ -35,7 +36,8 @@ Page({
       })
     }
     _that.setData({
-      from: ev.from
+      from: ev.from,
+      id: id
     })
   },
   tagChange(e) {
@@ -51,6 +53,7 @@ Page({
     })
   },
   formSubmit(e) {
+    let _that = this;
     let formData = e.detail.value;
     let infos = this.data.infos;
     let wxInfo = app.globalData.userWxInfo;
@@ -75,40 +78,48 @@ Page({
     p.user_locate_longitude = infos.user_locate_longitude;          // 经度
     p.user_locate_latitude = infos.user_locate_latitude;            // 纬度
     p.customer_source = app.globalData.scene;                       // 来源
+    app.globalData.userInfo = p;
 
     if (!p.user_locate_detail_addr) {
-      app.alert({content:'请选择所在位置'});
+      app.alert({ content: '请选择所在位置' });
       return false;
     }
     if (!p.user_real_detail_addr) {
-      app.alert({content:'请输入详细地址'});
+      app.alert({ content: '请输入详细地址' });
       return false;
     }
     if (!p.user_real_name) {
-      app.alert({content:'请输入联系人'});
+      app.alert({ content: '请输入联系人' });
       return false;
     }
     if (!p.user_contact_phone) {
-      app.alert({content:'请输入联系电话'});
+      app.alert({ content: '请输入联系电话' });
       return false;
     }
 
-    wx.showLoading({
-      title: '',
-    });
-
-    switch(this.data.from) {
-      case 'cart':
-      case 'order':
-      wx.navigateTo({
-        url: '../../order/buyNow/index'
-      })
-      break;
-    case 'user':
-      wx.switchTab({
-        url: '../../tabBar/user/index'
-      })
-      break;
-    }
+    app.saveUserInfo(function () {
+      switch (_that.data.from) {
+        case 'cart':
+          wx.switchTab({
+            url: '../../tabBar/cart/index'
+          })
+          break;
+        case 'proDetail':
+          wx.navigateTo({
+            url: '../../product/details/index?id=' + _that.data.id
+          })
+          break;
+        case 'order':
+          wx.navigateTo({
+            url: '../../order/buyNow/index'
+          })
+          break;
+        case 'user':
+          wx.switchTab({
+            url: '../../tabBar/user/index'
+          })
+          break;
+      }
+    })
   }
 })

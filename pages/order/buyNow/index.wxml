@@ -26,7 +26,7 @@
               <view class="flex-row">
                 <view class="price color-pink">
                   <text class="sub">￥</text>
-                  <text>{{ item.defaultCombo.sku_price * item.quantity }}</text>
+                  <text>{{ item.defaultCombo.sku_price }}</text>
                 </view>
               </view>
             </view>

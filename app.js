@@ -74,7 +74,7 @@ App({
       }
     })
   },
-  saveUserInfo() {
+  saveUserInfo(cb) {
     let p = {};
 
     let userInfo = this.globalData.userInfo;
@@ -84,7 +84,7 @@ App({
       }
     }
     authModel.save(p).then(res => {
-      console.log(res);
+      cb && cb();
     });
   },
   setNavTitle(title) {
@@ -190,6 +190,24 @@ App({
       }
     },
   },
+  removeItemFormCart() {
+    let _that = this;
+    wx.getStorage({
+      key: 'nb_cart',
+      success(res) {
+        let settleList = _that.globalData.goSettleList;
+        let cartList = res.data;
+        settleList.forEach((v, i) => {
+          let tit = v.id + '_' + v.defaultCombo.sku_name;
+          delete(cartList[tit]);
+        });
+        wx.setStorage({
+          key: "nb_cart",
+          data: cartList
+        })
+      }
+    });
+  },
   //分页
   loadMoreMethods: {
     _data: {
@@ -233,7 +251,7 @@ App({
         let totalPages = Math.ceil(totalRows / params.rows);
         let list = response.dataList.productList || response.dataList.orderList || [];
         this._data.hasNextPage = totalPages > page ? true : false;
-        this._data.list = [...this._data.list, ...list];
+        this._data.list = page == 1 ? list : [...this._data.list, ...list];
         typeof callback == 'function' && callback({
           list: this._data.list,
           hasNextPage: this._data.hasNextPage

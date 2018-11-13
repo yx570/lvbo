@@ -9,7 +9,7 @@
       <view class="app-rows orderList" wx:else>
         <!-- <view class="app-rows"> -->
         <view class="app-row mt-20" wx:for="{{ list }}" wx:key="{{ item.id }}">
-          <navigator hover-class="none" url="/pages/order/details/index?id={{ item.id }}">
+          <navigator hover-class="none" url="/pages/order/details/index?id={{ item.order_code }}">
             <view class="flex-row app-row__hd">
               <view class="flex-bd">订单号：{{ item.order_code }}</view>
               <view class="flex-ft">
@@ -42,16 +42,16 @@
             </view>
           </navigator>
           <view class="align-right">
-            <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.order_status == 'finish' }}" data-id="{{ item.id }}" bindtap="gotoComment">
+            <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.order_status == 'finish' }}" data-id="{{ item.order_code }}" bindtap="gotoComment">
               去评价
             </button>
-            <button class="btn-radius bg-gray" type="default" plain size="mini" wx:if="{{ item.order_status == 'wait_to_pay' }}">
+            <button class="btn-radius bg-gray" type="default" plain size="mini" wx:if="{{ item.order_status == 'wait_to_pay' }}" data-id="{{ item.order_code }}">
               取消订单
             </button>
-            <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.order_status == 'wait_to_pay' }}">
+            <button class="btn-radius" type="primary" plain size="mini" wx:if="{{ item.order_status == 'wait_to_pay' }}" data-id="{{ item.order_code }}" bindtap="gotoPay">
               去支付
             </button>
-            <button class="btn-radius" type="default" plain size="mini" wx:if="{{ item.order_status == 'wait_to_service' }}">
+            <button class="btn-radius" type="default" plain size="mini" wx:if="{{ item.order_status == 'wait_to_service' }}" data-id="{{ item.order_code }}">
               待服务
             </button>
           </view>

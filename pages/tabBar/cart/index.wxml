@@ -17,7 +17,7 @@
                         <view class="flex-row">
                             <view class="price color-pink">
                                 <text class="sub">￥</text>
-                                <text>{{ item.defaultCombo.sku_price * item.quantity }}</text>
+                                <text>{{ item.defaultCombo.sku_price }}</text>
                             </view>
                             <view class="at-number-input">
                                 <!-- <view class="iconfont icon-clear_fill {{ item.quantity <= 0 ? 'disabled':'' }}" data-id="{{ item.id }}" catch:tap="changeCount" data-index="{{ index }}" data-value="-1"></view>

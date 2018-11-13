@@ -1,4 +1,5 @@
 const cartModel = require('../../../models/cart/index.js');
+const orderModel = require('../../../models/order/index.js');
 const app = getApp();
 Page({
   data: {
@@ -298,34 +299,8 @@ Page({
     })
   },
 
-  // 去结算
-  // goSettle(params) {
-  //   let datas = this.data.orders.filter(item => {
-  //     return item.checked;
-  //   });
-  //   this.setData({ datas });
-
-  //   //  console.log(selecteds)
-  //   if (datas.length != 0) {
-  //     if (app.globalData.customerInfo) {
-  //       app.globalData.goSettleList = datas;
-  //       wx.navigateTo({
-  //         url: '../../../pages/order/buyNow/index'
-  //       })
-  //     } else {
-  //       wx.navigateTo({
-  //         url: '../../../pages/login'
-  //       })
-  //     }
-  //   } else {
-  //     wx.showToast({
-  //       title: "请至少选择一件商品提交",
-  //       icon: 'none',
-  //       duration: 2000
-  //     });
-  //   }
-  // },
   bindCartUserInfo(ev) {
+    let _that = this;
     if (ev.detail.userInfo) {
       app.globalData.userInfo.user_wx_nick_name = ev.detail.userInfo.nickName;
       app.globalData.userInfo.user_wx_avatar_url = ev.detail.userInfo.avatarUrl;                // 用户微信头像地址
@@ -358,10 +333,32 @@ Page({
             }
           })
         } else {
-          // 提交订单
-          wx.navigateTo({
-            url: '../../../pages/order/buyNow/index'
-          })
+          let p = {};
+          let total = 0;
+          let id = [];
+          let skuName = [];
+          let skuNums = [];
+          app.globalData.goSettleList.forEach(v => {
+            id.push(v.id);
+            skuName.push(v.defaultCombo.sku_name);
+            skuNums.push(v.quantity);
+            total += parseFloat(v.price);
+          });
+          p.product_id = id.join(',');
+          p.sku_name = skuName.join(',');
+          p.sku_num = skuNums.join(',');
+          p.order_amount = total;
+
+          orderModel.add(p).then(res => {
+            let order = res.dataList.orderInfo;
+
+            app.removeItemFormCart();
+
+            // 提交订单
+            wx.navigateTo({
+              url: '../../../pages/order/buyNow/index?id=' + order.order_code
+            })
+          });
         }
       } else {
         app.toastError("请至少选择一件商品提交");

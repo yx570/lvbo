@@ -21,7 +21,7 @@ Page({
   onLoad() {
     let _that = this;
     app.pages.add(this);
-    this.getImgList();
+    // this.getImgList();
     this.getList();
 
     // 判断有没有token,有token即有本地用户信息，读取本地用户信息到globalData

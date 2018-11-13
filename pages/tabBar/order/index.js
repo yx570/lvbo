@@ -119,6 +119,12 @@ Page({
       url: '/pages/user/score/list/index?id=' + id
     });
   },
+  gotoPay(ev) {
+    let id = ev.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../../order/buyNow/index?id=' + id
+    });
+  },
   getServicesTime() {
       let startTime
       let _this = this;

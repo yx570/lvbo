@@ -1,5 +1,6 @@
 const productModel = require('../../../models/product/index.js');
 const cartModel = require('../../../models/cart/index.js');
+const orderModel = require('../../../models/order/index.js');
 const wxParse = require('../../../wxParse/wxParse.js');
 const { img } = require('../../../config/url.js');
 const app = getApp();
@@ -37,7 +38,7 @@ Page({
         wx.getStorage({
             key: 'nb_cart',
             success(res) {
-                let objKeys=Object.keys(res.data).length;
+                let objKeys = Object.keys(res.data).length;
                 _that.setData({
                     cartList: res.data,
                     cartNums: objKeys
@@ -105,10 +106,65 @@ Page({
         })
     },
     // 立即购买
-    shopping() {
-        wx.navigateTo({
-            url: '../../order/buyNow/index',
-        })
+    shopping(ev) {
+        let _that = this;
+        if (ev.detail.userInfo) {
+            app.globalData.userInfo.user_wx_nick_name = ev.detail.userInfo.nickName;
+            app.globalData.userInfo.user_wx_avatar_url = ev.detail.userInfo.avatarUrl;                // 用户微信头像地址
+            app.globalData.userInfo.user_locate_province = ev.detail.userInfo.province;            // 微信 省
+            app.globalData.userInfo.user_locate_city = ev.detail.userInfo.city;                    // 微信 市
+            app.globalData.userInfo.user_locate_district = '';
+            let userInfo = app.globalData.userInfo;
+            let datas = this.data.obj;
+            datas.defaultCombo = this.data.defaultCombo;
+            datas.productName = datas.product_name;
+            datas.imgUrl = datas.product_template_image[0];
+            datas.quantity = this.data.times;
+            datas.checked = 1;
+            datas.price = this.data.defaultCombo.sku_price * this.data.times;
+            app.globalData.goSettleList = [datas];
+
+            if (!userInfo.user_locate_latitude || !userInfo.user_locate_longitude) {
+                wx.showModal({
+                    title: '温馨提示',
+                    content: '请先填写服务地址',
+                    showCancel: false,
+                    confirmColor: '#00b0ab',
+                    success() {
+                        wx.navigateTo({
+                            url: '../../user/address/index?from=proDetail&id=' + _that.data.id
+                        })
+                    }
+                })
+            } else {
+                let p = {};
+                let total = 0;
+                let id = [];
+                let skuName = [];
+                let skuNums = [];
+                app.globalData.goSettleList.forEach(v => {
+                    id.push(v.id);
+                    skuName.push(v.defaultCombo.sku_name);
+                    skuNums.push(v.quantity);
+                    total += parseFloat(v.price);
+                });
+                p.product_id = id.join(',');
+                p.sku_name = skuName.join(',');
+                p.sku_num = skuNums.join(',');
+                p.order_amount = total;
+
+                orderModel.add(p).then(res => {
+                    let order = res.dataList.orderInfo;
+
+                    app.removeItemFormCart();
+
+                    // 提交订单
+                    wx.navigateTo({
+                        url: '../../../pages/order/buyNow/index?id=' + order.order_code
+                    })
+                });
+            }
+        }
     },
     //弹窗
     selectTap(ev) {
