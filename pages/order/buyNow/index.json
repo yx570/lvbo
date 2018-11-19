@@ -3,6 +3,7 @@
   "navigationBarTitleText": "填写订单",
   "usingComponents": {
     "app-input-number":"../../../../components/app-input-number/index",
-    "app-empty":"../../../../components/app-empty/index"
+    "app-empty":"../../../../components/app-empty/index",
+    "app-pop": "../../../../components/app-pop/index"
   }
 }

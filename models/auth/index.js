@@ -8,7 +8,7 @@ module.exports = {
    * @param[String]  code       小程序登录code
   */
   login: params => {
-    return ajax({ path: '/Api/Common/login', method: 'post', params, auth:false });
+    return ajax({ path: '/Api/Common/login', method: 'post', params, auth:false, loading: false });
   },
   getUserInfo: params => {
     return ajax({ path: '/Api/Common/getUserInfo', method: 'post', params });

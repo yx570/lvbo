@@ -107,7 +107,6 @@ width: 150rpx;
   background: #fff; 
   border-top:1rpx solid #f3f3f3; 
   border-bottom:1rpx solid #f3f3f3;
-  height:170rpx;
   line-height:70rpx;
   font-size:30rpx;
   color:#666;
@@ -132,3 +131,27 @@ width: 150rpx;
 .buyInfo { background: #00b0ab;}
 .buyName { color:#fff; font-size: 36rpx;}
 .buyAddress { color:rgba(255,255,255,.6); width:650rpx;}
+
+.couponBox .weui-cells { margin-top:0;}
+.wx-switch-input{
+  background: #00b0ab !important;
+}
+
+.couponBox .app-input { width:120rpx; display: inline-block;}
+
+.popBox {bottom:0;left:0;width:100%;}
+.popBox .soldNums {
+    justify-content: left;
+} 
+.popBox .img-box { width:140rpx; height: 140rpx; border-radius: 20rpx; overflow: hidden; margin-right:30rpx;}
+.popBox .popNums { width:300rpx; margin-bottom: 60rpx;}
+.popBox .popItem { margin-top:40rpx;}
+.popBox .popItem .subTit { font-size:28rpx; margin-bottom: 10rpx;}
+
+.scroll-useCoin { max-height: 680rpx; overflow:auto; margin-bottom:40rpx;}
+
+.cionModel { margin:40rpx 0;}
+.coinTit { margin:40rpx 40rpx 0; position: relative;}
+.coinTit text { color:#000; font-size:36rpx;}
+.coinTit .iconfont { position: absolute; right:-10rpx; top:-10rpx; transform: rotate(45deg)}
+.cionModel button { margin: 0 40rpx;}

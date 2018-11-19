@@ -2,7 +2,7 @@ const orderModel = require('../../../models/order/index.js');
 const util = require('../../../utils/utils.js');
 const { img } = require('../../../config/url.js');
 const app = getApp();
-Page({ 
+Page({
   ...app.loadcartlist,
   ...app.loadMoreMethods,
   data: {
@@ -10,7 +10,7 @@ Page({
       {
         key: '0',
         label: '全部'
-      }, 
+      },
       {
         key: 'wait_to_pay',
         label: '待付款'
@@ -25,7 +25,7 @@ Page({
       }
     ],
     curTab: '0',
-    list: [], 
+    list: [],
     hasNextPage: false,
     statusFormat: {
       2: "技师已出发",
@@ -38,54 +38,73 @@ Page({
     userPage: null
   },
   //load
-  onLoad (e) {
-    this.getList();
+  onLoad(e) {
   },
-  onShow () {
+  onShow() {
     this.setData({
       curTab: app.globalData.currentOrderTab
     })
+    app.globalData.currentOrderTab = '0';
     if (this.data.curTab == 2) {
       this.getServicesTime();
     }
+    this.getList();
   },
-  onHide(){
-    
+  onHide() {
+
   },
-  getList () {
+  getList() {
     let _t = this;
     let status = _t.data.curTab == 0 ? '' : _t.data.curTab;
+    let url = orderModel.orderlist;
+    if (status == 'wait_to_service') {
+      url = orderModel.orderItemlist;
+    }
     let params = {
-      page: 1,
       page_size: 10,
       order_status: status
     };
     this._getList({
-      request: orderModel.orderlist,
+      request: url,
       params
     }, function (res) {
-      console.log('response:')
-      console.log(res);
-      res.list.forEach((v,i) => {
-        v.orderProductList.forEach((v2,i2) => {
-          v2.imgUrl = img + v2.product_template_image[0];
-          let combo = v2.orderProductSkuList[0];
-          combo.price = (combo.sku_price * combo.sku_service_time).toFixed(2);
-          v2.combo = combo;
+      let list = [];
+      if (status == 'wait_to_service') {
+        res.list.forEach((v, i) => {
+          v.title = v.productInfo.product_name;
+          v.status = v.schedule_status;
+          v.date = v.start_service_time.split(' ')[0];
+          v.timeRange = v.start_service_time.split(' ')[1] + '-' + v.end_service_time.split(' ')[1];
+          v.tecPic = v.technicianInfo.user_wx_avatar_url;
+          v.status = v.schedule_status;
+          if (v.serviceProcessList[0]) {
+            v.tecStep = v.serviceProcessList[0].process_type
+          } else {
+            v.tecStep = ''
+          }
         });
-      });
-      console.log(res.list);
+      } else {
+        res.list.forEach((v, i) => {
+          v.orderProductList.forEach((v2, i2) => {
+            v2.imgUrl = img + v2.product_template_image[0];
+            let combo = v2.orderProductSkuList[0];
+            combo.price = (combo.sku_price * combo.sku_service_time).toFixed(2);
+            v2.combo = combo;
+          });
+        });
+      }
+      list = res.list;
       _t.setData({
-        list: res.list,
+        list: list,
         hasNextPage: !res.hasNextPage
       });
-    });  
+    });
   },
 
   //加入购物车
-  setTabBarBadge (e) {
+  setTabBarBadge(e) {
     var id = e.currentTarget.dataset.id;
-    var quantity =1;
+    var quantity = 1;
     cartModel.additem({ id, quantity }).then(response => {
       this._cartlist(0, 1);
       wx.showToast({
@@ -103,7 +122,6 @@ Page({
   },
   tabChange(e) {
     let { key } = e.detail;
-    app.globalData.currentOrderTab = key;
     this.setData({
       curTab: key
     })
@@ -126,80 +144,99 @@ Page({
     });
   },
   getServicesTime() {
-      let startTime
-      let _this = this;
-      this.data.list.forEach(function (value, index, arrSelf) {
-          if (value.status == 3) {
-              let now = util.formatTime(new Date());
+    let startTime
+    let _this = this;
+    this.data.list.forEach(function (value, index, arrSelf) {
+      if (value.status == 3) {
+        let now = util.formatTime(new Date());
 
-              value.startTime = value.startTime || now;
-              console.log(value.startTime);
-              startTime = value.startTime.replace(/-/g, '/');
-              let oldTime = new Date(startTime).getTime() / 1000;
-              let newTime = new Date(now).getTime() / 1000;
-              let serviceTime = newTime - oldTime;
+        value.startTime = value.startTime || now;
+        startTime = value.startTime.replace(/-/g, '/');
+        let oldTime = new Date(startTime).getTime() / 1000;
+        let newTime = new Date(now).getTime() / 1000;
+        let serviceTime = newTime - oldTime;
 
-              //计算相差小时数
-              let leave1 = serviceTime % (60 * 60)    //计算天数后剩余的毫秒数
-              let h = Math.floor(serviceTime / (60 * 60))
-              //计算相差分钟数
-              let leave2 = leave1 % (60 * 60)        //计算小时数后剩余的毫秒数
-              let m = Math.floor(leave2 / (60))
-              //计算相差秒数
-              let leave3 = leave2 % (60)      //计算分钟数后剩余的毫秒数
-              let s = Math.round(leave3)
+        //计算相差小时数
+        let leave1 = serviceTime % (60 * 60)    //计算天数后剩余的毫秒数
+        let h = Math.floor(serviceTime / (60 * 60))
+        //计算相差分钟数
+        let leave2 = leave1 % (60 * 60)        //计算小时数后剩余的毫秒数
+        let m = Math.floor(leave2 / (60))
+        //计算相差秒数
+        let leave3 = leave2 % (60)      //计算分钟数后剩余的毫秒数
+        let s = Math.round(leave3)
 
-              _this.setData({
-                [`list[${index}].h`]: h.toString().padStart(2, '0'),
-                [`list[${index}].m`]: m.toString().padStart(2, '0'),
-                [`list[${index}].s`]: s.toString().padStart(2, '0')
-              });
-              _this.countTime(index, value);
-          }
-      })
-  },
-  countTime(index, value) {
-      let _t = this;
-      clearInterval(this.data.list[index].t);
-      this.data.list[index].t = setInterval(function () {
-          let h = parseInt(value.h);
-          let m = parseInt(value.m);
-          let s = parseInt(value.s);
-          s += 1;
-          if (s > 59) {
-              s = 0;
-              m += 1;
-          }
-          if (m > 59) {
-              m = 0;
-              h += 1;
-          }
-          _t.setData({
-            [`list[${index}].h`]: h.toString().padStart(2, '0'),
-            [`list[${index}].m`]: m.toString().padStart(2, '0'),
-            [`list[${index}].s`]: s.toString().padStart(2, '0')
-          });
-      }, 1000);
-  },
-  beginServices(ev) {
-      let { id, index } = ev.currentTarget.dataset;
-      let now = new Date();
-      let h = now.getHours();
-      let m = now.getMonth() + 1;
-      let s = now.getSeconds();
-      this.setData({
-          [`list[${index}].status`]: 3,
-          [`list[${index}].startTime`]: util.formatTime(new Date()),
+        _this.setData({
           [`list[${index}].h`]: h.toString().padStart(2, '0'),
           [`list[${index}].m`]: m.toString().padStart(2, '0'),
           [`list[${index}].s`]: s.toString().padStart(2, '0')
-      })
-      this.getServicesTime();
+        });
+        _this.countTime(index, value);
+      }
+    })
+  },
+  countTime(index, value) {
+    let _t = this;
+    clearInterval(this.data.list[index].t);
+    this.data.list[index].t = setInterval(function () {
+      let h = parseInt(value.h);
+      let m = parseInt(value.m);
+      let s = parseInt(value.s);
+      s += 1;
+      if (s > 59) {
+        s = 0;
+        m += 1;
+      }
+      if (m > 59) {
+        m = 0;
+        h += 1;
+      }
+      _t.setData({
+        [`list[${index}].h`]: h.toString().padStart(2, '0'),
+        [`list[${index}].m`]: m.toString().padStart(2, '0'),
+        [`list[${index}].s`]: s.toString().padStart(2, '0')
+      });
+    }, 1000);
+  },
+  beginServices(ev) {
+    let { id, index } = ev.currentTarget.dataset;
+    let now = new Date();
+    let h = now.getHours();
+    let m = now.getMonth() + 1;
+    let s = now.getSeconds();
+    this.setData({
+      [`list[${index}].status`]: 3,
+      [`list[${index}].startTime`]: util.formatTime(new Date()),
+      [`list[${index}].h`]: h.toString().padStart(2, '0'),
+      [`list[${index}].m`]: m.toString().padStart(2, '0'),
+      [`list[${index}].s`]: s.toString().padStart(2, '0')
+    })
+    this.getServicesTime();
   },
   stopServices(ev) {
     let { index } = ev.currentTarget.dataset;
     this.setData({
-        [`list[${index}].status`]: 1,
+      [`list[${index}].status`]: 1,
+    })
+  },
+  //选择时间
+  selectTimeTap(e) {
+    let [rs] = this.data.list.filter(v => {
+      return v.id == e.currentTarget.dataset.id
+    });
+    app.globalData.changeTimeItem = rs;
+    wx.navigateTo({
+      url: '../../order/editDates/index'
+    })
+  },
+  //选择时间
+  selectTechnicianTap(e) {
+    let [rs] = this.data.list.filter(v => {
+      return v.id == e.currentTarget.dataset.id
+    });
+    app.globalData.changeTechnicianItem = rs;
+    wx.navigateTo({
+      url: '../../user/technician/select/index'
     })
   }
 })

@@ -8,67 +8,26 @@ Page({
     totalPrices: '',
     userInfo: null,
     id: null,
-    address: ''
+    address: '',
+    useCoin: false,
+    popVisible: false
   },
 
   // 详情加载
   onLoad: function (ev) {
     app.setNavColor()
 
-    let userInfo = app.globalData.userInfo;
+    let userInfo = app.globalData.userInfo || {};
     let address = userInfo.user_real_province + userInfo.user_real_city + userInfo.user_real_district + userInfo.user_locate_detail_addr + userInfo.user_real_detail_addr;
     this.setData({
       id: ev.id,
       userInfo: userInfo,
       address: address
     });
-    this.getOrder();
-    // this.addOrder();
   },
-  // addOrder() {
-    // let p = {};
-    // let total = 0;
-    // let id = [];
-    // let skuName = [];
-    // let skuNums = [];
-    // app.globalData.goSettleList.forEach(v => {
-    //   id.push(v.id);
-    //   skuName.push(v.defaultCombo.sku_name);
-    //   skuNums.push(v.quantity);
-    //   total += parseFloat(v.price);
-    // });
-    // p.product_id = id.join(',');
-    // p.sku_name = skuName.join(',');
-    // p.sku_num = skuNums.join(',');
-    // p.order_amount = total;
-
-    // this.setData({
-    //   totalPrices: total.toFixed(2)
-    // });
-
-    // orderModel.add(p).then(res => {
-    //   let orders = _that.data.orders;
-
-    //   _that.removeItemFormCart();
-
-    //   res.dataList.orderInfo.orderProductList.forEach((v, i) => {
-    //     orders.forEach((v2, i2) => {
-    //       if (v2.id == v.product_id) {
-    //         let arr = [];
-    //         v.productServiceSchedule.forEach((v3, i3) => {
-    //           arr.push(v3.start_service_time);
-    //         });
-    //         v2.bookingDates = arr.join(',');
-    //       }
-    //     });
-    //   });
-    //   _that.setData({
-    //     orderInfo: res.dataList.orderInfo,
-    //     orders: orders
-    //   })
-    //   _that.computeTotalPrice();
-    // });
-  // },
+  onShow() {
+    this.getOrder();
+  },
   // 获取列表
   getOrder() {
     let _that = this;
@@ -79,6 +38,7 @@ Page({
         v.defaultCombo = pro.orderProductSkuList[0]
         v.productName = pro.product_name
         v.quantity = pro.orderProductSkuList[0].sku_buy_num
+        v.id = v.order_code
 
         let arr = [];
         v.orderProductList.forEach((v2, i2) => {
@@ -88,7 +48,7 @@ Page({
             });
           }
         });
-        v.bookingDates = arr.join(',');
+        v.bookingDates = arr.join('，');
       });
 
       _that.setData({
@@ -130,18 +90,68 @@ Page({
     })
   },
   //选择时间
-  selectTap(e) {
+  selectTimeTap(e) {
+    let [rs] = this.data.orders.filter(v => {
+      return v.order_code == e.currentTarget.dataset.id
+    })
+    app.globalData.changeTimeOrder = rs;
     wx.navigateTo({
-      url: '../../order/editDates/index?id=' + e.currentTarget.dataset.id + '&mutli=1'
+      url: '../../order/editDates/index'
     })
   },
   goSettle() {
-    wx.showToast({
-      title: "调用微信支付",
-      icon: 'none',
-      duration: 2000
+    let _that = this;
+    orderModel.sign({ order_code: this.data.id }).then(res => {
+      let opts = res.dataList;
+      opts.timeStamp = opts.timeStamp.toString();
+      opts.success = function () {
+        app.toastSuccess({
+          title: "支付成功",
+          icon: 'none',
+          duration: 2000
+        });
+        setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/tabBar/order/index'
+          });
+          app.globalData.currentOrderTab = 'wait_to_service';
+        }, 1000);
+      };
+      opts.fail = function () {
+        app.toastError({
+          title: "支付失败",
+          icon: 'none',
+          duration: 2000
+        });
+        setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/tabBar/order/index'
+          });
+          app.globalData.currentOrderTab = 'wait_to_pay';
+        }, 1000);
+      }
+      wx.requestPayment(opts);
     });
-  }
+  },
+  isUseCoin(ev) {
+    this.setData({
+      useCoin: ev.detail.value
+    })
+  },
+  inputBlur(ev) {
+    console.log(ev.detail.value);
+  },
+  //弹窗
+  selectTap(ev) {
+    this.setData({
+      popVisible: true
+    });
+  },
+  popClose(ev) {
+    this.setData({
+      popVisible: false
+    });
+  },
 })
 
 

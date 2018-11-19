@@ -19,7 +19,7 @@ module.exports = (_options = {}) => {
   return new Promise((resolve, reject) => {
 
     // 本地调试代码
-    if (!!~_options.path.indexOf('.js')){
+    if (!!~_options.path.indexOf('.js')) {
       const res = require('..' + _options.path);
       resolve(res)
       return false
@@ -53,25 +53,30 @@ module.exports = (_options = {}) => {
             resolve(data);
             break;
           default:
-            showToast && wx.showToast({
-              title: data.msg || '加载失败',
+            wx.showToast({
+              title: data.msg || data.dataList.errorMsg || '加载失败',
               icon: 'none',
-              image: absolutePath('static/images/error.png'),
               duration: 2000
-            });
+            })
+            // showToast && wx.showToast({
+            //   title: data.dataList.errorMsg || '加载失败',
+            //   icon: 'none',
+            //   image: absolutePath('static/images/error.png'),
+            //   duration: 2000
+            // });
             reject(response);
             break;
         }
       },
       fail: error => {
-      //   loading && wx.hideLoading();
-      //   console.log(error);
-      //   showToast && wx.showToast({
-      //     title: error,
-      //     icon: 'none',
-      //     duration: 2000
-      //   });
-      //   reject(error);
+        //   loading && wx.hideLoading();
+        //   console.log(error);
+        //   showToast && wx.showToast({
+        //     title: error,
+        //     icon: 'none',
+        //     duration: 2000
+        //   });
+        //   reject(error);
       },
       complete: () => {
         // loading && wx.hideLoading();

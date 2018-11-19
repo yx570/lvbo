@@ -11,20 +11,29 @@
     </scroll-view>
   </view>
   <!-- 轮播end -->
-
   <!-- 选择时间 -->
   <view class="pk-content">
-    <scroll-view scroll-y="true" class="scroll-view_X{{ mutli == 1 ? ' bottom-100' : '' }}">
+    <scroll-view scroll-y="true" class="scroll-view_X{{ project.length > 1 ? ' bottom-100' : '' }}">
       <view class="app-rows timeList">
         <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
           <view class="flex-row app-row__hd">
             <view class="flex-bd">
-              <text class="mainTime">{{ item.time }}</text>
-              <text class="toTime color-999">{{ item.time }}结束</text>
+              <text class="mainTime">{{ item.startTime }}</text>
+              <text class="toTime color-999">{{ item.endTime }}结束</text>
             </view>
             <view class="flex-ft">
-              <button size="mini" class="bg-grey color-999" wx:if="{{ item.status == 2 }}">约满</button>
-              <button size="mini" class="btn-primary" data-time="{{ item.time }}" bindtap="selectTime" wx:else>预约</button>
+              <view wx:if="{{ item.startServiceTime == currentTime }}">
+                <button size="mini" class="bg-grey color-999">已约</button>
+              </view>
+              <view wx:else>
+                <button size="mini" class="btn-primary" data-time="{{ item.startServiceTime }}" bindtap="selectTime" wx:if="{{ item.status == 1 }}">
+                  预约
+                </button>
+                <button size="mini" class="bg-grey color-999" wx:elif="{{ item.status == 2 }}">
+                  预约
+                </button>
+                <button size="mini" class="bg-grey color-999" wx:else>约满</button>
+              </view>
             </view>
           </view>
         </view>
@@ -32,11 +41,11 @@
     </scroll-view>
   </view>
   <!-- 选择时间end -->
-  <view class="app-footer fixed" wx:if="{{ mutli == 1 }}">
+  <view class="app-footer fixed" wx:if="{{ project.length > 1 }}">
     <scroll-view scroll-x="true" class="scroll-view_Project">
-        <view bindtap="selectProject" wx:for="{{ project }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" class='{{ item.id == currentId ? "on" : ""}}'>
-          <text>{{ item.name }}</text>
-        </view>
+      <view bindtap="selectProject" wx:for="{{ project }}" wx:key="{{ item.id }}" data-id="{{ item.id }}" class='{{ item.id == currentId ? "on" : ""}}'>
+        <text>{{ item.name }}</text>
+      </view>
     </scroll-view>
   </view>
 </view>

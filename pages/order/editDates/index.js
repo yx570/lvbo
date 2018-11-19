@@ -1,38 +1,111 @@
 const orderModel = require('../../../models/order/index.js');
+const { img } = require('../../../config/url.js');
 const app = getApp();
 Page({
   ...app.loadMoreMethods,
   data: {
     calendar: [],
     currentIndex: 0,
-    mutli: 0,
-    project: [
-      { id: 1, name: "项目一" },
-      { id: 2, name: "项目二" },
-      { id: 3, name: "项目三" },
-      { id: 4, name: "项目四" },
-      { id: 5, name: "项目五" },
-      { id: 6, name: "项目六" }
-    ],
-    currentId: 1
+    project: [],
+    currentId: '',
+    currentTime: ''
   },
 
   onLoad: function (ev) {
-    this.setData({
-      id: ev.id,
-      mutli: ev.mutli
-    })
+    let order = app.globalData.changeTimeOrder;
+    let items = app.globalData.changeTimeItem;
+    if (order && JSON.stringify(order) != '{}') {
+      let project = [];
+      order.orderProductList.forEach((v, i) => {
+        let item = {};
+        item.name = v.product_name;
+        item.id = v.productServiceSchedule[0].id;
+        item.times = v.productServiceSchedule[0].start_service_time;
+        let now = new Date().getTime();
+        let svTime = v.productServiceSchedule[0].start_service_time.replace(/-/g, '/');
+        let startTime = new Date(svTime).getTime();
+        let svLong = (startTime - now) / 1000 / 60 / 60;
+        if (order.order_status == 'wait_to_pay' || (svLong > 24)) {
+          project.push(item);
+        }
+      });
+      this.setData({
+        order: order,
+        project: project,
+        currentId: project[0].id,
+        currentTime: project[0].times
+      })
+    } else {
+      this.setData({
+        items: items,
+        currentId: items.id,
+        currentTime: items.start_service_time
+      })
+    }
     this.initCanladar(30);
   },
 
-  loadList(date, request = orderModel.queryTimeList) {
+  reLoadOrder(cb) {
+    let _that = this;
+    orderModel.orderlist({ order_code: this.data.order.order_code }).then(res => {
+      res.dataList.orderList.forEach((v, i) => {
+        let pro = v.orderProductList[0]
+        v.imgUrl = img + pro.product_template_image[0]
+        v.defaultCombo = pro.orderProductSkuList[0]
+        v.productName = pro.product_name
+        v.quantity = pro.orderProductSkuList[0].sku_buy_num
+        v.id = v.order_code
+
+        let arr = [];
+        v.orderProductList.forEach((v2, i2) => {
+          if (v2.productServiceSchedule && v2.productServiceSchedule.length > 0) {
+            v2.productServiceSchedule.forEach((v3, i3) => {
+              arr.push(v3.start_service_time);
+            });
+          }
+        });
+        v.bookingDates = arr.join('，');
+      });
+      let order = res.dataList.orderList[0];
+
+      let project = [];
+      res.dataList.orderList[0].orderProductList.forEach((v, i) => {
+        let item = {};
+        item.name = v.product_name;
+        item.id = v.productServiceSchedule[0].id;
+        item.times = v.productServiceSchedule[0].start_service_time;
+        let now = new Date().getTime();
+        let svTime = v.productServiceSchedule[0].start_service_time.replace(/-/g, '/');
+        let startTime = new Date(svTime).getTime();
+        let svLong = (startTime - now) / 1000 / 60 / 60;
+        if (order.order_status == 'wait_to_pay' || (svLong > 24)) {
+          project.push(item);
+        }
+      });
+      this.setData({
+        order: order,
+        project: project,
+        currentId: _that.data.currentId,
+        currentTime: _that.data.currentTime
+      })
+      cb && cb();
+    });
+  },
+
+  loadList(date) {
     let _t = this;
     let params = {};
-    params.id = this.data.id;
-    params.date = date;
-    this._getList({ request, params }, function (res) {
+    params.schedule_id = this.data.currentId;
+    params.check_date = date;
+    orderModel.queryTimeList(params).then(res => {
+      let list = res.dataList.timeArea;
+      list.forEach((v, i) => {
+        v.id = i;
+        v.startTime = v.startServiceTime.split(' ')[1]
+        v.endTime = v.endServiceTime.split(' ')[1]
+      });
       _t.setData({
-        list: res.list,
+        list: list,
         hasNextPage: !res.hasNextPage
       });
     });
@@ -56,11 +129,7 @@ Page({
     function calendar(date, week, fullDate) {
       this.date = date;
       this.fullDate = fullDate;
-      if (date == cur_date) {
-        this.week = "今天";
-      } else {
-        this.week = week;
-      }
+      this.week = week;
     }
 
     function countDays(AddDayCount) {
@@ -72,10 +141,6 @@ Page({
       return y + '-' + m + '-' + d;
     }
 
-    //当前月份的天数
-    let monthLength = getThisMonthDays(cur_year, cur_month)
-    let nextMonthLength = getThisMonthDays(cur_year, cur_month + 1);
-    let twoMonthLength = monthLength + nextMonthLength;
     //当前月份的第一天是星期几
     let week = getFirstDayOfWeek(cur_year, cur_month)
     let x = week;
@@ -86,18 +151,20 @@ Page({
         x = 0;
       }
       let fullDate = countDays(i);
+      that.data.calendar[fullDate]
       let date = fullDate.split('-')[2];
       //利用构造函数创建对象
       that.data.calendar[i] = new calendar(date, [weeks_ch[x]][0], fullDate)
       x++;
     }
     //限制要渲染的日历数据天数为7天以内（用户体验）
-    let flag = that.data.calendar.splice(cur_date, days)
+    let flag = that.data.calendar.splice(1, days)
 
     var today = cur_year + '-' + cur_month + '-' + cur_date;
-    this.loadList(today);
+    this.loadList(flag[0].fullDate);
 
     that.setData({
+      date: flag[0].fullDate,
       calendar: flag
     })
   },
@@ -110,25 +177,49 @@ Page({
     })
   },
   selectTime(ev) {
+    let _that = this;
     let time = ev.currentTarget.dataset.time;
-    let id = this.data.id;
+    let id = this.data.currentId;
     let pages = getCurrentPages();
     let pageUrl = pages[pages.length - 2].route;
-    console.log('this:' + pageUrl)
-    if (pageUrl.indexOf('tabBar') > -1) {
-      wx.switchTab({
-        url: '/' + pageUrl
-      })
-    } else {
-      wx.navigateTo({
-        url: '/' + pageUrl
-      })
-    }
+
+    this.setData({
+      currentTime: time
+    });
+
+    let params = {};
+    params.schedule_id = id;
+    params.start_time = time;
+    orderModel.changeTime(params).then(res => {
+      if (_that.data.project.length > 1) {
+        app.toastSuccess('预约成功');
+        _that.reLoadOrder(function () {
+          _that.loadList(_that.data.date);
+        })
+      } else {
+        if (pageUrl.indexOf('tabBar') > -1) {
+          app.globalData.currentOrderTab = 'wait_to_service';
+          wx.switchTab({
+            url: '/' + pageUrl
+          })
+        } else {
+          wx.navigateTo({
+            url: '/' + pageUrl + '?id=' + app.globalData.changeTimeOrder.order_code
+          })
+        }
+      }
+    });
   },
   selectProject(ev) {
+    let id = ev.currentTarget.dataset.id;
+    let [pro] = this.data.project.filter(v => {
+      return id == v.id;
+    })
     this.setData({
       currentId: ev.currentTarget.dataset.id,
+      currentTime: pro.times
     })
+    this.loadList(this.data.date);
   }
 
 })

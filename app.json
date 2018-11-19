@@ -53,7 +53,8 @@
     {
       "root": "pages/subs",
       "pages": [
-        "about/index"
+        "about/index",
+        "noNetwork/index"
       ]
     }
   ],

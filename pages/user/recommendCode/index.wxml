@@ -34,7 +34,7 @@
     <view class="items">
       <text class="rmb">￥</text>
       <text class="amount">30</text>
-      <text class="voucher">代金券</text>
+      <text class="voucherText">代金券</text>
     </view>
   </view>
   

@@ -22,14 +22,63 @@ App({
     this.globalData.scene = e.scene;
     // this.getUserSetting();
     // this.getUserLocation();
+
   },
-  registerUser() {
+  onShow() {
+  },
+  checkNetWork(cb) {
     let _that = this;
+    wx.getNetworkType({
+      success: function (res) {
+        console.log(res);
+        cb && cb(res.networkType)
+      }
+    })
+    wx.onNetworkStatusChange(function (res) {
+      console.log(res);
+      // _that.alert({content: res.networkType})
+      cb && cb(res.networkType)
+    })
+  },
+  checkLogin() {
+    let _that = this;
+    let p = {};
+    p.token = wx.getStorageSync("token");
+    wx.request({
+      method: 'POST',
+      data: p,
+      url: 'https://www.newborni.com/Api/Common/getUserInfo',
+      success: res => {
+        if (res.data.msg == 'token错误') {
+          _that.userLogin();
+        } else {
+          let userInfo = res.data.dataList.miniProgramUserInfo;
+          _that.globalData.userInfo = userInfo;
+          console.log(userInfo);
+          wx.setStorageSync("userInfo", userInfo);
+        }
+      }
+    });
     // authModel.resister({}).then(response => {
     //   _that.setData({
     //     userInfo: response.dataList.userInfo
     //   })
     // }).catch(error => { });
+  },
+  checkLoginStatus(_t) {
+
+    // 判断有没有token,有token即有本地用户信息，读取本地用户信息到globalData
+    if (wx.getStorageSync("token")) {
+      // 读取本地用户信息
+      this.globalData.userInfo = wx.getStorageSync("userInfo");
+      this.checkLogin();
+    } else {
+      console.log(_t);
+      // 调用登录接口
+      this.userLogin(function () {
+        _t.showAuth();
+      });
+    }
   },
   userLogin(cb) {
     let _that = this;
@@ -38,13 +87,18 @@ App({
       success(res) {
         if (res.code) {
           authModel.login({ code: res.code }).then(res => {
-            let { userInfo } = res.dataList;
-            userInfo.child_sort = userInfo.child_sort || 1;
-            wx.setStorageSync("token", userInfo.user_token);
-            console.log(userInfo.user_token);
-            wx.setStorageSync("userInfo", userInfo);
-            _that.globalData.userInfo = userInfo;
-            _that.getUserWxInfo(cb)
+            if (res.dataList.errorMsg == '保存用户登陆信息错误') {
+              // 调用登录接口
+              _that.toastError('登录失败');
+              wx.setStorageSync("token", '');
+            } else {
+              let { userInfo } = res.dataList;
+              userInfo.child_sort = userInfo.child_sort || 1;
+              wx.setStorageSync("token", userInfo.user_token);
+              wx.setStorageSync("userInfo", userInfo);
+              _that.globalData.userInfo = userInfo;
+              _that.getUserWxInfo(cb)
+            }
           }).catch(error => { });
         } else {
           console.log('登录失败！' + res.errMsg)
@@ -83,6 +137,7 @@ App({
         p[index] = userInfo[index];
       }
     }
+    p.user_last_login_time && delete(p.user_last_login_time);
     authModel.save(p).then(res => {
       cb && cb();
     });
@@ -199,7 +254,7 @@ App({
         let cartList = res.data;
         settleList.forEach((v, i) => {
           let tit = v.id + '_' + v.defaultCombo.sku_name;
-          delete(cartList[tit]);
+          delete (cartList[tit]);
         });
         wx.setStorage({
           key: "nb_cart",
@@ -222,12 +277,12 @@ App({
     _initLoadMore(params = {}) {
       let {
         page = 1,
-        rows = 10,
+        page_size = 10,
         list = [],
         hasNextPage = false
       } = params;
       this._data.page = page;
-      this._data.rows = rows;
+      this._data.page_size = page_size;
       this._data.list = list;
       this._data.hasNextPage = hasNextPage;
     },
@@ -235,10 +290,10 @@ App({
       request,
       params
     }, callback = function () { }) {
-      let { page, rows } = this._data;
+      let { page, page_size } = this._data;
       let _params = {
-        page,
-        rows
+        page: page,
+        page_size: page_size
       };
       params && (_params = Object.assign({}, _params, params));
       this._data.request = request;
@@ -247,9 +302,10 @@ App({
       request(_params).then(response => {
         //let { page, totalPages, list = [] } = response.dataList || {};
         let totalRows = response.dataList.total;
-        let page = params.page;
-        let totalPages = Math.ceil(totalRows / params.rows);
-        let list = response.dataList.productList || response.dataList.orderList || [];
+        let page = _params.page;
+        let totalPages = Math.ceil(totalRows / params.page_size);
+        let baseData = response.dataList;
+        let list = baseData.productList || baseData.orderList || baseData.waitServiceScheduleList || baseData.technicianList || baseData.technicianScheduleList || [];
         this._data.hasNextPage = totalPages > page ? true : false;
         this._data.list = page == 1 ? list : [...this._data.list, ...list];
         typeof callback == 'function' && callback({

@@ -3,17 +3,22 @@
         <view class="weui-cell order-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{ orders }}" data-index="{{ index }}" wx:key="{{ index }}" bind:touchstart="touchstart" bind:touchmove="touchmove" bind:tap="cellTap">
             <view class="weui-cell__hd">
                 <label class="checkbox" data-index="{{ index }}" catch:tap="checkboxTap">
-                    <checkbox value="{{ index }}" checked="{{ item.checked }}"/>
+                    <checkbox value="{{ index }}" checked="{{ item.checked }}" />
                     <icon class="iconfont icon-check"></icon>
                 </label>
             </view>
             <view class="weui-cell__bd">
                 <view class="weui-cell pa-0">
-                    <view  class="weui-cell__hd" bindtap="urlshow" data-id="{{item.id}}"><image  src="{{ item.imgUrl }}" /></view>
-
+                    <view class="weui-cell__hd" bindtap="urlshow" data-id="{{item.id}}">
+                        <image src="{{ item.imgUrl }}" />
+                    </view>
                     <view class="weui-cell__bd">
-                        <view class="name" bindtap="urlshow" data-id="{{item.id}}">{{ item.productName }}</view>
-                        <view class="size">规格：{{ item.defaultCombo.sku_price }}/{{ item.defaultCombo.sku_name }}</view>
+                        <view class="name" bindtap="urlshow" data-id="{{item.id}}">
+                            {{ item.productName }}
+                        </view>
+                        <view class="size">
+                            规格：{{ item.defaultCombo.sku_price }}/{{ item.defaultCombo.sku_name }}
+                        </view>
                         <view class="flex-row">
                             <view class="price color-pink">
                                 <text class="sub">￥</text>
@@ -23,15 +28,7 @@
                                 <!-- <view class="iconfont icon-clear_fill {{ item.quantity <= 0 ? 'disabled':'' }}" data-id="{{ item.id }}" catch:tap="changeCount" data-index="{{ index }}" data-value="-1"></view>
                                 <text class="text">{{ item.quantity }}</text>
                                 <view class="iconfont icon-addition_fill" catch:tap="changeCount" data-id="{{ item.id }}" data-index="{{ index }}" data-value="1"></view> -->
-                                <app-input-number 
-                                quantity="{{ item.quantity || 1 }}"
-                                className="cartNumInput"
-                                data-id="{{ item.id }}" 
-                                data-index="{{ index }}" 
-                                data-skuname="{{ item.defaultCombo.sku_name }}"
-                                catch:tap="inputTap"
-                                bind:change="changeCount" 
-                                />
+                                <app-input-number quantity="{{ item.quantity || 1 }}" className="cartNumInput" data-id="{{ item.id }}" data-index="{{ index }}" data-skuname="{{ item.defaultCombo.sku_name }}" catch:tap="inputTap" bind:change="changeCount" />
                             </view>
                         </view>
                     </view>
@@ -43,18 +40,18 @@
             </view>
             <view class="weui-cell__del overflow">
                 <button class="btn-delete bg-pink color-white" data-id="{{ item.id }}_{{ item.defaultCombo.sku_name }}" data-num="{{ item.quantity }}" data-index="{{ index }}" catch:tap="cellBtnTap">
-                  <text>删除</text>
+                    <text>删除</text>
                 </button>
             </view>
         </view>
     </view>
-    <view wx:else>
-      <app-empty tips="暂无商品哦~" />
+    <view class="noRecords" wx:else>
+        <image src="/static/images/noOrder.jpg" mode="widthFix"></image>
     </view>
     <view class="cart-footer flex-row" wx:if="{{ orders.length > 0 }}">
         <view class="flex-bd">
             <label class="checkbox" data-checked="{{ checkedAll }}" catch:tap="checkAllTap">
-                <checkbox checked="{{ checkedAll }}"/>
+                <checkbox checked="{{ checkedAll }}" />
                 <icon class="iconfont icon-check"></icon>
                 <text>全选</text>
             </label>
@@ -63,7 +60,9 @@
             <text>合计：</text>
             <text class="sub color-pink">￥</text>
             <text class="color-pink">{{ totalPrices }}</text>
-            <button class="bg-pink color-white goSettle" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindCartUserInfo">去结算</button>
+            <button class="bg-pink color-white goSettle" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindCartUserInfo">
+                去结算
+            </button>
         </view>
     </view>
 </view>

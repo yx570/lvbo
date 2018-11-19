@@ -1,46 +1,124 @@
-<!--pages/tabBar/user/index.wxml-->
-<view class="panel-user">
-	<view class="weui-cells panel-user-header bg-primary">
-		<view class="weui-cell">
-			<view class="weui-cell__bd align-center">
+<!-- pages/tabBar/user/index.wxml -->
+<view class="container flex-column bg-f3 panel-technician" wx:if="{{ type == 2 }}">
+  <view class="tabs flex-row bg-primary">
+    <view class="flex-bd align-center {{ currentTab == item.key ? 'active' : '' }}" wx:for="{{ tabs }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="tabChange">
+      <text>{{ item.label }}</text>
+    </view>
+  </view>
+  <view class="flex-bd">
+    <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
+      <view class="content technician-list">
+        <view class="flex-column technician-item bg-white" wx:for="{{ list }}" wx:key="{{ index }}">
+          <view class="flex-row flex-center top">
+            <view class="flex-bd title">{{ item.title }}</view>
+            <view class="countTime" wx:if="{{ item.status == 4 }}">
+              <text class="bg-pink">{{ item.h }}</text>
+              :
+              <text class="bg-pink">{{ item.m }}</text>
+              :
+              <text class="bg-pink">{{ item.s }}</text>
+            </view>
+          </view>
+          <view class="flex-row flex-center">
+            <view class="flex-hd img-box">
+              <image src="{{ item.customerInfo.user_wx_avatar_url }}" />
+            </view>
+            <view class="flex-bd con-box">
+              <view class="name">{{ item.customerInfo.user_real_name }}</view>
+              <view class="date color-b8">服务时间：{{ item.start_service_time }}</view>
+            </view>
+            <view class="flex-ft">
+              <view class="iconfont icon-dianhua color-primary" data-mobile="{{ item.customerInfo.user_contact_phone }}" bindtap="makeCall"></view>
+            </view>
+          </view>
+          <view class="process-box bg-f3" wx:if="{{ item.serviceProcessList && item.serviceProcessList.length > 0 }}">
+            <view class="process-item" wx:for="{{ item.serviceProcessList }}" wx:for-item="process" wx:for-index="idx" wx:key="{{ idx }}">
+              <text>{{ process.action_time }}</text>
+              <text class="pl-10" wx:if="{{ process.process_type == 'technician_start' }}">
+                技师已出发
+              </text>
+              <text class="pl-10" wx:elif="{{ process.process_type == 'technician_arrive' }}">
+                技师已到达
+              </text>
+              <text class="pl-10" wx:elif="{{ process.process_type == 'customer_confirm_start' }}">
+                客户确认开始
+              </text>
+              <text class="pl-10" wx:elif="{{ process.process_type == 'confirm_finish' }}">
+                服务结束
+              </text>
+            </view>
+          </view>
+          <view class="flex-row btn-area">
+            <view class="flex-bd">
+              <button size="mini" class="btn-radius" type="default" data-id="{{ item.id }}" plain wx:if="{{ !item.serviceProcessList || item.serviceProcessList.length == 0 }}">
+                申请请假
+              </button>
+            </view>
+            <view class="flex-ft align-right">
+              <button size="mini" class="btn-radius" data-id="{{ item.id }}" type="default" plain catchtap="clientPosition" wx:if="{{ !item.serviceProcessList || item.serviceProcessList.length == 0 || item.serviceProcessList[0].process_type == 'technician_start' }}">
+                查看客户位置
+              </button>
+              <button size="mini" class="btn-radius" data-id="{{ item.id }}" type="primary" plain wx:if="{{ item.serviceProcessList[0].process_type == 'technician_start' }}">
+                确认到达
+              </button>
+              <button size="mini" class="btn-radius" data-id="{{ item.id }}" type="primary" plain wx:elif="{{ !item.serviceProcessList || item.serviceProcessList.length == 0 }}">
+                出发
+              </button>
+              <button size="mini" class="btn-radius" type="primary" plain data-id="{{ item.id }}" data-index="{{ index }}" catchtap="beginMeasure" wx:elif="{{ item.serviceProcessList[0].process_type == 'customer_confirm_start' }}">
+                开始测量
+              </button>
+              <button size="mini" class="btn-radius" type="pink" plain data-id="{{ item.id }}" data-index="{{ index }}" data-row="{{ item }}" catchtap="stopMeasure" wx:elif="{{ item.status == 4 }}">
+                结束测量
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<view class="panel-user" wx:else>
+  <view class="weui-cells panel-user-header bg-primary">
+    <view class="weui-cell">
+      <view class="weui-cell__bd align-center">
         <view class="img-box">
           <image class="userimg" src="{{ userInfos.photo }}" wx:if="{{ userInfos.photo }}"></image>
           <open-data class="userimg" type="userAvatarUrl" wx:else></open-data>
         </view>
         <view class="username">
           <text wx:if="{{ userInfos.userName }}">{{ userInfos.userName }}</text>
-				  <open-data class="username" type="userNickName" wx:else></open-data>
+          <open-data class="username" type="userNickName" wx:else></open-data>
         </view>
-			</view>
-		</view>
+      </view>
+    </view>
     <view class="cr cr-l"></view>
     <view class="cr cr-r"></view>
-	</view>
-	<view class="panel-user-body">
-		<view class="order-cells mt-20">
+  </view>
+  <view class="panel-user-body">
+    <view class="order-cells mt-20">
       <view class="title">我的订单</view>
-			<view class="flex-row align-center">
-				<view class="flex-bd" wx:for="{{ orderInfos }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="navigateChange">
+      <view class="flex-row align-center">
+        <view class="flex-bd" wx:for="{{ orderInfos }}" wx:key="{{ index }}" data-key="{{ item.key }}" bindtap="navigateChange">
           <view class="img-box">
-            <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+            <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix" />
             <view class="dot bg-red" wx:if="{{ item.value > 0 }}">{{ item.value }}</view>
           </view>
           <view class="color-999">{{ item.label }}</view>
-				</view>
-			</view>
-		</view>
+        </view>
+      </view>
+    </view>
     <view class="tool-cells mt-20">
       <view class="title">必备工具</view>
-			<view class="flex-row align-center">
-				<view class="flex-hd" wx:for="{{ tools }}" wx:key="{{ index }}">
+      <view class="flex-row align-center">
+        <view class="flex-hd" wx:for="{{ tools }}" wx:key="{{ index }}">
           <navigator url="{{ item.link }}">
             <view class="img-box">
-              <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix"/>
+              <image class="icon-img" src="/static/images/icon-img-{{ item.icon }}.png" mode="widthFix" />
             </view>
             <view class="color-999">{{ item.label }}</view>
           </navigator>
-				</view>
-			</view>
-		</view>
-	</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

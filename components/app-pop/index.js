@@ -58,6 +58,7 @@ Component({
         visible:false
       });
       this.triggerEvent('close',{});
+      wx.showTabBar({});
     }
   }
 })

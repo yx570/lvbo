@@ -5,23 +5,25 @@
         <view class="app-row" wx:for="{{ list }}" wx:key="{{ item.id }}">
           <view class="flex-row app-row__hd technicianBox">
             <view class="flex-bd">
-              <view class="flex-row">
-                <view class="flex-ft">
-                  <view class="img-box">
-                    <image src="{{ item.imageUrl }}"></image>
+              <navigator hover-class="none" url="/pages/user/technician/details/index?id={{item.id}}">
+                <view class="flex-row">
+                  <view class="flex-ft">
+                    <view class="img-box">
+                      <image src="{{ item.user_wx_avatar_url }}"></image>
+                    </view>
+                  </view>
+                  <view class="flex-bd">
+                    <view class="name">{{ item.user_wx_nick_name }}</view>
+                    <view class="svTimes">累积服务{{ item.technician_total_take_order }}次</view>
+                    <view class="stars">
+                      <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
+                    </view>
                   </view>
                 </view>
-                <view class="flex-bd">
-                  <view class="name">{{ item.name }}</view>
-                  <view class="svTimes">累积服务{{ item.svTimes }}次</view>
-                  <view class="stars">
-                    <view class="iconfont icon-star-o" wx:for="{{ item.star }}" wx:for-item="star" wx:for-index="idx" wx:key="{{ idx }}"></view>
-                  </view>
-                </view>
-              </view>
+              </navigator>
             </view>
             <view class="flex-ft">
-              <label class="radio" data-index="{{ index }}" catch:tap="radioTap">
+              <label class="radio" data-index="{{ index }}" data-id="{{ item.id }}" catch:tap="radioTap">
                 <radio value="{{ index }}" checked="{{ item.checked }}" />
                 <icon class="iconfont icon-check"></icon>
               </label>

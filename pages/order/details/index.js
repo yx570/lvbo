@@ -5,11 +5,14 @@ Page({
   // ...app.loadcartlist,
   data: {
     statusFormat: {
-        1: "已服务",
-        2: "技师已出发",
-        5: "技师已到达",
-        3: "服务中",
-        4: "待服务"
+      // 1: "已服务",
+      // 2: "技师已出发",
+      // 5: "技师已到达",
+      // 3: "服务中",
+      // 4: "待服务"
+        "finish": "已服务",
+        "in_service": "服务中",
+        "wait_to_service": "待服务"
     },
     orderInfos: {
       number: '201809192020',
@@ -80,7 +83,10 @@ Page({
   },
 
   // 详情加载
-  onLoad: function (ev) {
+  onLoad () {
+  },
+  onShow() {
+    this.getOrder();
     this.getServicesTime();
   },
   getServicesTime() {

@@ -148,3 +148,99 @@
   width: 80rpx;
   height: 80rpx;
 }
+
+.panel-technician{
+  overflow-x: hidden;
+}
+.technician-list{
+  padding-bottom: 30rpx;
+}
+.technician-item{
+  margin-top: 30rpx;
+  padding: 30rpx;
+  border-radius: 20rpx;
+}
+.technician-item .top{
+  margin-bottom: 30rpx;
+}
+.technician-item .title,
+.technician-item .name{
+  font-size: 36rpx;
+}
+.technician-item .countTime text { 
+  padding:5rpx 6rpx;
+  margin:2rpx; 
+  border-radius: 10rpx; 
+  color:#fff;
+}
+.technician-item .date{
+  font-size: 26rpx;
+}
+.technician-item .img-box {
+  width: 100rpx;
+  height: 100rpx; 
+  border-radius: 50%; 
+  overflow:hidden;
+}
+.technician-item .icon-dianhua {
+  width: 66rpx;
+  height: 66rpx;
+  font-size: 30rpx;
+  line-height: 62rpx;
+  border: 2rpx solid #00b0ab;
+  border-radius: 50%;
+  text-align: center;
+}
+.technician-item .con-box {
+  padding-left: 30rpx;
+}
+.technician-item .process-box {
+  margin-top: 20rpx;
+  padding: 24rpx;
+}
+.technician-item .process-item {
+  padding: 4rpx 0;
+  font-size: 26rpx;
+}
+.technician-item .btn-area {
+  margin-top: 30rpx;
+}
+.technician-item .btn-area button{
+  padding: 0 30rpx;
+  font-size: 26rpx;
+}
+.technician-item .btn-area button + navigator,
+.technician-item .btn-area navigator + button,
+.technician-item .btn-area button  + button{
+  margin-left: 16rpx;
+}
+.technician-item .btn-area navigator{
+  display: inline-block;
+}
+
+.panel-technician .tabs{
+  width: 100%;
+  padding: 0 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #9ae3e1;
+}
+.panel-technician .tabs text{
+  position: relative;
+  display: inline-block;
+  font-size: 36rpx;
+}
+.panel-technician .tabs .flex-bd{
+  position: relative;
+}
+.panel-technician .tabs .active{
+  color: #fff;
+}
+.panel-technician .tabs .active text::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 4rpx solid #ffc926;
+}

@@ -2,7 +2,9 @@
   <navigator hover-class="none" url="/pages/user/address/index?from=order">
     <view class="weui-cell flex-row buyInfo">
       <view class="app-cell__bd">
-        <view class="buyName">{{ userInfo.user_wx_nick_name }} {{ userInfo.user_contact_phone }}</view>
+        <view class="buyName">
+          {{ userInfo.user_wx_nick_name }} {{ userInfo.user_contact_phone }}
+        </view>
         <view class="buyAddress ellipse">{{ address }}</view>
       </view>
       <view class="app-cell__ft">
@@ -22,7 +24,9 @@
               <view class="name ellipse" bindtap="urlshow" data-id="{{item.id}}">
                 {{ item.productName }}
               </view>
-              <view class="size">规格：{{ item.defaultCombo.sku_price }}/{{ item.defaultCombo.sku_name }}</view>
+              <view class="size">
+                规格：{{ item.defaultCombo.sku_price }}/{{ item.defaultCombo.sku_name }}
+              </view>
               <view class="flex-row">
                 <view class="price color-pink">
                   <text class="sub">￥</text>
@@ -33,15 +37,15 @@
           </navigator>
         </view>
         <view class="weui-cell pa-0 flex-row acItems color-999">
-          <view class="flex-bd">购买数量:</view>
+          <view class="flex-bd color-333">购买数量:</view>
           <view class="flex-ft">
             <view class="at-number-input">
               <app-input-number quantity="{{ item.quantity || 1 }}" className="cartNumInput" data-id="{{ item.id }}" data-index="{{ index }}" catch:tap="inputTap" bind:change="changeCount" />
             </view>
           </view>
         </view>
-        <view class="weui-cell pa-0 flex-row acItems color-999" catch:tap="selectTap" data-index="{{ index }}" data-id="{{item.id}}">
-          <view class="app-cell__hd color-999">预约时间</view>
+        <view class="weui-cell pa-0 flex-row acItems color-999" catch:tap="selectTimeTap" data-index="{{ index }}" data-id="{{item.id}}">
+          <view class="app-cell__hd color-333">服务时间</view>
           <view class="app-cell__bd">
             <view class="ellipse showTimes">{{item.bookingDates}}</view>
           </view>
@@ -56,6 +60,40 @@
     <app-empty tips="暂无商品哦~" />
   </view>
   <view class="cart-footer">
+    <view class="couponBox">
+      <view class="weui-cells">
+        <view class="weui-cell pa-0 flex-row" catch:tap="selectTap">
+          <view class="app-cell__hd color-333">优惠券</view>
+          <view class="app-cell__bd">
+            <view class="ellipse showCoupon align-right color-999">无</view>
+          </view>
+          <view class="app-cell__ft">
+            <view class="iconfont icon-arrow-right"></view>
+          </view>
+        </view>
+        <view class="weui-cell pa-0 flex-row">
+          <view class="app-cell__hd color-333">新生币</view>
+          <view class="app-cell__bd">
+            <view class="ellipse pl-40 color-333">共1200新生币，抵20元</view>
+          </view>
+          <view class="app-cell__ft">
+            <switch bindchange="isUseCoin" />
+          </view>
+        </view>
+        <view class="weui-cell pa-0 flex-row" wx:if="{{ useCoin }}">
+          <view class="app-cell__hd color-333">使用</view>
+          <view class="app-cell__bd">
+            <view class="inline-item pl-20 pr-20">
+              <input class="app-input" bindblur="inputBlur" type="number" name="coin" value='{{ quantity }}'></input>
+            </view>
+            <view class="inline-item color-333">
+              新生币，
+              <text class="color-pink">抵20元</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
     <view class="notice">温馨提示: 开始前24小时内不能再做预约修改</view>
     <view class="flex-row">
       <view class="flex-bd">
@@ -68,3 +106,109 @@
     </view>
   </view>
 </view>
+<app-pop direction="bottom" visible="{{popVisible}}" bind:close="popClose" class="popBox" styles="bottom:0;left:0;width:100%;">
+  <view class='modal-content cionModel'>
+    <view class="coinTit">
+      <text>优惠券</text>
+      <icon class="iconfont icon-plus" bindtap="popClose"></icon>
+    </view>
+    <view scroll-x="true" class="scroll-useCoin">
+      <view class="weui-cells">
+        <radio-group class="radio-group" bindchange="radioChange">
+
+        <view class="weui-cell flex-row">
+          <view class="app-cell__bd">
+            <label class="radio">
+              <radio value="{{ index }}" checked="{{ item.checked }}" />
+              <icon class="iconfont icon-check"></icon>
+            </label>
+          </view>
+          <view class="app-cell__ft">
+            <view class="voucher">
+              <view class="items">
+                <text class="rmb">￥</text>
+                <text class="amount">30</text>
+                <text class="voucherText">代金券</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="weui-cell flex-row">
+          <view class="app-cell__bd">
+            <label class="radio">
+              <radio value="{{ index }}" checked="{{ item.checked }}" />
+              <icon class="iconfont icon-check"></icon>
+            </label>
+          </view>
+          <view class="app-cell__ft">
+            <view class="voucher">
+              <view class="items">
+                <text class="rmb">￥</text>
+                <text class="amount">30</text>
+                <text class="voucherText">代金券</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="weui-cell flex-row">
+          <view class="app-cell__bd">
+            <label class="radio">
+              <radio value="{{ index }}" checked="{{ item.checked }}" />
+              <icon class="iconfont icon-check"></icon>
+            </label>
+          </view>
+          <view class="app-cell__ft">
+            <view class="voucher">
+              <view class="items">
+                <text class="rmb">￥</text>
+                <text class="amount">30</text>
+                <text class="voucherText">代金券</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="weui-cell flex-row">
+          <view class="app-cell__bd">
+            <label class="radio">
+              <radio value="{{ index }}" checked="{{ item.checked }}" />
+              <icon class="iconfont icon-check"></icon>
+            </label>
+          </view>
+          <view class="app-cell__ft">
+            <view class="voucher">
+              <view class="items">
+                <text class="rmb">￥</text>
+                <text class="amount">30</text>
+                <text class="voucherText">代金券</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="weui-cell flex-row">
+          <view class="app-cell__bd">
+            <label class="radio">
+              <radio value="{{ index }}" checked="{{ item.checked }}" />
+              <icon class="iconfont icon-check"></icon>
+            </label>
+          </view>
+          <view class="app-cell__ft">
+            <view class="voucher">
+              <view class="items">
+                <text class="rmb">￥</text>
+                <text class="amount">30</text>
+                <text class="voucherText">代金券</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        </radio-group>
+      </view>
+    </view>
+    <button class='btn-radius bg-pink color-white' catch:tap="Cart">确定</button>
+  </view>
+</app-pop>

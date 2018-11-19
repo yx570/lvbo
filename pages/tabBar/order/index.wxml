@@ -1,8 +1,9 @@
 <import src="../../../template/orderProject/index.wxml"></import>
 <view class="container flex-column">
   <app-tab tabs="{{ tabs }}" currentKey="{{ curTab }}" bind:itemTap="tabChange" equal align="flex-start" />
-  <view class="flex-bd">
+  <view class="flex-bd" wx:if="{{ list && list.length > 0 }}">
     <scroll-view class="scroll-box" scroll-y="true" bindscrolltolower="_loadMore">
+
       <view class="order-project" wx:if="{{ curTab == 'wait_to_service' }}">
         <template is="orderProject" wx:for="{{ list }}" wx:key="{{ index }}" data="{{ ...item, statusFormat: statusFormat, index: index }}"></template>
       </view>
@@ -57,6 +58,10 @@
           </view>
         </view>
       </view>
+
     </scroll-view>
+  </view>
+  <view class="noRecords" wx:else>
+    <image src="/static/images/noOrder.jpg" mode="widthFix"></image>
   </view>
 </view>

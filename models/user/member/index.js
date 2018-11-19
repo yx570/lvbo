@@ -12,6 +12,11 @@ module.exports = {
    * 工作任务统计
   */
   tasks: params => {
-    return ajax({ path: '/member/tasks', method: 'post', loading: false });
+    return ajax({ path: '/Api/Technician/myWorkSheet', method: 'post', auth: true, params, loading: true });
+  },
+
+  tecComment: params => {
+    return ajax({ path: '/Api/Technician/getTechnicianReviewList', method: 'post' });
+    
   }
 }

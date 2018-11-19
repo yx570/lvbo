@@ -5,6 +5,7 @@ const { img } = require('../../../config/url.js');
 Page({
   ...app.loadMoreMethods,
   data: {
+    network: true,
     //图片地址
     imgList: [
       '/static/images/demo/b1.jpg',
@@ -19,25 +20,30 @@ Page({
     searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏
   },
   onLoad() {
-    let _that = this;
     app.pages.add(this);
     // this.getImgList();
-    this.getList();
-
-    // 判断有没有token,有token即有本地用户信息，读取本地用户信息到globalData
-    if (wx.getStorageSync("token")) {
-      // 读取本地用户信息
-      app.globalData.userInfo = wx.getStorageSync("userInfo");
-    } else {
-      // 调用登录接口
-      app.userLogin(function () {
-        _that.showAuth();
-      });
-    }
+  },
+  onShow() {
+    let _that = this;
+    app.checkNetWork(function (res) {
+      if (res != 'none') {
+        _that.setData({
+          network: true
+        });
+        wx.showTabBar({})
+        _that.getList();
+        app.checkLoginStatus(_that);
+      } else {
+        _that.setData({
+          network: false
+        });
+        wx.hideTabBar({});
+      }
+    })
   },
   showAuth() {
     this.setData({
-      popVisible: true
+      popVisible: true,
     });
     wx.hideTabBar({});
   },

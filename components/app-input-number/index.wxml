@@ -2,7 +2,7 @@
 <custom-component>
     <view class="app-input-number {{ className }}">
       <button class="app-input-btn minus {{ quantity <= min ? 'disabled' : '' }}" size="mini" plain data-value="{{ -(step) }}" bindtap="quantityChange">
-        －
+        -
       </button>
       <input class="app-input" bindblur="inputBlur" type="number" name="quantity" value='{{ quantity }}'></input>
       <button class="app-input-btn plus" size="mini" plain data-value="{{ step }}" bindtap="quantityChange">

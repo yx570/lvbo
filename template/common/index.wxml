@@ -1,0 +1,5 @@
+<template name="commTemp">
+  <view class="noRecords">
+    <image src="/static/images/noNetwork.jpg" mode="widthFix"></image>
+  </view>
+</template>
