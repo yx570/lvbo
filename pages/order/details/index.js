@@ -19,7 +19,7 @@ Page({
       imageUrl: '/static/images/demo/b1.jpg',
       title: '产品名称大标题产品名称大标题产品名称大标题产品名称大标题',
       total: 3,
-      status: 1,
+      status: 'finish',
       perPrice: 982,
       price: 1000,
     },
@@ -32,7 +32,11 @@ Page({
         date: '2018-05-01',
         star: 3,
         timeRange: '9:00-10:00',
-        status: 1
+        startTime: "2018-10-19 21:50:00",
+        h: "21",
+        m: "50",
+        s: "33",
+        status: 'in_service'
       },
       {
         id: 2,
@@ -40,13 +44,9 @@ Page({
         title: '产品名称大标题产品名称大标题产品名称大标题产品名称大标题产品名称大标题产品名称大标题',
         name: '王小丫2',
         date: '2018-05-01',
-        startTime: "2018-10-19 21:50:00",
         star: 3,
         timeRange: '9:00-10:00',
-        h: "21",
-        m: "50",
-        s: "33",
-        status: 3
+        status: 'finish'
       },
       {
         id: 3,
@@ -56,7 +56,7 @@ Page({
         date: '2018-05-01',
         star: 3,
         timeRange: '9:00-10:00',
-        status: 5
+        status: 'wait_to_service'
       },
       // {
       //   id: 4,
@@ -86,14 +86,14 @@ Page({
   onLoad () {
   },
   onShow() {
-    this.getOrder();
+    // this.getOrder();
     this.getServicesTime();
   },
   getServicesTime() {
       let startTime
       let _this = this;
       this.data.list.forEach(function (value, index, arrSelf) {
-          if (value.status == 3) {
+          if (value.status == 'in_service') {
               let now = util.formatTime(new Date());
 
               value.startTime = value.startTime || now;

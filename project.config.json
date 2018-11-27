@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 7,
 			"list": [
 				{
 					"id": 2,
@@ -77,9 +77,9 @@
 					"query": "from=cart"
 				},
 				{
-					"id": 9,
+					"id": 7,
 					"name": "technicianlist",
-					"pathName": "pages/user/technician/list/index",
+					"pathName": "pages/user/technician/measure/index",
 					"query": ""
 				},
 				{
@@ -159,6 +159,12 @@
 					"name": "buyNow",
 					"pathName": "pages/order/buyNow/index",
 					"query": "id=201811132307485691"
+				},
+				{
+					"id": 21,
+					"name": "test1",
+					"pathName": "pages/user/score/list/index",
+					"query": "id=5"
 				}
 			]
 		}

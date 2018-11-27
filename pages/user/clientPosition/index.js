@@ -5,7 +5,6 @@ let app = getApp();
 Page({
     ...app.loadMoreMethods,
     data: {
-        polyline: [],
         clientPosition: ''
     },
 
@@ -37,24 +36,10 @@ Page({
     },
     includePointsFn(my) {
         // 添加客户标注   
+        that2.setData({
+            markers: [my]
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        console.log( this.data.clientPosition);
-        console.log( my);
         let mapPoints = [ this.data.clientPosition, my ];
         // 缩放视野展示所有经纬度(小程序API提供)
         this.mapCtx.includePoints({

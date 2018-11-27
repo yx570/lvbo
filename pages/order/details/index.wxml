@@ -4,7 +4,7 @@
   <view class="header bg-primary">
     <view class="orderStatus">
       <view class="iconfont icon-gouxuan1"></view>
-      <text>订单服务中</text>
+      <text>订单{{ statusFormat[orderInfos.status] }}</text>
     </view>
     <view class='app-rows infos'>
       <view class="app-row">

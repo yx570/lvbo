@@ -129,8 +129,8 @@ Page({
   },
   getWorkList() {
     let _t = this;
-    // let status = this.data.currentTab == '0' ? 'confirm' : 'finish';
-    let status = this.data.currentTab == '0' ? 'book' : 'finish';
+    let status = this.data.currentTab == '0' ? 'wait_to_service' : 'finish';
+    // let status = this.data.currentTab == '0' ? 'book' : 'finish';
     let params = {
       page_size: 10,
       schedule_status: status
