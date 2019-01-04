@@ -47,7 +47,7 @@ App({
     wx.request({
       method: 'POST',
       data: p,
-      url: 'https://www.newborni.com/Api/Common/getUserInfo',
+      url: 'https://api.newborni.com/Api/Common/getUserInfo',
       success: res => {
         if (res.data.msg == 'token错误') {
           _that.userLogin();

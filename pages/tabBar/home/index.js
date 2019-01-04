@@ -22,7 +22,10 @@ Page({
   onLoad() {
     app.pages.add(this);
     // this.getImgList();
+
+    app.setNavTitle('测试可不可以改首页标题');
   },
+  
   onShow() {
     let _that = this;
     app.checkNetWork(function (res) {
